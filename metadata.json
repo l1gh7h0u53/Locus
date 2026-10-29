@@ -1,0 +1,6 @@
+{
+  "name": "Locus",
+  "description": "An expressive, aesthetic, accessible tip calculator with standard and generous tips, featuring Senior Mode, sound haptics, and adaptive layout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

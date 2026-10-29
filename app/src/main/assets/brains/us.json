@@ -1,0 +1,69 @@
+{
+  "country": "USA",
+  "iso": "us",
+  "base_matrix": "A",
+  "matrix_name": "Matrix A / Custom North America",
+  "local_currency": "USD",
+  "services": [
+    {
+      "service_type": "Restaurants",
+      "service_type_key": "service_restaurants",
+      "standard_tip": "15% - 18%",
+      "generous_tip": "20%",
+      "legend_tip": "25%",
+      "mvp_tip": "30%+",
+      "notes": "Tipping is practically mandatory; servers rely on tips for income.",
+      "notes_key": "note_usa_restaurant"
+    },
+    {
+      "service_type": "Delivery",
+      "service_type_key": "service_delivery",
+      "standard_tip": "10% - 15%",
+      "generous_tip": "18%",
+      "legend_tip": "22%",
+      "mvp_tip": "25%+",
+      "notes": "Standard to tip delivery drivers via app or cash.",
+      "notes_key": "note_usa_delivery"
+    },
+    {
+      "service_type": "Takeout",
+      "service_type_key": "service_takeout",
+      "standard_tip": "0% - 10%",
+      "generous_tip": "15%",
+      "legend_tip": "20%",
+      "mvp_tip": "25%",
+      "notes": "Digital screens prompt for tips completely optional.",
+      "notes_key": "note_usa_takeout"
+    },
+    {
+      "service_type": "Foodtrucks",
+      "service_type_key": "service_foodtruck",
+      "standard_tip": "10%",
+      "generous_tip": "15%",
+      "legend_tip": "20%",
+      "mvp_tip": "25%",
+      "notes": "Tip jars or digital screen prompts are common.",
+      "notes_key": "note_usa_foodtruck"
+    },
+    {
+      "service_type": "Groceries",
+      "service_type_key": "service_groceries",
+      "standard_tip": "0%",
+      "generous_tip": "Round up",
+      "legend_tip": "$2 - $5",
+      "mvp_tip": "$10",
+      "notes": "Optional for grocery baggers or curbside pickup.",
+      "notes_key": "note_usa_groceries"
+    },
+    {
+      "service_type": "Bar",
+      "service_type_key": "service_bar",
+      "standard_tip": "$1 - $2 per drink",
+      "generous_tip": "15%",
+      "legend_tip": "20%",
+      "mvp_tip": "25%",
+      "notes": "Standard to tip per drink or open a tab.",
+      "notes_key": "note_usa_bar"
+    }
+  ]
+}

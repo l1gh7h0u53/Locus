@@ -1,0 +1,69 @@
+{
+  "country": "United Kingdom",
+  "iso": "gb",
+  "base_matrix": "C",
+  "matrix_name": "Matrix C",
+  "local_currency": "GBP",
+  "services": [
+    {
+      "service_type": "Restaurants",
+      "service_type_key": "service_restaurants",
+      "standard_tip": "10% - 12.5%",
+      "generous_tip": "15%",
+      "legend_tip": "20%",
+      "mvp_tip": "25%+",
+      "notes": "An optional 12.5% service charge is frequently added.",
+      "notes_key": "note_uk_restaurant"
+    },
+    {
+      "service_type": "Delivery",
+      "service_type_key": "service_delivery",
+      "standard_tip": "Round up / £1-£2",
+      "generous_tip": "£3",
+      "legend_tip": "£5",
+      "mvp_tip": "10%",
+      "notes": "Common for app food deliveries.",
+      "notes_key": "note_uk_delivery"
+    },
+    {
+      "service_type": "Takeout",
+      "service_type_key": "service_takeout",
+      "standard_tip": "0%",
+      "generous_tip": "0%",
+      "legend_tip": "0%",
+      "mvp_tip": "5%",
+      "notes": "Not expected.",
+      "notes_key": "note_uk_takeout"
+    },
+    {
+      "service_type": "Foodtrucks",
+      "service_type_key": "service_foodtruck",
+      "standard_tip": "0%",
+      "generous_tip": "Round up",
+      "legend_tip": "5%",
+      "mvp_tip": "10%",
+      "notes": "Optional tip jars.",
+      "notes_key": "note_uk_foodtruck"
+    },
+    {
+      "service_type": "Groceries",
+      "service_type_key": "service_groceries",
+      "standard_tip": "0%",
+      "generous_tip": "0%",
+      "legend_tip": "0%",
+      "mvp_tip": "0%",
+      "notes": "No tipping.",
+      "notes_key": "note_uk_groceries"
+    },
+    {
+      "service_type": "Bar",
+      "service_type_key": "service_bar",
+      "standard_tip": "0%",
+      "generous_tip": "Round up",
+      "legend_tip": "Change",
+      "mvp_tip": "£5",
+      "notes": "Rarely expected unless table service.",
+      "notes_key": "note_uk_bar"
+    }
+  ]
+}

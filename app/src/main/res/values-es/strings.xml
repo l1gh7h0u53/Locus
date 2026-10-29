@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Locus</string>
+    <string name="header_subtitle">Calculadora</string>
+    <string name="service_restaurant">Restaurante</string>
+    <string name="service_delivery">Entrega</string>
+    <string name="service_takeout">Para llevar</string>
+    <string name="service_foodtruck">Camión de comida</string>
+    <string name="service_groceries">Supermercado</string>
+    <string name="service_bar">Bar</string>
+    <string name="bill_amount">Monto de la cuenta</string>
+    <string name="enter_bill_amount">INGRESAR MONTO</string>
+    <string name="custom_percentage">Propina personalizada %</string>
+    <string name="tip_percent">Porcentaje de propina</string>
+    <string name="senior_mode_title">Modo Senior</string>
+    <string name="senior_mode_desc">Botones grandes y texto fácil de leer</string>
+    <string name="standard_tip">Estándar</string>
+    <string name="generous_tip">Generoso</string>
+    <string name="extremely_generous_tip">Muy generoso</string>
+    <string name="legend_tip">Leyenda</string>
+    <string name="angel_tip">Propina de Honor</string>
+    <string name="split_bill">Dividir cuenta</string>
+    <string name="number_of_people">Número de personas</string>
+    <string name="calculated_tip">Propina</string>
+    <string name="calculated_total">Cuenta total</string>
+    <string name="split_share">Por persona</string>
+    <string name="total_bill_label">Cuenta total</string>
+    <string name="tip_amount_label">Propina</string>
+    <string name="each_pays_label">Por persona</string>
+    <string name="service_category">Categoría de servicio</string>
+    <string name="select_service_category">SELECCIONAR SERVICIO</string>
+    <string name="haptic_state">Vibraciones hápticas</string>
+    <string name="clear_button">Borrar todo</string>
+    <string name="round_up">Redondear hacia arriba</string>
+    <string name="round_down">Redondear hacia abajo</string>
+    <string name="custom_slider">Porcentaje personalizado</string>
+    <string name="calculated_totals">TOTALES CALCULADOS</string>
+    <string name="reset_calculator">REINICIAR CALCULADORA</string>
+    <string name="search_country_placeholder">Buscar por país, ISO (ej. ES, México)...</string>
+    <string name="select_language_title">Seleccionar idioma</string>
+    <string name="auto_language_option">Resolución automática</string>
+    <string name="auto_language_sub">Idioma del sistema y mapa ISO</string>
+    <string name="close_button">Cerrar</string>
+    <string name="solo_person">1 Persona (Solo)</string>
+    <string name="people_sharing">%d Personas comparten</string>
+    <string name="tipping_tiers_header">NIVELES DE PROPINA PARA %s</string>
+    <string name="select_currency">SELECCIONAR MONEDA</string>
+    <string name="all_currencies">Todas (%d)</string>
+    <string name="more_currencies">+ Más...</string>
+    <string name="global_currencies_title">Monedas globales</string>
+    <string name="currencies_count">%d monedas</string>
+    <string name="search_currency_placeholder">Buscar moneda, código o país...</string>
+    <string name="no_currency_found">No se encontró ninguna moneda</string>
+    <string name="select_country_title">Seleccionar país</string>
+    <string name="regional_matrices_count">192 Países y matrices regionales</string>
+    <string name="culture_advice">Consejo cultural</string>
+    <string name="iso_label">ISO: %1$s • Dirección: %2$s</string>
+    <string name="selected_toast">%1$s (%2$s) seleccionado</string>
+    <string name="toggle_senior_mode">Cambiar a modo Senior</string>
+    <string name="toggle_theme_mode">Cambiar tema</string>
+    <string name="app_description_semantic">Locus, la calculadora global de propinas</string>
+    <string name="passport_logo_desc">Logotipo de pasaporte</string>
+    <string name="decrease_people">Disminuir número de personas</string>
+    <string name="increase_people">Aumentar número de personas</string>
+    <string name="back_to_calculator">Volver a la calculadora</string>
+    <string name="share_bill_summary">Compartir resumen</string>
+    <string name="share_bill_summary_title">Resumen de cuenta</string>
+    <string name="tip_calculation_desc">Cálculo de la cuenta: %1$s. Propina: %2$s. Cada persona paga %3$s</string>
+
+    <string name="service_restaurants">Restaurantes</string>
+    <string name="tier_standard">Estándar</string>
+    <string name="tier_generous">Generoso</string>
+    <string name="tier_legend">Leyenda</string>
+    <string name="tier_mvp">Propina de Honor</string>
+
+    <!-- Matrix & Country Tipping Notes in Spanish -->
+    <string name="note_default_guideline">Se aplican las pautas estándar de propina.</string>
+    <string name="note_matrix_a_restaurant">La propina es muy esperada; se prefiere efectivo.</string>
+    <string name="note_matrix_a_delivery">Entregar efectivo directamente al repartidor.</string>
+    <string name="note_matrix_a_takeout">No se espera para recoger en mostrador.</string>
+    <string name="note_matrix_a_foodtruck">Frascos de propina opcionales.</string>
+    <string name="note_matrix_a_groceries">Los empacadores a menudo trabajan solo por propinas.</string>
+    <string name="note_matrix_a_bar">Propina por ronda o en la cuenta final.</string>
+
+    <string name="note_matrix_b_restaurant">Expectativa estándar para servicio en mesa.</string>
+    <string name="note_matrix_b_delivery">Los repartidores aprecian una pequeña propina.</string>
+    <string name="note_matrix_b_takeout">Frasco de propinas opcional.</string>
+    <string name="note_matrix_b_foodtruck">Es común redondear hacia arriba.</string>
+    <string name="note_matrix_b_groceries">Sin costumbre de propina en tiendas.</string>
+    <string name="note_matrix_b_bar">Dejar cambio en la barra.</string>
+
+    <string name="note_matrix_c_restaurant">Servicio incluido; la propina es un extra voluntario.</string>
+    <string name="note_matrix_c_delivery">Habitual con mal tiempo.</string>
+    <string name="note_matrix_c_takeout">No se espera para comida para llevar.</string>
+    <string name="note_matrix_c_foodtruck">Redondeo simple.</string>
+    <string name="note_matrix_c_groceries">Estrictamente poco común.</string>
+    <string name="note_matrix_c_bar">Dejar el cambio en la barra.</string>
+
+    <string name="note_matrix_d_restaurant">La propina no es costumbre o se considera confusa/ofensiva; el buen servicio está incluido.</string>
+    <string name="note_matrix_d_delivery">No se espera propina.</string>
+    <string name="note_matrix_d_takeout">Sin propina.</string>
+    <string name="note_matrix_d_foodtruck">Sin propina.</string>
+    <string name="note_matrix_d_groceries">Sin propina.</string>
+    <string name="note_matrix_d_bar">Sin propina.</string>
+
+    <string name="note_matrix_e_restaurant">El baksheesh es tradicional; dejar efectivo en la mesa.</string>
+    <string name="note_matrix_e_delivery">Los mensajeros esperan propina en mano.</string>
+    <string name="note_matrix_e_takeout">Caja de propinas en el mostrador.</string>
+    <string name="note_matrix_e_foodtruck">Se agradece redondear.</string>
+    <string name="note_matrix_e_groceries">Los ayudantes viven de estas propinas.</string>
+    <string name="note_matrix_e_bar">Apreciado en bares de hoteles.</string>
+
+    <!-- Custom Country Notes -->
+    <string name="note_al_restaurant" formatted="false">La propina (5% - 10%) es muy apreciada en zonas turísticas.</string>
+    <string name="note_al_delivery">Propinas en efectivo para conductores muy bienvenidas.</string>
+    <string name="note_al_takeout">No se espera para llevar.</string>
+    <string name="note_al_foodtruck">Frascos de propinas opcionales.</string>
+    <string name="note_al_groceries">Sin propina estándar.</string>
+    <string name="note_al_bar">Dejar el cambio o redondear.</string>
+
+    <string name="note_ar_restaurant" formatted="false">10% en efectivo es costumbre; se prefiere efectivo por inflación.</string>
+    <string name="note_ar_delivery" formatted="false">5% - 10% en efectivo al repartidor.</string>
+    <string name="note_ar_takeout">No se espera.</string>
+    <string name="note_ar_foodtruck">Cambio pequeño en el frasco.</string>
+    <string name="note_ar_groceries">Billetes pequeños para empacadores.</string>
+    <string name="note_ar_bar" formatted="false">Redondear o 10% en la cuenta.</string>
+
+    <string name="note_au_restaurant" formatted="false">La propina no es costumbre; salarios altos. 10% por servicio excepcional.</string>
+    <string name="note_au_delivery">Opcional $2 - $5 con mal tiempo.</string>
+    <string name="note_au_takeout">No se espera propina.</string>
+    <string name="note_au_foodtruck">Frasco de propinas opcional.</string>
+    <string name="note_au_groceries">Sin propina.</string>
+    <string name="note_au_bar">No necesaria; dejar el cambio está bien.</string>
+
+    <string name="note_at_restaurant" formatted="false">Se espera propina; redondear o añadir 5% - 10% a la cuenta.</string>
+    <string name="note_at_delivery">Efectivo directamente al repartidor (1-2 €).</string>
+    <string name="note_at_takeout">No esperada en mostrador.</string>
+    <string name="note_at_foodtruck">Redondear cambio pequeño.</string>
+    <string name="note_at_groceries">Sin propina.</string>
+    <string name="note_at_bar">Redondear al siguiente euro.</string>
+
+    <string name="note_be_restaurant" formatted="false">Servicio incluido legalmente; propinas (5% - 10%) por servicio excepcional.</string>
+    <string name="note_be_delivery">1-2 € con mal tiempo o entrega rápida.</string>
+    <string name="note_be_takeout">No se espera.</string>
+    <string name="note_be_foodtruck">No se espera.</string>
+    <string name="note_be_groceries">Sin propina.</string>
+    <string name="note_be_bar">Cambio pequeño bienvenido.</string>
+
+    <string name="note_br_restaurant" formatted="false">10% de servicio suele incluirse; extra opcional.</string>
+    <string name="note_br_delivery">R$2 - R$5 en efectivo o por app.</string>
+    <string name="note_br_takeout">Sin propina.</string>
+    <string name="note_br_foodtruck">Dejar el cambio.</string>
+    <string name="note_br_groceries">R$2 - R$5 para empacadores de carros.</string>
+    <string name="note_br_bar" formatted="false">10% de servicio en la cuenta estándar.</string>
+
+    <string name="note_ca_restaurant" formatted="false">15% - 20% estándar para servicio en mesa.</string>
+    <string name="note_ca_delivery" formatted="false">10% - 15% por app o en efectivo.</string>
+    <string name="note_ca_takeout">Sugerencia en terminal de tarjeta es opcional.</string>
+    <string name="note_ca_foodtruck" formatted="false">10% o bote de propinas.</string>
+    <string name="note_ca_groceries">Sin propina estándar.</string>
+    <string name="note_ca_bar" formatted="false">$1 - $2 por bebida o 15% - 20% en la cuenta.</string>
+
+    <string name="note_cn_restaurant" formatted="false">La propina no es costumbre; 10% de servicio en hoteles de lujo.</string>
+    <string name="note_cn_delivery">No se espera propina.</string>
+    <string name="note_cn_takeout">Sin propina.</string>
+    <string name="note_cn_foodtruck">Sin propina.</string>
+    <string name="note_cn_groceries">Sin propina.</string>
+    <string name="note_cn_bar">Sin propina.</string>
+
+    <string name="note_co_restaurant" formatted="false">10% Propina Voluntaria suele figurar en la cuenta.</string>
+    <string name="note_co_delivery">2.000 - 5.000 COP en efectivo al mensajero.</string>
+    <string name="note_co_takeout">Poco habitual.</string>
+    <string name="note_co_foodtruck">Solo por buen servicio.</string>
+    <string name="note_co_groceries">Cambio pequeño para empacadores.</string>
+    <string name="note_co_bar" formatted="false">10% añadido o redondear.</string>
+
+    <string name="note_dk_restaurant" formatted="false">Servicio incluido en la cuenta por ley; propina poco común.</string>
+    <string name="note_dk_delivery">Rara vez esperada.</string>
+    <string name="note_dk_takeout">Sin propina.</string>
+    <string name="note_dk_foodtruck">Sin propina.</string>
+    <string name="note_dk_groceries">Sin propina.</string>
+    <string name="note_dk_bar">Sin estándar de propina.</string>
+
+    <string name="note_eg_restaurant" formatted="false">El baksheesh (10% - 15%) es costumbre; dejar efectivo en la mesa.</string>
+    <string name="note_eg_delivery">10 - 20 EGP en mano al mensajero.</string>
+    <string name="note_eg_takeout">Pequeño cambio agradecido.</string>
+    <string name="note_eg_foodtruck">Redondear el cambio.</string>
+    <string name="note_eg_groceries">5 - 10 EGP para empacadores.</string>
+    <string name="note_eg_bar" formatted="false">10% - 15% en salas de hoteles.</string>
+
+    <string name="note_fr_restaurant" formatted="false">Service compris (15% por ley); 1-2€ extra por buen servicio.</string>
+    <string name="note_fr_delivery">1-2€ en efectivo para el repartidor.</string>
+    <string name="note_fr_takeout">Sin propina.</string>
+    <string name="note_fr_foodtruck">Redondear al siguiente euro.</string>
+    <string name="note_fr_groceries">Sin propina.</string>
+    <string name="note_fr_bar">Dejar cambio pequeño.</string>
+
+    <string name="note_de_restaurant" formatted="false">Redondear (5% - 10%) e indicar el total directamente al camarero.</string>
+    <string name="note_de_delivery">1-2 € en efectivo directamente al repartidor.</string>
+    <string name="note_de_takeout">Cambio en la hucha de propinas es opcional.</string>
+    <string name="note_de_foodtruck">Es estándar redondear al siguiente euro.</string>
+    <string name="note_de_groceries">Sin propinas en supermercados.</string>
+    <string name="note_de_bar">Redondear al siguiente euro o dejar el cambio.</string>
+
+    <string name="note_in_restaurant" formatted="false">Comprobar cargo por servicio (5% - 10%); si no, 10% en efectivo.</string>
+    <string name="note_in_delivery">₹20 - ₹50 para el repartidor.</string>
+    <string name="note_in_takeout">Bote de propinas opcional.</string>
+    <string name="note_in_foodtruck">Redondear a los próximos ₹10 o ₹50.</string>
+    <string name="note_in_groceries">₹20 - ₹50 para empacadores o ayudantes.</string>
+    <string name="note_in_bar" formatted="false">10% en bebidas si no hay cargo por servicio.</string>
+
+    <string name="note_id_restaurant" formatted="false">Redondear o 5% - 10% en zonas turísticas (Bali).</string>
+    <string name="note_id_delivery">5.000 - 10.000 IDR por app o en efectivo.</string>
+    <string name="note_id_takeout">No esperado.</string>
+    <string name="note_id_foodtruck">Redondear en warungs.</string>
+    <string name="note_id_groceries">Monedas para ayudantes de estacionamiento.</string>
+    <string name="note_id_bar">Redondear en clubes de playa.</string>
+
+    <string name="note_ie_restaurant" formatted="false">Revisar cargo por servicio; 10% - 15% estándar en mesa.</string>
+    <string name="note_ie_delivery">Redondear / 1-2 € en entrega de comida.</string>
+    <string name="note_ie_takeout">No requerido.</string>
+    <string name="note_ie_foodtruck">No requerido.</string>
+    <string name="note_ie_groceries">Sin propina.</string>
+    <string name="note_ie_bar">Raro en barra salvo servicio en mesa.</string>
+
+    <string name="note_it_restaurant">Coperto habitual; redondear o 1-2€ por persona por buen servicio.</string>
+    <string name="note_it_delivery">1-2€ en efectivo.</string>
+    <string name="note_it_takeout">Sin propina.</string>
+    <string name="note_it_foodtruck">Redondear.</string>
+    <string name="note_it_groceries">Sin propina.</string>
+    <string name="note_it_bar">Moneda pequeña en la barra para café de pie.</string>
+
+    <string name="note_jp_restaurant">Dar propina no se acostumbra y causa confusión; el servicio excelente está incluido.</string>
+    <string name="note_jp_delivery">Sin propina; reverencia cortés.</string>
+    <string name="note_jp_takeout">Sin propina.</string>
+    <string name="note_jp_foodtruck">Importe exacto; sin propinas.</string>
+    <string name="note_jp_groceries">Sin propina.</string>
+    <string name="note_jp_bar">Sin propina; posible cargo Otoshi.</string>
+
+    <string name="note_mx_restaurant" formatted="false">10% - 15% de propina es costumbre; efectivo o tarjeta antes de cerrar cuenta.</string>
+    <string name="note_mx_delivery">20-50 MXN en efectivo al repartidor.</string>
+    <string name="note_mx_takeout">Bote de propinas opcional.</string>
+    <string name="note_mx_foodtruck">Cambio pequeño en bote.</string>
+    <string name="note_mx_groceries">5-10 MXN para empacadores.</string>
+    <string name="note_mx_bar" formatted="false">10% - 15% por ronda o cuenta final.</string>
+
+    <string name="note_nl_restaurant" formatted="false">Servicio incluido, pero redondear (5% - 10%) es muy común.</string>
+    <string name="note_nl_delivery">1-2 € apreciado por repartidores.</string>
+    <string name="note_nl_takeout">No estándar.</string>
+    <string name="note_nl_foodtruck">Cambio opcional.</string>
+    <string name="note_nl_groceries">Sin propina.</string>
+    <string name="note_nl_bar">Dejar el cambio.</string>
+
+    <string name="note_nz_restaurant" formatted="false">Sin expectativa de propina; salarios altos.</string>
+    <string name="note_nz_delivery">Opcional en apps ($2 - $5).</string>
+    <string name="note_nz_takeout">Sin propina.</string>
+    <string name="note_nz_foodtruck">Sin propina.</string>
+    <string name="note_nz_groceries">Sin propina.</string>
+    <string name="note_nz_bar">Sin propina estándar.</string>
+
+    <string name="note_no_restaurant" formatted="false">Servicio legalmente incluido; propinas (5% - 10%) opcionales.</string>
+    <string name="note_no_delivery">Opcional en apps de reparto.</string>
+    <string name="note_no_takeout">Sin propina esperada.</string>
+    <string name="note_no_foodtruck">Sin propina.</string>
+    <string name="note_no_groceries">Sin propina.</string>
+    <string name="note_no_bar">Redondear por buen servicio.</string>
+
+    <string name="note_sg_restaurant" formatted="false">10% de servicio y 9% GST incluidos en la cuenta.</string>
+    <string name="note_sg_delivery">Opcional 2 - 5 SGD.</string>
+    <string name="note_sg_takeout">Sin propina.</string>
+    <string name="note_sg_foodtruck">Los hawker centres no aceptan propinas.</string>
+    <string name="note_sg_groceries">Sin propina.</string>
+    <string name="note_sg_bar">Cargo por servicio ya incluido.</string>
+
+    <string name="note_za_restaurant" formatted="false">10% es el estándar mínimo para un buen servicio.</string>
+    <string name="note_za_delivery">Redondear / R10 - R20 agradecido por repartidores.</string>
+    <string name="note_za_takeout">Poco habitual.</string>
+    <string name="note_za_foodtruck">Poco habitual.</string>
+    <string name="note_za_groceries">R5 - R10 para vigilantes y empacadores.</string>
+    <string name="note_za_bar" formatted="false">Redondear o 10% en la cuenta.</string>
+
+    <string name="note_kr_restaurant">Sin cultura de propina; excelente servicio incluido.</string>
+    <string name="note_kr_delivery">Sin propina.</string>
+    <string name="note_kr_takeout">Sin propina.</string>
+    <string name="note_kr_foodtruck">Sin propina.</string>
+    <string name="note_kr_groceries">Sin propina.</string>
+    <string name="note_kr_bar">Sin propina.</string>
+
+    <string name="note_es_restaurant" formatted="false">La propina es voluntaria; redondear o dejar 5% - 10% en restaurantes de mesa.</string>
+    <string name="note_es_delivery">1€ en efectivo agradecido.</string>
+    <string name="note_es_takeout">Sin propina.</string>
+    <string name="note_es_foodtruck">Redondear.</string>
+    <string name="note_es_groceries">Sin propina.</string>
+    <string name="note_es_bar">Cambio pequeño en el platillo.</string>
+
+    <string name="note_se_restaurant" formatted="false">Servicio incluido; propina estrictamente opcional.</string>
+    <string name="note_se_delivery">No esperada.</string>
+    <string name="note_se_takeout">Sin propina.</string>
+    <string name="note_se_foodtruck">Sin propina.</string>
+    <string name="note_se_groceries">Sin propina.</string>
+    <string name="note_se_bar">No esperada.</string>
+
+    <string name="note_ch_restaurant" formatted="false">Servicio incluido por ley; redondear (5% - 10%) es normal.</string>
+    <string name="note_ch_delivery">Apreciado por repartidores.</string>
+    <string name="note_ch_takeout">No estándar.</string>
+    <string name="note_ch_foodtruck">No estándar.</string>
+    <string name="note_ch_groceries">Sin propina.</string>
+    <string name="note_ch_bar">Redondear al franco más cercano.</string>
+
+    <string name="note_th_restaurant" formatted="false">20-50 Baht o 10% en locales elegantes; cambio en sitios casuales.</string>
+    <string name="note_th_delivery">20-40 Baht en efectivo al conductor.</string>
+    <string name="note_th_takeout">Dejar cambio pequeño.</string>
+    <string name="note_th_foodtruck">Cambio pequeño en el bote.</string>
+    <string name="note_th_groceries">No se espera propina.</string>
+    <string name="note_th_bar">20-50 Baht por ronda o dejar monedas.</string>
+
+    <string name="note_tr_restaurant" formatted="false">Bahşiş (5% - 10%) en efectivo en la mesa (no con tarjeta).</string>
+    <string name="note_tr_delivery">20 - 50 TL en mano al repartidor.</string>
+    <string name="note_tr_takeout">Bote de propinas en mostrador.</string>
+    <string name="note_tr_foodtruck">Redondear es suficiente.</string>
+    <string name="note_tr_groceries">10 - 20 TL al cargar bolsas.</string>
+    <string name="note_tr_bar" formatted="false">Redondear o 10% por ronda.</string>
+
+    <string name="note_ua_bar" formatted="false">El 10% de propina es estándar en bares y pubs.</string>
+
+    <string name="note_us_restaurant" formatted="false">La propina es prácticamente obligatoria (15% - 20%); los camareros viven de ello.</string>
+    <string name="note_us_delivery" formatted="false">Estándar: 10% - 15% por app o efectivo.</string>
+    <string name="note_us_takeout">Sugerencias en pantalla son opcionales.</string>
+    <string name="note_us_foodtruck">Botes o sugerencias en pantalla comunes.</string>
+    <string name="note_us_groceries">Opcional para empacadores o maletero ($2 - $5).</string>
+    <string name="note_us_bar" formatted="false">$1 - $2 por bebida o 15% - 20% en la cuenta.</string>
+
+    <string name="note_ae_restaurant" formatted="false">Servicio suele incluirse; 10% - 15% extra tradicional para camareros.</string>
+    <string name="note_ae_delivery">5 - 10 AED en efectivo o por app.</string>
+    <string name="note_ae_takeout">No estándar.</string>
+    <string name="note_ae_foodtruck">No estándar.</string>
+    <string name="note_ae_groceries">5 - 10 AED para ayudantes de carga.</string>
+    <string name="note_ae_bar" formatted="false">Redondear o 10% en lounges de lujo.</string>
+
+    <string name="note_gb_restaurant" formatted="false">Revisar cargo opcional del 12.5%; añadir 10% - 15% si no figura.</string>
+    <string name="note_gb_delivery">£1 - £2 en efectivo o app habitual.</string>
+    <string name="note_gb_takeout">Bote de propinas opcional.</string>
+    <string name="note_gb_foodtruck">Bote de propinas opcional.</string>
+    <string name="note_gb_groceries">Sin propina.</string>
+    <string name="note_gb_bar">Raro en barra salvo servicio en mesa.</string>
+
+    <!-- Text-to-Speech (TTS) strings -->
+    <string name="tts_tap_to_read">Toque para escuchar el resumen de totales calculados</string>
+    <string name="tts_tap_to_speak_label">Escuchar</string>
+    <string name="tts_speaking_now">Leyendo totales...</string>
+
+    <!-- Cultural Tipping Tip FAB and Modal strings -->
+    <string name="cultural_tip_fab_desc">Consejo cultural de propina para %s</string>
+    <string name="cultural_tip_dialog_title">Etiqueta de propinas</string>
+    <string name="cultural_tip_understood">Entendido</string>
+    <string name="cultural_tip_view_country_details">Explorar todos los países</string>
+
+    <!-- DataStore Tip History & Save Prompt Strings -->
+    <string name="save_tip_title">¿Deseas guardarlo?</string>
+    <string name="save_tip_message">Guarda este cálculo de propina en tu historial reciente para revisarlo cuando quieras.</string>
+    <string name="save_button_confirm">Guardar</string>
+    <string name="save_button_dismiss">No guardar</string>
+    <string name="tip_saved_snackbar">Cálculo guardado en el historial</string>
+    <string name="history_button_label">Historial</string>
+    <string name="history_title">Historial de propinas</string>
+    <string name="history_empty_state">Aún no hay cálculos guardados</string>
+    <string name="history_clear_all">Borrar historial</string>
+    <string name="history_load_action">Cargar</string>
+    <string name="history_delete_item">Eliminar</string>
+    <string name="save_prompt_setting_title">Preguntar para guardar</string>
+    <string name="save_prompt_toggle_label">Preguntar para guardar:</string>
+    <string name="save_prompt_always_mode">Siempre</string>
+    <string name="save_prompt_never_mode">Nunca</string>
+    <string name="tutorial_toggle_label">Tutorial al iniciar:</string>
+    <string name="tutorial_toggle_always">Siempre</string>
+    <string name="tutorial_toggle_never">Nunca</string>
+    <string name="coach_step_history_title">Historial de transacciones</string>
+    <string name="coach_step_history_subtitle">Guarda y revisa cálculos anteriores</string>
+    <string name="coach_step_history_desc">Guarda un registro local de tus propinas mediante DataStore. Elige abajo si la pregunta \"¿Deseas guardarlo?\" debe aparecer siempre o nunca.</string>
+    <string name="save_to_history_action">Guardar en historial</string>
+
+    <!-- Global Explorer Unlock Notification Strings -->
+    <string name="unlock_global_explorer_countdown">Faltan %d toques para desbloquear el Explorador Global</string>
+    <string name="unlock_global_explorer_countdown_one">Falta 1 toque para desbloquear el Explorador Global</string>
+    <string name="unlock_global_explorer_success">🎉 ¡Secreto descubierto! Selector global de países desbloqueado</string>
+</resources>

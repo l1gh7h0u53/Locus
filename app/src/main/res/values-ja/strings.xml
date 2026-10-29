@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Locus</string>
+    <string name="header_subtitle">計算機</string>
+    <string name="service_restaurant">レストラン</string>
+    <string name="service_delivery">デリバリー</string>
+    <string name="service_takeout">テイクアウト</string>
+    <string name="service_foodtruck">キッチンカー</string>
+    <string name="service_groceries">スーパー</string>
+    <string name="service_bar">バー</string>
+    <string name="bill_amount">お会計金額</string>
+    <string name="enter_bill_amount">お会計金額を入力</string>
+    <string name="custom_percentage">カスタムチップ %</string>
+    <string name="tip_percent">チップ率</string>
+    <string name="senior_mode_title">シニアモード</string>
+    <string name="senior_mode_desc">大きなボタンと読みやすい拡大文字</string>
+    <string name="standard_tip">標準</string>
+    <string name="generous_tip">気前よく</string>
+    <string name="extremely_generous_tip">とても気前よく</string>
+    <string name="legend_tip">伝説</string>
+    <string name="angel_tip">栄誉チップ</string>
+    <string name="split_bill">割り勘にする</string>
+    <string name="number_of_people">人数</string>
+    <string name="calculated_tip">チップ合計</string>
+    <string name="calculated_total">総合計額</string>
+    <string name="split_share">1人あたり</string>
+    <string name="total_bill_label">総合計額</string>
+    <string name="tip_amount_label">チップ合計</string>
+    <string name="each_pays_label">1人あたり</string>
+    <string name="service_category">サービス種別</string>
+    <string name="select_service_category">サービス種別を選択</string>
+    <string name="haptic_state">触覚フィードバック</string>
+    <string name="clear_button">すべてクリア</string>
+    <string name="round_up">切り上げ</string>
+    <string name="round_down">切り捨て</string>
+    <string name="custom_slider">カスタム割合</string>
+    <string name="calculated_totals">計算結果</string>
+    <string name="reset_calculator">リセット</string>
+    <string name="search_country_placeholder">国名、ISOコードで検索（例: JP, 日本）...</string>
+    <string name="select_language_title">言語を選択</string>
+    <string name="auto_language_option">オフライン自動判別</string>
+    <string name="auto_language_sub">端末のシステム言語とオフライン国マップ</string>
+    <string name="close_button">閉じる</string>
+    <string name="solo_person">1人（個別支払い）</string>
+    <string name="people_sharing">%d 人で割り勘</string>
+    <string name="tipping_tiers_header">%s のチップ目安</string>
+    <string name="select_currency">通貨を選択</string>
+    <string name="all_currencies">すべて (%d)</string>
+    <string name="more_currencies">+ その他...</string>
+    <string name="global_currencies_title">世界各国の通貨</string>
+    <string name="currencies_count">%d 通貨</string>
+    <string name="search_currency_placeholder">通貨名、コード、国名で検索...</string>
+    <string name="no_currency_found">一致する通貨が見つかりません</string>
+    <string name="select_country_title">国を選択</string>
+    <string name="regional_matrices_count">192の国と地域別ガイドライン</string>
+    <string name="culture_advice">文化アドバイス</string>
+    <string name="iso_label">ISO: %1$s • 書式: %2$s</string>
+    <string name="selected_toast">%1$s (%2$s) を選択しました</string>
+    <string name="toggle_senior_mode">シニアモード切り替え</string>
+    <string name="toggle_theme_mode">テーマ切り替え</string>
+    <string name="app_description_semantic">Locus、グローバルチップ計算アプリ</string>
+    <string name="passport_logo_desc">パスポートロゴ</string>
+    <string name="decrease_people">人数を減らす</string>
+    <string name="increase_people">人数を増やす</string>
+    <string name="back_to_calculator">計算機に戻る</string>
+    <string name="share_bill_summary">計算結果を共有</string>
+    <string name="share_bill_summary_title">お会計サマリー</string>
+    <string name="tip_calculation_desc">計算結果: %1$s。チップ: %2$s。1人あたり: %3$s</string>
+
+    <string name="service_restaurants">レストラン</string>
+    <string name="tier_standard">標準</string>
+    <string name="tier_generous">気前よく</string>
+    <string name="tier_legend">伝説</string>
+    <string name="tier_mvp">栄誉チップ</string>
+
+    <!-- Matrix & Country Tipping Notes in Japanese -->
+    <string name="note_default_guideline">一般的なチップガイドラインが適用されます。</string>
+    <string name="note_matrix_a_restaurant">チップが基本的に期待されます。現金が好まれます。</string>
+    <string name="note_matrix_a_delivery">配達員に直接現金を渡すのが一般的です。</string>
+    <string name="note_matrix_a_takeout">カウンター受け取り時はチップ不要です。</string>
+    <string name="note_matrix_a_foodtruck">チップ入れへの投入は任意です。</string>
+    <string name="note_matrix_a_groceries">袋詰め係はチップのみで働いている場合があります。</string>
+    <string name="note_matrix_a_bar">注文ごとまたは最終会計時に支払います。</string>
+
+    <string name="note_matrix_b_restaurant">テーブルサービス時の標準的な慣習です。</string>
+    <string name="note_matrix_b_delivery">配達員に少額のチップを渡すと喜ばれます。</string>
+    <string name="note_matrix_b_takeout">レジ横のチップ入れは任意です。</string>
+    <string name="note_matrix_b_foodtruck">お釣りを切り上げて渡すのが一般的です。</string>
+    <string name="note_matrix_b_groceries">店舗内でのチップ習慣はありません。</string>
+    <string name="note_matrix_b_bar">カウンターにお釣りを残す程度で十分です。</string>
+
+    <string name="note_matrix_c_restaurant">サービス料込み。チップは自発的なお礼です。</string>
+    <string name="note_matrix_c_delivery">悪天候時に渡すのが一般的です。</string>
+    <string name="note_matrix_c_takeout">持ち帰り時は不要です。</string>
+    <string name="note_matrix_c_foodtruck">小銭の端数を切り上げる程度で十分です。</string>
+    <string name="note_matrix_c_groceries">チップの習慣は全くありません。</string>
+    <string name="note_matrix_c_bar">お釣りをカウンターに残します。</string>
+
+    <string name="note_matrix_d_restaurant">チップの習慣はなく、戸惑われることがあります。最高水準のサービスが含まれています。</string>
+    <string name="note_matrix_d_delivery">チップは不要です。</string>
+    <string name="note_matrix_d_takeout">チップ不要。</string>
+    <string name="note_matrix_d_foodtruck">チップ不要。</string>
+    <string name="note_matrix_d_groceries">チップ不要。</string>
+    <string name="note_matrix_d_bar">チップ不要。</string>
+
+    <string name="note_matrix_e_restaurant">バクシーシの伝統文化。テーブルに現金を残します。</string>
+    <string name="note_matrix_e_delivery">配達員は手渡しでの現金チップを期待します。</string>
+    <string name="note_matrix_e_takeout">レジ前にチップ箱があります。</string>
+    <string name="note_matrix_e_foodtruck">端数の切り上げが大変感謝されます。</string>
+    <string name="note_matrix_e_groceries">荷物持ちやスタッフの重要な収入源です。</string>
+    <string name="note_matrix_e_bar">ホテルラウンジ等で喜ばれます。</string>
+
+    <!-- Custom Country Notes -->
+    <string name="note_al_restaurant" formatted="false">観光地ではチップ (5% - 10%) が大変感謝されます。</string>
+    <string name="note_al_delivery">ドライバーへの現金チップは歓迎されます。</string>
+    <string name="note_al_takeout">持ち帰りは不要です。</string>
+    <string name="note_al_foodtruck">チップ箱は任意です。</string>
+    <string name="note_al_groceries">チップの習慣はありません。</string>
+    <string name="note_al_bar">切り上げまたはお釣りを残します。</string>
+
+    <string name="note_ar_restaurant" formatted="false">10%の現金チップが慣例です。インフレのため現金が好まれます。</string>
+    <string name="note_ar_delivery" formatted="false">配達員に現金で 5% - 10%。</string>
+    <string name="note_ar_takeout">チップ不要。</string>
+    <string name="note_ar_foodtruck">チップ箱に小銭を入れる程度。</string>
+    <string name="note_ar_groceries">袋詰め係に少額紙幣を渡します。</string>
+    <string name="note_ar_bar" formatted="false">切り上げるか伝票に10%加算。</string>
+
+    <string name="note_au_restaurant" formatted="false">チップ文化はありません（基本給が高いため）。格別のサービスに10%。</string>
+    <string name="note_au_delivery">悪天候時に任意で $2 - $5。</string>
+    <string name="note_au_takeout">チップは期待されません。</string>
+    <string name="note_au_foodtruck">チップ箱は任意。</string>
+    <string name="note_au_groceries">チップ不要。</string>
+    <string name="note_au_bar">不要。お釣りを残す程度で十分です。</string>
+
+    <string name="note_at_restaurant" formatted="false">チップが期待されます。端数を切り上げるか 5% - 10% 上乗せ。</string>
+    <string name="note_at_delivery">ドライバーに直接手渡しで 1-2 €。</string>
+    <string name="note_at_takeout">カウンターでは不要。</string>
+    <string name="note_at_foodtruck">小銭を切り上げます。</string>
+    <string name="note_at_groceries">チップ不要。</string>
+    <string name="note_at_bar">次のキリの良いユーロへ切り上げ。</string>
+
+    <string name="note_be_restaurant" formatted="false">サービス料込み。優れたサービスへの感謝として 5% - 10%。</string>
+    <string name="note_be_delivery">悪天候や迅速な配達時に 1-2 €。</string>
+    <string name="note_be_takeout">チップ不要。</string>
+    <string name="note_be_foodtruck">チップ不要。</string>
+    <string name="note_be_groceries">チップ不要。</string>
+    <string name="note_be_bar">少額のお釣りは歓迎されます。</string>
+
+    <string name="note_br_restaurant" formatted="false">通常10%のサービス料が含まれています。追加は任意。</string>
+    <string name="note_br_delivery">現金またはアプリで R$2 - R$5。</string>
+    <string name="note_br_takeout">チップ不要。</string>
+    <string name="note_br_foodtruck">お釣りを残します。</string>
+    <string name="note_br_groceries">袋詰め係に R$2 - R$5。</string>
+    <string name="note_br_bar" formatted="false">バーの会計に10%が含まれるのが標準。</string>
+
+    <string name="note_ca_restaurant" formatted="false">テーブル席での標準チップは 15% - 20%。</string>
+    <string name="note_ca_delivery" formatted="false">アプリまたは現金で 10% - 15%。</string>
+    <string name="note_ca_takeout">端末画面のチップ要求は任意です。</string>
+    <string name="note_ca_foodtruck" formatted="false">10%またはチップ入れ。</string>
+    <string name="note_ca_groceries">チップ習慣はありません。</string>
+    <string name="note_ca_bar" formatted="false">1杯あたり $1 - $2 または伝票の 15% - 20%。</string>
+
+    <string name="note_cn_restaurant" formatted="false">チップ文化はありません。高級ホテルで10%のサービス料。</string>
+    <string name="note_cn_delivery">チップは不要です。</string>
+    <string name="note_cn_takeout">チップ不要。</string>
+    <string name="note_cn_foodtruck">チップ不要。</string>
+    <string name="note_cn_groceries">チップ不要。</string>
+    <string name="note_cn_bar">チップ不要。</string>
+
+    <string name="note_co_restaurant" formatted="false">10%の任意チップ (Propina Voluntaria) が請求書に記載されます。</string>
+    <string name="note_co_delivery">配達員に現金で 2,000 - 5,000 COP。</string>
+    <string name="note_co_takeout">一般的ではありません。</string>
+    <string name="note_co_foodtruck">良いサービスを受けた場合のみ。</string>
+    <string name="note_co_groceries">袋詰め係に小銭を渡します。</string>
+    <string name="note_co_bar" formatted="false">10%加算または切り上げ。</string>
+
+    <string name="note_dk_restaurant" formatted="false">法律上サービス料が含まれており、チップは極めて稀です。</string>
+    <string name="note_dk_delivery">ほとんど期待されません。</string>
+    <string name="note_dk_takeout">チップ不要。</string>
+    <string name="note_dk_foodtruck">チップ不要。</string>
+    <string name="note_dk_groceries">チップ不要。</string>
+    <string name="note_dk_bar">チップの標準はありません。</string>
+
+    <string name="note_eg_restaurant" formatted="false">バクシーシ (10% - 15%) の習慣。テーブルに現金を置きます。</string>
+    <string name="note_eg_delivery">配達員に直接手渡しで 10 - 20 EGP。</string>
+    <string name="note_eg_takeout">少額のお釣りは喜ばれます。</string>
+    <string name="note_eg_foodtruck">端数の切り上げが期待されます。</string>
+    <string name="note_eg_groceries">袋詰めや駐車場係に 5 - 10 EGP。</string>
+    <string name="note_eg_bar" formatted="false">ホテルラウンジで 10% - 15%。</string>
+
+    <string name="note_fr_restaurant" formatted="false">法律でサービス料込 (15%)。良いサービスには 1-2€ 追加。</string>
+    <string name="note_fr_delivery">配達員に手渡しで 1-2€ 現金。</string>
+    <string name="note_fr_takeout">チップ不要。</string>
+    <string name="note_fr_foodtruck">次のキリの良いユーロへ切り上げ。</string>
+    <string name="note_fr_groceries">チップ不要。</string>
+    <string name="note_fr_bar">カウンターにお釣りを残す程度。</string>
+
+    <string name="note_de_restaurant" formatted="false">端数を切り上げ (5% - 10%)、支払時に合計金額を直接伝えます。</string>
+    <string name="note_de_delivery">配達員に直接手渡しで 1-2 € 現金。</string>
+    <string name="note_de_takeout">レジ横のチップ箱に小銭を入れるかは任意。</string>
+    <string name="note_de_foodtruck">次の整数ユーロへの切り上げが標準。</string>
+    <string name="note_de_groceries">スーパーでのチップは不要。</string>
+    <string name="note_de_bar">整数ユーロに切り上げるかお釣りを渡します。</string>
+
+    <string name="note_in_restaurant" formatted="false">サービス料 (5% - 10%) を確認。無ければ10%の現金チップ。</string>
+    <string name="note_in_delivery">配達員に ₹20 - ₹50 のチップ。</string>
+    <string name="note_in_takeout">チップ箱は任意です。</string>
+    <string name="note_in_foodtruck">近い ₹10 または ₹50 に切り上げ。</string>
+    <string name="note_in_groceries">袋詰め係や荷物運びに ₹20 - ₹50。</string>
+    <string name="note_in_bar" formatted="false">サービス料が無い場合、飲み物に10%チップ。</string>
+
+    <string name="note_id_restaurant" formatted="false">観光地（バリ島等）では切り上げるか 5% - 10%。</string>
+    <string name="note_id_delivery">アプリまたは現金で 5,000 - 10,000 IDR。</string>
+    <string name="note_id_takeout">不要。</string>
+    <string name="note_id_foodtruck">屋台・ワルンで端数切り上げ。</string>
+    <string name="note_id_groceries">駐車場案内係に小銭。</string>
+    <string name="note_id_bar">ビーチクラブで切り上げ。</string>
+
+    <string name="note_ie_restaurant" formatted="false">サービス料を確認。テーブル席では 10% - 15% が標準。</string>
+    <string name="note_ie_delivery">食事配達で切り上げ / 1-2 €。</string>
+    <string name="note_ie_takeout">不要。</string>
+    <string name="note_ie_foodtruck">不要。</string>
+    <string name="note_ie_groceries">チップ不要。</string>
+    <string name="note_ie_bar">テーブル席でない限り、バーカウンターでは不要。</string>
+
+    <string name="note_it_restaurant">席料 (Coperto) が一般的。良いサービスには1人あたり 1-2€。</string>
+    <string name="note_it_delivery">1-2€ 現金。</string>
+    <string name="note_it_takeout">チップ不要。</string>
+    <string name="note_it_foodtruck">切り上げ。</string>
+    <string name="note_it_groceries">チップ不要。</string>
+    <string name="note_it_bar">立ち飲みエスプレッソ時はカウンターに小銭を置く。</string>
+
+    <string name="note_jp_restaurant">チップの習慣はなく、戸惑われます。最高水準のサービスが含まれています。</string>
+    <string name="note_jp_delivery">チップ不要。丁寧なお辞儀で感謝を伝えます。</string>
+    <string name="note_jp_takeout">チップ不要。</string>
+    <string name="note_jp_foodtruck">お釣りが出ないよう支払うのが好まれます。</string>
+    <string name="note_jp_groceries">チップ不要。</string>
+    <string name="note_jp_bar">チップ不要。お通し代（席料）がかかる場合があります。</string>
+
+    <string name="note_mx_restaurant" formatted="false">10% - 15% のプロピーナが習慣。会計終了前に現金かカードで。</string>
+    <string name="note_mx_delivery">配達員に現金で 20-50 MXN。</string>
+    <string name="note_mx_takeout">チップ箱は任意。</string>
+    <string name="note_mx_foodtruck">チップ箱にお釣りを投入。</string>
+    <string name="note_mx_groceries">袋詰め係に 5-10 MXN。</string>
+    <string name="note_mx_bar" formatted="false">注文ごとまたは最終会計時に 10% - 15%。</string>
+
+    <string name="note_nl_restaurant" formatted="false">サービス料込ですが、切り上げ (5% - 10%) は極めて一般的。</string>
+    <string name="note_nl_delivery">配達員に 1-2 € 渡すと喜ばれます。</string>
+    <string name="note_nl_takeout">標準的ではありません。</string>
+    <string name="note_nl_foodtruck">お釣りは任意。</string>
+    <string name="note_nl_groceries">チップ不要。</string>
+    <string name="note_nl_bar">お釣りを残します。</string>
+
+    <string name="note_nz_restaurant" formatted="false">チップの期待はありません（最低賃金が高いため）。</string>
+    <string name="note_nz_delivery">アプリ内で任意 ($2 - $5)。</string>
+    <string name="note_nz_takeout">チップ不要。</string>
+    <string name="note_nz_foodtruck">チップ不要。</string>
+    <string name="note_nz_groceries">チップ不要。</string>
+    <string name="note_nz_bar">バーでのチップ習慣はありません。</string>
+
+    <string name="note_no_restaurant" formatted="false">法律でサービス料が含まれており、チップ (5% - 10%) は任意。</string>
+    <string name="note_no_delivery">配達アプリ内で任意。</string>
+    <string name="note_no_takeout">チップは期待されません。</string>
+    <string name="note_no_foodtruck">チップ不要。</string>
+    <string name="note_no_groceries">チップ不要。</string>
+    <string name="note_no_bar">良いサービスには切り上げ。</string>
+
+    <string name="note_sg_restaurant" formatted="false">10%のサービス料と9%のGSTが伝票に含まれています。</string>
+    <string name="note_sg_delivery">任意で 2 - 5 SGD。</string>
+    <string name="note_sg_takeout">チップ不要。</string>
+    <string name="note_sg_foodtruck">ホーカーセンターではチップを厳格に受け取りません。</string>
+    <string name="note_sg_groceries">チップ不要。</string>
+    <string name="note_sg_bar">サービス料が含まれています。</string>
+
+    <string name="note_za_restaurant" formatted="false">良好なサービスに対する標準的な最低目安は10%。</string>
+    <string name="note_za_delivery">切り上げ / R10 - R20 は配達員に大変喜ばれます。</string>
+    <string name="note_za_takeout">一般的ではありません。</string>
+    <string name="note_za_foodtruck">一般的ではありません。</string>
+    <string name="note_za_groceries">駐車案内係や袋詰め係に R5 - R10。</string>
+    <string name="note_za_bar" formatted="false">切り上げまたは伝票に10%。</string>
+
+    <string name="note_kr_restaurant">チップ文化はありません。最高品質のサービスが含まれています。</string>
+    <string name="note_kr_delivery">チップ不要。</string>
+    <string name="note_kr_takeout">チップ不要。</string>
+    <string name="note_kr_foodtruck">チップ不要。</string>
+    <string name="note_kr_groceries">チップ不要。</string>
+    <string name="note_kr_bar">チップ不要。</string>
+
+    <string name="note_es_restaurant" formatted="false">チップは任意。テーブル席では切り上げるか 5% - 10% 残します。</string>
+    <string name="note_es_delivery">1€の現金は喜ばれます。</string>
+    <string name="note_es_takeout">チップ不要。</string>
+    <string name="note_es_foodtruck">切り上げ。</string>
+    <string name="note_es_groceries">チップ不要。</string>
+    <string name="note_es_bar">小皿にお釣りの小銭を残します。</string>
+
+    <string name="note_se_restaurant" formatted="false">サービス料込み。チップは完全に個人の自由です。</string>
+    <string name="note_se_delivery">期待されません。</string>
+    <string name="note_se_takeout">チップ不要。</string>
+    <string name="note_se_foodtruck">チップ不要。</string>
+    <string name="note_se_groceries">チップ不要。</string>
+    <string name="note_se_bar">期待されません。</string>
+
+    <string name="note_ch_restaurant" formatted="false">法律でサービス料込。端数の切り上げ (5% - 10%) が通例。</string>
+    <string name="note_ch_delivery">配達員に喜ばれます。</string>
+    <string name="note_ch_takeout">標準的ではありません。</string>
+    <string name="note_ch_foodtruck">標準的ではありません。</string>
+    <string name="note_ch_groceries">チップ不要。</string>
+    <string name="note_ch_bar">次のスイスフランへ切り上げ。</string>
+
+    <string name="note_th_restaurant" formatted="false">高級店では 20-50 バーツまたは10%。大衆店では小銭のお釣り。</string>
+    <string name="note_th_delivery">ドライバーに現金で 20-40 バーツ。</string>
+    <string name="note_th_takeout">小銭のお釣りを残します。</string>
+    <string name="note_th_foodtruck">チップ箱にお釣りを残す。</string>
+    <string name="note_th_groceries">チップは期待されません。</string>
+    <string name="note_th_bar">1杯ごとに 20-50 バーツまたは硬貨。</string>
+
+    <string name="note_tr_restaurant" formatted="false">バクシーシ (5% - 10%) はテーブルに現金で（カード不可）。</string>
+    <string name="note_tr_delivery">配達員に現金で 20 - 50 TL。</string>
+    <string name="note_tr_takeout">レジ前のチップ箱。</string>
+    <string name="note_tr_foodtruck">切り上げるだけで十分です。</string>
+    <string name="note_tr_groceries">荷物持ちの手伝いに 10 - 20 TL。</string>
+    <string name="note_tr_bar" formatted="false">切り上げまたは1回ごとに10%。</string>
+
+    <string name="note_ua_bar" formatted="false">バーやパブでは10%のチップが標準的です。</string>
+
+    <string name="note_us_restaurant" formatted="false">チップは事実上必須 (15% - 20%)。ウェイターの主収入です。</string>
+    <string name="note_us_delivery" formatted="false">標準: アプリまたは現金で 10% - 15%。</string>
+    <string name="note_us_takeout">画面でのチップ要求は完全に任意です。</string>
+    <string name="note_us_foodtruck">チップ箱や画面要求が一般的です。</string>
+    <string name="note_us_groceries">袋詰め係やトランク積み込みは任意 ($2 - $5)。</string>
+    <string name="note_us_bar" formatted="false">1杯あたり $1 - $2 または伝票の 15% - 20%。</string>
+
+    <string name="note_ae_restaurant" formatted="false">サービス料込みですが、ウェイターに 10% - 15% 追加が慣習。</string>
+    <string name="note_ae_delivery">現金またはアプリで 5 - 10 AED。</string>
+    <string name="note_ae_takeout">標準的ではありません。</string>
+    <string name="note_ae_foodtruck">標準的ではありません。</string>
+    <string name="note_ae_groceries">荷物積み込み係に 5 - 10 AED。</string>
+    <string name="note_ae_bar" formatted="false">高級ラウンジで切り上げまたは10%。</string>
+
+    <string name="note_gb_restaurant" formatted="false">12.5%の任意サービス料を確認。無ければ 10% - 15% 上乗せ。</string>
+    <string name="note_gb_delivery">£1 - £2 の現金またはアプリチップが通例。</string>
+    <string name="note_gb_takeout">チップ箱は任意。</string>
+    <string name="note_gb_foodtruck">チップ箱は任意。</string>
+    <string name="note_gb_groceries">チップ不要。</string>
+    <string name="note_gb_bar">テーブル席でない限り、パブのカウンターでは不要。</string>
+
+    <!-- Text-to-Speech (TTS) strings -->
+    <string name="tts_tap_to_read">タップして計算結果を音声で読み上げます</string>
+    <string name="tts_tap_to_speak_label">音声で聞く</string>
+    <string name="tts_speaking_now">合計を読み上げ中...</string>
+
+    <!-- Cultural Tipping Tip FAB and Modal strings -->
+    <string name="cultural_tip_fab_desc">%sのチップ文化アドバイス</string>
+    <string name="cultural_tip_dialog_title">チップのエチケット</string>
+    <string name="cultural_tip_understood">了解</string>
+    <string name="cultural_tip_view_country_details">すべての国を見る</string>
+
+    <!-- DataStore Tip History & Save Prompt Strings -->
+    <string name="save_tip_title">保存しますか？</string>
+    <string name="save_tip_message">このチップ計算を履歴に保存して、いつでも確認できるようにします。</string>
+    <string name="save_button_confirm">保存</string>
+    <string name="save_button_dismiss">保存しない</string>
+    <string name="tip_saved_snackbar">計算が履歴に保存されました</string>
+    <string name="history_button_label">履歴</string>
+    <string name="history_title">最近のチップ履歴</string>
+    <string name="history_empty_state">保存された計算はありません</string>
+    <string name="history_clear_all">履歴を消去</string>
+    <string name="history_load_action">読込</string>
+    <string name="history_delete_item">削除</string>
+    <string name="save_prompt_setting_title">保存確認の設定</string>
+    <string name="save_prompt_toggle_label">保存の確認：</string>
+    <string name="save_prompt_always_mode">常に</string>
+    <string name="save_prompt_never_mode">しない</string>
+    <string name="tutorial_toggle_label">起動時にチュートリアル：</string>
+    <string name="tutorial_toggle_always">常に</string>
+    <string name="tutorial_toggle_never">しない</string>
+    <string name="coach_step_history_title">取引履歴と保存</string>
+    <string name="coach_step_history_subtitle">過去の計算を保存・確認</string>
+    <string name="coach_step_history_desc">DataStoreで過去のチップ計算をローカルに保存します。「保存しますか？」の確認を常に表示するか以下で設定できます。</string>
+    <string name="save_to_history_action">履歴に保存</string>
+
+    <!-- Global Explorer Unlock Notification Strings -->
+    <string name="unlock_global_explorer_countdown">グローバルエクスプローラー解除まであと %d 回タップ</string>
+    <string name="unlock_global_explorer_countdown_one">グローバルエクスプローラー解除まであと 1 回タップ</string>
+    <string name="unlock_global_explorer_success">🎉 シークレット発見！グローバル国セレクターが解除されました</string>
+</resources>

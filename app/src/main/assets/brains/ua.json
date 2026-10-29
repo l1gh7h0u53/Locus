@@ -1,0 +1,69 @@
+{
+  "country": "Ukraine",
+  "iso": "ua",
+  "base_matrix": "B",
+  "matrix_name": "Matrix B / Custom",
+  "local_currency": "UAH",
+  "services": [
+    {
+      "service_type": "Restaurants",
+      "service_type_key": "service_restaurants",
+      "standard_tip": "10%",
+      "generous_tip": "15%",
+      "legend_tip": "20%",
+      "mvp_tip": "25%+",
+      "notes": "Standard expectation for sit-down service.",
+      "notes_key": "note_matrix_b_restaurant"
+    },
+    {
+      "service_type": "Delivery",
+      "service_type_key": "service_delivery",
+      "standard_tip": "Round up",
+      "generous_tip": "5%",
+      "legend_tip": "10%",
+      "mvp_tip": "15%",
+      "notes": "Couriers appreciate small tips.",
+      "notes_key": "note_matrix_b_delivery"
+    },
+    {
+      "service_type": "Takeout",
+      "service_type_key": "service_takeout",
+      "standard_tip": "0%",
+      "generous_tip": "Round up",
+      "legend_tip": "5%",
+      "mvp_tip": "10%",
+      "notes": "Optional tip jars.",
+      "notes_key": "note_matrix_b_takeout"
+    },
+    {
+      "service_type": "Foodtrucks",
+      "service_type_key": "service_foodtruck",
+      "standard_tip": "0%",
+      "generous_tip": "Round up",
+      "legend_tip": "5%",
+      "mvp_tip": "10%",
+      "notes": "Rounding up is common.",
+      "notes_key": "note_matrix_b_foodtruck"
+    },
+    {
+      "service_type": "Groceries",
+      "service_type_key": "service_groceries",
+      "standard_tip": "0%",
+      "generous_tip": "0%",
+      "legend_tip": "0%",
+      "mvp_tip": "Round up",
+      "notes": "No tipping standard inside stores.",
+      "notes_key": "note_matrix_b_groceries"
+    },
+    {
+      "service_type": "Bar",
+      "service_type_key": "service_bar",
+      "standard_tip": "10%",
+      "generous_tip": "15%",
+      "legend_tip": "20%",
+      "mvp_tip": "25%",
+      "notes": "Tipping around 10% is standard in bars and pubs.",
+      "notes_key": "note_ua_bar"
+    }
+  ]
+}

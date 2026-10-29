@@ -1,0 +1,412 @@
+<resources>
+    <string name="app_name">Locus</string>
+    <string name="header_subtitle">Calculator</string>
+    <string name="service_restaurant">Restaurant</string>
+    <string name="service_delivery">Delivery</string>
+    <string name="service_takeout">Takeout</string>
+    <string name="service_foodtruck">Foodtruck</string>
+    <string name="service_groceries">Groceries</string>
+    <string name="service_bar">Bar</string>
+    <string name="bill_amount">Bill Amount</string>
+    <string name="enter_bill_amount">ENTER BILL AMOUNT</string>
+    <string name="custom_percentage">Custom Tip %</string>
+    <string name="tip_percent">Tip Percentage</string>
+    <string name="senior_mode_title">Senior Mode</string>
+    <string name="senior_mode_desc">Simple massive buttons &amp; huge text</string>
+    <string name="standard_tip">Standard</string>
+    <string name="generous_tip">Generous</string>
+    <string name="extremely_generous_tip">Extra Generous</string>
+    <string name="legend_tip">Legend</string>
+    <string name="angel_tip">Angel Tip</string>
+    <string name="split_bill">Split Bill</string>
+    <string name="number_of_people">Number of People</string>
+    <string name="calculated_tip">Tip Amount</string>
+    <string name="calculated_total">Total Bill</string>
+    <string name="split_share">Each Pays</string>
+    <string name="total_bill_label">Total Bill</string>
+    <string name="tip_amount_label">Tip Amount</string>
+    <string name="each_pays_label">Each Pays</string>
+    <string name="service_category">Service Category</string>
+    <string name="select_service_category">SELECT SERVICE CATEGORY</string>
+    <string name="haptic_state">Haptic Vibrations</string>
+    <string name="clear_button">Clear All</string>
+    <string name="round_up">Round Up</string>
+    <string name="round_down">Round Down</string>
+    <string name="custom_slider">Custom Tip Percentage</string>
+    <string name="calculated_totals">CALCULATED TOTALS</string>
+    <string name="reset_calculator">RESET CALCULATOR</string>
+    <string name="search_country_placeholder">Search by name, ISO (e.g. US, Japan)...</string>
+    <string name="select_language_title">Select Language</string>
+    <string name="auto_language_option">Auto Offline Resolution</string>
+    <string name="auto_language_sub">System Locale &amp; Offline ISO Map</string>
+    <string name="close_button">Close</string>
+    <string name="solo_person">1 Person (Solo)</string>
+    <string name="people_sharing">%d People Sharing</string>
+    <string name="tipping_tiers_header">%s TIPPING TIERS</string>
+    <string name="select_currency">SELECT CURRENCY</string>
+    <string name="all_currencies">All (%d)</string>
+    <string name="more_currencies">+ More...</string>
+    <string name="global_currencies_title">Global Currencies</string>
+    <string name="currencies_count">%d currencies</string>
+    <string name="search_currency_placeholder">Search currency, code, or country...</string>
+    <string name="no_currency_found">No matching currency found</string>
+    <string name="select_country_title">Select Country</string>
+    <string name="regional_matrices_count">192 Countries &amp; Regional Matrices</string>
+    <string name="culture_advice">Cultural advice</string>
+    <string name="iso_label">ISO: %1$s • Direction: %2$s</string>
+    <string name="selected_toast">Selected %1$s (%2$s)</string>
+    <string name="toggle_senior_mode">Toggle Senior High-Contrast Mode</string>
+    <string name="toggle_theme_mode">Toggle Theme Mode</string>
+    <string name="app_description_semantic">Locus, the accessible global tip calculator</string>
+    <string name="passport_logo_desc">Passport App Logo</string>
+    <string name="decrease_people">Decrease people count</string>
+    <string name="increase_people">Increase people count</string>
+    <string name="back_to_calculator">Back to calculator</string>
+    <string name="share_bill_summary">Share Summary</string>
+    <string name="share_bill_summary_title">Bill Summary</string>
+    <string name="tip_calculation_desc">Total bill calculation: %1$s. Tip is %2$s. Each person pays %3$s</string>
+
+    <string name="service_restaurants">Restaurants</string>
+    <string name="tier_standard">Standard</string>
+    <string name="tier_generous">Generous</string>
+    <string name="tier_legend">Legend</string>
+    <string name="tier_mvp">Angel Tip</string>
+
+    <!-- Matrix & Country Tipping Notes -->
+    <string name="note_default_guideline">Standard tipping guideline applies.</string>
+    <string name="note_matrix_a_restaurant">Propina is highly expected; cash preferred.</string>
+    <string name="note_matrix_a_delivery">Hand cash directly to the driver.</string>
+    <string name="note_matrix_a_takeout">Not expected for counter pickup.</string>
+    <string name="note_matrix_a_foodtruck">Optional change jars.</string>
+    <string name="note_matrix_a_groceries">Baggers often work solely for tips.</string>
+    <string name="note_matrix_a_bar">Tip per round or on final tab.</string>
+
+    <string name="note_matrix_b_restaurant">Standard expectation for sit-down service.</string>
+    <string name="note_matrix_b_delivery">Couriers appreciate small tips.</string>
+    <string name="note_matrix_b_takeout">Optional tip jars.</string>
+    <string name="note_matrix_b_foodtruck">Rounding up is common.</string>
+    <string name="note_matrix_b_groceries">No tipping standard inside stores.</string>
+    <string name="note_matrix_b_bar">Leave change on the counter.</string>
+
+    <string name="note_matrix_c_restaurant">Service charge included; tips are a bonus.</string>
+    <string name="note_matrix_c_delivery">Common during bad weather.</string>
+    <string name="note_matrix_c_takeout">No expectation for pickup.</string>
+    <string name="note_matrix_c_foodtruck">Pure rounding up.</string>
+    <string name="note_matrix_c_groceries">Strictly uncommon.</string>
+    <string name="note_matrix_c_bar">Change left at the bar counter.</string>
+
+    <string name="note_matrix_d_restaurant">Tipping is uncommon or considered confusing; good service is standard.</string>
+    <string name="note_matrix_d_delivery">No tipping expected.</string>
+    <string name="note_matrix_d_takeout">No tipping expected.</string>
+    <string name="note_matrix_d_foodtruck">No tipping expected.</string>
+    <string name="note_matrix_d_groceries">No tipping expected.</string>
+    <string name="note_matrix_d_bar">No tipping expected.</string>
+
+    <string name="note_matrix_e_restaurant">Baksheesh is customary; leave cash on the table.</string>
+    <string name="note_matrix_e_delivery">Couriers expect hand money.</string>
+    <string name="note_matrix_e_takeout">Tip box at counter.</string>
+    <string name="note_matrix_e_foodtruck">Rounding up appreciated.</string>
+    <string name="note_matrix_e_groceries">Helpers live on these tips.</string>
+    <string name="note_matrix_e_bar">Appreciated in hotel lounges.</string>
+
+    <!-- Custom Country Notes -->
+    <string name="note_al_restaurant" formatted="false">Tipping is highly appreciated and becoming standard in tourist areas.</string>
+    <string name="note_al_delivery">Cash tips to drivers are highly welcome.</string>
+    <string name="note_al_takeout">Not expected for pickup.</string>
+    <string name="note_al_foodtruck">Tip jars are optional.</string>
+    <string name="note_al_groceries">No tipping standard.</string>
+    <string name="note_al_bar">Keep the change or round up.</string>
+
+    <string name="note_ar_restaurant" formatted="false">10% cash propina is customary; cash preferred due to inflation.</string>
+    <string name="note_ar_delivery" formatted="false">5% - 10% cash to rider.</string>
+    <string name="note_ar_takeout">Not expected.</string>
+    <string name="note_ar_foodtruck">Small change in tip jar.</string>
+    <string name="note_ar_groceries">Small bills for grocery baggers.</string>
+    <string name="note_ar_bar" formatted="false">Round up or 10% on tab.</string>
+
+    <string name="note_au_restaurant" formatted="false">Tipping is not customary; living wages are high. 10% for exceptional service.</string>
+    <string name="note_au_delivery">Optional $2 - $5 for delivery in bad weather.</string>
+    <string name="note_au_takeout">No tip expected.</string>
+    <string name="note_au_foodtruck">Optional tip jar.</string>
+    <string name="note_au_groceries">No tipping.</string>
+    <string name="note_au_bar">No tip needed; keep the change is fine.</string>
+
+    <string name="note_at_restaurant" formatted="false">Tipping is expected; round up or add 5% - 10% to the bill.</string>
+    <string name="note_at_delivery">Cash given directly to driver is preferred (1-2 €).</string>
+    <string name="note_at_takeout">Not expected for counter pickup.</string>
+    <string name="note_at_foodtruck">Round up small change.</string>
+    <string name="note_at_groceries">No tipping.</string>
+    <string name="note_at_bar">Round up to the nearest Euro.</string>
+
+    <string name="note_be_restaurant" formatted="false">Service charge is legally included; tips (5% - 10%) are for exceptional service.</string>
+    <string name="note_be_delivery">Appreciated for bad weather or fast delivery (1-2 €).</string>
+    <string name="note_be_takeout">Not expected.</string>
+    <string name="note_be_foodtruck">Not expected.</string>
+    <string name="note_be_groceries">No tipping.</string>
+    <string name="note_be_bar">Small extra change welcome.</string>
+
+    <string name="note_br_restaurant" formatted="false">10% gorjeta usually included on the bill; extra is optional.</string>
+    <string name="note_br_delivery">R$2 - R$5 cash or via app.</string>
+    <string name="note_br_takeout">No tip.</string>
+    <string name="note_br_foodtruck">Keep the change.</string>
+    <string name="note_br_groceries">R$2 - R$5 for cart helpers.</string>
+    <string name="note_br_bar" formatted="false">10% service charge on tab is standard.</string>
+
+    <string name="note_ca_restaurant" formatted="false">15% - 20% standard for sit-down service.</string>
+    <string name="note_ca_delivery" formatted="false">10% - 15% via app or cash.</string>
+    <string name="note_ca_takeout">Optional tip prompt on terminal.</string>
+    <string name="note_ca_foodtruck" formatted="false">10% prompt or tip jar.</string>
+    <string name="note_ca_groceries">No tipping.</string>
+    <string name="note_ca_bar" formatted="false">$1 - $2 per drink or 15% - 20% on tab.</string>
+
+    <string name="note_cn_restaurant" formatted="false">Tipping is not customary; 10% service charge in luxury hotels.</string>
+    <string name="note_cn_delivery">No tipping expected.</string>
+    <string name="note_cn_takeout">No tipping.</string>
+    <string name="note_cn_foodtruck">No tipping.</string>
+    <string name="note_cn_groceries">No tipping.</string>
+    <string name="note_cn_bar">No tipping.</string>
+
+    <string name="note_co_restaurant" formatted="false">10% Propina Voluntaria usually listed on the bill.</string>
+    <string name="note_co_delivery">2,000 - 5,000 COP cash to rider.</string>
+    <string name="note_co_takeout">Not customary.</string>
+    <string name="note_co_foodtruck">Only for good service.</string>
+    <string name="note_co_groceries">Small change for baggers.</string>
+    <string name="note_co_bar" formatted="false">10% added or round up.</string>
+
+    <string name="note_dk_restaurant" formatted="false">Service is included in the bill by law; tipping is rare.</string>
+    <string name="note_dk_delivery">Rarely expected.</string>
+    <string name="note_dk_takeout">No tipping.</string>
+    <string name="note_dk_foodtruck">No tipping.</string>
+    <string name="note_dk_groceries">No tipping.</string>
+    <string name="note_dk_bar">No tipping standard.</string>
+
+    <string name="note_eg_restaurant" formatted="false">Baksheesh (10% - 15%) is customary; leave cash on table.</string>
+    <string name="note_eg_delivery">10 - 20 EGP cash to courier.</string>
+    <string name="note_eg_takeout">Small change appreciated.</string>
+    <string name="note_eg_foodtruck">Round up small change.</string>
+    <string name="note_eg_groceries">5 - 10 EGP for baggers.</string>
+    <string name="note_eg_bar" formatted="false">10% - 15% in lounges.</string>
+
+    <string name="note_fr_restaurant" formatted="false">Service compris (15% included by law); round up or 1-2€ extra for great service.</string>
+    <string name="note_fr_delivery">1-2€ cash for courier.</string>
+    <string name="note_fr_takeout">No tipping.</string>
+    <string name="note_fr_foodtruck">Round up to next euro.</string>
+    <string name="note_fr_groceries">No tipping.</string>
+    <string name="note_fr_bar">Round up small change.</string>
+
+    <string name="note_de_restaurant" formatted="false">Round up (5% - 10%) and state total directly to server before paying.</string>
+    <string name="note_de_delivery">1-2 € cash directly to the driver.</string>
+    <string name="note_de_takeout">Small change in the tip jar is optional.</string>
+    <string name="note_de_foodtruck">Rounding up to the next euro is standard.</string>
+    <string name="note_de_groceries">No tipping in supermarkets.</string>
+    <string name="note_de_bar">Round up to the next euro or add small change.</string>
+
+    <string name="note_in_restaurant" formatted="false">Check bill for service charge (5% - 10%); otherwise 10% cash tip.</string>
+    <string name="note_in_delivery">₹20 - ₹50 tip to courier is appreciated.</string>
+    <string name="note_in_takeout">Small tip in jar optional.</string>
+    <string name="note_in_foodtruck">Round up to nearest ₹10 or ₹50.</string>
+    <string name="note_in_groceries">₹20 - ₹50 for grocery baggers or helpers.</string>
+    <string name="note_in_bar" formatted="false">10% tip on drinks tab if no service charge.</string>
+
+    <string name="note_id_restaurant" formatted="false">Round up or 5% - 10% in tourist areas (Bali).</string>
+    <string name="note_id_delivery">5,000 - 10,000 IDR via app or cash.</string>
+    <string name="note_id_takeout">Not expected.</string>
+    <string name="note_id_foodtruck">Round up at warungs.</string>
+    <string name="note_id_groceries">Small coins for parking attendants.</string>
+    <string name="note_id_bar">Round up in beach clubs.</string>
+
+    <string name="note_ie_restaurant" formatted="false">Check for service charges first; 10% - 15% standard in sit-down venues.</string>
+    <string name="note_ie_delivery">Round up / €1-€2 for local food deliveries.</string>
+    <string name="note_ie_takeout">Not required.</string>
+    <string name="note_ie_foodtruck">Not required.</string>
+    <string name="note_ie_groceries">No tipping.</string>
+    <string name="note_ie_bar">Rare for pub drinks unless table service is provided.</string>
+
+    <string name="note_it_restaurant">Coperto (cover charge) common; round up or 1-2€ per person for good service.</string>
+    <string name="note_it_delivery">1-2€ cash.</string>
+    <string name="note_it_takeout">No tipping.</string>
+    <string name="note_it_foodtruck">Round up.</string>
+    <string name="note_it_groceries">No tipping.</string>
+    <string name="note_it_bar">Small coin on counter for standing espresso.</string>
+
+    <string name="note_jp_restaurant">Tipping is considered confusing or insulting; exceptional service is standard.</string>
+    <string name="note_jp_delivery">No tipping; polite bow is customary.</string>
+    <string name="note_jp_takeout">No tipping.</string>
+    <string name="note_jp_foodtruck">Exact change preferred; no tips.</string>
+    <string name="note_jp_groceries">No tipping.</string>
+    <string name="note_jp_bar">No tipping; seating charge (Otoshi) may apply.</string>
+
+    <string name="note_mx_restaurant" formatted="false">10% - 15% propina is customary; cash or card before closing tab.</string>
+    <string name="note_mx_delivery">20-50 MXN cash to delivery person.</string>
+    <string name="note_mx_takeout">Optional tip jar.</string>
+    <string name="note_mx_foodtruck">Small change in tip box.</string>
+    <string name="note_mx_groceries">5-10 MXN for grocery baggers.</string>
+    <string name="note_mx_bar" formatted="false">10% - 15% per round or on final bill.</string>
+
+    <string name="note_nl_restaurant" formatted="false">Service is included but rounding up (5% - 10%) is very common.</string>
+    <string name="note_nl_delivery">Round up / 1-2 € appreciated by food couriers.</string>
+    <string name="note_nl_takeout">Not standard.</string>
+    <string name="note_nl_foodtruck">Optional change.</string>
+    <string name="note_nl_groceries">No tipping.</string>
+    <string name="note_nl_bar">Keep the change.</string>
+
+    <string name="note_nz_restaurant" formatted="false">No tipping expectation; living wages are high.</string>
+    <string name="note_nz_delivery">Optional on apps ($2 - $5).</string>
+    <string name="note_nz_takeout">No tipping.</string>
+    <string name="note_nz_foodtruck">No tipping.</string>
+    <string name="note_nz_groceries">No tipping.</string>
+    <string name="note_nz_bar">No tipping standard.</string>
+
+    <string name="note_no_restaurant" formatted="false">Service charge is legally included; tips (5% - 10%) are optional.</string>
+    <string name="note_no_delivery">Optional via food apps.</string>
+    <string name="note_no_takeout">No tipping expected.</string>
+    <string name="note_no_foodtruck">No tipping.</string>
+    <string name="note_no_groceries">No tipping.</string>
+    <string name="note_no_bar">Rounding up for good service.</string>
+
+    <string name="note_sg_restaurant" formatted="false">10% Service Charge and 9% GST are included on bill.</string>
+    <string name="note_sg_delivery">Optional 2 - 5 SGD.</string>
+    <string name="note_sg_takeout">No tipping.</string>
+    <string name="note_sg_foodtruck">Hawker centres strictly do not accept tips.</string>
+    <string name="note_sg_groceries">No tipping.</string>
+    <string name="note_sg_bar">Service charge included in bill.</string>
+
+    <string name="note_za_restaurant" formatted="false">10% is the standard minimum for decent service.</string>
+    <string name="note_za_delivery">Round up / R10 - R20 appreciated by delivery riders.</string>
+    <string name="note_za_takeout">Not customary.</string>
+    <string name="note_za_foodtruck">Not customary.</string>
+    <string name="note_za_groceries">R5 - R10 for parking guards and grocery baggers.</string>
+    <string name="note_za_bar" formatted="false">Round up or 10% on tab.</string>
+
+    <string name="note_kr_restaurant">No tipping culture; high quality service is included.</string>
+    <string name="note_kr_delivery">No tipping.</string>
+    <string name="note_kr_takeout">No tipping.</string>
+    <string name="note_kr_foodtruck">No tipping.</string>
+    <string name="note_kr_groceries">No tipping.</string>
+    <string name="note_kr_bar">No tipping.</string>
+
+    <string name="note_es_restaurant" formatted="false">Propina is voluntary; round up or leave 5% - 10% in sit-down restaurants.</string>
+    <string name="note_es_delivery">1€ cash appreciated.</string>
+    <string name="note_es_takeout">No tipping.</string>
+    <string name="note_es_foodtruck">Round up.</string>
+    <string name="note_es_groceries">No tipping.</string>
+    <string name="note_es_bar">Small change left on the saucer.</string>
+
+    <string name="note_se_restaurant" formatted="false">Service is included; tipping is strictly optional.</string>
+    <string name="note_se_delivery">Not expected.</string>
+    <string name="note_se_takeout">No tipping.</string>
+    <string name="note_se_foodtruck">No tipping.</string>
+    <string name="note_se_groceries">No tipping.</string>
+    <string name="note_se_bar">Not expected.</string>
+
+    <string name="note_ch_restaurant" formatted="false">Service is legally included; rounding up (5% - 10%) is normal.</string>
+    <string name="note_ch_delivery">Appreciated by couriers.</string>
+    <string name="note_ch_takeout">Not standard.</string>
+    <string name="note_ch_foodtruck">Not standard.</string>
+    <string name="note_ch_groceries">No tipping.</string>
+    <string name="note_ch_bar">Round up to the nearest franc.</string>
+
+    <string name="note_th_restaurant" formatted="false">20-50 Baht or 10% in upscale venues; change in casual places.</string>
+    <string name="note_th_delivery">20-40 Baht cash to rider.</string>
+    <string name="note_th_takeout">Leave small change.</string>
+    <string name="note_th_foodtruck">Small change in tip jar.</string>
+    <string name="note_th_groceries">No tipping expected.</string>
+    <string name="note_th_bar">20-50 Baht per round or keep coins.</string>
+
+    <string name="note_tr_restaurant" formatted="false">Bahşiş (5% - 10%) in cash on the table (not card).</string>
+    <string name="note_tr_delivery">20 - 50 TL cash to rider.</string>
+    <string name="note_tr_takeout">Tip box at counter.</string>
+    <string name="note_tr_foodtruck">Rounding up is sufficient.</string>
+    <string name="note_tr_groceries">10 - 20 TL if carrying bags.</string>
+    <string name="note_tr_bar" formatted="false">Round up or 10% per round.</string>
+
+    <string name="note_ua_bar" formatted="false">10% tip is standard in bars and pubs.</string>
+
+    <string name="note_us_restaurant" formatted="false">Tipping is practically mandatory (15% - 20%); servers rely on tips for income.</string>
+    <string name="note_us_delivery" formatted="false">Standard to tip delivery drivers via app or cash (10% - 15%).</string>
+    <string name="note_us_takeout">Digital screens prompt for tips completely optional.</string>
+    <string name="note_us_foodtruck">Tip jars or digital screen prompts are common.</string>
+    <string name="note_us_groceries">Optional for grocery baggers or curbside pickup ($2 - $5).</string>
+    <string name="note_us_bar" formatted="false">$1 - $2 per drink or 15% - 20% on tab.</string>
+
+    <string name="note_ae_restaurant" formatted="false">Service charge is usually included; 10% - 15% extra is traditional for servers.</string>
+    <string name="note_ae_delivery">5 - 10 AED cash or via app.</string>
+    <string name="note_ae_takeout">Not standard.</string>
+    <string name="note_ae_foodtruck">Not standard.</string>
+    <string name="note_ae_groceries">5 - 10 AED for loading helpers.</string>
+    <string name="note_ae_bar" formatted="false">Round up or 10% in luxury lounges.</string>
+
+    <string name="note_gb_restaurant" formatted="false">Check bill for discretionary 12.5% service charge; add 10% - 15% if omitted.</string>
+    <string name="note_gb_delivery">£1 - £2 cash or app tip is common.</string>
+    <string name="note_gb_takeout">Optional change jar.</string>
+    <string name="note_gb_foodtruck">Optional tip jars.</string>
+    <string name="note_gb_groceries">No tipping.</string>
+    <string name="note_gb_bar">Rarely expected unless table service.</string>
+
+    <!-- Text-to-Speech (TTS) accessibility strings for Senior Mode -->
+    <string name="tts_tap_to_read">Tap to hear calculated totals readout</string>
+    <string name="tts_tap_to_speak_label">Tap to Listen</string>
+    <string name="tts_speaking_now">Reading totals aloud</string>
+
+    <!-- Cultural Tipping Tip FAB and Modal strings -->
+    <string name="cultural_tip_fab_desc">Cultural tipping tip for %s</string>
+    <string name="cultural_tip_dialog_title">Tipping Etiquette</string>
+    <string name="cultural_tip_understood">Got it</string>
+    <string name="cultural_tip_view_country_details">Explore all countries</string>
+
+    <!-- General Labels -->
+    <string name="bill_input_label">Bill</string>
+    <string name="split_bill_label">Split</string>
+
+    <!-- Coach marks & Onboarding -->
+    <string name="senior_mode_subtitle">High-contrast accessibility mode</string>
+    <string name="senior_mode_explanation">Enlarges buttons, increases contrast, and reads out calculations aloud with text-to-speech.</string>
+    <string name="quick_add_title">Quick Add Buttons</string>
+    <string name="quick_add_subtitle">Speed up your bill input</string>
+    <string name="quick_add_description">Tap currency chips like +$5, +$10, or +$50 to quickly add common bill amounts without typing.</string>
+    <string name="coach_step_history_title">Tip History &amp; Preferences</string>
+    <string name="coach_step_history_subtitle">Review saved tips anytime</string>
+    <string name="coach_step_history_desc">Easily access past calculations, customize save prompts, and re-launch this tutorial whenever needed.</string>
+
+    <!-- DataStore Tip History & Save Prompt Strings -->
+    <string name="save_tip_title">Do you want to save it?</string>
+    <string name="save_tip_message">Save this tip calculation to your history to review or load it later.</string>
+    <string name="save_button_confirm">Save Tip</string>
+    <string name="save_button_dismiss">Don\'t Save</string>
+    <string name="tip_saved_snackbar">Tip calculation saved to history</string>
+    <string name="history_button_label">History</string>
+    <string name="history_title">Tip History</string>
+    <string name="history_empty_state">No saved calculations yet</string>
+    <string name="history_clear_all">Clear All</string>
+    <string name="history_load_action">Load</string>
+    <string name="history_delete_item">Delete</string>
+    <string name="save_prompt_setting_title">Save Prompt</string>
+    <string name="save_prompt_toggle_label">Prompt to save:</string>
+    <string name="save_prompt_always_mode">Always</string>
+    <string name="save_prompt_never_mode">Never</string>
+    <string name="tutorial_toggle_label">Tutorial on launch:</string>
+    <string name="tutorial_toggle_always">Always</string>
+    <string name="tutorial_toggle_never">Never</string>
+    <string name="save_to_history_action">Save to History</string>
+
+    <!-- Settings Sheet Strings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_dark_mode_title">Dark Theme</string>
+    <string name="settings_dark_mode_desc">Switch between light and dark visual themes</string>
+    <string name="settings_section_records">Records &amp; History</string>
+    <string name="settings_history_title">Tip Calculation History</string>
+    <string name="settings_history_desc">Review, reload, or clear previous calculations</string>
+    <string name="settings_section_language">Language &amp; Region</string>
+    <string name="settings_language_title">Select Language</string>
+    <string name="settings_language_desc">Offline localized text and currency standards</string>
+    <string name="settings_section_accessibility">Accessibility &amp; Guides</string>
+    <string name="settings_senior_mode_title">Senior Accessibility Mode</string>
+    <string name="settings_senior_mode_desc">Enlarged buttons, high contrast, and voice readout</string>
+    <string name="settings_tutorial_title">Feature Guide &amp; Tutorial</string>
+    <string name="settings_tutorial_desc">Learn how to use Senior Mode, Quick Add, and History</string>
+    <string name="settings_restart_tutorial">Restart Tutorial</string>
+    <string name="settings_save_prompt_title">Prompt to Save Tips</string>
+    <string name="settings_save_prompt_desc">Ask whether to save calculations when resetting or sharing</string>
+    <string name="settings_footer_info">Locus • 100% Offline &amp; Private • Secure Device Storage</string>
+</resources>

@@ -1,0 +1,6 @@
+{
+  "summary":  "Comprehensive security audit and codebase documentation plan for Locus. Covers eliminating client-side secrets and BuildConfig exposures, auditing the build pipeline and environment configs, establishing a zero-leakage local-first architecture, and adding comprehensive KDoc documentation across all 27 Kotlin components.",
+  "updatedAt":  "2026-10-28T11:49:48.042782006Z",
+  "requestFeedback":  true,
+  "userFacing":  true
+}

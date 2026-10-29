@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Locus</string>
+    <string name="header_subtitle">Rechner</string>
+    <string name="service_restaurant">Restaurant</string>
+    <string name="service_delivery">Lieferung</string>
+    <string name="service_takeout">Mitnehmen</string>
+    <string name="service_foodtruck">Foodtruck</string>
+    <string name="service_groceries">Lebensmittel</string>
+    <string name="service_bar">Bar</string>
+    <string name="bill_amount">Rechnungsbetrag</string>
+    <string name="enter_bill_amount">RECHNUNGSBETRAG EINGEBEN</string>
+    <string name="custom_percentage">Benutzerdefiniertes Trinkgeld %</string>
+    <string name="tip_percent">Trinkgeld-Prozentsatz</string>
+    <string name="senior_mode_title">Senioren-Modus</string>
+    <string name="senior_mode_desc">Große Schaltflächen und gut lesbarer Text</string>
+    <string name="standard_tip">Standard</string>
+    <string name="generous_tip">Großzügig</string>
+    <string name="extremely_generous_tip">Sehr Großzügig</string>
+    <string name="legend_tip">Legende</string>
+    <string name="angel_tip">Ehren-Trinkgeld</string>
+    <string name="split_bill">Rechnung Teilen</string>
+    <string name="number_of_people">Personenanzahl</string>
+    <string name="calculated_tip">Trinkgeld</string>
+    <string name="calculated_total">Gesamtbetrag</string>
+    <string name="split_share">Pro Person</string>
+    <string name="total_bill_label">Gesamtbetrag</string>
+    <string name="tip_amount_label">Trinkgeld</string>
+    <string name="each_pays_label">Pro Person</string>
+    <string name="service_category">Service-Kategorie</string>
+    <string name="select_service_category">SERVICE-KATEGORIE AUSWÄHLEN</string>
+    <string name="haptic_state">Haptisches Feedback</string>
+    <string name="clear_button">Zurücksetzen</string>
+    <string name="round_up">Aufrunden</string>
+    <string name="round_down">Abrunden</string>
+    <string name="custom_slider">Individueller Prozentsatz</string>
+    <string name="calculated_totals">BERECHNETE SUMMEN</string>
+    <string name="reset_calculator">RECHNER ZURÜCKSETZEN</string>
+    <string name="search_country_placeholder">Suche nach Land, ISO (z.B. DE, Japan)...</string>
+    <string name="select_language_title">Sprache auswählen</string>
+    <string name="auto_language_option">Automatische Offline-Erkennung</string>
+    <string name="auto_language_sub">System-Sprache &amp; Offline-Länderkarte</string>
+    <string name="close_button">Schließen</string>
+    <string name="solo_person">1 Person (Einzeln)</string>
+    <string name="people_sharing">%d Personen teilen</string>
+    <string name="tipping_tiers_header">TRINKGELD-STUFEN FÜR %s</string>
+    <string name="select_currency">WÄHRUNG WÄHLEN</string>
+    <string name="all_currencies">Alle (%d)</string>
+    <string name="more_currencies">+ Mehr...</string>
+    <string name="global_currencies_title">Globale Währungen</string>
+    <string name="currencies_count">%d Währungen</string>
+    <string name="search_currency_placeholder">Währung, Code oder Land suchen...</string>
+    <string name="no_currency_found">Keine passende Währung gefunden</string>
+    <string name="select_country_title">Land auswählen</string>
+    <string name="regional_matrices_count">192 Länder &amp; regionale Richtlinien</string>
+    <string name="culture_advice">Kultureller Hinweis</string>
+    <string name="iso_label">ISO: %1$s • Richtung: %2$s</string>
+    <string name="selected_toast">%1$s (%2$s) ausgewählt</string>
+    <string name="toggle_senior_mode">Senioren-Modus umschalten</string>
+    <string name="toggle_theme_mode">Design umschalten</string>
+    <string name="app_description_semantic">Locus, der barrierefreie globale Trinkgeldrechner</string>
+    <string name="passport_logo_desc">Reisepass Logo</string>
+    <string name="decrease_people">Personenanzahl verringern</string>
+    <string name="increase_people">Personenanzahl erhöhen</string>
+    <string name="back_to_calculator">Zurück zum Rechner</string>
+    <string name="share_bill_summary">Rechnung teilen</string>
+    <string name="share_bill_summary_title">Rechnungsübersicht</string>
+    <string name="tip_calculation_desc">Gesamtrechnung: %1$s. Trinkgeld ist %2$s. Pro Person: %3$s</string>
+
+    <string name="service_restaurants">Restaurants</string>
+    <string name="tier_standard">Standard</string>
+    <string name="tier_generous">Großzügig</string>
+    <string name="tier_legend">Legende</string>
+    <string name="tier_mvp">Ehren-Trinkgeld</string>
+
+    <!-- Matrix & Country Tipping Notes in German -->
+    <string name="note_default_guideline">Allgemeine Trinkgeld-Richtlinie gilt.</string>
+    <string name="note_matrix_a_restaurant">Trinkgeld wird erwartet; Bargeld bevorzugt.</string>
+    <string name="note_matrix_a_delivery">Bargeld direkt an den Lieferanten übergeben.</string>
+    <string name="note_matrix_a_takeout">Bei Abholung an der Theke nicht erwartet.</string>
+    <string name="note_matrix_a_foodtruck">Optionale Trinkgelddose.</string>
+    <string name="note_matrix_a_groceries">Einpacker arbeiten oft nur für Trinkgeld.</string>
+    <string name="note_matrix_a_bar">Trinkgeld pro Runde oder auf der Gesamtrechnung.</string>
+
+    <string name="note_matrix_b_restaurant">Standard-Erwartung bei Tischbedienung.</string>
+    <string name="note_matrix_b_delivery">Kuriere schätzen ein kleines Trinkgeld.</string>
+    <string name="note_matrix_b_takeout">Optionale Trinkgelddose.</string>
+    <string name="note_matrix_b_foodtruck">Aufrunden ist üblich.</string>
+    <string name="note_matrix_b_groceries">Kein Trinkgeld im Geschäft üblich.</string>
+    <string name="note_matrix_b_bar">Kleingeld auf der Theke hinterlassen.</string>
+
+    <string name="note_matrix_c_restaurant">Bedienungsgeld enthalten; Trinkgeld ist ein freiwilliger Bonus.</string>
+    <string name="note_matrix_c_delivery">Üblich bei schlechtem Wetter.</string>
+    <string name="note_matrix_c_takeout">Keine Erwartung bei Mitnahme.</string>
+    <string name="note_matrix_c_foodtruck">Einfaches Aufrunden.</string>
+    <string name="note_matrix_c_groceries">Völlig unüblich.</string>
+    <string name="note_matrix_c_bar">Kleingeld an der Bar zurücklassen.</string>
+
+    <string name="note_matrix_d_restaurant">Trinkgeld ist unüblich oder gilt als unhöflich/verwirrend; guter Service ist Standard.</string>
+    <string name="note_matrix_d_delivery">Kein Trinkgeld erwartet.</string>
+    <string name="note_matrix_d_takeout">Kein Trinkgeld.</string>
+    <string name="note_matrix_d_foodtruck">Kein Trinkgeld.</string>
+    <string name="note_matrix_d_groceries">Kein Trinkgeld.</string>
+    <string name="note_matrix_d_bar">Kein Trinkgeld.</string>
+
+    <string name="note_matrix_e_restaurant">Bakschisch ist Tradition; Bargeld auf dem Tisch hinterlassen.</string>
+    <string name="note_matrix_e_delivery">Kuriere erwarten Handgeld.</string>
+    <string name="note_matrix_e_takeout">Trinkgeldbox an der Kasse.</string>
+    <string name="note_matrix_e_foodtruck">Aufrunden wird sehr geschätzt.</string>
+    <string name="note_matrix_e_groceries">Hilfskräfte leben von diesem Trinkgeld.</string>
+    <string name="note_matrix_e_bar">In Hotel-Lounges geschätzt.</string>
+
+    <!-- Custom Country Notes -->
+    <string name="note_al_restaurant" formatted="false">Trinkgeld (5% - 10%) wird in touristischen Regionen sehr geschätzt.</string>
+    <string name="note_al_delivery">Bargeld für Fahrer sehr willkommen.</string>
+    <string name="note_al_takeout">Nicht erwartet bei Mitnahme.</string>
+    <string name="note_al_foodtruck">Trinkgelddosen optional.</string>
+    <string name="note_al_groceries">Kein Trinkgeld üblich.</string>
+    <string name="note_al_bar">Aufrunden oder Kleingeld liegenlassen.</string>
+
+    <string name="note_ar_restaurant" formatted="false">Bar-Trinkgeld (10%) wird wegen der Inflation deutlich bevorzugt.</string>
+    <string name="note_ar_delivery" formatted="false">5% - 10% bar an App-Fahrer.</string>
+    <string name="note_ar_takeout">Nicht erwartet.</string>
+    <string name="note_ar_foodtruck">Kleingeld in die Kaffeekasse.</string>
+    <string name="note_ar_groceries">Kleine Scheine für die Einpacker.</string>
+    <string name="note_ar_bar" formatted="false">Aufrunden oder 10% auf den Deckel.</string>
+
+    <string name="note_au_restaurant" formatted="false">Trinkgeld ist unüblich; hohe Grundlöhne. 10% bei herausragendem Service.</string>
+    <string name="note_au_delivery">Optional $2 - $5 bei Schlechtwetter.</string>
+    <string name="note_au_takeout">Kein Trinkgeld erwartet.</string>
+    <string name="note_au_foodtruck">Optionale Kaffeekasse.</string>
+    <string name="note_au_groceries">Kein Trinkgeld.</string>
+    <string name="note_au_bar">Nicht nötig; Wechselgeld dalassen reicht.</string>
+
+    <string name="note_at_restaurant" formatted="false">Trinkgeld ist üblich; aufrunden oder 5% - 10% auf die Rechnung.</string>
+    <string name="note_at_delivery">1-2 € bar direkt an den Boten übergeben.</string>
+    <string name="note_at_takeout">Bei Abholung nicht erwartet.</string>
+    <string name="note_at_foodtruck">Kleingeld aufrunden.</string>
+    <string name="note_at_groceries">Kein Trinkgeld.</string>
+    <string name="note_at_bar">Auf den nächsten Euro aufrunden.</string>
+
+    <string name="note_be_restaurant" formatted="false">Bedienungsgeld gesetzlich enthalten; Trinkgeld (5% - 10%) für guten Service.</string>
+    <string name="note_be_delivery">1-2 € bei schlechtem Wetter oder schneller Lieferung.</string>
+    <string name="note_be_takeout">Nicht erwartet.</string>
+    <string name="note_be_foodtruck">Nicht erwartet.</string>
+    <string name="note_be_groceries">Kein Trinkgeld.</string>
+    <string name="note_be_bar">Kleines Wechselgeld willkommen.</string>
+
+    <string name="note_br_restaurant" formatted="false">10% gorjeta meist auf der Rechnung; extra ist optional.</string>
+    <string name="note_br_delivery">R$2 - R$5 bar oder per App.</string>
+    <string name="note_br_takeout">Kein Trinkgeld.</string>
+    <string name="note_br_foodtruck">Wechselgeld dalassen.</string>
+    <string name="note_br_groceries">R$2 - R$5 für Einpacker am Wagen.</string>
+    <string name="note_br_bar" formatted="false">10% Servicegebühr meist im Gesamtbetrag.</string>
+
+    <string name="note_ca_restaurant" formatted="false">15% - 20% Standard bei Tischbedienung.</string>
+    <string name="note_ca_delivery" formatted="false">10% - 15% per App oder bar.</string>
+    <string name="note_ca_takeout">Trinkgeldabfrage am Kartenterminal ist optional.</string>
+    <string name="note_ca_foodtruck" formatted="false">10% Abfrage oder Kaffeekasse.</string>
+    <string name="note_ca_groceries">Kein Trinkgeld.</string>
+    <string name="note_ca_bar" formatted="false">$1 - $2 pro Drink oder 15% - 20% auf den Deckel.</string>
+
+    <string name="note_cn_restaurant" formatted="false">Trinkgeld ist unüblich; 10% Servicegebühr in Luxushotels.</string>
+    <string name="note_cn_delivery">Kein Trinkgeld erwartet.</string>
+    <string name="note_cn_takeout">Kein Trinkgeld.</string>
+    <string name="note_cn_foodtruck">Kein Trinkgeld.</string>
+    <string name="note_cn_groceries">Kein Trinkgeld.</string>
+    <string name="note_cn_bar">Kein Trinkgeld.</string>
+
+    <string name="note_co_restaurant" formatted="false">10% Propina Voluntaria steht meist auf der Rechnung.</string>
+    <string name="note_co_delivery">2.000 - 5.000 COP bar an Fahrer.</string>
+    <string name="note_co_takeout">Unüblich.</string>
+    <string name="note_co_foodtruck">Nur bei gutem Service.</string>
+    <string name="note_co_groceries">Kleingeld für Einpacker.</string>
+    <string name="note_co_bar" formatted="false">10% aufgeschlagen oder aufrunden.</string>
+
+    <string name="note_dk_restaurant" formatted="false">Bedienungsgeld gesetzlich enthalten; Trinkgeld selten.</string>
+    <string name="note_dk_delivery">Kaum erwartet.</string>
+    <string name="note_dk_takeout">Kein Trinkgeld.</string>
+    <string name="note_dk_foodtruck">Kein Trinkgeld.</string>
+    <string name="note_dk_groceries">Kein Trinkgeld.</string>
+    <string name="note_dk_bar">Kein Trinkgeld üblich.</string>
+
+    <string name="note_eg_restaurant" formatted="false">Bakschisch (10% - 15%) üblich; bar auf dem Tisch hinterlassen.</string>
+    <string name="note_eg_delivery">10 - 20 EGP bar an den Kurier.</string>
+    <string name="note_eg_takeout">Kleines Bakschisch erwünscht.</string>
+    <string name="note_eg_foodtruck">Aufrunden erwartet.</string>
+    <string name="note_eg_groceries">5 - 10 EGP für Einpacker.</string>
+    <string name="note_eg_bar" formatted="false">10% - 15% in Hotelanlagen und Lounges.</string>
+
+    <string name="note_fr_restaurant" formatted="false">Service compris (15% gesetzlich); aufrunden oder 1-2€ extra bei gutem Service.</string>
+    <string name="note_fr_delivery">1-2€ bar für den Boten.</string>
+    <string name="note_fr_takeout">Kein Trinkgeld.</string>
+    <string name="note_fr_foodtruck">Auf nächsten Euro aufrunden.</string>
+    <string name="note_fr_groceries">Kein Trinkgeld.</string>
+    <string name="note_fr_bar">Kleingeld liegen lassen.</string>
+
+    <string name="note_de_restaurant" formatted="false">Aufrunden (5% - 10%) und Gesamtbetrag direkt beim Bezahlen nennen.</string>
+    <string name="note_de_delivery">1-2 € bar direkt an den Boten übergeben.</string>
+    <string name="note_de_takeout">Kleingeld in die Kaffeekasse ist optional.</string>
+    <string name="note_de_foodtruck">Aufrunden auf den nächsten Euro ist Standard.</string>
+    <string name="note_de_groceries">Kein Trinkgeld in Supermärkten.</string>
+    <string name="note_de_bar">Auf nächsten Euro aufrunden oder Kleingeld beilegen.</string>
+
+    <string name="note_in_restaurant" formatted="false">Rechnung auf Servicegebühr (5% - 10%) prüfen; sonst 10% bar.</string>
+    <string name="note_in_delivery">₹20 - ₹50 Trinkgeld für den Boten.</string>
+    <string name="note_in_takeout">Trinkgelddose optional.</string>
+    <string name="note_in_foodtruck">Auf nächste ₹10 oder ₹50 aufrunden.</string>
+    <string name="note_in_groceries">₹20 - ₹50 für Einpacker oder Kofferraumhelfer.</string>
+    <string name="note_in_bar" formatted="false">10% Trinkgeld auf Getränke ohne Servicegebühr.</string>
+
+    <string name="note_id_restaurant" formatted="false">Aufrunden oder 5% - 10% in Touristen-Regionen (Bali).</string>
+    <string name="note_id_delivery">5.000 - 10.000 IDR per App oder bar.</string>
+    <string name="note_id_takeout">Nicht erwartet.</string>
+    <string name="note_id_foodtruck">Aufrunden an Warungs.</string>
+    <string name="note_id_groceries">Kleingeld für Parkeinweiser.</string>
+    <string name="note_id_bar">Aufrunden in Beach Clubs.</string>
+
+    <string name="note_ie_restaurant" formatted="false">Servicegebühr prüfen; 10% - 15% üblich bei Tischbedienung.</string>
+    <string name="note_ie_delivery">Aufrunden / 1-2 € bei Essenslieferung.</string>
+    <string name="note_ie_takeout">Nicht erforderlich.</string>
+    <string name="note_ie_foodtruck">Nicht erforderlich.</string>
+    <string name="note_ie_groceries">Kein Trinkgeld.</string>
+    <string name="note_ie_bar">Am Kneipentresen unüblich außer bei Bedienung.</string>
+
+    <string name="note_it_restaurant">Coperto üblich; aufrunden oder 1-2€ pro Person bei gutem Service.</string>
+    <string name="note_it_delivery">1-2€ bar.</string>
+    <string name="note_it_takeout">Kein Trinkgeld.</string>
+    <string name="note_it_foodtruck">Aufrunden.</string>
+    <string name="note_it_groceries">Kein Trinkgeld.</string>
+    <string name="note_it_bar">Kleine Münze auf Theke für Espresso im Stehen.</string>
+
+    <string name="note_jp_restaurant">Trinkgeld gilt als verwirrend oder unhöflich; exzellenter Service ist Standard.</string>
+    <string name="note_jp_delivery">Kein Trinkgeld; Verbeugung ist üblich.</string>
+    <string name="note_jp_takeout">Kein Trinkgeld.</string>
+    <string name="note_jp_foodtruck">Passendes Geld bevorzugt; kein Trinkgeld.</string>
+    <string name="note_jp_groceries">Kein Trinkgeld.</string>
+    <string name="note_jp_bar">Kein Trinkgeld; Sitzplatzgebühr (Otoshi) möglich.</string>
+
+    <string name="note_mx_restaurant" formatted="false">10% - 15% Propina üblich; bar oder vor Abschluss mit Karte.</string>
+    <string name="note_mx_delivery">20-50 MXN bar an den Kurier.</string>
+    <string name="note_mx_takeout">Optionale Kaffeekasse.</string>
+    <string name="note_mx_foodtruck">Kleingeld in die Box.</string>
+    <string name="note_mx_groceries">5-10 MXN für Einpacker.</string>
+    <string name="note_mx_bar" formatted="false">10% - 15% pro Runde oder Gesamtrechnung.</string>
+
+    <string name="note_nl_restaurant" formatted="false">Bedienungsgeld enthalten, aber Aufrunden (5% - 10%) ist sehr verbreitet.</string>
+    <string name="note_nl_delivery">1-2 € vom Boten geschätzt.</string>
+    <string name="note_nl_takeout">Nicht Standard.</string>
+    <string name="note_nl_foodtruck">Wechselgeld optional.</string>
+    <string name="note_nl_groceries">Kein Trinkgeld.</string>
+    <string name="note_nl_bar">Wechselgeld dalassen.</string>
+
+    <string name="note_nz_restaurant" formatted="false">Kein Trinkgeldzwang; hohe Grundlöhne.</string>
+    <string name="note_nz_delivery">Optional per App ($2 - $5).</string>
+    <string name="note_nz_takeout">Kein Trinkgeld.</string>
+    <string name="note_nz_foodtruck">Kein Trinkgeld.</string>
+    <string name="note_nz_groceries">Kein Trinkgeld.</string>
+    <string name="note_nz_bar">Kein Trinkgeld üblich.</string>
+
+    <string name="note_no_restaurant" formatted="false">Bedienungsgeld gesetzlich enthalten; Trinkgeld (5% - 10%) optional.</string>
+    <string name="note_no_delivery">Optional über Liefer-Apps.</string>
+    <string name="note_no_takeout">Kein Trinkgeld erwartet.</string>
+    <string name="note_no_foodtruck">Kein Trinkgeld.</string>
+    <string name="note_no_groceries">Kein Trinkgeld.</string>
+    <string name="note_no_bar">Aufrunden bei gutem Service.</string>
+
+    <string name="note_sg_restaurant" formatted="false">10% Service Charge und 9% GST sind auf der Rechnung.</string>
+    <string name="note_sg_delivery">Optional 2 - 5 SGD.</string>
+    <string name="note_sg_takeout">Kein Trinkgeld.</string>
+    <string name="note_sg_foodtruck">Hawker Centres akzeptieren strikt kein Trinkgeld.</string>
+    <string name="note_sg_groceries">Kein Trinkgeld.</string>
+    <string name="note_sg_bar">Servicegebühr meist direkt enthalten.</string>
+
+    <string name="note_za_restaurant" formatted="false">10% ist das Standard-Minimum für ordentlichen Service.</string>
+    <string name="note_za_delivery">Aufrunden / R10 - R20 für Fahrer geschätzt.</string>
+    <string name="note_za_takeout">Nicht üblich.</string>
+    <string name="note_za_foodtruck">Nicht üblich.</string>
+    <string name="note_za_groceries">R5 - R10 für Parkwächter und Einpacker.</string>
+    <string name="note_za_bar" formatted="false">Aufrunden oder 10% auf die Rechnung.</string>
+
+    <string name="note_kr_restaurant">Keine Trinkgeldkultur; exzellenter Service ist inklusive.</string>
+    <string name="note_kr_delivery">Kein Trinkgeld.</string>
+    <string name="note_kr_takeout">Kein Trinkgeld.</string>
+    <string name="note_kr_foodtruck">Kein Trinkgeld.</string>
+    <string name="note_kr_groceries">Kein Trinkgeld.</string>
+    <string name="note_kr_bar">Kein Trinkgeld.</string>
+
+    <string name="note_es_restaurant" formatted="false">Propina ist freiwillig; aufrunden oder 5% - 10% bei Tischbedienung.</string>
+    <string name="note_es_delivery">1€ bar geschätzt.</string>
+    <string name="note_es_takeout">Kein Trinkgeld.</string>
+    <string name="note_es_foodtruck">Aufrunden.</string>
+    <string name="note_es_groceries">Kein Trinkgeld.</string>
+    <string name="note_es_bar">Kleingeld auf der Untertasse zurücklassen.</string>
+
+    <string name="note_se_restaurant" formatted="false">Bedienungsgeld enthalten; Trinkgeld strikt freiwillig.</string>
+    <string name="note_se_delivery">Nicht erwartet.</string>
+    <string name="note_se_takeout">Kein Trinkgeld.</string>
+    <string name="note_se_foodtruck">Kein Trinkgeld.</string>
+    <string name="note_se_groceries">Kein Trinkgeld.</string>
+    <string name="note_se_bar">Nicht erwartet.</string>
+
+    <string name="note_ch_restaurant" formatted="false">Bedienungsgeld gesetzlich enthalten; Aufrunden (5% - 10%) normal.</string>
+    <string name="note_ch_delivery">Vom Kurier geschätzt.</string>
+    <string name="note_ch_takeout">Nicht Standard.</string>
+    <string name="note_ch_foodtruck">Nicht Standard.</string>
+    <string name="note_ch_groceries">Kein Trinkgeld.</string>
+    <string name="note_ch_bar">Auf den nächsten Franken aufrunden.</string>
+
+    <string name="note_th_restaurant" formatted="false">20-50 Baht oder 10% in gehobenen Lokalen; Kleingeld sonst.</string>
+    <string name="note_th_delivery">20-40 Baht bar für den Fahrer.</string>
+    <string name="note_th_takeout">Kleingeld dalassen.</string>
+    <string name="note_th_foodtruck">Kleingeld in die Kaffeekasse.</string>
+    <string name="note_th_groceries">Kein Trinkgeld erwartet.</string>
+    <string name="note_th_bar">20-50 Baht pro Runde oder Münzen dalassen.</string>
+
+    <string name="note_tr_restaurant" formatted="false">Bahşiş (5% - 10%) in bar auf dem Tisch (nicht per Karte).</string>
+    <string name="note_tr_delivery">20 - 50 TL bar an den Fahrer.</string>
+    <string name="note_tr_takeout">Trinkgeldbox an der Kasse.</string>
+    <string name="note_tr_foodtruck">Aufrunden reicht aus.</string>
+    <string name="note_tr_groceries">10 - 20 TL beim Tragen von Taschen.</string>
+    <string name="note_tr_bar" formatted="false">Aufrunden oder 10% pro Runde.</string>
+
+    <string name="note_ua_bar" formatted="false">10% Trinkgeld ist in Bars und Kneipen üblich.</string>
+
+    <string name="note_us_restaurant" formatted="false">Trinkgeld ist praktisch Pflicht (15% - 20%); Kellner leben davon.</string>
+    <string name="note_us_delivery" formatted="false">Standard: 10% - 15% per App oder bar.</string>
+    <string name="note_us_takeout">Digitale Trinkgeld-Abfragen am Bildschirm sind optional.</string>
+    <string name="note_us_foodtruck">Trinkgelddosen oder Bildschirm-Abfragen sind üblich.</string>
+    <string name="note_us_groceries">Optional für Einpacker oder Kofferraum-Service ($2 - $5).</string>
+    <string name="note_us_bar" formatted="false">$1 - $2 pro Drink oder 15% - 20% auf den Deckel.</string>
+
+    <string name="note_ae_restaurant" formatted="false">Servicegebühr meist enthalten; 10% - 15% extra für Kellner traditionell.</string>
+    <string name="note_ae_delivery">5 - 10 AED bar oder per App.</string>
+    <string name="note_ae_takeout">Nicht Standard.</string>
+    <string name="note_ae_foodtruck">Nicht Standard.</string>
+    <string name="note_ae_groceries">5 - 10 AED für Helfer.</string>
+    <string name="note_ae_bar" formatted="false">Aufrunden oder 10% in Luxus-Lounges.</string>
+
+    <string name="note_gb_restaurant" formatted="false">Rechnung auf 12.5% Servicegebühr prüfen; sonst 10% - 15% geben.</string>
+    <string name="note_gb_delivery">£1 - £2 bar oder per App.</string>
+    <string name="note_gb_takeout">Optionale Kaffeekasse.</string>
+    <string name="note_gb_foodtruck">Optionale Kaffeekasse.</string>
+    <string name="note_gb_groceries">Kein Trinkgeld.</string>
+    <string name="note_gb_bar">Am Kneipentresen unüblich außer bei Bedienung.</string>
+
+    <!-- Text-to-Speech (TTS) strings -->
+    <string name="tts_tap_to_read">Tippen, um die berechneten Gesamtsummen vorzulesen</string>
+    <string name="tts_tap_to_speak_label">Vorlesen</string>
+    <string name="tts_speaking_now">Liest Summen vor...</string>
+
+    <!-- Cultural Tipping Tip FAB and Modal strings -->
+    <string name="cultural_tip_fab_desc">Trinkgeld-Kulturtipp für %s</string>
+    <string name="cultural_tip_dialog_title">Trinkgeld-Knigge</string>
+    <string name="cultural_tip_understood">Verstanden</string>
+    <string name="cultural_tip_view_country_details">Alle Länder entdecken</string>
+
+    <!-- DataStore Tip History & Save Prompt Strings -->
+    <string name="save_tip_title">Möchtest du es speichern?</string>
+    <string name="save_tip_message">Speichere diese Trinkgeldberechnung im Verlauf, um sie jederzeit einzusehen.</string>
+    <string name="save_button_confirm">Speichern</string>
+    <string name="save_button_dismiss">Nicht speichern</string>
+    <string name="tip_saved_snackbar">Berechnung im Verlauf gespeichert</string>
+    <string name="history_button_label">Verlauf</string>
+    <string name="history_title">Trinkgeld-Verlauf</string>
+    <string name="history_empty_state">Noch keine Berechnungen gespeichert</string>
+    <string name="history_clear_all">Verlauf löschen</string>
+    <string name="history_load_action">Laden</string>
+    <string name="history_delete_item">Löschen</string>
+    <string name="save_prompt_setting_title">Speichern-Abfrage</string>
+    <string name="save_prompt_toggle_label">Beim Speichern fragen:</string>
+    <string name="save_prompt_always_mode">Immer</string>
+    <string name="save_prompt_never_mode">Nie</string>
+    <string name="tutorial_toggle_label">Tutorial beim Start:</string>
+    <string name="tutorial_toggle_always">Immer</string>
+    <string name="tutorial_toggle_never">Nie</string>
+    <string name="coach_step_history_title">Transaktionsverlauf</string>
+    <string name="coach_step_history_subtitle">Berechnungen speichern &amp; prüfen</string>
+    <string name="coach_step_history_desc">Speichere Trinkgeldberechnungen lokal via DataStore. Wähle unten, ob die Abfrage \"Möchtest du es speichern?\" immer oder nie erscheinen soll.</string>
+    <string name="save_to_history_action">Im Verlauf speichern</string>
+
+    <!-- Global Explorer Unlock Notification Strings -->
+    <string name="unlock_global_explorer_countdown">Noch %d Tipps, um den Global Explorer freizuschalten</string>
+    <string name="unlock_global_explorer_countdown_one">Noch 1 Tipp, um den Global Explorer freizuschalten</string>
+    <string name="unlock_global_explorer_success">🎉 Geheimnis entdeckt! Globaler Länderauswähler freigeschaltet</string>
+</resources>

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Locus</string>
+    <string name="header_subtitle">Calculadora</string>
+    <string name="service_restaurant">Restaurante</string>
+    <string name="service_delivery">Entrega</string>
+    <string name="service_takeout">Retirada</string>
+    <string name="service_foodtruck">Food Truck</string>
+    <string name="service_groceries">Supermercado</string>
+    <string name="service_bar">Bar</string>
+    <string name="bill_amount">Valor da Conta</string>
+    <string name="enter_bill_amount">DIGITAR VALOR DA CONTA</string>
+    <string name="custom_percentage">Gorjeta Personalizada %</string>
+    <string name="tip_percent">Percentual de Gorjeta</string>
+    <string name="senior_mode_title">Modo Sênior</string>
+    <string name="senior_mode_desc">Botões grandes e texto de fácil leitura</string>
+    <string name="standard_tip">Padrão</string>
+    <string name="generous_tip">Generoso</string>
+    <string name="extremely_generous_tip">Muito Generoso</string>
+    <string name="legend_tip">Lenda</string>
+    <string name="angel_tip">Gorjeta de Honra</string>
+    <string name="split_bill">Dividir a Conta</string>
+    <string name="number_of_people">Número de Pessoas</string>
+    <string name="calculated_tip">Valor da Gorjeta</string>
+    <string name="calculated_total">Conta Total</string>
+    <string name="split_share">Por Pessoa</string>
+    <string name="total_bill_label">Conta Total</string>
+    <string name="tip_amount_label">Valor da Gorjeta</string>
+    <string name="each_pays_label">Por Pessoa</string>
+    <string name="service_category">Categoria de Serviço</string>
+    <string name="select_service_category">SELECIONAR CATEGORIA</string>
+    <string name="haptic_state">Vibração Tátil</string>
+    <string name="clear_button">Limpar Tudo</string>
+    <string name="round_up">Arredondar para Cima</string>
+    <string name="round_down">Arredondar para Baixo</string>
+    <string name="custom_slider">Porcentagem personalizada</string>
+    <string name="calculated_totals">TOTAIS CALCULADOS</string>
+    <string name="reset_calculator">REINICIAR CALCULADORA</string>
+    <string name="search_country_placeholder">Buscar por país, código ISO (ex: BR, Brasil)...</string>
+    <string name="select_language_title">Selecionar Idioma</string>
+    <string name="auto_language_option">Detecção Automática Offline</string>
+    <string name="auto_language_sub">Idioma do sistema e mapa offline</string>
+    <string name="close_button">Fechar</string>
+    <string name="solo_person">1 Pessoa (Individual)</string>
+    <string name="people_sharing">%d Pessoas dividindo</string>
+    <string name="tipping_tiers_header">NÍVEIS DE GORJETA PARA %s</string>
+    <string name="select_currency">SELECIONAR MOEDA</string>
+    <string name="all_currencies">Todas (%d)</string>
+    <string name="more_currencies">+ Mais...</string>
+    <string name="global_currencies_title">Moedas Globais</string>
+    <string name="currencies_count">%d moedas</string>
+    <string name="search_currency_placeholder">Buscar moeda, código ou país...</string>
+    <string name="no_currency_found">Nenhuma moeda encontrada</string>
+    <string name="select_country_title">Selecionar País</string>
+    <string name="regional_matrices_count">192 Países e matrizes regionais</string>
+    <string name="culture_advice">Dica Cultural</string>
+    <string name="iso_label">ISO: %1$s • Direção: %2$s</string>
+    <string name="selected_toast">%1$s (%2$s) selecionado</string>
+    <string name="toggle_senior_mode">Alternar Modo Sênior</string>
+    <string name="toggle_theme_mode">Alternar Tema</string>
+    <string name="app_description_semantic">Locus, a calculadora global de gorjetas</string>
+    <string name="passport_logo_desc">Logotipo do Passaporte</string>
+    <string name="decrease_people">Diminuir pessoas</string>
+    <string name="increase_people">Aumentar pessoas</string>
+    <string name="back_to_calculator">Voltar para a calculadora</string>
+    <string name="share_bill_summary">Compartilhar resumo</string>
+    <string name="share_bill_summary_title">Resumo da conta</string>
+    <string name="tip_calculation_desc">Cálculo: %1$s. Gorjeta: %2$s. Cada pessoa: %3$s</string>
+
+    <string name="service_restaurants">Restaurantes</string>
+    <string name="tier_standard">Padrão</string>
+    <string name="tier_generous">Generoso</string>
+    <string name="tier_legend">Lenda</string>
+    <string name="tier_mvp">Gorjeta de Honra</string>
+
+    <!-- Matrix & Country Tipping Notes in Portuguese -->
+    <string name="note_default_guideline">Diretrizes gerais de gorjeta aplicáveis.</string>
+    <string name="note_matrix_a_restaurant">Gorjeta altamente esperada; dinheiro em espécie é preferido.</string>
+    <string name="note_matrix_a_delivery">Entregar dinheiro diretamente ao entregador.</string>
+    <string name="note_matrix_a_takeout">Não esperado para retirada no balcão.</string>
+    <string name="note_matrix_a_foodtruck">Caixinhas de gorjeta opcionais.</string>
+    <string name="note_matrix_a_groceries">Empacotadores frequentemente trabalham apenas por gorjetas.</string>
+    <string name="note_matrix_a_bar">Gorjeta por rodada ou na comanda final.</string>
+
+    <string name="note_matrix_b_restaurant">Expectativa padrão para serviço à mesa.</string>
+    <string name="note_matrix_b_delivery">Entregadores apreciam uma pequena gorjeta.</string>
+    <string name="note_matrix_b_takeout">Caixinha de gorjeta opcional.</string>
+    <string name="note_matrix_b_foodtruck">Arredondamento para cima é comum.</string>
+    <string name="note_matrix_b_groceries">Sem costume de gorjeta em supermercados.</string>
+    <string name="note_matrix_b_bar">Deixar o troco no balcão.</string>
+
+    <string name="note_matrix_c_restaurant">Taxa de serviço inclusa; gorjeta é um bônus voluntário.</string>
+    <string name="note_matrix_c_delivery">Comum em dias de chuva ou clima adverso.</string>
+    <string name="note_matrix_c_takeout">Não esperado para retirada.</string>
+    <string name="note_matrix_c_foodtruck">Arredondamento simples.</string>
+    <string name="note_matrix_c_groceries">Estritamente incomum.</string>
+    <string name="note_matrix_c_bar">Deixar o troco no balcão.</string>
+
+    <string name="note_matrix_d_restaurant">Sem costume de gorjeta ou considerado embaraçoso; bom serviço é o padrão.</string>
+    <string name="note_matrix_d_delivery">Nenhuma gorjeta esperada.</string>
+    <string name="note_matrix_d_takeout">Sem gorjeta.</string>
+    <string name="note_matrix_d_foodtruck">Sem gorjeta.</string>
+    <string name="note_matrix_d_groceries">Sem gorjeta.</string>
+    <string name="note_matrix_d_bar">Sem gorjeta.</string>
+
+    <string name="note_matrix_e_restaurant">Baksheesh é tradição; deixar dinheiro sobre a mesa.</string>
+    <string name="note_matrix_e_delivery">Entregadores esperam gorjeta em mãos.</string>
+    <string name="note_matrix_e_takeout">Caixinha de gorjetas no caixa.</string>
+    <string name="note_matrix_e_foodtruck">Arredondar para cima é muito apreciado.</string>
+    <string name="note_matrix_e_groceries">Ajudantes e carregadores dependem dessas gorjetas.</string>
+    <string name="note_matrix_e_bar">Muito apreciado em lounges de hotéis.</string>
+
+    <!-- Custom Country Notes -->
+    <string name="note_al_restaurant" formatted="false">Gorjeta (5% - 10%) é muito apreciada em áreas turísticas.</string>
+    <string name="note_al_delivery">Gorjetas em dinheiro para motoristas são bem-vindas.</string>
+    <string name="note_al_takeout">Não esperado na retirada.</string>
+    <string name="note_al_foodtruck">Caixinhas de gorjeta opcionais.</string>
+    <string name="note_al_groceries">Sem gorjeta padrão.</string>
+    <string name="note_al_bar">Arredondar ou deixar o troco.</string>
+
+    <string name="note_ar_restaurant" formatted="false">10% em dinheiro é o costume; espécie é preferida devido à inflação.</string>
+    <string name="note_ar_delivery" formatted="false">5% - 10% em dinheiro para o entregador.</string>
+    <string name="note_ar_takeout">Não esperado.</string>
+    <string name="note_ar_foodtruck">Moedas no pote de gorjetas.</string>
+    <string name="note_ar_groceries">Notas pequenas para empacotadores.</string>
+    <string name="note_ar_bar" formatted="false">Arredondar ou 10% na comanda.</string>
+
+    <string name="note_au_restaurant" formatted="false">Sem cultura de gorjeta; salários são altos. 10% para serviço excepcional.</string>
+    <string name="note_au_delivery">Opcional $2 - $5 em clima ruim.</string>
+    <string name="note_au_takeout">Gorjeta não esperada.</string>
+    <string name="note_au_foodtruck">Pote de gorjetas opcional.</string>
+    <string name="note_au_groceries">Sem gorjeta.</string>
+    <string name="note_au_bar">Não necessário; deixar o troco é suficiente.</string>
+
+    <string name="note_at_restaurant" formatted="false">Gorjeta é esperada; arredonde ou adicione 5% - 10% à conta.</string>
+    <string name="note_at_delivery">1-2 € em dinheiro direto nas mãos do entregador.</string>
+    <string name="note_at_takeout">Não esperado no balcão.</string>
+    <string name="note_at_foodtruck">Arredondar o troco.</string>
+    <string name="note_at_groceries">Sem gorjeta.</string>
+    <string name="note_at_bar">Arredondar para o próximo euro inteiro.</string>
+
+    <string name="note_be_restaurant" formatted="false">Serviço incluso por lei; 5% - 10% para atendimento excepcional.</string>
+    <string name="note_be_delivery">1-2 € em mau tempo ou entrega rápida.</string>
+    <string name="note_be_takeout">Não esperado.</string>
+    <string name="note_be_foodtruck">Não esperado.</string>
+    <string name="note_be_groceries">Sem gorjeta.</string>
+    <string name="note_be_bar">Troco pequeno é bem-vindo.</string>
+
+    <string name="note_br_restaurant" formatted="false">Taxa de 10% geralmente incluída na conta; extra é opcional.</string>
+    <string name="note_br_delivery">R$2 - R$5 em dinheiro ou pelo app.</string>
+    <string name="note_br_takeout">Sem gorjeta.</string>
+    <string name="note_br_foodtruck">Deixar o troco.</string>
+    <string name="note_br_groceries">R$2 - R$5 para empacotadores de compras.</string>
+    <string name="note_br_bar" formatted="false">10% de taxa de serviço é padrão na comanda.</string>
+
+    <string name="note_ca_restaurant" formatted="false">15% - 20% é o padrão para serviço em mesa.</string>
+    <string name="note_ca_delivery" formatted="false">10% - 15% via aplicativo ou em dinheiro.</string>
+    <string name="note_ca_takeout">Solicitação de gorjeta na maquininha é opcional.</string>
+    <string name="note_ca_foodtruck" formatted="false">10% ou caixinha de gorjetas.</string>
+    <string name="note_ca_groceries">Sem costume de gorjeta.</string>
+    <string name="note_ca_bar" formatted="false">$1 - $2 por bebida ou 15% - 20% na comanda.</string>
+
+    <string name="note_cn_restaurant" formatted="false">Sem cultura de gorjeta; taxa de 10% em hotéis de luxo.</string>
+    <string name="note_cn_delivery">Nenhuma gorjeta esperada.</string>
+    <string name="note_cn_takeout">Sem gorjeta.</string>
+    <string name="note_cn_foodtruck">Sem gorjeta.</string>
+    <string name="note_cn_groceries">Sem gorjeta.</string>
+    <string name="note_cn_bar">Sem gorjeta.</string>
+
+    <string name="note_co_restaurant" formatted="false">10% Propina Voluntaria geralmente vem descrita na conta.</string>
+    <string name="note_co_delivery">2.000 - 5.000 COP em dinheiro ao entregador.</string>
+    <string name="note_co_takeout">Incomum.</string>
+    <string name="note_co_foodtruck">Apenas por um bom atendimento.</string>
+    <string name="note_co_groceries">Troco pequeno para empacotadores.</string>
+    <string name="note_co_bar" formatted="false">10% acrescido ou arredondamento.</string>
+
+    <string name="note_dk_restaurant" formatted="false">Taxa de serviço inclusa na conta por lei; gorjeta é rara.</string>
+    <string name="note_dk_delivery">Raramente esperada.</string>
+    <string name="note_dk_takeout">Sem gorjeta.</string>
+    <string name="note_dk_foodtruck">Sem gorjeta.</string>
+    <string name="note_dk_groceries">Sem gorjeta.</string>
+    <string name="note_dk_bar">Sem padrão de gorjeta.</string>
+
+    <string name="note_eg_restaurant" formatted="false">Baksheesh (10% - 15%) é o costume; deixar dinheiro na mesa.</string>
+    <string name="note_eg_delivery">10 - 20 EGP em dinheiro em mãos ao entregador.</string>
+    <string name="note_eg_takeout">Troco pequeno é apreciado.</string>
+    <string name="note_eg_foodtruck">Arredondar para cima é esperado.</string>
+    <string name="note_eg_groceries">5 - 10 EGP para empacotadores e flanelinhas.</string>
+    <string name="note_eg_bar" formatted="false">10% - 15% em lounges de hotéis.</string>
+
+    <string name="note_fr_restaurant" formatted="false">Service compris (15% por lei); 1-2€ extra por bom atendimento.</string>
+    <string name="note_fr_delivery">1-2€ em dinheiro para o entregador.</string>
+    <string name="note_fr_takeout">Sem gorjeta.</string>
+    <string name="note_fr_foodtruck">Arredondar para o próximo euro.</string>
+    <string name="note_fr_groceries">Sem gorjeta.</string>
+    <string name="note_fr_bar">Deixar o troco no balcão.</string>
+
+    <string name="note_de_restaurant" formatted="false">Arredonde (5% - 10%) e diga o total final direto ao garçom.</string>
+    <string name="note_de_delivery">1-2 € em dinheiro direto nas mãos do entregador.</string>
+    <string name="note_de_takeout">Troco na caixinha é opcional.</string>
+    <string name="note_de_foodtruck">Arredondar para o próximo euro é o padrão.</string>
+    <string name="note_de_groceries">Sem gorjeta em supermercados.</string>
+    <string name="note_de_bar">Arredondar para o próximo euro ou deixar o troco.</string>
+
+    <string name="note_in_restaurant" formatted="false">Verifique taxa de serviço (5% - 10%); se não houver, 10% em dinheiro.</string>
+    <string name="note_in_delivery">₹20 - ₹50 de gorjeta ao entregador.</string>
+    <string name="note_in_takeout">Caixinha de gorjetas opcional.</string>
+    <string name="note_in_foodtruck">Arredondar para os próximos ₹10 ou ₹50.</string>
+    <string name="note_in_groceries">₹20 - ₹50 para empacotadores e carregadores.</string>
+    <string name="note_in_bar" formatted="false">10% em bebidas se não houver taxa de serviço.</string>
+
+    <string name="note_id_restaurant" formatted="false">Arredondar ou 5% - 10% em áreas turísticas (Bali).</string>
+    <string name="note_id_delivery">5.000 - 10.000 IDR pelo app ou dinheiro.</string>
+    <string name="note_id_takeout">Não esperado.</string>
+    <string name="note_id_foodtruck">Arredondar em quiosques warungs.</string>
+    <string name="note_id_groceries">Moedas para guardadores de estacionamento.</string>
+    <string name="note_id_bar">Arredondar em beach clubs.</string>
+
+    <string name="note_ie_restaurant" formatted="false">Verifique taxa de serviço; 10% - 15% é padrão à mesa.</string>
+    <string name="note_ie_delivery">Arredondar / 1-2 € na entrega de comida.</string>
+    <string name="note_ie_takeout">Não obrigatório.</string>
+    <string name="note_ie_foodtruck">Não obrigatório.</string>
+    <string name="note_ie_groceries">Sem gorjeta.</string>
+    <string name="note_ie_bar">Raro no balcão, exceto com serviço em mesa.</string>
+
+    <string name="note_it_restaurant">Taxa coperto é comum; arredonde ou 1-2€ por pessoa por bom serviço.</string>
+    <string name="note_it_delivery">1-2€ em dinheiro.</string>
+    <string name="note_it_takeout">Sem gorjeta.</string>
+    <string name="note_it_foodtruck">Arredondar.</string>
+    <string name="note_it_groceries">Sem gorjeta.</string>
+    <string name="note_it_bar">Moeda pequena no balcão para café em pé.</string>
+
+    <string name="note_jp_restaurant">Sem costume de gorjeta, causando confusão; atendimento excelente é o padrão.</string>
+    <string name="note_jp_delivery">Sem gorjeta; uma reverência cortês é o costume.</string>
+    <string name="note_jp_takeout">Sem gorjeta.</string>
+    <string name="note_jp_foodtruck">Pagar valor exato; sem gorjetas.</string>
+    <string name="note_jp_groceries">Sem gorjeta.</string>
+    <string name="note_jp_bar">Sem gorjeta; taxa de couvert (Otoshi) pode ser cobrada.</string>
+
+    <string name="note_mx_restaurant" formatted="false">10% - 15% de propina é costume; dinheiro ou cartão antes de fechar conta.</string>
+    <string name="note_mx_delivery">20-50 MXN em dinheiro ao entregador.</string>
+    <string name="note_mx_takeout">Caixinha de gorjeta opcional.</string>
+    <string name="note_mx_foodtruck">Troco na caixinha.</string>
+    <string name="note_mx_groceries">5-10 MXN para empacotadores.</string>
+    <string name="note_mx_bar" formatted="false">10% - 15% por rodada ou na conta final.</string>
+
+    <string name="note_nl_restaurant" formatted="false">Serviço incluso, mas arredondar (5% - 10%) é extremamente comum.</string>
+    <string name="note_nl_delivery">1-2 € apreciado pelos entregadores.</string>
+    <string name="note_nl_takeout">Não é padrão.</string>
+    <string name="note_nl_foodtruck">Troco opcional.</string>
+    <string name="note_nl_groceries">Sem gorjeta.</string>
+    <string name="note_nl_bar">Deixar o troco.</string>
+
+    <string name="note_nz_restaurant" formatted="false">Sem expectativa de gorjeta; salários mínimos altos.</string>
+    <string name="note_nz_delivery">Opcional em aplicativos ($2 - $5).</string>
+    <string name="note_nz_takeout">Sem gorjeta.</string>
+    <string name="note_nz_foodtruck">Sem gorjeta.</string>
+    <string name="note_nz_groceries">Sem gorjeta.</string>
+    <string name="note_nz_bar">Sem padrão de gorjeta.</string>
+
+    <string name="note_no_restaurant" formatted="false">Serviço incluso por lei; gorjeta (5% - 10%) é estritamente opcional.</string>
+    <string name="note_no_delivery">Opcional em aplicativos de entrega.</string>
+    <string name="note_no_takeout">Gorjeta não esperada.</string>
+    <string name="note_no_foodtruck">Sem gorjeta.</string>
+    <string name="note_no_groceries">Sem gorjeta.</string>
+    <string name="note_no_bar">Arredondar por um bom serviço.</string>
+
+    <string name="note_sg_restaurant" formatted="false">10% de taxa de serviço e 9% de imposto GST já constam na conta.</string>
+    <string name="note_sg_delivery">Opcional 2 - 5 SGD.</string>
+    <string name="note_sg_takeout">Sem gorjeta.</string>
+    <string name="note_sg_foodtruck">Centros Hawker estritamente não aceitam gorjetas.</string>
+    <string name="note_sg_groceries">Sem gorjeta.</string>
+    <string name="note_sg_bar">Taxa de serviço já inclusa.</string>
+
+    <string name="note_za_restaurant" formatted="false">10% é o mínimo padrão para um atendimento adequado.</string>
+    <string name="note_za_delivery">Arredondar / R10 - R20 é muito bem-vindo para entregadores.</string>
+    <string name="note_za_takeout">Incomum.</string>
+    <string name="note_za_foodtruck">Incomum.</string>
+    <string name="note_za_groceries">R5 - R10 para flanelinhas e empacotadores.</string>
+    <string name="note_za_bar" formatted="false">Arredondar ou 10% na comanda.</string>
+
+    <string name="note_kr_restaurant">Sem cultura de gorjeta; atendimento impecável já incluso.</string>
+    <string name="note_kr_delivery">Sem gorjeta.</string>
+    <string name="note_kr_takeout">Sem gorjeta.</string>
+    <string name="note_kr_foodtruck">Sem gorjeta.</string>
+    <string name="note_kr_groceries">Sem gorjeta.</string>
+    <string name="note_kr_bar">Sem gorjeta.</string>
+
+    <string name="note_es_restaurant" formatted="false">Gorjeta é voluntária; arredonde ou deixe 5% - 10% em restaurantes.</string>
+    <string name="note_es_delivery">1€ em dinheiro apreciado.</string>
+    <string name="note_es_takeout">Sem gorjeta.</string>
+    <string name="note_es_foodtruck">Arredondar.</string>
+    <string name="note_es_groceries">Sem gorjeta.</string>
+    <string name="note_es_bar">Deixar o troco no pires.</string>
+
+    <string name="note_se_restaurant" formatted="false">Taxa de serviço inclusa; gorjeta totalmente opcional.</string>
+    <string name="note_se_delivery">Não esperada.</string>
+    <string name="note_se_takeout">Sem gorjeta.</string>
+    <string name="note_se_foodtruck">Sem gorjeta.</string>
+    <string name="note_se_groceries">Sem gorjeta.</string>
+    <string name="note_se_bar">Não esperada.</string>
+
+    <string name="note_ch_restaurant" formatted="false">Serviço incluso por lei; arredondar (5% - 10%) é habitual.</string>
+    <string name="note_ch_delivery">Apreciado por entregadores.</string>
+    <string name="note_ch_takeout">Não é padrão.</string>
+    <string name="note_ch_foodtruck">Não é padrão.</string>
+    <string name="note_ch_groceries">Sem gorjeta.</string>
+    <string name="note_ch_bar">Arredondar para o próximo franco.</string>
+
+    <string name="note_th_restaurant" formatted="false">20-50 Bahts ou 10% em locais sofisticados; troco nos casuais.</string>
+    <string name="note_th_delivery">20-40 Bahts em dinheiro para o motorista.</string>
+    <string name="note_th_takeout">Deixar o troco.</string>
+    <string name="note_th_foodtruck">Troco na caixinha de gorjetas.</string>
+    <string name="note_th_groceries">Nenhuma gorjeta esperada.</string>
+    <string name="note_th_bar">20-50 Bahts por rodada ou deixar moedas.</string>
+
+    <string name="note_tr_restaurant" formatted="false">Bahşiş (5% - 10%) em dinheiro sobre a mesa (não no cartão).</string>
+    <string name="note_tr_delivery">20 - 50 TL em dinheiro para o entregador.</string>
+    <string name="note_tr_takeout">Caixinha de gorjetas no caixa.</string>
+    <string name="note_tr_foodtruck">Arredondar para cima é suficiente.</string>
+    <string name="note_tr_groceries">10 - 20 TL ao ajudar com sacolas.</string>
+    <string name="note_tr_bar" formatted="false">Arredondar ou 10% por rodada.</string>
+
+    <string name="note_ua_bar" formatted="false">10% de gorjeta é padrão em bares e pubs.</string>
+
+    <string name="note_us_restaurant" formatted="false">Gorjeta é praticamente obrigatória (15% - 20%); garçons dependem disso.</string>
+    <string name="note_us_delivery" formatted="false">Padrão: 10% - 15% via aplicativo ou em dinheiro.</string>
+    <string name="note_us_takeout">Opções de gorjeta na tela são estritamente opcionais.</string>
+    <string name="note_us_foodtruck">Caixinhas ou sugestões na tela são comuns.</string>
+    <string name="note_us_groceries">Opcional para empacotadores e serviço no porta-malas ($2 - $5).</string>
+    <string name="note_us_bar" formatted="false">$1 - $2 por bebida ou 15% - 20% na comanda.</string>
+
+    <string name="note_ae_restaurant" formatted="false">Taxa de serviço inclusa; 10% - 15% a mais é costume para garçons.</string>
+    <string name="note_ae_delivery">5 - 10 AED em dinheiro ou pelo app.</string>
+    <string name="note_ae_takeout">Não é padrão.</string>
+    <string name="note_ae_foodtruck">Não é padrão.</string>
+    <string name="note_ae_groceries">5 - 10 AED para ajudantes de compras.</string>
+    <string name="note_ae_bar" formatted="false">Arredondar ou 10% em lounges de luxo.</string>
+
+    <string name="note_gb_restaurant" formatted="false">Verifique taxa opcional de 12.5%; adicione 10% - 15% se ausente.</string>
+    <string name="note_gb_delivery">£1 - £2 em dinheiro ou no app é o habitual.</string>
+    <string name="note_gb_takeout">Caixinha de gorjeta opcional.</string>
+    <string name="note_gb_foodtruck">Caixinha de gorjeta opcional.</string>
+    <string name="note_gb_groceries">Sem gorjeta.</string>
+    <string name="note_gb_bar">Raro no balcão, exceto se houver serviço à mesa.</string>
+
+    <!-- Text-to-Speech (TTS) strings -->
+    <string name="tts_tap_to_read">Toque para ouvir o resumo dos totais calculados</string>
+    <string name="tts_tap_to_speak_label">Ouvir</string>
+    <string name="tts_speaking_now">Lendo totais...</string>
+
+    <!-- Cultural Tipping Tip FAB and Modal strings -->
+    <string name="cultural_tip_fab_desc">Dica cultural de gorjeta para %s</string>
+    <string name="cultural_tip_dialog_title">Etiqueta de Gorjetas</string>
+    <string name="cultural_tip_understood">Entendi</string>
+    <string name="cultural_tip_view_country_details">Explorar todos os países</string>
+
+    <!-- DataStore Tip History & Save Prompt Strings -->
+    <string name="save_tip_title">Deseja salvar?</string>
+    <string name="save_tip_message">Salve este cálculo de gorjeta no seu histórico recente para consultar a qualquer momento.</string>
+    <string name="save_button_confirm">Salvar</string>
+    <string name="save_button_dismiss">Não salvar</string>
+    <string name="tip_saved_snackbar">Cálculo salvo no histórico</string>
+    <string name="history_button_label">Histórico</string>
+    <string name="history_title">Histórico de gorjetas</string>
+    <string name="history_empty_state">Nenhum cálculo salvo ainda</string>
+    <string name="history_clear_all">Limpar histórico</string>
+    <string name="history_load_action">Carregar</string>
+    <string name="history_delete_item">Excluir</string>
+    <string name="save_prompt_setting_title">Perguntar para salvar</string>
+    <string name="save_prompt_toggle_label">Perguntar para salvar:</string>
+    <string name="save_prompt_always_mode">Sempre</string>
+    <string name="save_prompt_never_mode">Nunca</string>
+    <string name="tutorial_toggle_label">Tutorial ao iniciar:</string>
+    <string name="tutorial_toggle_always">Sempre</string>
+    <string name="tutorial_toggle_never">Nunca</string>
+    <string name="coach_step_history_title">Histórico de transações</string>
+    <string name="coach_step_history_subtitle">Salve e revise cálculos anteriores</string>
+    <string name="coach_step_history_desc">Mantenha o histórico dos seus cálculos de gorjeta via DataStore. Escolha abaixo se a pergunta \"Deseja salvar?\" deve aparecer sempre ou nunca.</string>
+    <string name="save_to_history_action">Salvar no histórico</string>
+
+    <!-- Global Explorer Unlock Notification Strings -->
+    <string name="unlock_global_explorer_countdown">Mais %d toques para desbloquear o Explorador Global</string>
+    <string name="unlock_global_explorer_countdown_one">Mais 1 toque para desbloquear o Explorador Global</string>
+    <string name="unlock_global_explorer_success">🎉 Segredo descoberto! Seletor global de países desbloqueado</string>
+</resources>

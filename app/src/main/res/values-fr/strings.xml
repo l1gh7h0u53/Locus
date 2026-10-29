@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Locus</string>
+    <string name="header_subtitle">Calculateur</string>
+    <string name="service_restaurant">Restaurant</string>
+    <string name="service_delivery">Livraison</string>
+    <string name="service_takeout">À emporter</string>
+    <string name="service_foodtruck">Food truck</string>
+    <string name="service_groceries">Épicerie</string>
+    <string name="service_bar">Bar</string>
+    <string name="bill_amount">Montant de l\'addition</string>
+    <string name="enter_bill_amount">ENTRER LE MONTANT</string>
+    <string name="custom_percentage">Pourboire personnalisé %</string>
+    <string name="tip_percent">Pourcentage de pourboire</string>
+    <string name="senior_mode_title">Mode Senior</string>
+    <string name="senior_mode_desc">Grands boutons et texte lisible</string>
+    <string name="standard_tip">Standard</string>
+    <string name="generous_tip">Généreux</string>
+    <string name="extremely_generous_tip">Très généreux</string>
+    <string name="legend_tip">Légende</string>
+    <string name="angel_tip">Pourboire d\'honneur</string>
+    <string name="split_bill">Partager l\'addition</string>
+    <string name="number_of_people">Nombre de personnes</string>
+    <string name="calculated_tip">Montant du pourboire</string>
+    <string name="calculated_total">Addition totale</string>
+    <string name="split_share">Par personne</string>
+    <string name="total_bill_label">Addition totale</string>
+    <string name="tip_amount_label">Montant du pourboire</string>
+    <string name="each_pays_label">Par personne</string>
+    <string name="service_category">Catégorie de service</string>
+    <string name="select_service_category">SÉLECTIONNER LE SERVICE</string>
+    <string name="haptic_state">Vibrations haptiques</string>
+    <string name="clear_button">Tout effacer</string>
+    <string name="round_up">Arrondir au supérieur</string>
+    <string name="round_down">Arrondir à l\'inférieur</string>
+    <string name="custom_slider">Pourcentage personnalisé</string>
+    <string name="calculated_totals">TOTAUX CALCULÉS</string>
+    <string name="reset_calculator">RÉINITIALISER</string>
+    <string name="search_country_placeholder">Rechercher par pays, code ISO (ex. FR, Japon)...</string>
+    <string name="select_language_title">Sélectionner la langue</string>
+    <string name="auto_language_option">Résolution automatique hors ligne</string>
+    <string name="auto_language_sub">Langue système &amp; carte ISO locale</string>
+    <string name="close_button">Fermer</string>
+    <string name="solo_person">1 Personne (Solo)</string>
+    <string name="people_sharing">%d Personnes se partagent</string>
+    <string name="tipping_tiers_header">PALIERS DE POURBOIRE POUR %s</string>
+    <string name="select_currency">SÉLECTIONNER LA DEVISE</string>
+    <string name="all_currencies">Toutes (%d)</string>
+    <string name="more_currencies">+ Plus...</string>
+    <string name="global_currencies_title">Devises mondiales</string>
+    <string name="currencies_count">%d devises</string>
+    <string name="search_currency_placeholder">Rechercher une devise, code ou pays...</string>
+    <string name="no_currency_found">Aucune devise correspondante</string>
+    <string name="select_country_title">Sélectionner un pays</string>
+    <string name="regional_matrices_count">192 Pays &amp; matrices régionales</string>
+    <string name="culture_advice">Conseil culturel</string>
+    <string name="iso_label">ISO: %1$s • Direction: %2$s</string>
+    <string name="selected_toast">%1$s (%2$s) sélectionné</string>
+    <string name="toggle_senior_mode">Basculer en mode Senior</string>
+    <string name="toggle_theme_mode">Changer de thème</string>
+    <string name="app_description_semantic">Locus, le calculateur de pourboire mondial</string>
+    <string name="passport_logo_desc">Logo Passeport</string>
+    <string name="decrease_people">Diminuer le nombre</string>
+    <string name="increase_people">Augmenter le nombre</string>
+    <string name="back_to_calculator">Retour au calculateur</string>
+    <string name="share_bill_summary">Partager le résumé</string>
+    <string name="share_bill_summary_title">Résumé de l\'addition</string>
+    <string name="tip_calculation_desc">Calcul: %1$s. Pourboire: %2$s. Chaque personne: %3$s</string>
+
+    <string name="service_restaurants">Restaurants</string>
+    <string name="tier_standard">Standard</string>
+    <string name="tier_generous">Généreux</string>
+    <string name="tier_legend">Légende</string>
+    <string name="tier_mvp">Pourboire d\'honneur</string>
+
+    <!-- Matrix & Country Tipping Notes in French -->
+    <string name="note_default_guideline">Les directives générales s\'appliquent.</string>
+    <string name="note_matrix_a_restaurant">Le pourboire est très attendu ; espèces préférées.</string>
+    <string name="note_matrix_a_delivery">Donner l\'argent directement au livreur.</string>
+    <string name="note_matrix_a_takeout">Non attendu pour les commandes à emporter.</string>
+    <string name="note_matrix_a_foodtruck">Boîtes à pourboire facultatives.</string>
+    <string name="note_matrix_a_groceries">Les emballeurs ne travaillent souvent que pour les pourboires.</string>
+    <string name="note_matrix_a_bar">Pourboire par tournée ou sur l\'addition finale.</string>
+
+    <string name="note_matrix_b_restaurant">Attente standard pour le service à table.</string>
+    <string name="note_matrix_b_delivery">Les livreurs apprécient un petit pourboire.</string>
+    <string name="note_matrix_b_takeout">Boîte à pourboires facultative.</string>
+    <string name="note_matrix_b_foodtruck">L\'arrondi est courant.</string>
+    <string name="note_matrix_b_groceries">Pas de pourboire habituel dans les magasins.</string>
+    <string name="note_matrix_b_bar">Laisser la monnaie sur le comptoir.</string>
+
+    <string name="note_matrix_c_restaurant">Service compris ; le pourboire est un bonus volontaire.</string>
+    <string name="note_matrix_c_delivery">Courant par mauvais temps.</string>
+    <string name="note_matrix_c_takeout">Non attendu à emporter.</string>
+    <string name="note_matrix_c_foodtruck">Simple arrondi.</string>
+    <string name="note_matrix_c_groceries">Strictement inhabituel.</string>
+    <string name="note_matrix_c_bar">Laisser la monnaie au comptoir.</string>
+
+    <string name="note_matrix_d_restaurant">Le pourboire n\'est pas coutumier ou jugé offensant/déroutant ; le service est inclus.</string>
+    <string name="note_matrix_d_delivery">Pas de pourboire attendu.</string>
+    <string name="note_matrix_d_takeout">Pas de pourboire.</string>
+    <string name="note_matrix_d_foodtruck">Pas de pourboire.</string>
+    <string name="note_matrix_d_groceries">Pas de pourboire.</string>
+    <string name="note_matrix_d_bar">Pas de pourboire.</string>
+
+    <string name="note_matrix_e_restaurant">Le baksheesh est traditionnel ; laisser de l\'argent sur la table.</string>
+    <string name="note_matrix_e_delivery">Les livreurs s\'attendent à un pourboire en main.</string>
+    <string name="note_matrix_e_takeout">Boîte à pourboires au comptoir.</string>
+    <string name="note_matrix_e_foodtruck">L\'arrondi est très apprécié.</string>
+    <string name="note_matrix_e_groceries">Les aides vivent de ces pourboires.</string>
+    <string name="note_matrix_e_bar">Apprécié dans les salons d\'hôtel.</string>
+
+    <!-- Custom Country Notes -->
+    <string name="note_al_restaurant" formatted="false">Le pourboire (5% - 10%) est très apprécié dans les zones touristiques.</string>
+    <string name="note_al_delivery">Pourboires en espèces pour les livreurs bienvenus.</string>
+    <string name="note_al_takeout">Non attendu à emporter.</string>
+    <string name="note_al_foodtruck">Boîtes à pourboires facultatives.</string>
+    <string name="note_al_groceries">Pas de pourboire standard.</string>
+    <string name="note_al_bar">Arrondir ou laisser la monnaie.</string>
+
+    <string name="note_ar_restaurant" formatted="false">10% en espèces est d\'usage ; argent liquide préféré en raison de l\'inflation.</string>
+    <string name="note_ar_delivery" formatted="false">5% - 10% en espèces pour le coursier.</string>
+    <string name="note_ar_takeout">Non attendu.</string>
+    <string name="note_ar_foodtruck">Petite monnaie dans la boîte.</string>
+    <string name="note_ar_groceries">Petits billets pour les emballeurs.</string>
+    <string name="note_ar_bar" formatted="false">Arrondir ou 10% sur la note.</string>
+
+    <string name="note_au_restaurant" formatted="false">Le pourboire n\'est pas habituel ; salaires élevés. 10% pour service d\'exception.</string>
+    <string name="note_au_delivery">Facultatif $2 - $5 par mauvais temps.</string>
+    <string name="note_au_takeout">Pas de pourboire attendu.</string>
+    <string name="note_au_foodtruck">Boîte à pourboires facultative.</string>
+    <string name="note_au_groceries">Pas de pourboire.</string>
+    <string name="note_au_bar">Pas nécessaire ; laisser la monnaie suffit.</string>
+
+    <string name="note_at_restaurant" formatted="false">Pourboire attendu ; arrondir ou ajouter 5% - 10% à l\'addition.</string>
+    <string name="note_at_delivery">1-2 € en main propre au livreur.</string>
+    <string name="note_at_takeout">Non attendu au comptoir.</string>
+    <string name="note_at_foodtruck">Arrondir la monnaie.</string>
+    <string name="note_at_groceries">Pas de pourboire.</string>
+    <string name="note_at_bar">Arrondir à l\'euro supérieur.</string>
+
+    <string name="note_be_restaurant" formatted="false">Service compris par la loi ; pourboires (5% - 10%) pour service exceptionnel.</string>
+    <string name="note_be_delivery">1-2 € par mauvais temps ou livraison rapide.</string>
+    <string name="note_be_takeout">Non attendu.</string>
+    <string name="note_be_foodtruck">Non attendu.</string>
+    <string name="note_be_groceries">Pas de pourboire.</string>
+    <string name="note_be_bar">Petite monnaie appréciée.</string>
+
+    <string name="note_br_restaurant" formatted="false">10% de service généralement inclus sur l\'addition ; extra facultatif.</string>
+    <string name="note_br_delivery">R$2 - R$5 en espèces ou via l\'application.</string>
+    <string name="note_br_takeout">Pas de pourboire.</string>
+    <string name="note_br_foodtruck">Laisser la monnaie.</string>
+    <string name="note_br_groceries">R$2 - R$5 pour les emballeurs.</string>
+    <string name="note_br_bar" formatted="false">10% de service standard au bar.</string>
+
+    <string name="note_ca_restaurant" formatted="false">15% - 20% standard pour le service à table.</string>
+    <string name="note_ca_delivery" formatted="false">10% - 15% via app ou en liquide.</string>
+    <string name="note_ca_takeout">Demande sur terminal carte facultative.</string>
+    <string name="note_ca_foodtruck" formatted="false">10% ou boîte à pourboires.</string>
+    <string name="note_ca_groceries">Pas de pourboire habituel.</string>
+    <string name="note_ca_bar" formatted="false">$1 - $2 par verre ou 15% - 20% sur la note.</string>
+
+    <string name="note_cn_restaurant" formatted="false">Le pourboire n\'est pas coutumier ; 10% de service dans les hôtels de luxe.</string>
+    <string name="note_cn_delivery">Pas de pourboire attendu.</string>
+    <string name="note_cn_takeout">Pas de pourboire.</string>
+    <string name="note_cn_foodtruck">Pas de pourboire.</string>
+    <string name="note_cn_groceries">Pas de pourboire.</string>
+    <string name="note_cn_bar">Pas de pourboire.</string>
+
+    <string name="note_co_restaurant" formatted="false">10% Propina Voluntaria est souvent mentionnée sur la facture.</string>
+    <string name="note_co_delivery">2 000 - 5 000 COP en espèces au coursier.</string>
+    <string name="note_co_takeout">Peu habituel.</string>
+    <string name="note_co_foodtruck">Uniquement pour bon service.</string>
+    <string name="note_co_groceries">Petite monnaie pour les emballeurs.</string>
+    <string name="note_co_bar" formatted="false">10% inclus ou arrondir.</string>
+
+    <string name="note_dk_restaurant" formatted="false">Service inclus dans l\'addition par la loi ; pourboire rare.</string>
+    <string name="note_dk_delivery">Rarement attendu.</string>
+    <string name="note_dk_takeout">Pas de pourboire.</string>
+    <string name="note_dk_foodtruck">Pas de pourboire.</string>
+    <string name="note_dk_groceries">Pas de pourboire.</string>
+    <string name="note_dk_bar">Pas de pourboire d\'usage.</string>
+
+    <string name="note_eg_restaurant" formatted="false">Le baksheesh (10% - 15%) est d\'usage ; laisser du liquide sur la table.</string>
+    <string name="note_eg_delivery">10 - 20 EGP en main au livreur.</string>
+    <string name="note_eg_takeout">Petite monnaie appréciée.</string>
+    <string name="note_eg_foodtruck">Arrondir la monnaie.</string>
+    <string name="note_eg_groceries">5 - 10 EGP pour les emballeurs.</string>
+    <string name="note_eg_bar" formatted="false">10% - 15% dans les salons d\'hôtel.</string>
+
+    <string name="note_fr_restaurant" formatted="false">Service compris (15% par la loi) ; arrondir ou 1-2€ extra pour bon service.</string>
+    <string name="note_fr_delivery">1-2€ en espèces pour le livreur.</string>
+    <string name="note_fr_takeout">Pas de pourboire.</string>
+    <string name="note_fr_foodtruck">Arrondir à l\'euro supérieur.</string>
+    <string name="note_fr_groceries">Pas de pourboire.</string>
+    <string name="note_fr_bar">Laisser la petite monnaie.</string>
+
+    <string name="note_de_restaurant" formatted="false">Arrondir (5% - 10%) et annoncer le total directement au serveur.</string>
+    <string name="note_de_delivery">1-2 € en main propre au livreur.</string>
+    <string name="note_de_takeout">Monnaie dans la boîte facultative.</string>
+    <string name="note_de_foodtruck">Arrondir à l\'euro supérieur est habituel.</string>
+    <string name="note_de_groceries">Pas de pourboire en supermarché.</string>
+    <string name="note_de_bar">Arrondir à l\'euro supérieur ou laisser la monnaie.</string>
+
+    <string name="note_in_restaurant" formatted="false">Vérifier les frais de service (5% - 10%) ; sinon 10% en liquide.</string>
+    <string name="note_in_delivery">₹20 - ₹50 de pourboire au livreur.</string>
+    <string name="note_in_takeout">Boîte à pourboire facultative.</string>
+    <string name="note_in_foodtruck">Arrondir aux ₹10 ou ₹50 supérieurs.</string>
+    <string name="note_in_groceries">₹20 - ₹50 pour les emballeurs.</string>
+    <string name="note_in_bar" formatted="false">10% sur les consommations si pas de frais de service.</string>
+
+    <string name="note_id_restaurant" formatted="false">Arrondir ou 5% - 10% dans les zones touristiques (Bali).</string>
+    <string name="note_id_delivery">5 000 - 10 000 IDR par app ou liquide.</string>
+    <string name="note_id_takeout">Non attendu.</string>
+    <string name="note_id_foodtruck">Arrondir dans les warungs.</string>
+    <string name="note_id_groceries">Petite monnaie pour placeurs de parking.</string>
+    <string name="note_id_bar">Arrondir dans les beach clubs.</string>
+
+    <string name="note_ie_restaurant" formatted="false">Vérifier les frais de service ; 10% - 15% standard à table.</string>
+    <string name="note_ie_delivery">Arrondir / 1-2 € pour livraison de repas.</string>
+    <string name="note_ie_takeout">Non requis.</string>
+    <string name="note_ie_foodtruck">Non requis.</string>
+    <string name="note_ie_groceries">Pas de pourboire.</string>
+    <string name="note_ie_bar">Rare au comptoir sauf service en salle.</string>
+
+    <string name="note_it_restaurant">Coperto courant ; arrondir ou 1-2€ par personne pour bon service.</string>
+    <string name="note_it_delivery">1-2€ en espèces.</string>
+    <string name="note_it_takeout">Pas de pourboire.</string>
+    <string name="note_it_foodtruck">Arrondir.</string>
+    <string name="note_it_groceries">Pas de pourboire.</string>
+    <string name="note_it_bar">Petite pièce au comptoir pour expresso debout.</string>
+
+    <string name="note_jp_restaurant">Le pourboire est inhabituel et déroutant ; un service d\'exception est la norme.</string>
+    <string name="note_jp_delivery">Pas de pourboire ; salut courtois d\'usage.</string>
+    <string name="note_jp_takeout">Pas de pourboire.</string>
+    <string name="note_jp_foodtruck">Montant exact préféré ; pas de pourboire.</string>
+    <string name="note_jp_groceries">Pas de pourboire.</string>
+    <string name="note_jp_bar">Pas de pourboire ; frais de couvert (Otoshi) possibles.</string>
+
+    <string name="note_mx_restaurant" formatted="false">10% - 15% de propina est de coutume ; espèces ou carte avant fermeture.</string>
+    <string name="note_mx_delivery">20-50 MXN en liquide au livreur.</string>
+    <string name="note_mx_takeout">Boîte à pourboire facultative.</string>
+    <string name="note_mx_foodtruck">Petite monnaie dans la boîte.</string>
+    <string name="note_mx_groceries">5-10 MXN pour les emballeurs.</string>
+    <string name="note_mx_bar" formatted="false">10% - 15% par tournée ou note finale.</string>
+
+    <string name="note_nl_restaurant" formatted="false">Service compris, mais arrondir (5% - 10%) est très courant.</string>
+    <string name="note_nl_delivery">1-2 € apprécié des livreurs.</string>
+    <string name="note_nl_takeout">Non standard.</string>
+    <string name="note_nl_foodtruck">Monnaie facultative.</string>
+    <string name="note_nl_groceries">Pas de pourboire.</string>
+    <string name="note_nl_bar">Laisser la monnaie.</string>
+
+    <string name="note_nz_restaurant" formatted="false">Pas d\'attente de pourboire ; salaires élevés.</string>
+    <string name="note_nz_delivery">Facultatif sur les apps ($2 - $5).</string>
+    <string name="note_nz_takeout">Pas de pourboire.</string>
+    <string name="note_nz_foodtruck">Pas de pourboire.</string>
+    <string name="note_nz_groceries">Pas de pourboire.</string>
+    <string name="note_nz_bar">Pas de pourboire d\'usage.</string>
+
+    <string name="note_no_restaurant" formatted="false">Service compris par la loi ; pourboires (5% - 10%) facultatifs.</string>
+    <string name="note_no_delivery">Facultatif sur apps de livraison.</string>
+    <string name="note_no_takeout">Pas de pourboire attendu.</string>
+    <string name="note_no_foodtruck">Pas de pourboire.</string>
+    <string name="note_no_groceries">Pas de pourboire.</string>
+    <string name="note_no_bar">Arrondir pour bon service.</string>
+
+    <string name="note_sg_restaurant" formatted="false">10% de frais de service et 9% de TVA sont inclus sur l\'addition.</string>
+    <string name="note_sg_delivery">Facultatif 2 - 5 SGD.</string>
+    <string name="note_sg_takeout">Pas de pourboire.</string>
+    <string name="note_sg_foodtruck">Les centres Hawker refusent strictement les pourboires.</string>
+    <string name="note_sg_groceries">Pas de pourboire.</string>
+    <string name="note_sg_bar">Frais de service généralement inclus.</string>
+
+    <string name="note_za_restaurant" formatted="false">10% est le minimum standard pour un bon service.</string>
+    <string name="note_za_delivery">Arrondir / R10 - R20 apprécié des livreurs.</string>
+    <string name="note_za_takeout">Peu habituel.</string>
+    <string name="note_za_foodtruck">Peu habituel.</string>
+    <string name="note_za_groceries">R5 - R10 pour gardiens et emballeurs.</string>
+    <string name="note_za_bar" formatted="false">Arrondir ou 10% sur l\'addition.</string>
+
+    <string name="note_kr_restaurant">Pas de culture du pourboire ; un excellent service est inclus.</string>
+    <string name="note_kr_delivery">Pas de pourboire.</string>
+    <string name="note_kr_takeout">Pas de pourboire.</string>
+    <string name="note_kr_foodtruck">Pas de pourboire.</string>
+    <string name="note_kr_groceries">Pas de pourboire.</string>
+    <string name="note_kr_bar">Pas de pourboire.</string>
+
+    <string name="note_es_restaurant" formatted="false">La propina est volontaire ; arrondir ou laisser 5% - 10% au restaurant.</string>
+    <string name="note_es_delivery">1€ en liquide apprécié.</string>
+    <string name="note_es_takeout">Pas de pourboire.</string>
+    <string name="note_es_foodtruck">Arrondir.</string>
+    <string name="note_es_groceries">Pas de pourboire.</string>
+    <string name="note_es_bar">Laisser la petite monnaie sur la soucoupe.</string>
+
+    <string name="note_se_restaurant" formatted="false">Service compris ; pourboire strictement facultatif.</string>
+    <string name="note_se_delivery">Non attendu.</string>
+    <string name="note_se_takeout">Pas de pourboire.</string>
+    <string name="note_se_foodtruck">Pas de pourboire.</string>
+    <string name="note_se_groceries">Pas de pourboire.</string>
+    <string name="note_se_bar">Non attendu.</string>
+
+    <string name="note_ch_restaurant" formatted="false">Service compris par la loi ; arrondir (5% - 10%) est normal.</string>
+    <string name="note_ch_delivery">Apprécié des livreurs.</string>
+    <string name="note_ch_takeout">Non standard.</string>
+    <string name="note_ch_foodtruck">Non standard.</string>
+    <string name="note_ch_groceries">Pas de pourboire.</string>
+    <string name="note_ch_bar">Arrondir au franc supérieur.</string>
+
+    <string name="note_th_restaurant" formatted="false">20-50 Bahts ou 10% dans les lieux haut de gamme ; monnaie ailleurs.</string>
+    <string name="note_th_delivery">20-40 Bahts en liquide pour le livreur.</string>
+    <string name="note_th_takeout">Laisser la monnaie.</string>
+    <string name="note_th_foodtruck">Petite monnaie dans la boîte.</string>
+    <string name="note_th_groceries">Pas de pourboire attendu.</string>
+    <string name="note_th_bar">20-50 Bahts par tournée ou garder les pièces.</string>
+
+    <string name="note_tr_restaurant" formatted="false">Bahşiş (5% - 10%) en espèces sur la table (pas par carte).</string>
+    <string name="note_tr_delivery">20 - 50 TL en main au livreur.</string>
+    <string name="note_tr_takeout">Boîte à pourboires au comptoir.</string>
+    <string name="note_tr_foodtruck">Arrondir suffit.</string>
+    <string name="note_tr_groceries">10 - 20 TL pour porter les sacs.</string>
+    <string name="note_tr_bar" formatted="false">Arrondir ou 10% par tournée.</string>
+
+    <string name="note_ua_bar" formatted="false">Un pourboire de 10% est standard dans les bars et pubs.</string>
+
+    <string name="note_us_restaurant" formatted="false">Le pourboire est quasiment obligatoire (15% - 20%) ; les serveurs en vivent.</string>
+    <string name="note_us_delivery" formatted="false">Standard : 10% - 15% par app ou en liquide.</string>
+    <string name="note_us_takeout">Les suggestions à l\'écran restent facultatives.</string>
+    <string name="note_us_foodtruck">Boîtes ou suggestions sur écran fréquentes.</string>
+    <string name="note_us_groceries">Facultatif pour les emballeurs ($2 - $5).</string>
+    <string name="note_us_bar" formatted="false">$1 - $2 par verre ou 15% - 20% sur la note.</string>
+
+    <string name="note_ae_restaurant" formatted="false">Service souvent inclus ; 10% - 15% de plus d\'usage pour les serveurs.</string>
+    <string name="note_ae_delivery">5 - 10 AED en espèces ou via app.</string>
+    <string name="note_ae_takeout">Non standard.</string>
+    <string name="note_ae_foodtruck">Non standard.</string>
+    <string name="note_ae_groceries">5 - 10 AED pour les aides de chargement.</string>
+    <string name="note_ae_bar" formatted="false">Arrondir ou 10% dans les lounges de luxe.</string>
+
+    <string name="note_gb_restaurant" formatted="false">Vérifier le service discrétionnaire de 12.5% ; ajouter 10% - 15% sinon.</string>
+    <string name="note_gb_delivery">£1 - £2 en liquide ou app usuel.</string>
+    <string name="note_gb_takeout">Boîte à pourboire facultative.</string>
+    <string name="note_gb_foodtruck">Boîte à pourboire facultative.</string>
+    <string name="note_gb_groceries">Pas de pourboire.</string>
+    <string name="note_gb_bar">Rare au comptoir sauf service à table.</string>
+
+    <!-- Text-to-Speech (TTS) strings -->
+    <string name="tts_tap_to_read">Appuyez pour écouter le récapitulatif des totaux calculés</string>
+    <string name="tts_tap_to_speak_label">Écouter</string>
+    <string name="tts_speaking_now">Lecture des totaux...</string>
+
+    <!-- Cultural Tipping Tip FAB and Modal strings -->
+    <string name="cultural_tip_fab_desc">Conseil culturel de pourboire pour %s</string>
+    <string name="cultural_tip_dialog_title">Coutumes de pourboire</string>
+    <string name="cultural_tip_understood">Compris</string>
+    <string name="cultural_tip_view_country_details">Explorer tous les pays</string>
+
+    <!-- DataStore Tip History & Save Prompt Strings -->
+    <string name="save_tip_title">Voulez-vous l\'enregistrer ?</string>
+    <string name="save_tip_message">Enregistrez ce calcul de pourboire dans votre historique récent pour le consulter à tout moment.</string>
+    <string name="save_button_confirm">Enregistrer</string>
+    <string name="save_button_dismiss">Ne pas enregistrer</string>
+    <string name="tip_saved_snackbar">Calcul enregistré dans l\'historique</string>
+    <string name="history_button_label">Historique</string>
+    <string name="history_title">Historique des pourboires</string>
+    <string name="history_empty_state">Aucun calcul enregistré pour le moment</string>
+    <string name="history_clear_all">Effacer l\'historique</string>
+    <string name="history_load_action">Charger</string>
+    <string name="history_delete_item">Supprimer</string>
+    <string name="save_prompt_setting_title">Demander pour enregistrer</string>
+    <string name="save_prompt_toggle_label">Demander pour enregistrer :</string>
+    <string name="save_prompt_always_mode">Toujours</string>
+    <string name="save_prompt_never_mode">Jamais</string>
+    <string name="tutorial_toggle_label">Tutoriel au démarrage :</string>
+    <string name="tutorial_toggle_always">Toujours</string>
+    <string name="tutorial_toggle_never">Jamais</string>
+    <string name="coach_step_history_title">Historique des transactions</string>
+    <string name="coach_step_history_subtitle">Enregistrez et consultez vos calculs</string>
+    <string name="coach_step_history_desc">Conservez un historique local de vos pourboires via DataStore. Choisissez ci-dessous si l\'invite \"Voulez-vous l\'enregistrer ?\" doit s\'afficher toujours ou jamais.</string>
+    <string name="save_to_history_action">Enregistrer dans l\'historique</string>
+
+    <!-- Global Explorer Unlock Notification Strings -->
+    <string name="unlock_global_explorer_countdown">Encore %d appuis pour déverrouiller l\'Explorateur Global</string>
+    <string name="unlock_global_explorer_countdown_one">Encore 1 appui pour déverrouiller l\'Explorateur Global</string>
+    <string name="unlock_global_explorer_success">🎉 Secret découvert ! Sélecteur global de pays déverrouillé</string>
+</resources>

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Locus</string>
+    <string name="header_subtitle">حاسبة</string>
+    <string name="service_restaurant">مطعم</string>
+    <string name="service_delivery">توصيل</string>
+    <string name="service_takeout">سفري</string>
+    <string name="service_foodtruck">عربة طعام</string>
+    <string name="service_groceries">بقالة</string>
+    <string name="service_bar">مشروبات</string>
+    <string name="bill_amount">مبلغ الفاتورة</string>
+    <string name="enter_bill_amount">أدخل مبلغ الفاتورة</string>
+    <string name="custom_percentage">نسبة مخصصة %</string>
+    <string name="tip_percent">نسبة البقشيش</string>
+    <string name="senior_mode_title">وضع كبار السن</string>
+    <string name="senior_mode_desc">أزرار كبيرة ونصوص واضحة ومقروءة</string>
+    <string name="standard_tip">قياسي</string>
+    <string name="generous_tip">كريم</string>
+    <string name="extremely_generous_tip">كريم جداً</string>
+    <string name="legend_tip">أسطوري</string>
+    <string name="angel_tip">إكرامية الشرف</string>
+    <string name="split_bill">تقسيم الفاتورة</string>
+    <string name="number_of_people">عدد الأشخاص</string>
+    <string name="calculated_tip">مبلغ البقشيش</string>
+    <string name="calculated_total">المجموع الكلي</string>
+    <string name="split_share">لكل شخص</string>
+    <string name="total_bill_label">المجموع الكلي</string>
+    <string name="tip_amount_label">مبلغ البقشيش</string>
+    <string name="each_pays_label">لكل شخص</string>
+    <string name="service_category">فئة الخدمة</string>
+    <string name="select_service_category">اختر فئة الخدمة</string>
+    <string name="haptic_state">الاهتزاز اللمسي</string>
+    <string name="clear_button">مسح الكل</string>
+    <string name="round_up">تقريب للأعلى</string>
+    <string name="round_down">تقريب للأسفل</string>
+    <string name="custom_slider">نسبة مخصصة</string>
+    <string name="calculated_totals">المجاميع المحسوبة</string>
+    <string name="reset_calculator">إعادة ضبط الحاسبة</string>
+    <string name="search_country_placeholder">البحث عن دولة أو رمز (مثل US أو مصر)...</string>
+    <string name="select_language_title">اختر اللغة</string>
+    <string name="auto_language_option">التعرف التلقائي دون اتصال</string>
+    <string name="auto_language_sub">لغة النظام وخريطة الدول المحلية</string>
+    <string name="close_button">إغلاق</string>
+    <string name="solo_person">شخص واحد (مفرد)</string>
+    <string name="people_sharing">%d أشخاص يتقاسمون</string>
+    <string name="tipping_tiers_header">فئات البقشيش لدولة %s</string>
+    <string name="select_currency">اختر العملة</string>
+    <string name="all_currencies">الكل (%d)</string>
+    <string name="more_currencies">+ المزيد...</string>
+    <string name="global_currencies_title">العملات العالمية</string>
+    <string name="currencies_count">%d عملات</string>
+    <string name="search_currency_placeholder">ابحث عن عملة أو رمز أو دولة...</string>
+    <string name="no_currency_found">لم يتم العثور على عملة مطابقة</string>
+    <string name="select_country_title">اختر الدولة</string>
+    <string name="regional_matrices_count">192 دولة ودليل إقليمي</string>
+    <string name="culture_advice">نصيحة ثقافية</string>
+    <string name="iso_label">الرمز: %1$s • الاتجاه: %2$s</string>
+    <string name="selected_toast">تم اختيار %1$s (%2$s)</string>
+    <string name="toggle_senior_mode">تبديل وضع كبار السن</string>
+    <string name="toggle_theme_mode">تبديل المظهر</string>
+    <string name="app_description_semantic">لوكس، حاسبة البقشيش العالمية</string>
+    <string name="passport_logo_desc">شعار جواز السفر</string>
+    <string name="decrease_people">تقليل عدد الأشخاص</string>
+    <string name="increase_people">زيادة عدد الأشخاص</string>
+    <string name="back_to_calculator">العودة للحاسبة</string>
+    <string name="share_bill_summary">مشاركة الملخص</string>
+    <string name="share_bill_summary_title">ملخص الفاتورة</string>
+    <string name="tip_calculation_desc">حساب الفاتورة: %1$s. البقشيش: %2$s. نصيب الفرد: %3$s</string>
+
+    <string name="service_restaurants">المطاعم</string>
+    <string name="tier_standard">قياسي</string>
+    <string name="tier_generous">كريم</string>
+    <string name="tier_legend">أسطوري</string>
+    <string name="tier_mvp">إكرامية الشرف</string>
+
+    <!-- Matrix & Country Tipping Notes in Arabic -->
+    <string name="note_default_guideline">تطبق الإرشادات القياسية العامة للبقشيش.</string>
+    <string name="note_matrix_a_restaurant">البقشيش متوقع جداً؛ يفضل الدفع نقداً.</string>
+    <string name="note_matrix_a_delivery">سلم البقشيش نقداً لسائق التوصيل مباشرة.</string>
+    <string name="note_matrix_a_takeout">غير متوقع عند الاستلام من الكاونتر.</string>
+    <string name="note_matrix_a_foodtruck">صناديق البقشيش اختيارية.</string>
+    <string name="note_matrix_a_groceries">يعتمد عمال التعبئة غالباً على البقشيش كمصدر دخل.</string>
+    <string name="note_matrix_a_bar">إكرامية لكل جولة أو عند الحساب النهائي.</string>
+
+    <string name="note_matrix_b_restaurant">توقع قياسي عند خدمة الطاولات.</string>
+    <string name="note_matrix_b_delivery">يقدر عمال التوصيل البقشيش البسيط.</string>
+    <string name="note_matrix_b_takeout">صندوق البقشيش اختياري.</string>
+    <string name="note_matrix_b_foodtruck">جبر الكسور والتقريب للأعلى شائع.</string>
+    <string name="note_matrix_b_groceries">لا توجد عادة بقشيش داخل المتاجر.</string>
+    <string name="note_matrix_b_bar">ترك الفكة المتبقية على الكاونتر.</string>
+
+    <string name="note_matrix_c_restaurant">رسوم الخدمة مشمولة بالقانون؛ البقشيش إضافي واختياري.</string>
+    <string name="note_matrix_c_delivery">شائع أثناء الطقس السيئ.</string>
+    <string name="note_matrix_c_takeout">غير متوقع للطلبات الخارجية.</string>
+    <string name="note_matrix_c_foodtruck">تقريب الحساب فقط.</string>
+    <string name="note_matrix_c_groceries">غير شائع على الإطلاق.</string>
+    <string name="note_matrix_c_bar">ترك الفكة عند الكاونتر.</string>
+
+    <string name="note_matrix_d_restaurant">البقشيش غير معتاد أو قد يعتبر غير لائق؛ الخدمة الممتازة مشمولة دائماً.</string>
+    <string name="note_matrix_d_delivery">لا يتوقع أي بقشيش.</string>
+    <string name="note_matrix_d_takeout">لا يوجد بقشيش.</string>
+    <string name="note_matrix_d_foodtruck">لا يوجد بقشيش.</string>
+    <string name="note_matrix_d_groceries">لا يوجد بقشيش.</string>
+    <string name="note_matrix_d_bar">لا يوجد بقشيش.</string>
+
+    <string name="note_matrix_e_restaurant">البقشيش تقليد راسخ؛ اترك النقود على الطاولة.</string>
+    <string name="note_matrix_e_delivery">يتوقع السائقون إكرامية نقدية باليد.</string>
+    <string name="note_matrix_e_takeout">صندوق بقشيش عند المحاسب.</string>
+    <string name="note_matrix_e_foodtruck">تقريب المبلغ للأعلى محل تقدير كبير.</string>
+    <string name="note_matrix_e_groceries">يعتمد العمال ومساعدو السيارات على هذه الإكراميات.</string>
+    <string name="note_matrix_e_bar">مقدر جداً في استراحات الفنادق.</string>
+
+    <!-- Custom Country Notes -->
+    <string name="note_al_restaurant" formatted="false">البقشيش (5% - 10%) مقدر جداً في الأماكن السياحية.</string>
+    <string name="note_al_delivery">البقشيش النقدي للسائقين مرحب به جداً.</string>
+    <string name="note_al_takeout">غير متوقع للطلبات الخارجية.</string>
+    <string name="note_al_foodtruck">صناديق البقشيش اختيارية.</string>
+    <string name="note_al_groceries">لا يوجد بقشيش قياسي.</string>
+    <string name="note_al_bar">تقريب الحساب أو ترك الفكة.</string>
+
+    <string name="note_ar_restaurant" formatted="false">10% نقداً هي العادة؛ يفضل الكاش بسبب التضخم.</string>
+    <string name="note_ar_delivery" formatted="false">5% - 10% نقداً لسائق التوصيل.</string>
+    <string name="note_ar_takeout">غير متوقع.</string>
+    <string name="note_ar_foodtruck">فكة بسيطة في الصندوق.</string>
+    <string name="note_ar_groceries">فئات نقدية صغيرة لعمال التعبئة.</string>
+    <string name="note_ar_bar" formatted="false">تقريب المبلغ أو 10% على الحساب.</string>
+
+    <string name="note_au_restaurant" formatted="false">البقشيش ليس دارجاً لارتفاع الأجور. 10% للخدمة الاستثنائية.</string>
+    <string name="note_au_delivery">اختياري $2 - $5 في الطقس السيئ.</string>
+    <string name="note_au_takeout">لا يتوقع بقشيش.</string>
+    <string name="note_au_foodtruck">صندوق بقشيش اختياري.</string>
+    <string name="note_au_groceries">لا يوجد بقشيش.</string>
+    <string name="note_au_bar">غير ضروري؛ ترك الفكة كافٍ.</string>
+
+    <string name="note_at_restaurant" formatted="false">البقشيش متوقع؛ قرب المبلغ أو أضف 5% - 10% إلى الفاتورة.</string>
+    <string name="note_at_delivery">1-2 يورو نقداً باليد للسائق مباشرة.</string>
+    <string name="note_at_takeout">غير متوقع عند الكاونتر.</string>
+    <string name="note_at_foodtruck">تقريب الفكة للأعلى.</string>
+    <string name="note_at_groceries">لا يوجد بقشيش.</string>
+    <string name="note_at_bar">التقريب إلى أقرب يورو كامل.</string>
+
+    <string name="note_be_restaurant" formatted="false">الخدمة مشمولة قانونياً؛ البقشيش (5% - 10%) للخدمة الممتازة.</string>
+    <string name="note_be_delivery">1-2 يورو في الطقس السيئ أو التوصيل السريع.</string>
+    <string name="note_be_takeout">غير متوقع.</string>
+    <string name="note_be_foodtruck">غير متوقع.</string>
+    <string name="note_be_groceries">لا يوجد بقشيش.</string>
+    <string name="note_be_bar">الفكة البسيطة مرحب بها.</string>
+
+    <string name="note_br_restaurant" formatted="false">10% خدمة تضاف للفاتورة غالباً؛ الإضافي اختياري.</string>
+    <string name="note_br_delivery">2 - 5 ريال نقداً أو عبر التطبيق.</string>
+    <string name="note_br_takeout">لا يوجد بقشيش.</string>
+    <string name="note_br_foodtruck">اترك الفكة المتبقية.</string>
+    <string name="note_br_groceries">2 - 5 ريال لعمال تعبئة عربات التسوق.</string>
+    <string name="note_br_bar" formatted="false">10% خدمة في الحساب بشكل قياسي.</string>
+
+    <string name="note_ca_restaurant" formatted="false">15% - 20% قياسي لخدمة الجلوس في المطاعم.</string>
+    <string name="note_ca_delivery" formatted="false">10% - 15% عبر التطبيق أو نقداً.</string>
+    <string name="note_ca_takeout">طلب الإكرامية بجهاز الدفع اختياري تماماً.</string>
+    <string name="note_ca_foodtruck" formatted="false">10% أو صندوق بقشيش.</string>
+    <string name="note_ca_groceries">لا توجد عادة بقشيش قياسية.</string>
+    <string name="note_ca_bar" formatted="false">$1 - $2 لكل مشروب أو 15% - 20% على الفاتورة.</string>
+
+    <string name="note_cn_restaurant" formatted="false">البقشيش ليس دارجاً؛ 10% خدمة في فنادق الرفاهية.</string>
+    <string name="note_cn_delivery">لا يتوقع أي بقشيش.</string>
+    <string name="note_cn_takeout">لا يوجد بقشيش.</string>
+    <string name="note_cn_foodtruck">لا يوجد بقشيش.</string>
+    <string name="note_cn_groceries">لا يوجد بقشيش.</string>
+    <string name="note_cn_bar">لا يوجد بقشيش.</string>
+
+    <string name="note_co_restaurant" formatted="false">10% إكرامية طوعية تضاف عادة إلى الفاتورة.</string>
+    <string name="note_co_delivery">2,000 - 5,000 بيزو نقداً لسائق التوصيل.</string>
+    <string name="note_co_takeout">غير معتاد.</string>
+    <string name="note_co_foodtruck">فقط للخدمة الممتازة.</string>
+    <string name="note_co_groceries">فكة نقدية لعمال التعبئة.</string>
+    <string name="note_co_bar" formatted="false">10% تضاف أو يتم التقريب.</string>
+
+    <string name="note_dk_restaurant" formatted="false">الخدمة مشمولة بالفاتورة بحكم القانون؛ البقشيش نادر جداً.</string>
+    <string name="note_dk_delivery">نادراً ما يتوقع.</string>
+    <string name="note_dk_takeout">لا يوجد بقشيش.</string>
+    <string name="note_dk_foodtruck">لا يوجد بقشيش.</string>
+    <string name="note_dk_groceries">لا يوجد بقشيش.</string>
+    <string name="note_dk_bar">لا توجد عادة بقشيش.</string>
+
+    <string name="note_eg_restaurant" formatted="false">البقشيش (10% - 15%) دارج ومعتاد؛ اترك النقود على الطاولة.</string>
+    <string name="note_eg_delivery">10 - 20 جنيه نقداً باليد للمندوب.</string>
+    <string name="note_eg_takeout">الفكة البسيطة مقدرة.</string>
+    <string name="note_eg_foodtruck">تقريب المبلغ للأعلى مطلوب.</string>
+    <string name="note_eg_groceries">5 - 10 جنيه لعمال التعبئة وسايس السيارات.</string>
+    <string name="note_eg_bar" formatted="false">10% - 15% في استراحات وفنادق السياحة.</string>
+
+    <string name="note_fr_restaurant" formatted="false">الخدمة مشمولة (15% بالقانون)؛ أضف 1-2 يورو للخدمة الاستثنائية.</string>
+    <string name="note_fr_delivery">1-2 يورو نقداً باليد لسائق التوصيل.</string>
+    <string name="note_fr_takeout">لا يوجد بقشيش.</string>
+    <string name="note_fr_foodtruck">تقريب الحساب لأقرب يورو.</string>
+    <string name="note_fr_groceries">لا يوجد بقشيش.</string>
+    <string name="note_fr_bar">ترك الفكة البسيطة على الكاونتر.</string>
+
+    <string name="note_de_restaurant" formatted="false">قرب المبلغ (5% - 10%) واذكر الإجمالي للنادل مباشرة عند الدفع.</string>
+    <string name="note_de_delivery">1-2 يورو نقداً باليد لسائق التوصيل.</string>
+    <string name="note_de_takeout">وضع الفكة في الصندوق اختياري.</string>
+    <string name="note_de_foodtruck">التقريب لليورو التالي هو المعتاد.</string>
+    <string name="note_de_groceries">لا يوجد بقشيش في السوبرماركت.</string>
+    <string name="note_de_bar">تقريب الحساب أو ترك الفكة المتبقية.</string>
+
+    <string name="note_in_restaurant" formatted="false">تحقق من رسوم الخدمة (5% - 10%)؛ وإلا فادفع 10% نقداً.</string>
+    <string name="note_in_delivery">20 - 50 روبية إكرامية لمندوب التوصيل.</string>
+    <string name="note_in_takeout">صندوق البقشيش اختياري.</string>
+    <string name="note_in_foodtruck">التقريب لأقرب 10 أو 50 روبية.</string>
+    <string name="note_in_groceries">20 - 50 روبية لعمال التعبئة والمساعدين.</string>
+    <string name="note_in_bar" formatted="false">10% إكرامية إذا لم تكن هناك رسوم خدمة.</string>
+
+    <string name="note_id_restaurant" formatted="false">تقريب الحساب أو 5% - 10% في المناطق السياحية (بالي).</string>
+    <string name="note_id_delivery">5,000 - 10,000 روبية عبر التطبيق أو نقداً.</string>
+    <string name="note_id_takeout">غير متوقع.</string>
+    <string name="note_id_foodtruck">تقريب الحساب في الأكشاك الشعبية.</string>
+    <string name="note_id_groceries">فكة نقدية لمساعدي ركن السيارات.</string>
+    <string name="note_id_bar">تقريب الحساب في نوادي الشاطئ.</string>
+
+    <string name="note_ie_restaurant" formatted="false">تأكد من رسوم الخدمة؛ 10% - 15% قياسي في المطاعم.</string>
+    <string name="note_ie_delivery">تقريب المبلغ / 1-2 يورو عند توصيل الطعام.</string>
+    <string name="note_ie_takeout">غير مطلوب.</string>
+    <string name="note_ie_foodtruck">غير مطلوب.</string>
+    <string name="note_ie_groceries">لا يوجد بقشيش.</string>
+    <string name="note_ie_bar">نادر على الكاونتر ما لم تكن هناك خدمة طاولات.</string>
+
+    <string name="note_it_restaurant">رسوم كوبرتو شائعة؛ قرب الحساب أو 1-2 يورو للفرد للخدمة الجيدة.</string>
+    <string name="note_it_delivery">1-2 يورو نقداً.</string>
+    <string name="note_it_takeout">لا يوجد بقشيش.</string>
+    <string name="note_it_foodtruck">تقريب الحساب.</string>
+    <string name="note_it_groceries">لا يوجد بقشيش.</string>
+    <string name="note_it_bar">قطعة نقدية صغيرة على الكاونتر لقهوة الإسبريسو واقفاً.</string>
+
+    <string name="note_jp_restaurant">البقشيش غير معتاد ويثير الارتباك؛ الخدمة الفائقة جزء من التقاليد.</string>
+    <string name="note_jp_delivery">لا يوجد بقشيش؛ الانحناء المهذب هو المعتاد.</string>
+    <string name="note_jp_takeout">لا يوجد بقشيش.</string>
+    <string name="note_jp_foodtruck">يفضل دفع المبلغ الدقيق؛ لا يوجد بقشيش.</string>
+    <string name="note_jp_groceries">لا يوجد بقشيش.</string>
+    <string name="note_jp_bar">لا يوجد بقشيش؛ قد تفرض رسوم جلوس أوتوشي.</string>
+
+    <string name="note_mx_restaurant" formatted="false">10% - 15% إكرامية معتادة؛ نقداً أو بالبطاقة قبل إغلاق الحساب.</string>
+    <string name="note_mx_delivery">20 - 50 بيزو نقداً لسائق التوصيل.</string>
+    <string name="note_mx_takeout">صندوق البقشيش اختياري.</string>
+    <string name="note_mx_foodtruck">فكة بسيطة في الصندوق.</string>
+    <string name="note_mx_groceries">5 - 10 بيزو لعمال التعبئة.</string>
+    <string name="note_mx_bar" formatted="false">10% - 15% لكل جولة أو في الفاتورة النهائية.</string>
+
+    <string name="note_nl_restaurant" formatted="false">الخدمة مشمولة، لكن تقريب الحساب (5% - 10%) شائع جداً.</string>
+    <string name="note_nl_delivery">1-2 يورو مقدرة من سائقي التوصيل.</string>
+    <string name="note_nl_takeout">غير قياسي.</string>
+    <string name="note_nl_foodtruck">الفكة اختيارية.</string>
+    <string name="note_nl_groceries">لا يوجد بقشيش.</string>
+    <string name="note_nl_bar">اترك الفكة المتبقية.</string>
+
+    <string name="note_nz_restaurant" formatted="false">لا يوجد توقع للبقشيش؛ الأجور مرتفعة.</string>
+    <string name="note_nz_delivery">اختياري عبر التطبيقات ($2 - $5).</string>
+    <string name="note_nz_takeout">لا يوجد بقشيش.</string>
+    <string name="note_nz_foodtruck">لا يوجد بقشيش.</string>
+    <string name="note_nz_groceries">لا يوجد بقشيش.</string>
+    <string name="note_nz_bar">لا توجد عادة بقشيش.</string>
+
+    <string name="note_no_restaurant" formatted="false">الخدمة مشمولة بالقانون؛ البقشيش (5% - 10%) اختياري تماماً.</string>
+    <string name="note_no_delivery">اختياري عبر تطبيقات التوصيل.</string>
+    <string name="note_no_takeout">لا يتوقع بقشيش.</string>
+    <string name="note_no_foodtruck">لا يوجد بقشيش.</string>
+    <string name="note_no_groceries">لا يوجد بقشيش.</string>
+    <string name="note_no_bar">التقريب عند الخدمة الجيدة.</string>
+
+    <string name="note_sg_restaurant" formatted="false">10% رسوم خدمة و 9% ضريبة مشمولة في الفاتورة.</string>
+    <string name="note_sg_delivery">اختياري 2 - 5 دولار سنغافوري.</string>
+    <string name="note_sg_takeout">لا يوجد بقشيش.</string>
+    <string name="note_sg_foodtruck">مراكز الهوكر لا تقبل البقشيش بتاتاً.</string>
+    <string name="note_sg_groceries">لا يوجد بقشيش.</string>
+    <string name="note_sg_bar">رسوم الخدمة مضافة بالفعل.</string>
+
+    <string name="note_za_restaurant" formatted="false">10% هي الحد الأدنى القياسي للخدمة الجيدة.</string>
+    <string name="note_za_delivery">التقريب / 10 - 20 راند مقدر جداً للسائقين.</string>
+    <string name="note_za_takeout">غير دارج.</string>
+    <string name="note_za_foodtruck">غير دارج.</string>
+    <string name="note_za_groceries">5 - 10 راند لحراس المواقف وعمال التعبئة.</string>
+    <string name="note_za_bar" formatted="false">تقريب الحساب أو 10% على الفاتورة.</string>
+
+    <string name="note_kr_restaurant">لا توجد ثقافة بقشيش؛ الخدمة الممتازة مشمولة دائماً.</string>
+    <string name="note_kr_delivery">لا يوجد بقشيش.</string>
+    <string name="note_kr_takeout">لا يوجد بقشيش.</string>
+    <string name="note_kr_foodtruck">لا يوجد بقشيش.</string>
+    <string name="note_kr_groceries">لا يوجد بقشيش.</string>
+    <string name="note_kr_bar">لا يوجد بقشيش.</string>
+
+    <string name="note_es_restaurant" formatted="false">الإكرامية طوعية؛ قرب الحساب أو اترك 5% - 10% في المطاعم.</string>
+    <string name="note_es_delivery">1 يورو نقداً مقدر.</string>
+    <string name="note_es_takeout">لا يوجد بقشيش.</string>
+    <string name="note_es_foodtruck">تقريب الحساب.</string>
+    <string name="note_es_groceries">لا يوجد بقشيش.</string>
+    <string name="note_es_bar">ترك الفكة البسيطة في الصحن.</string>
+
+    <string name="note_se_restaurant" formatted="false">الخدمة مشمولة؛ البقشيش اختياري تماماً.</string>
+    <string name="note_se_delivery">غير متوقع.</string>
+    <string name="note_se_takeout">لا يوجد بقشيش.</string>
+    <string name="note_se_foodtruck">لا يوجد بقشيش.</string>
+    <string name="note_se_groceries">لا يوجد بقشيش.</string>
+    <string name="note_se_bar">غير متوقع.</string>
+
+    <string name="note_ch_restaurant" formatted="false">الخدمة مشمولة قانونياً؛ تقريب المبلغ (5% - 10%) معتاد.</string>
+    <string name="note_ch_delivery">مقدر من قبل عمال التوصيل.</string>
+    <string name="note_ch_takeout">غير قياسي.</string>
+    <string name="note_ch_foodtruck">غير قياسي.</string>
+    <string name="note_ch_groceries">لا يوجد بقشيش.</string>
+    <string name="note_ch_bar">التقريب إلى أقرب فرنك صحيح.</string>
+
+    <string name="note_th_restaurant" formatted="false">20-50 بات أو 10% في المطاعم الراقية؛ الفكة في الأماكن البسيطة.</string>
+    <string name="note_th_delivery">20-40 بات نقداً للسائق.</string>
+    <string name="note_th_takeout">ترك الفكة المتبقية.</string>
+    <string name="note_th_foodtruck">فكة بسيطة في صندوق البقشيش.</string>
+    <string name="note_th_groceries">لا يتوقع أي بقشيش.</string>
+    <string name="note_th_bar">20-50 بات للجولة أو ترك القطع النقدية.</string>
+
+    <string name="note_tr_restaurant" formatted="false">البقشيش (5% - 10%) نقداً على الطاولة (وليس بالبطاقة).</string>
+    <string name="note_tr_delivery">20 - 50 ليرة نقداً باليد للمندوب.</string>
+    <string name="note_tr_takeout">صندوق بقشيش عند الكاونتر.</string>
+    <string name="note_tr_foodtruck">التقريب للأعلى كافٍ.</string>
+    <string name="note_tr_groceries">10 - 20 ليرة عند المساعدة في حمل الأكياس.</string>
+    <string name="note_tr_bar" formatted="false">التقريب أو 10% لكل جولة.</string>
+
+    <string name="note_ua_bar" formatted="false">إكرامية 10% هي المعتادة في الحانات.</string>
+
+    <string name="note_us_restaurant" formatted="false">البقشيش شبه إلزامي (15% - 20%)؛ يعتمد النوادل عليه كدخل أساسي.</string>
+    <string name="note_us_delivery" formatted="false">قياسي: 10% - 15% عبر التطبيق أو نقداً.</string>
+    <string name="note_us_takeout">شاشات طلب البقشيش اختيارية تماماً.</string>
+    <string name="note_us_foodtruck">صناديق أو شاشات البقشيش شائعة.</string>
+    <string name="note_us_groceries">اختياري لعمال التعبئة وتوصيل السيارة ($2 - $5).</string>
+    <string name="note_us_bar" formatted="false">$1 - $2 لكل مشروب أو 15% - 20% على الحساب.</string>
+
+    <string name="note_ae_restaurant" formatted="false">رسوم الخدمة مضافة عادة؛ 10% - 15% إضافية تقليد متبع للنوادل.</string>
+    <string name="note_ae_delivery">5 - 10 دراهم نقداً أو بالتطبيق.</string>
+    <string name="note_ae_takeout">غير قياسي.</string>
+    <string name="note_ae_foodtruck">غير قياسي.</string>
+    <string name="note_ae_groceries">5 - 10 دراهم لمساعدي تحميل الأغراض.</string>
+    <string name="note_ae_bar" formatted="false">تقريب الحساب أو 10% في الأماكن الراقية.</string>
+
+    <string name="note_gb_restaurant" formatted="false">تأكد من وجود رسوم خدمة اختيارية 12.5%؛ أضف 10% - 15% إذا لم تكن موجودة.</string>
+    <string name="note_gb_delivery">£1 - £2 نقداً أو بالتطبيق هو المعتاد.</string>
+    <string name="note_gb_takeout">صندوق بقشيش اختياري.</string>
+    <string name="note_gb_foodtruck">صندوق بقشيش اختياري.</string>
+    <string name="note_gb_groceries">لا يوجد بقشيش.</string>
+    <string name="note_gb_bar">نادر على الكاونتر ما لم تكن هناك خدمة طاولات.</string>
+
+    <!-- Text-to-Speech (TTS) strings -->
+    <string name="tts_tap_to_read">اضغط لسماع قراءة المجاميع المحسوبة</string>
+    <string name="tts_tap_to_speak_label">استمع</string>
+    <string name="tts_speaking_now">قراءة المجاميع...</string>
+
+    <!-- Cultural Tipping Tip FAB and Modal strings -->
+    <string name="cultural_tip_fab_desc">نصيحة ثقافية للإكراميات في %s</string>
+    <string name="cultural_tip_dialog_title">آداب الإكراميات</string>
+    <string name="cultural_tip_understood">فهمت</string>
+    <string name="cultural_tip_view_country_details">استكشاف جميع الدول</string>
+
+    <!-- DataStore Tip History & Save Prompt Strings -->
+    <string name="save_tip_title">هل تريد حفظه؟</string>
+    <string name="save_tip_message">احفظ حساب الإكرامية هذا في سجلك لمراجعته في أي وقت.</string>
+    <string name="save_button_confirm">حفظ</string>
+    <string name="save_button_dismiss">عدم الحفظ</string>
+    <string name="tip_saved_snackbar">تم حفظ الحساب في السجل</string>
+    <string name="history_button_label">السجل</string>
+    <string name="history_title">سجل الإكراميات</string>
+    <string name="history_empty_state">لا توجد حسابات محفوظة بعد</string>
+    <string name="history_clear_all">مسح السجل</string>
+    <string name="history_load_action">تحميل</string>
+    <string name="history_delete_item">حذف</string>
+    <string name="save_prompt_setting_title">إعداد مطالبة الحفظ</string>
+    <string name="save_prompt_toggle_label">مطالبة بالحفظ:</string>
+    <string name="save_prompt_always_mode">دائمًا</string>
+    <string name="save_prompt_never_mode">أبدًا</string>
+    <string name="tutorial_toggle_label">التعليمات عند البدء:</string>
+    <string name="tutorial_toggle_always">دائمًا</string>
+    <string name="tutorial_toggle_never">أبدًا</string>
+    <string name="coach_step_history_title">سجل المعاملات</string>
+    <string name="coach_step_history_subtitle">حفظ ومراجعة الحسابات السابقة</string>
+    <string name="coach_step_history_desc">احتفظ بسجل محلي لحسابات الإكراميات عبر DataStore. اختر أدناه ما إذا كان يجب إظهار مطالبة \"هل تريد حفظه؟\" دائمًا أو أبدًا.</string>
+    <string name="save_to_history_action">حفظ في السجل</string>
+
+    <!-- Global Explorer Unlock Notification Strings -->
+    <string name="unlock_global_explorer_countdown">تبقّت %d نقرات لفتح المستكشف العالمي</string>
+    <string name="unlock_global_explorer_countdown_one">تبقّت نقرة واحدة لفتح المستكشف العالمي</string>
+    <string name="unlock_global_explorer_success">🎉 تم اكتشاف السر! تم فتح محدد البلدان العالمي</string>
+</resources>

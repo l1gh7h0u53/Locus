@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Locus</string>
+    <string name="header_subtitle">Калькулятор</string>
+    <string name="service_restaurant">Ресторан</string>
+    <string name="service_delivery">Доставка</string>
+    <string name="service_takeout">Навынос</string>
+    <string name="service_foodtruck">Фудтрак</string>
+    <string name="service_groceries">Супермаркет</string>
+    <string name="service_bar">Бар</string>
+    <string name="bill_amount">Сумма счета</string>
+    <string name="enter_bill_amount">ВВЕДИТЕ СУММУ СЧЕТА</string>
+    <string name="custom_percentage">Свой процент чаевых %</string>
+    <string name="tip_percent">Процент чаевых</string>
+    <string name="senior_mode_title">Режим для пожилых</string>
+    <string name="senior_mode_desc">Крупные кнопки и легко читаемый текст</string>
+    <string name="standard_tip">Стандарт</string>
+    <string name="generous_tip">Щедро</string>
+    <string name="extremely_generous_tip">Очень щедро</string>
+    <string name="legend_tip">Легенда</string>
+    <string name="angel_tip">Почетные чаевые</string>
+    <string name="split_bill">Разделить счет</string>
+    <string name="number_of_people">Количество человек</string>
+    <string name="calculated_tip">Сумма чаевых</string>
+    <string name="calculated_total">Итоговый счет</string>
+    <string name="split_share">С каждого</string>
+    <string name="total_bill_label">Итоговый счет</string>
+    <string name="tip_amount_label">Сумма чаевых</string>
+    <string name="each_pays_label">С каждого</string>
+    <string name="service_category">Категория обслуживания</string>
+    <string name="select_service_category">ВЫБЕРИТЕ КАТЕГОРИЮ</string>
+    <string name="haptic_state">Тактильный отклик</string>
+    <string name="clear_button">Очистить все</string>
+    <string name="round_up">Округлить вверх</string>
+    <string name="round_down">Округлить вниз</string>
+    <string name="custom_slider">Свой процент</string>
+    <string name="calculated_totals">ИТОГИ РАСЧЕТА</string>
+    <string name="reset_calculator">СБРОСИТЬ</string>
+    <string name="search_country_placeholder">Поиск страны, ISO (напр. RU, Япония)...</string>
+    <string name="select_language_title">Выберите язык</string>
+    <string name="auto_language_option">Автоматическое офлайн-определение</string>
+    <string name="auto_language_sub">Язык системы и офлайн-карта стран</string>
+    <string name="close_button">Закрыть</string>
+    <string name="solo_person">1 человек (один)</string>
+    <string name="people_sharing">Разделено на %d чел.</string>
+    <string name="tipping_tiers_header">УРОВНИ ЧАЕВЫХ ДЛЯ %s</string>
+    <string name="select_currency">ВЫБРАТЬ ВАЛЮТУ</string>
+    <string name="all_currencies">Все (%d)</string>
+    <string name="more_currencies">+ Еще...</string>
+    <string name="global_currencies_title">Мировые валюты</string>
+    <string name="currencies_count">%d валют</string>
+    <string name="search_currency_placeholder">Поиск валюты, кода или страны...</string>
+    <string name="no_currency_found">Валюта не найдена</string>
+    <string name="select_country_title">Выберите страну</string>
+    <string name="regional_matrices_count">192 страны и региональные правила</string>
+    <string name="culture_advice">Культурный совет</string>
+    <string name="iso_label">ISO: %1$s • Формат: %2$s</string>
+    <string name="selected_toast">Выбрано: %1$s (%2$s)</string>
+    <string name="toggle_senior_mode">Переключить крупный режим</string>
+    <string name="toggle_theme_mode">Сменить тему</string>
+    <string name="app_description_semantic">Locus, глобальный калькулятор чаевых</string>
+    <string name="passport_logo_desc">Логотип паспорта</string>
+    <string name="decrease_people">Уменьшить количество</string>
+    <string name="increase_people">Увеличить количество</string>
+    <string name="back_to_calculator">Назад к калькулятору</string>
+    <string name="share_bill_summary">Поделиться счетом</string>
+    <string name="share_bill_summary_title">Сводка расчета</string>
+    <string name="tip_calculation_desc">Расчет: %1$s. Чаевые: %2$s. С человека: %3$s</string>
+
+    <string name="service_restaurants">Рестораны</string>
+    <string name="tier_standard">Стандарт</string>
+    <string name="tier_generous">Щедро</string>
+    <string name="tier_legend">Легенда</string>
+    <string name="tier_mvp">Почетные чаевые</string>
+
+    <!-- Matrix & Country Tipping Notes in Russian -->
+    <string name="note_default_guideline">Применяются стандартные общие правила.</string>
+    <string name="note_matrix_a_restaurant">Чаевые строго ожидаются; наличные предпочтительнее.</string>
+    <string name="note_matrix_a_delivery">Отдавать наличные лично курьеру.</string>
+    <string name="note_matrix_a_takeout">Не ожидаются при самовывозе у стойки.</string>
+    <string name="note_matrix_a_foodtruck">Банки для чаевых по желанию.</string>
+    <string name="note_matrix_a_groceries">Упаковщики часто работают только за чаевые.</string>
+    <string name="note_matrix_a_bar">Чаевые за каждый заказ или в общем счете.</string>
+
+    <string name="note_matrix_b_restaurant">Стандартное ожидание при обслуживании за столиком.</string>
+    <string name="note_matrix_b_delivery">Курьеры ценят небольшие чаевые.</string>
+    <string name="note_matrix_b_takeout">Банка для чаевых на кассе по желанию.</string>
+    <string name="note_matrix_b_foodtruck">Принято округлять сумму вверх.</string>
+    <string name="note_matrix_b_groceries">Не принято оставлять чаевые в магазинах.</string>
+    <string name="note_matrix_b_bar">Оставить мелочь на барной стойке.</string>
+
+    <string name="note_matrix_c_restaurant">Обслуживание включено; чаевые — добровольный бонус.</string>
+    <string name="note_matrix_c_delivery">Принято при плохой погоде.</string>
+    <string name="note_matrix_c_takeout">Не ожидаются навынос.</string>
+    <string name="note_matrix_c_foodtruck">Простое округление.</string>
+    <string name="note_matrix_c_groceries">Крайне непривычно.</string>
+    <string name="note_matrix_c_bar">Оставить сдачу на стойке.</string>
+
+    <string name="note_matrix_d_restaurant">Чаевые не приняты или могут смутить/оскорбить; отличный сервис уже включен.</string>
+    <string name="note_matrix_d_delivery">Чаевые не ожидаются.</string>
+    <string name="note_matrix_d_takeout">Без чаевых.</string>
+    <string name="note_matrix_d_foodtruck">Без чаевых.</string>
+    <string name="note_matrix_d_groceries">Без чаевых.</string>
+    <string name="note_matrix_d_bar">Без чаевых.</string>
+
+    <string name="note_matrix_e_restaurant">Бакшиш — традиция; оставляйте наличные на столе.</string>
+    <string name="note_matrix_e_delivery">Курьеры ожидают наличные в руки.</string>
+    <string name="note_matrix_e_takeout">Коробка для чаевых у кассы.</string>
+    <string name="note_matrix_e_foodtruck">Округление вверх приветствуется.</string>
+    <string name="note_matrix_e_groceries">Помощники и носильщики живут на эти чаевые.</string>
+    <string name="note_matrix_e_bar">Приветствуется в лаунджах отелей.</string>
+
+    <!-- Custom Country Notes -->
+    <string name="note_al_restaurant" formatted="false">Чаевые (5% - 10%) высоко ценятся в турзонах.</string>
+    <string name="note_al_delivery">Наличные чаевые водителям приветствуются.</string>
+    <string name="note_al_takeout">Не ожидаются навынос.</string>
+    <string name="note_al_foodtruck">Банка для чаевых опциональна.</string>
+    <string name="note_al_groceries">Нет стандартов чаевых.</string>
+    <string name="note_al_bar">Округлить или оставить сдачу.</string>
+
+    <string name="note_ar_restaurant" formatted="false">10% наличными — норма; наличные предпочтительны из-за инфляции.</string>
+    <string name="note_ar_delivery" formatted="false">5% - 10% наличными курьеру.</string>
+    <string name="note_ar_takeout">Не ожидаются.</string>
+    <string name="note_ar_foodtruck">Мелочь в банку.</string>
+    <string name="note_ar_groceries">Мелкие купюры упаковщикам.</string>
+    <string name="note_ar_bar" formatted="false">Округлить или 10% к счету.</string>
+
+    <string name="note_au_restaurant" formatted="false">Чаевые не приняты; высокие базовые зарплаты. 10% за выдающийся сервис.</string>
+    <string name="note_au_delivery">По желанию $2 - $5 в непогоду.</string>
+    <string name="note_au_takeout">Чаевые не ожидаются.</string>
+    <string name="note_au_foodtruck">Банка для чаевых по желанию.</string>
+    <string name="note_au_groceries">Без чаевых.</string>
+    <string name="note_au_bar">Не обязательно; оставить сдачу достаточно.</string>
+
+    <string name="note_at_restaurant" formatted="false">Чаевые ожидаются; округлите или добавьте 5% - 10% к счету.</string>
+    <string name="note_at_delivery">1-2 € наличными лично курьеру.</string>
+    <string name="note_at_takeout">Не ожидаются у стойки.</string>
+    <string name="note_at_foodtruck">Округлить мелочь.</string>
+    <string name="note_at_groceries">Без чаевых.</string>
+    <string name="note_at_bar">Округлить до следующего целого евро.</string>
+
+    <string name="note_be_restaurant" formatted="false">Сервис включен по закону; 5% - 10% за отличный сервис.</string>
+    <string name="note_be_delivery">1-2 € в непогоду или за быструю доставку.</string>
+    <string name="note_be_takeout">Не ожидаются.</string>
+    <string name="note_be_foodtruck">Не ожидаются.</string>
+    <string name="note_be_groceries">Без чаевых.</string>
+    <string name="note_be_bar">Мелкая сдача приветствуется.</string>
+
+    <string name="note_br_restaurant" formatted="false">10% за обслуживание обычно в счете; экстра по желанию.</string>
+    <string name="note_br_delivery">R$2 - R$5 наличными или в приложении.</string>
+    <string name="note_br_takeout">Без чаевых.</string>
+    <string name="note_br_foodtruck">Оставить сдачу.</string>
+    <string name="note_br_groceries">R$2 - R$5 упаковщикам пакетов.</string>
+    <string name="note_br_bar" formatted="false">10% за сервис стандартно в счете бара.</string>
+
+    <string name="note_ca_restaurant" formatted="false">15% - 20% стандарт при обслуживании за столиком.</string>
+    <string name="note_ca_delivery" formatted="false">10% - 15% в приложении или наличными.</string>
+    <string name="note_ca_takeout">Запрос чаевых на терминале строго по желанию.</string>
+    <string name="note_ca_foodtruck" formatted="false">10% или банка для чаевых.</string>
+    <string name="note_ca_groceries">Не принято оставлять чаевые.</string>
+    <string name="note_ca_bar" formatted="false">$1 - $2 за напиток или 15% - 20% в чеке.</string>
+
+    <string name="note_cn_restaurant" formatted="false">Чаевые не приняты; 10% сбор в премиальных отелях.</string>
+    <string name="note_cn_delivery">Чаевые не ожидаются.</string>
+    <string name="note_cn_takeout">Без чаевых.</string>
+    <string name="note_cn_foodtruck">Без чаевых.</string>
+    <string name="note_cn_groceries">Без чаевых.</string>
+    <string name="note_cn_bar">Без чаевых.</string>
+
+    <string name="note_co_restaurant" formatted="false">10% Propina Voluntaria обычно указана в счете.</string>
+    <string name="note_co_delivery">2 000 - 5 000 COP наличными курьеру.</string>
+    <string name="note_co_takeout">Не принято.</string>
+    <string name="note_co_foodtruck">Только за отличный сервис.</string>
+    <string name="note_co_groceries">Мелочь упаковщикам.</string>
+    <string name="note_co_bar" formatted="false">10% добавляется или округление.</string>
+
+    <string name="note_dk_restaurant" formatted="false">Обслуживание включено по закону; чаевые крайне редки.</string>
+    <string name="note_dk_delivery">Почти никогда не ожидаются.</string>
+    <string name="note_dk_takeout">Без чаевых.</string>
+    <string name="note_dk_foodtruck">Без чаевых.</string>
+    <string name="note_dk_groceries">Без чаевых.</string>
+    <string name="note_dk_bar">Нет культуры чаевых.</string>
+
+    <string name="note_eg_restaurant" formatted="false">Бакшиш (10% - 15%) — традиция; оставляйте наличные на столе.</string>
+    <string name="note_eg_delivery">10 - 20 EGP лично в руки курьеру.</string>
+    <string name="note_eg_takeout">Мелочь приветствуется.</string>
+    <string name="note_eg_foodtruck">Округление вверх ожидается.</string>
+    <string name="note_eg_groceries">5 - 10 EGP упаковщикам и парковщикам.</string>
+    <string name="note_eg_bar" formatted="false">10% - 15% в лаунджах отелей.</string>
+
+    <string name="note_fr_restaurant" formatted="false">Service compris (15% по закону); 1-2€ экстра за отличный сервис.</string>
+    <string name="note_fr_delivery">1-2€ наличными курьеру.</string>
+    <string name="note_fr_takeout">Без чаевых.</string>
+    <string name="note_fr_foodtruck">Округлить до ближайшего евро.</string>
+    <string name="note_fr_groceries">Без чаевых.</string>
+    <string name="note_fr_bar">Оставить мелочь на стойке.</string>
+
+    <string name="note_de_restaurant" formatted="false">Округлите (5% - 10%) и назовите общую сумму официанту перед оплатой.</string>
+    <string name="note_de_delivery">1-2 € наличными лично курьеру.</string>
+    <string name="note_de_takeout">Мелочь в банку на кассе по желанию.</string>
+    <string name="note_de_foodtruck">Округление до целого евро является стандартом.</string>
+    <string name="note_de_groceries">В супермаркетах чаевые не дают.</string>
+    <string name="note_de_bar">Округлить до целого евро или оставить сдачу.</string>
+
+    <string name="note_in_restaurant" formatted="false">Проверьте сбор за сервис (5% - 10%); если нет — 10% наличными.</string>
+    <string name="note_in_delivery">₹20 - ₹50 чаевых курьеру.</string>
+    <string name="note_in_takeout">Банка для чаевых опциональна.</string>
+    <string name="note_in_foodtruck">Округлить до ближайших ₹10 или ₹50.</string>
+    <string name="note_in_groceries">₹20 - ₹50 упаковщикам и носильщикам.</string>
+    <string name="note_in_bar" formatted="false">10% на напитки, если нет сбора за обслуживание.</string>
+
+    <string name="note_id_restaurant" formatted="false">Округление или 5% - 10% в турзонах (Бали).</string>
+    <string name="note_id_delivery">5 000 - 10 000 IDR в приложении или наличными.</string>
+    <string name="note_id_takeout">Не ожидаются.</string>
+    <string name="note_id_foodtruck">Округлить в уличных кафе варунгах.</string>
+    <string name="note_id_groceries">Монеты парковщикам.</string>
+    <string name="note_id_bar">Округлить в пляжных клубах.</string>
+
+    <string name="note_ie_restaurant" formatted="false">Проверьте сбор за обслуживание; 10% - 15% стандарт за столиком.</string>
+    <string name="note_ie_delivery">Округлить / 1-2 € при доставке еды.</string>
+    <string name="note_ie_takeout">Не требуется.</string>
+    <string name="note_ie_foodtruck">Не требуется.</string>
+    <string name="note_ie_groceries">Без чаевых.</string>
+    <string name="note_ie_bar">Редко у стойки, если нет обслуживания за столиком.</string>
+
+    <string name="note_it_restaurant">Coperto распространен; округлите или 1-2€ с человека за хороший сервис.</string>
+    <string name="note_it_delivery">1-2€ наличными.</string>
+    <string name="note_it_takeout">Без чаевых.</string>
+    <string name="note_it_foodtruck">Округлить.</string>
+    <string name="note_it_groceries">Без чаевых.</string>
+    <string name="note_it_bar">Мелкая монетка на стойке за эспрессо стоя.</string>
+
+    <string name="note_jp_restaurant">Чаевые не приняты и вызывают недоумение; образцовый сервис уже стандарт.</string>
+    <string name="note_jp_delivery">Без чаевых; вежливый поклон — норма.</string>
+    <string name="note_jp_takeout">Без чаевых.</string>
+    <string name="note_jp_foodtruck">Оплата под расчет; без чаевых.</string>
+    <string name="note_jp_groceries">Без чаевых.</string>
+    <string name="note_jp_bar">Без чаевых; может взиматься плата за посадку (Otoshi).</string>
+
+    <string name="note_mx_restaurant" formatted="false">10% - 15% пропина — традиция; наличными или картой до закрытия чека.</string>
+    <string name="note_mx_delivery">20-50 MXN наличными курьеру.</string>
+    <string name="note_mx_takeout">Банка для чаевых опциональна.</string>
+    <string name="note_mx_foodtruck">Сдача в банку.</string>
+    <string name="note_mx_groceries">5-10 MXN упаковщикам.</string>
+    <string name="note_mx_bar" formatted="false">10% - 15% за заказ или в финальном счете.</string>
+
+    <string name="note_nl_restaurant" formatted="false">Сервис включен, но округление (5% - 10%) очень распространено.</string>
+    <string name="note_nl_delivery">1-2 € ценятся курьерами.</string>
+    <string name="note_nl_takeout">Не является стандартом.</string>
+    <string name="note_nl_foodtruck">Сдача по желанию.</string>
+    <string name="note_nl_groceries">Без чаевых.</string>
+    <string name="note_nl_bar">Оставить сдачу.</string>
+
+    <string name="note_nz_restaurant" formatted="false">Чаевые не ожидаются; высокая минимальная оплата.</string>
+    <string name="note_nz_delivery">По желанию в приложениях ($2 - $5).</string>
+    <string name="note_nz_takeout">Без чаевых.</string>
+    <string name="note_nz_foodtruck">Без чаевых.</string>
+    <string name="note_nz_groceries">Без чаевых.</string>
+    <string name="note_nz_bar">Нет культуры чаевых в барах.</string>
+
+    <string name="note_no_restaurant" formatted="false">Сервис включен по закону; чаевые (5% - 10%) строго добровольны.</string>
+    <string name="note_no_delivery">По желанию в приложениях доставки.</string>
+    <string name="note_no_takeout">Чаевые не ожидаются.</string>
+    <string name="note_no_foodtruck">Без чаевых.</string>
+    <string name="note_no_groceries">Без чаевых.</string>
+    <string name="note_no_bar">Округлить за хороший сервис.</string>
+
+    <string name="note_sg_restaurant" formatted="false">10% за сервис и 9% GST уже включены в счет.</string>
+    <string name="note_sg_delivery">По желанию 2 - 5 SGD.</string>
+    <string name="note_sg_takeout">Без чаевых.</string>
+    <string name="note_sg_foodtruck">Фуд-центры Hawker строго не принимают чаевые.</string>
+    <string name="note_sg_groceries">Без чаевых.</string>
+    <string name="note_sg_bar">Сбор за обслуживание уже включен.</string>
+
+    <string name="note_za_restaurant" formatted="false">10% — стандартный минимум за приличное обслуживание.</string>
+    <string name="note_za_delivery">Округление / R10 - R20 очень ценятся водителями.</string>
+    <string name="note_za_takeout">Не принято.</string>
+    <string name="note_za_foodtruck">Не принято.</string>
+    <string name="note_za_groceries">R5 - R10 парковщикам и упаковщикам.</string>
+    <string name="note_za_bar" formatted="false">Округлить или 10% в счете.</string>
+
+    <string name="note_kr_restaurant">Культура чаевых отсутствует; превосходный сервис уже включен.</string>
+    <string name="note_kr_delivery">Без чаевых.</string>
+    <string name="note_kr_takeout">Без чаевых.</string>
+    <string name="note_kr_foodtruck">Без чаевых.</string>
+    <string name="note_kr_groceries">Без чаевых.</string>
+    <string name="note_kr_bar">Без чаевых.</string>
+
+    <string name="note_es_restaurant" formatted="false">Чаевые добровольны; округлите или оставьте 5% - 10% в ресторане.</string>
+    <string name="note_es_delivery">1€ наличными приветствуется.</string>
+    <string name="note_es_takeout">Без чаевых.</string>
+    <string name="note_es_foodtruck">Округлить.</string>
+    <string name="note_es_groceries">Без чаевых.</string>
+    <string name="note_es_bar">Оставить мелочь на блюдце.</string>
+
+    <string name="note_se_restaurant" formatted="false">Обслуживание включено; чаевые исключительно добровольны.</string>
+    <string name="note_se_delivery">Не ожидаются.</string>
+    <string name="note_se_takeout">Без чаевых.</string>
+    <string name="note_se_foodtruck">Без чаевых.</string>
+    <string name="note_se_groceries">Без чаевых.</string>
+    <string name="note_se_bar">Не ожидаются.</string>
+
+    <string name="note_ch_restaurant" formatted="false">Сервис включен по закону; округление (5% - 10%) является нормой.</string>
+    <string name="note_ch_delivery">Ценится курьерами.</string>
+    <string name="note_ch_takeout">Не является стандартом.</string>
+    <string name="note_ch_foodtruck">Не является стандартом.</string>
+    <string name="note_ch_groceries">Без чаевых.</string>
+    <string name="note_ch_bar">Округлить до ближайшего франка.</string>
+
+    <string name="note_th_restaurant" formatted="false">20-50 бат или 10% в элитных заведениях; сдача в обычных.</string>
+    <string name="note_th_delivery">20-40 бат наличными водителю.</string>
+    <string name="note_th_takeout">Оставить сдачу.</string>
+    <string name="note_th_foodtruck">Мелочь в банку для чаевых.</string>
+    <string name="note_th_groceries">Чаевые не ожидаются.</string>
+    <string name="note_th_bar">20-50 бат за заказ или оставить монеты.</string>
+
+    <string name="note_tr_restaurant" formatted="false">Бакшиш (5% - 10%) наличными на столе (не по карте).</string>
+    <string name="note_tr_delivery">20 - 50 TL наличными курьеру.</string>
+    <string name="note_tr_takeout">Банка для чаевых у кассы.</string>
+    <string name="note_tr_foodtruck">Округления вверх достаточно.</string>
+    <string name="note_tr_groceries">10 - 20 TL при помощи с пакетами.</string>
+    <string name="note_tr_bar" formatted="false">Округлить или 10% за заказ.</string>
+
+    <string name="note_ua_bar" formatted="false">В барах и пабах стандартно оставлять 10% чаевых.</string>
+
+    <string name="note_us_restaurant" formatted="false">Чаевые практически обязательны (15% - 20%); официанты живут за счет них.</string>
+    <string name="note_us_delivery" formatted="false">Стандарт: 10% - 15% в приложении или наличными.</string>
+    <string name="note_us_takeout">Запросы на экране терминала строго по желанию.</string>
+    <string name="note_us_foodtruck">Банки для чаевых или экранные запросы привычны.</string>
+    <string name="note_us_groceries">По желанию упаковщикам или загрузчикам ($2 - $5).</string>
+    <string name="note_us_bar" formatted="false">$1 - $2 за напиток или 15% - 20% в чеке.</string>
+
+    <string name="note_ae_restaurant" formatted="false">Сбор за сервис включен; 10% - 15% сверху традиционно официантам.</string>
+    <string name="note_ae_delivery">5 - 10 AED наличными или в приложении.</string>
+    <string name="note_ae_takeout">Не является стандартом.</string>
+    <string name="note_ae_foodtruck">Не является стандартом.</string>
+    <string name="note_ae_groceries">5 - 10 AED помощникам с покупками.</string>
+    <string name="note_ae_bar" formatted="false">Округлить или 10% в роскошных лаунджах.</string>
+
+    <string name="note_gb_restaurant" formatted="false">Проверьте сбор 12.5%; добавьте 10% - 15%, если он не включен.</string>
+    <string name="note_gb_delivery">£1 - £2 наличными или в приложении привычно.</string>
+    <string name="note_gb_takeout">Банка для чаевых по желанию.</string>
+    <string name="note_gb_foodtruck">Банка для чаевых по желанию.</string>
+    <string name="note_gb_groceries">Без чаевых.</string>
+    <string name="note_gb_bar">Редко у стойки, если нет обслуживания за столиком.</string>
+
+    <!-- Text-to-Speech (TTS) strings -->
+    <string name="tts_tap_to_read">Нажмите, чтобы прослушать расчетные итоги</string>
+    <string name="tts_tap_to_speak_label">Прослушать</string>
+    <string name="tts_speaking_now">Озвучивание итогов...</string>
+
+    <!-- Cultural Tipping Tip FAB and Modal strings -->
+    <string name="cultural_tip_fab_desc">Совет по культуре чаевых для %s</string>
+    <string name="cultural_tip_dialog_title">Этикет чаевых</string>
+    <string name="cultural_tip_understood">Понятно</string>
+    <string name="cultural_tip_view_country_details">Все страны</string>
+
+    <!-- DataStore Tip History & Save Prompt Strings -->
+    <string name="save_tip_title">Хотите сохранить?</string>
+    <string name="save_tip_message">Сохраните этот расчет чаевых в недавнюю историю, чтобы просмотреть его в любое время.</string>
+    <string name="save_button_confirm">Сохранить</string>
+    <string name="save_button_dismiss">Не сохранять</string>
+    <string name="tip_saved_snackbar">Расчет сохранен в истории</string>
+    <string name="history_button_label">История</string>
+    <string name="history_title">Недавняя история чаевых</string>
+    <string name="history_empty_state">Пока нет сохраненных расчетов</string>
+    <string name="history_clear_all">Очистить историю</string>
+    <string name="history_load_action">Загрузить</string>
+    <string name="history_delete_item">Удалить</string>
+    <string name="save_prompt_setting_title">Настройка запроса сохранения</string>
+    <string name="save_prompt_toggle_label">Запрос на сохранение:</string>
+    <string name="save_prompt_always_mode">Всегда</string>
+    <string name="save_prompt_never_mode">Никогда</string>
+    <string name="tutorial_toggle_label">Инструкция при запуске:</string>
+    <string name="tutorial_toggle_always">Всегда</string>
+    <string name="tutorial_toggle_never">Никогда</string>
+    <string name="coach_step_history_title">История транзакций</string>
+    <string name="coach_step_history_subtitle">Сохранение и просмотр расчетов</string>
+    <string name="coach_step_history_desc">Сохраняйте историю расчетов локально через DataStore. Выберите ниже, показывать ли запрос \"Хотите сохранить?\" всегда или никогда при использовании приложения.</string>
+    <string name="save_to_history_action">Сохранить в истории</string>
+
+    <!-- Global Explorer Unlock Notification Strings -->
+    <string name="unlock_global_explorer_countdown">Осталось %d нажатия для разблокировки Global Explorer</string>
+    <string name="unlock_global_explorer_countdown_one">Осталось 1 нажатие для разблокировки Global Explorer</string>
+    <string name="unlock_global_explorer_success">🎉 Секрет раскрыт! Глобальный выбор стран разблокирован</string>
+</resources>

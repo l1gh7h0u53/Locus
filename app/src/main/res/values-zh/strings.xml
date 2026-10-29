@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Locus</string>
+    <string name="header_subtitle">计算器</string>
+    <string name="service_restaurant">餐厅</string>
+    <string name="service_delivery">外卖配送</string>
+    <string name="service_takeout">自取外带</string>
+    <string name="service_foodtruck">餐车</string>
+    <string name="service_groceries">超市杂货</string>
+    <string name="service_bar">酒吧</string>
+    <string name="bill_amount">账单金额</string>
+    <string name="enter_bill_amount">输入账单金额</string>
+    <string name="custom_percentage">自定义小费比例 %</string>
+    <string name="tip_percent">小费比例</string>
+    <string name="senior_mode_title">长辈模式</string>
+    <string name="senior_mode_desc">特大按键与清晰大字排版</string>
+    <string name="standard_tip">标准</string>
+    <string name="generous_tip">大方</string>
+    <string name="extremely_generous_tip">非常大方</string>
+    <string name="legend_tip">传奇</string>
+    <string name="angel_tip">荣誉小费</string>
+    <string name="split_bill">分摊账单</string>
+    <string name="number_of_people">分摊人数</string>
+    <string name="calculated_tip">小费总计</string>
+    <string name="calculated_total">账单总计</string>
+    <string name="split_share">每人应付</string>
+    <string name="total_bill_label">账单总计</string>
+    <string name="tip_amount_label">小费总计</string>
+    <string name="each_pays_label">每人应付</string>
+    <string name="service_category">服务类别</string>
+    <string name="select_service_category">选择服务类别</string>
+    <string name="haptic_state">触觉震动反馈</string>
+    <string name="clear_button">重置清除</string>
+    <string name="round_up">向上取整</string>
+    <string name="round_down">向下取整</string>
+    <string name="custom_slider">自定义比例</string>
+    <string name="calculated_totals">计算结果汇总</string>
+    <string name="reset_calculator">重置计算器</string>
+    <string name="search_country_placeholder">搜索国家、地区或 ISO 代码（如 CN、美国）...</string>
+    <string name="select_language_title">选择语言</string>
+    <string name="auto_language_option">离线自动识别</string>
+    <string name="auto_language_sub">根据系统语言与离线国家库匹配</string>
+    <string name="close_button">关闭</string>
+    <string name="solo_person">1人独自支付</string>
+    <string name="people_sharing">%d 人共同分摊</string>
+    <string name="tipping_tiers_header">%s 小费档位推荐</string>
+    <string name="select_currency">选择货币</string>
+    <string name="all_currencies">全部 (%d)</string>
+    <string name="more_currencies">+ 更多...</string>
+    <string name="global_currencies_title">全球法定货币</string>
+    <string name="currencies_count">%d 种货币</string>
+    <string name="search_currency_placeholder">搜索货币名称、代码或国家...</string>
+    <string name="no_currency_found">未找到匹配的货币</string>
+    <string name="select_country_title">选择国家与地区</string>
+    <string name="regional_matrices_count">覆盖 192 个国家与地区指南</string>
+    <string name="culture_advice">文化小贴士</string>
+    <string name="iso_label">代码: %1$s • 格式: %2$s</string>
+    <string name="selected_toast">已选择 %1$s (%2$s)</string>
+    <string name="toggle_senior_mode">切换长辈大字模式</string>
+    <string name="toggle_theme_mode">切换色彩主题</string>
+    <string name="app_description_semantic">Locus，无障碍全球小费计算器</string>
+    <string name="passport_logo_desc">护照徽标</string>
+    <string name="decrease_people">减少分摊人数</string>
+    <string name="increase_people">增加分摊人数</string>
+    <string name="back_to_calculator">返回计算器</string>
+    <string name="share_bill_summary">分享账单汇总</string>
+    <string name="share_bill_summary_title">账单明细汇总</string>
+    <string name="tip_calculation_desc">账单计算: %1$s。小费: %2$s。每人应付: %3$s</string>
+
+    <string name="service_restaurants">餐厅餐饮</string>
+    <string name="tier_standard">标准</string>
+    <string name="tier_generous">大方</string>
+    <string name="tier_legend">传奇</string>
+    <string name="tier_mvp">荣誉小费</string>
+
+    <!-- Matrix & Country Tipping Notes in Chinese -->
+    <string name="note_default_guideline">适用常规通用小费指导原则。</string>
+    <string name="note_matrix_a_restaurant">通常普遍预期给小费；现金更受欢迎。</string>
+    <string name="note_matrix_a_delivery">建议将现金直接交付给外卖骑手。</string>
+    <string name="note_matrix_a_takeout">柜台自取外带通常无需小费。</string>
+    <string name="note_matrix_a_foodtruck">小费罐随心自愿投递。</string>
+    <string name="note_matrix_a_groceries">打包打包员通常仅依靠小费获得报酬。</string>
+    <string name="note_matrix_a_bar">按轮单点或结账总单时支付小费。</string>
+
+    <string name="note_matrix_b_restaurant">堂食就餐的标准预期。</string>
+    <string name="note_matrix_b_delivery">骑手感谢顾客留下少量小费。</string>
+    <string name="note_matrix_b_takeout">柜台小费盒可自由选择。</string>
+    <string name="note_matrix_b_foodtruck">通常采用向上凑整结算。</string>
+    <string name="note_matrix_b_groceries">店内通常无给小费的习惯。</string>
+    <string name="note_matrix_b_bar">将零钱留在吧台上即可。</string>
+
+    <string name="note_matrix_c_restaurant">服务费已依法包含在账单中；小费属于自愿奖励。</string>
+    <string name="note_matrix_c_delivery">恶劣天气下给小费较为常见。</string>
+    <string name="note_matrix_c_takeout">自取无需给小费。</string>
+    <string name="note_matrix_c_foodtruck">简单向上取整即可。</string>
+    <string name="note_matrix_c_groceries">完全没有给小费的习惯。</string>
+    <string name="note_matrix_c_bar">零钱留在吧台即可。</string>
+
+    <string name="note_matrix_d_restaurant">无小费文化，给小费可能被认为不礼貌或令人困惑；优质服务已包含。</string>
+    <string name="note_matrix_d_delivery">无需给小费。</string>
+    <string name="note_matrix_d_takeout">无需给小费。</string>
+    <string name="note_matrix_d_foodtruck">无需给小费。</string>
+    <string name="note_matrix_d_groceries">无需给小费。</string>
+    <string name="note_matrix_d_bar">无需给小费。</string>
+
+    <string name="note_matrix_e_restaurant">小费 (Baksheesh) 为传统习俗；现金留在餐桌上。</string>
+    <string name="note_matrix_e_delivery">配送人员通常期望当面收到现金小费。</string>
+    <string name="note_matrix_e_takeout">收银台通常设有小费盒。</string>
+    <string name="note_matrix_e_foodtruck">非常感谢向上凑整零钱。</string>
+    <string name="note_matrix_e_groceries">装袋和行李搬运工以此为主要生计。</string>
+    <string name="note_matrix_e_bar">在酒店酒廊非常受欢迎。</string>
+
+    <!-- Custom Country Notes -->
+    <string name="note_al_restaurant" formatted="false">在旅游区非常欢迎给小费 (5% - 10%)。</string>
+    <string name="note_al_delivery">给司机的现金小费十分受欢迎。</string>
+    <string name="note_al_takeout">自取无需给小费。</string>
+    <string name="note_al_foodtruck">小费罐随心自愿。</string>
+    <string name="note_al_groceries">无固定小费习惯。</string>
+    <string name="note_al_bar">向上取整或留下零钱。</string>
+
+    <string name="note_ar_restaurant" formatted="false">惯例给 10% 现金小费；因通胀因素现金明显更受青睐。</string>
+    <string name="note_ar_delivery" formatted="false">给骑手 5% - 10% 现金小费。</string>
+    <string name="note_ar_takeout">无需给小费。</string>
+    <string name="note_ar_foodtruck">小费罐投零钱即可。</string>
+    <string name="note_ar_groceries">给打包员一些小额纸币。</string>
+    <string name="note_ar_bar" formatted="false">凑整或按 10% 记入账单。</string>
+
+    <string name="note_au_restaurant" formatted="false">无小费习俗；法定工资较高。卓越服务可给 10%。</string>
+    <string name="note_au_delivery">恶劣天气下可自选给 $2 - $5。</string>
+    <string name="note_au_takeout">无需给小费。</string>
+    <string name="note_au_foodtruck">小费罐随心自愿。</string>
+    <string name="note_au_groceries">无需给小费。</string>
+    <string name="note_au_bar">无需给小费；留下零钱即可。</string>
+
+    <string name="note_at_restaurant" formatted="false">预期给小费；向上凑整或在账单上加 5% - 10%。</string>
+    <string name="note_at_delivery">建议当面给骑手 1-2 欧元现金。</string>
+    <string name="note_at_takeout">柜台自取无需给小费。</string>
+    <string name="note_at_foodtruck">零钱向上凑整。</string>
+    <string name="note_at_groceries">无需给小费。</string>
+    <string name="note_at_bar">凑整至最接近的整欧元。</string>
+
+    <string name="note_be_restaurant" formatted="false">服务费已依法包含；优质服务可留 5% - 10% 小费。</string>
+    <string name="note_be_delivery">天气恶劣或配送迅速时建议给 1-2 欧。</string>
+    <string name="note_be_takeout">无需给小费。</string>
+    <string name="note_be_foodtruck">无需给小费。</string>
+    <string name="note_be_groceries">无需给小费。</string>
+    <string name="note_be_bar">欢迎留下少量零钱。</string>
+
+    <string name="note_br_restaurant" formatted="false">账单通常已包含 10% 服务费；额外给小费随意。</string>
+    <string name="note_br_delivery">现金或 App 给 2-5 巴西雷亚尔。</string>
+    <string name="note_br_takeout">无需小费。</string>
+    <string name="note_br_foodtruck">无需找零即可。</string>
+    <string name="note_br_groceries">给超市装袋员 2-5 雷亚尔小费。</string>
+    <string name="note_br_bar" formatted="false">酒吧通常直接在账单中包含 10% 服务费。</string>
+
+    <string name="note_ca_restaurant" formatted="false">堂食服务标准小费为 15% - 20%。</string>
+    <string name="note_ca_delivery" formatted="false">App 或现金标准给 10% - 15%。</string>
+    <string name="note_ca_takeout">刷卡机上的小费提示完全自愿。</string>
+    <string name="note_ca_foodtruck" formatted="false">提示或小费盒按 10% 随心自愿。</string>
+    <string name="note_ca_groceries">无给小费习惯。</string>
+    <string name="note_ca_bar" formatted="false">每杯酒 $1 - $2 或账单总额的 15% - 20%。</string>
+
+    <string name="note_cn_restaurant" formatted="false">无小费文化习惯；部分奢华酒店收取 10% 服务费。</string>
+    <string name="note_cn_delivery">无需给小费。</string>
+    <string name="note_cn_takeout">无需给小费。</string>
+    <string name="note_cn_foodtruck">无需给小费。</string>
+    <string name="note_cn_groceries">无需给小费。</string>
+    <string name="note_cn_bar">无需给小费。</string>
+
+    <string name="note_co_restaurant" formatted="false">账单上通常会标注 10% 自愿小费。</string>
+    <string name="note_co_delivery">给骑手 2,000 - 5,000 哥伦比亚比索现金。</string>
+    <string name="note_co_takeout">不常见。</string>
+    <string name="note_co_foodtruck">仅在服务特别好时给予。</string>
+    <string name="note_co_groceries">给打包员少量零钱。</string>
+    <string name="note_co_bar" formatted="false">直接附加 10% 或向上凑整。</string>
+
+    <string name="note_dk_restaurant" formatted="false">法律规定账单已含服务费；极少给小费。</string>
+    <string name="note_dk_delivery">极少预期给小费。</string>
+    <string name="note_dk_takeout">无需给小费。</string>
+    <string name="note_dk_foodtruck">无需给小费。</string>
+    <string name="note_dk_groceries">无需给小费。</string>
+    <string name="note_dk_bar">无固定小费标准。</string>
+
+    <string name="note_eg_restaurant" formatted="false">小费 (10% - 15%) 为通用习俗；现金留在桌上。</string>
+    <string name="note_eg_delivery">当面给快递员 10 - 20 埃及镑现金。</string>
+    <string name="note_eg_takeout">感谢留下零钱。</string>
+    <string name="note_eg_foodtruck">建议向上凑整付款。</string>
+    <string name="note_eg_groceries">给装袋员与停车向导 5 - 10 埃及镑。</string>
+    <string name="note_eg_bar" formatted="false">在酒店休息室通常给 10% - 15%。</string>
+
+    <string name="note_fr_restaurant" formatted="false">法律规定服务费已包含 (15%)；服务优异可多给 1-2 欧。</string>
+    <string name="note_fr_delivery">给骑手 1-2 欧元现金。</string>
+    <string name="note_fr_takeout">无需给小费。</string>
+    <string name="note_fr_foodtruck">凑整到最接近的整欧元。</string>
+    <string name="note_fr_groceries">无需给小费。</string>
+    <string name="note_fr_bar">在吧台留下少量零钱即可。</string>
+
+    <string name="note_de_restaurant" formatted="false">向上取整 (5% - 10%)，结账前直接向服务员报出含小费总金额。</string>
+    <string name="note_de_delivery">当面直接给骑手 1-2 欧元现金。</string>
+    <string name="note_de_takeout">收银台小费盒零钱自愿。</string>
+    <string name="note_de_foodtruck">通常凑整至下一个整数欧元。</string>
+    <string name="note_de_groceries">超市杂货店无需给小费。</string>
+    <string name="note_de_bar">凑整至整欧元或留下零钱。</string>
+
+    <string name="note_in_restaurant" formatted="false">检查账单是否已含服务费 (5% - 10%)；若无则付 10% 现金。</string>
+    <string name="note_in_delivery">给外卖骑手 ₹20 - ₹50 小费。</string>
+    <string name="note_in_takeout">小费罐随心自选。</string>
+    <string name="note_in_foodtruck">凑整至最近的 ₹10 或 ₹50。</string>
+    <string name="note_in_groceries">给打包员或搬运助手 ₹20 - ₹50。</string>
+    <string name="note_in_bar" formatted="false">若未收服务费，酒水按 10% 给小费。</string>
+
+    <string name="note_id_restaurant" formatted="false">在旅游区（如巴厘岛）凑整或给 5% - 10%。</string>
+    <string name="note_id_delivery">App 或现金给 5,000 - 10,000 印尼盾。</string>
+    <string name="note_id_takeout">无需小费。</string>
+    <string name="note_id_foodtruck">在当地小吃店凑整即可。</string>
+    <string name="note_id_groceries">给停车指引人员零钱即可。</string>
+    <string name="note_id_bar">在沙滩俱乐部通常向上凑整。</string>
+
+    <string name="note_ie_restaurant" formatted="false">先核对服务费；堂食就餐标准给 10% - 15%。</string>
+    <string name="note_ie_delivery">送餐通常凑整或给 1-2 欧。</string>
+    <string name="note_ie_takeout">无需给小费。</string>
+    <string name="note_ie_foodtruck">无需给小费。</string>
+    <string name="note_ie_groceries">无需给小费。</string>
+    <string name="note_ie_bar">在吧台点饮品极少需要，除非提供桌边服务。</string>
+
+    <string name="note_it_restaurant">常有桌布面包费 (Coperto)；服务优异可每人留 1-2 欧。</string>
+    <string name="note_it_delivery">给 1-2 欧元现金。</string>
+    <string name="note_it_takeout">无需给小费。</string>
+    <string name="note_it_foodtruck">向上凑整。</string>
+    <string name="note_it_groceries">无需给小费。</string>
+    <string name="note_it_bar">站着喝意式浓缩时在吧台留枚小硬币即可。</string>
+
+    <string name="note_jp_restaurant">日本无小费文化且可能令人困惑；卓越服务已是标准品质。</string>
+    <string name="note_jp_delivery">无需给小费；礼貌鞠躬道谢即可。</string>
+    <string name="note_jp_takeout">无需给小费。</string>
+    <string name="note_jp_foodtruck">建议支付正好金额；不收小费。</string>
+    <string name="note_jp_groceries">无需给小费。</string>
+    <string name="note_jp_bar">无需给小费；居酒屋可能收取座位小菜费 (Otoshi)。</string>
+
+    <string name="note_mx_restaurant" formatted="false">惯例给 10% - 15% 小费 (Propina)；结账前现金或刷卡支付。</string>
+    <string name="note_mx_delivery">给配送员 20 - 50 墨西哥比索现金。</string>
+    <string name="note_mx_takeout">小费罐自愿投递。</string>
+    <string name="note_mx_foodtruck">零钱投入小费罐。</string>
+    <string name="note_mx_groceries">给超市装袋员 5 - 10 比索。</string>
+    <string name="note_mx_bar" formatted="false">每轮点单或总单支付 10% - 15%。</string>
+
+    <string name="note_nl_restaurant" formatted="false">服务费已含，但普遍习惯向上凑整 (5% - 10%)。</string>
+    <string name="note_nl_delivery">送餐员感谢收到 1-2 欧小费。</string>
+    <string name="note_nl_takeout">非通用做法。</string>
+    <string name="note_nl_foodtruck">零钱随意。</string>
+    <string name="note_nl_groceries">无需给小费。</string>
+    <string name="note_nl_bar">留下找零即可。</string>
+
+    <string name="note_nz_restaurant" formatted="false">无小费预期；法定薪资水平高。</string>
+    <string name="note_nz_delivery">App 内可自选 ($2 - $5)。</string>
+    <string name="note_nz_takeout">无需给小费。</string>
+    <string name="note_nz_foodtruck">无需给小费。</string>
+    <string name="note_nz_groceries">无需给小费。</string>
+    <string name="note_nz_bar">酒吧台无给小费习惯。</string>
+
+    <string name="note_no_restaurant" formatted="false">服务费依法包含在内；小费 (5% - 10%) 完全自愿。</string>
+    <string name="note_no_delivery">外卖 App 内自选。</string>
+    <string name="note_no_takeout">无需给小费。</string>
+    <string name="note_no_foodtruck">无需给小费。</string>
+    <string name="note_no_groceries">无需给小费。</string>
+    <string name="note_no_bar">服务良好时向上凑整。</string>
+
+    <string name="note_sg_restaurant" formatted="false">账单通常已包含 10% 服务费和 9% 消费税 (GST)。</string>
+    <string name="note_sg_delivery">随意给 2 - 5 新加坡元。</string>
+    <string name="note_sg_takeout">无需给小费。</string>
+    <string name="note_sg_foodtruck">熟食中心（Hawker Centres）严格不收小费。</string>
+    <string name="note_sg_groceries">无需给小费。</string>
+    <string name="note_sg_bar">酒吧通常直接包含服务费。</string>
+
+    <string name="note_za_restaurant" formatted="false">10% 为良好服务的常规标准底线。</string>
+    <string name="note_za_delivery">凑整或给骑手 R10 - R20 会很受欢迎。</string>
+    <string name="note_za_takeout">不常见。</string>
+    <string name="note_za_foodtruck">不常见。</string>
+    <string name="note_za_groceries">给停车看守员和装袋员 R5 - R10。</string>
+    <string name="note_za_bar" formatted="false">向上凑整或账单加 10%。</string>
+
+    <string name="note_kr_restaurant">韩国无小费文化；优质贴心的服务已全额包含。</string>
+    <string name="note_kr_delivery">无需给小费。</string>
+    <string name="note_kr_takeout">无需给小费。</string>
+    <string name="note_kr_foodtruck">无需给小费。</string>
+    <string name="note_kr_groceries">无需给小费。</string>
+    <string name="note_kr_bar">无需给小费。</string>
+
+    <string name="note_es_restaurant" formatted="false">小费纯属自愿；在正餐餐厅凑整或留 5% - 10%。</string>
+    <string name="note_es_delivery">给 1 欧元现金很受欢迎。</string>
+    <string name="note_es_takeout">无需给小费。</string>
+    <string name="note_es_foodtruck">向上凑整。</string>
+    <string name="note_es_groceries">无需给小费。</string>
+    <string name="note_es_bar">将零钱留在小碟子上。</string>
+
+    <string name="note_se_restaurant" formatted="false">服务费已包含；给小费纯属自愿。</string>
+    <string name="note_se_delivery">无需给小费。</string>
+    <string name="note_se_takeout">无需给小费。</string>
+    <string name="note_se_foodtruck">无需给小费。</string>
+    <string name="note_se_groceries">无需给小费。</string>
+    <string name="note_se_bar">无需给小费。</string>
+
+    <string name="note_ch_restaurant" formatted="false">法律规定账单含服务费；习惯向上凑整 (5% - 10%)。</string>
+    <string name="note_ch_delivery">骑手很感谢收到小费。</string>
+    <string name="note_ch_takeout">非通用做法。</string>
+    <string name="note_ch_foodtruck">非通用做法。</string>
+    <string name="note_ch_groceries">无需给小费。</string>
+    <string name="note_ch_bar">凑整到最接近的整瑞士法郎。</string>
+
+    <string name="note_th_restaurant" formatted="false">高档餐厅给 20-50 泰铢或 10%；普通小店留零钱。</string>
+    <string name="note_th_delivery">给骑手 20-40 泰铢现金。</string>
+    <string name="note_th_takeout">留下找零的小钱。</string>
+    <string name="note_th_foodtruck">小费盒留零钱。</string>
+    <string name="note_th_groceries">无需给小费。</string>
+    <string name="note_th_bar">每轮给 20-50 泰铢或留下硬币。</string>
+
+    <string name="note_tr_restaurant" formatted="false">小费 (5% - 10%) 请用现金留在桌上（勿刷卡）。</string>
+    <string name="note_tr_delivery">当面给骑手 20 - 50 里拉现金。</string>
+    <string name="note_tr_takeout">收银台小费盒。</string>
+    <string name="note_tr_foodtruck">向上凑整即可。</string>
+    <string name="note_tr_groceries">帮忙提袋子时给 10 - 20 里拉。</string>
+    <string name="note_tr_bar" formatted="false">向上凑整或每轮给 10%。</string>
+
+    <string name="note_ua_bar" formatted="false">酒吧通常标准小费为 10%。</string>
+
+    <string name="note_us_restaurant" formatted="false">小费近乎强制性 (15% - 20%)；服务员主要以此为收入来源。</string>
+    <string name="note_us_delivery" formatted="false">外卖配送标准给 10% - 15%（App 或现金）。</string>
+    <string name="note_us_takeout">POS 屏幕提示小费完全自选。</string>
+    <string name="note_us_foodtruck">小费盒或屏幕提示较为普遍。</string>
+    <string name="note_us_groceries">装袋工或后备箱装运自选给 $2 - $5。</string>
+    <string name="note_us_bar" formatted="false">每杯酒 $1 - $2 或账单总额的 15% - 20%。</string>
+
+    <string name="note_ae_restaurant" formatted="false">服务费通常已含；额外给服务员 10% - 15% 属传统习惯。</string>
+    <string name="note_ae_delivery">现金或 App 给 5 - 10 迪拉姆。</string>
+    <string name="note_ae_takeout">非通用做法。</string>
+    <string name="note_ae_foodtruck">非通用做法。</string>
+    <string name="note_ae_groceries">给超市搬运助手 5 - 10 迪拉姆。</string>
+    <string name="note_ae_bar" formatted="false">奢华酒廊凑整或给 10%。</string>
+
+    <string name="note_gb_restaurant" formatted="false">检查账单是否含 12.5% 可选服务费；若未包含则加 10% - 15%。</string>
+    <string name="note_gb_delivery">通常现金或 App 给 £1 - £2。</string>
+    <string name="note_gb_takeout">小费罐随心自愿。</string>
+    <string name="note_gb_foodtruck">小费罐随心自愿。</string>
+    <string name="note_gb_groceries">无需给小费。</string>
+    <string name="note_gb_bar">吧台点酒极少需要，除非提供桌边服务。</string>
+
+    <!-- Text-to-Speech (TTS) strings -->
+    <string name="tts_tap_to_read">点击收听计算结果朗读</string>
+    <string name="tts_tap_to_speak_label">点击收听</string>
+    <string name="tts_speaking_now">正在朗读总计...</string>
+
+    <!-- Cultural Tipping Tip FAB and Modal strings -->
+    <string name="cultural_tip_fab_desc">%s的小费文化建议</string>
+    <string name="cultural_tip_dialog_title">小费礼仪</string>
+    <string name="cultural_tip_understood">明白了</string>
+    <string name="cultural_tip_view_country_details">探索所有国家</string>
+
+    <!-- DataStore Tip History & Save Prompt Strings -->
+    <string name="save_tip_title">您要保存吗？</string>
+    <string name="save_tip_message">将此小费计算保存到最近历史记录中，以便随时查看。</string>
+    <string name="save_button_confirm">保存</string>
+    <string name="save_button_dismiss">不保存</string>
+    <string name="tip_saved_snackbar">计算已保存到历史记录</string>
+    <string name="history_button_label">历史记录</string>
+    <string name="history_title">近期小费历史</string>
+    <string name="history_empty_state">尚无保存的计算</string>
+    <string name="history_clear_all">清除历史</string>
+    <string name="history_load_action">载入</string>
+    <string name="history_delete_item">删除</string>
+    <string name="save_prompt_setting_title">保存提示设置</string>
+    <string name="save_prompt_toggle_label">保存确认提示：</string>
+    <string name="save_prompt_always_mode">始终</string>
+    <string name="save_prompt_never_mode">从不</string>
+    <string name="tutorial_toggle_label">启动时显示向导：</string>
+    <string name="tutorial_toggle_always">始终</string>
+    <string name="tutorial_toggle_never">从不</string>
+    <string name="coach_step_history_title">交易历史与保存</string>
+    <string name="coach_step_history_subtitle">保存并回顾过往计算</string>
+    <string name="coach_step_history_desc">通过 DataStore 本地存储您的小费账单。在下方切换是否在计算时始终或从不提示“您要保存吗？”。</string>
+    <string name="save_to_history_action">保存到历史记录</string>
+
+    <!-- Global Explorer Unlock Notification Strings -->
+    <string name="unlock_global_explorer_countdown">还需轻触 %d 次以解锁全球探索器</string>
+    <string name="unlock_global_explorer_countdown_one">还需轻触 1 次以解锁全球探索器</string>
+    <string name="unlock_global_explorer_success">🎉 发现隐藏功能！全球国家选择器已解锁</string>
+</resources>

@@ -1,0 +1,67 @@
+{
+  "iso": "default",
+  "base_matrix": "Universal",
+  "matrix_name": "Universal Rule of Thumb",
+  "services": [
+    {
+      "service_type": "Restaurants",
+      "service_type_key": "service_restaurants",
+      "standard_tip": "10%",
+      "generous_tip": "15%",
+      "legend_tip": "20%",
+      "mvp_tip": "25%+",
+      "notes": "Default to 10% model for sit-down restaurants.",
+      "notes_key": "note_default_guideline"
+    },
+    {
+      "service_type": "Delivery",
+      "service_type_key": "service_delivery",
+      "standard_tip": "5% - 10%",
+      "generous_tip": "15%",
+      "legend_tip": "20%",
+      "mvp_tip": "25%",
+      "notes": "Hand cash directly to driver or courier.",
+      "notes_key": "note_default_guideline"
+    },
+    {
+      "service_type": "Takeout",
+      "service_type_key": "service_takeout",
+      "standard_tip": "0%",
+      "generous_tip": "Round up",
+      "legend_tip": "5%",
+      "mvp_tip": "10%",
+      "notes": "Not expected for counter pickup.",
+      "notes_key": "note_default_guideline"
+    },
+    {
+      "service_type": "Foodtrucks",
+      "service_type_key": "service_foodtruck",
+      "standard_tip": "0%",
+      "generous_tip": "Round up",
+      "legend_tip": "5%",
+      "mvp_tip": "10%",
+      "notes": "Optional change jars.",
+      "notes_key": "note_default_guideline"
+    },
+    {
+      "service_type": "Groceries",
+      "service_type_key": "service_groceries",
+      "standard_tip": "0%",
+      "generous_tip": "Small change",
+      "legend_tip": "Medium",
+      "mvp_tip": "MVP",
+      "notes": "Tips only for physical assistance or baggers.",
+      "notes_key": "note_default_guideline"
+    },
+    {
+      "service_type": "Bar",
+      "service_type_key": "service_bar",
+      "standard_tip": "Round up",
+      "generous_tip": "10%",
+      "legend_tip": "15%",
+      "mvp_tip": "20%",
+      "notes": "Tip per round or on final tab.",
+      "notes_key": "note_default_guideline"
+    }
+  ]
+}

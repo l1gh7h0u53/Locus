@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Locus</string>
+    <string name="header_subtitle">कैलकुलेटर</string>
+    <string name="service_restaurant">रेस्तरां</string>
+    <string name="service_delivery">डिलीवरी</string>
+    <string name="service_takeout">टेकआउट</string>
+    <string name="service_foodtruck">फ़ूड ट्रक</string>
+    <string name="service_groceries">किराना</string>
+    <string name="service_bar">बार</string>
+    <string name="bill_amount">बिल राशि</string>
+    <string name="enter_bill_amount">बिल राशि दर्ज करें</string>
+    <string name="custom_percentage">कस्टम टिप %</string>
+    <string name="tip_percent">टिप प्रतिशत</string>
+    <string name="senior_mode_title">सीनियर मोड</string>
+    <string name="senior_mode_desc">बड़े बटन और आसानी से पढ़े जाने वाले बड़े अक्षर</string>
+    <string name="standard_tip">मानक</string>
+    <string name="generous_tip">उदार</string>
+    <string name="extremely_generous_tip">अत्यधिक उदार</string>
+    <string name="legend_tip">उत्कृष्ट</string>
+    <string name="angel_tip">सम्मान टिप</string>
+    <string name="split_bill">बिल बांटें</string>
+    <string name="number_of_people">लोगों की संख्या</string>
+    <string name="calculated_tip">टिप राशि</string>
+    <string name="calculated_total">कुल बिल</string>
+    <string name="split_share">प्रति व्यक्ति</string>
+    <string name="total_bill_label">कुल बिल</string>
+    <string name="tip_amount_label">टिप राशि</string>
+    <string name="each_pays_label">प्रति व्यक्ति</string>
+    <string name="service_category">सेवा श्रेणी</string>
+    <string name="select_service_category">सेवा श्रेणी चुनें</string>
+    <string name="haptic_state">हैप्टिक कंपन</string>
+    <string name="clear_button">सब साफ़ करें</string>
+    <string name="round_up">राउंड अप</string>
+    <string name="round_down">राउंड डाउन</string>
+    <string name="custom_slider">कस्टम प्रतिशत</string>
+    <string name="calculated_totals">गणना परिणाम</string>
+    <string name="reset_calculator">रीसेट करें</string>
+    <string name="search_country_placeholder">देश, कोड खोजें (उदा. IN, भारत)...</string>
+    <string name="select_language_title">भाषा चुनें</string>
+    <string name="auto_language_option">ऑफ़लाइन स्वतः पहचान</string>
+    <string name="auto_language_sub">सिस्टम भाषा और ऑफ़लाइन देश मानचित्र</string>
+    <string name="close_button">बंद करें</string>
+    <string name="solo_person">1 व्यक्ति (अकेले)</string>
+    <string name="people_sharing">%d लोग साझा कर रहे हैं</string>
+    <string name="tipping_tiers_header">%s टिपिंग टियर</string>
+    <string name="select_currency">मुद्रा चुनें</string>
+    <string name="all_currencies">सभी (%d)</string>
+    <string name="more_currencies">+ अधिक...</string>
+    <string name="global_currencies_title">वैश्विक मुद्राएं</string>
+    <string name="currencies_count">%d मुद्राएं</string>
+    <string name="search_currency_placeholder">मुद्रा नाम, कोड या देश खोजें...</string>
+    <string name="no_currency_found">कोई मुद्रा नहीं मिली</string>
+    <string name="select_country_title">देश चुनें</string>
+    <string name="regional_matrices_count">192 देश और क्षेत्रीय नियम</string>
+    <string name="culture_advice">सांस्कृतिक सलाह</string>
+    <string name="iso_label">कोड: %1$s • प्रारूप: %2$s</string>
+    <string name="selected_toast">%1$s (%2$s) चुना गया</string>
+    <string name="toggle_senior_mode">सीनियर मोड बदलें</string>
+    <string name="toggle_theme_mode">थीम बदलें</string>
+    <string name="app_description_semantic">लोकस, वैश्विक टिप कैलकुलेटर</string>
+    <string name="passport_logo_desc">पासपोर्ट लोगो</string>
+    <string name="decrease_people">लोगों की संख्या घटाएं</string>
+    <string name="increase_people">लोगों की संख्या बढ़ाएं</string>
+    <string name="back_to_calculator">कैलकुलेटर पर वापस जाएं</string>
+    <string name="share_bill_summary">बिल सारांश साझा करें</string>
+    <string name="share_bill_summary_title">बिल सारांश</string>
+    <string name="tip_calculation_desc">बिल गणना: %1$s। टिप: %2$s। प्रति व्यक्ति: %3$s</string>
+
+    <string name="service_restaurants">रेस्तरां</string>
+    <string name="tier_standard">मानक</string>
+    <string name="tier_generous">उदार</string>
+    <string name="tier_legend">उत्कृष्ट</string>
+    <string name="tier_mvp">सम्मान टिप</string>
+
+    <!-- Matrix & Country Tipping Notes in Hindi -->
+    <string name="note_default_guideline">सामान्य मानक टिपिंग दिशानिर्देश लागू होते हैं।</string>
+    <string name="note_matrix_a_restaurant">टिप की अपेक्षा की जाती है; नकद को प्राथमिकता दी जाती है।</string>
+    <string name="note_matrix_a_delivery">डिलीवरी एजेंट को सीधे नकद टिप दें।</string>
+    <string name="note_matrix_a_takeout">काउंटर पिकअप के लिए अपेक्षित नहीं है।</string>
+    <string name="note_matrix_a_foodtruck">टिप जार वैकल्पिक है।</string>
+    <string name="note_matrix_a_groceries">बैगर्स अक्सर केवल टिप के सहारे काम करते हैं।</string>
+    <string name="note_matrix_a_bar">प्रति राउंड या अंतिम बिल पर टिप दें।</string>
+
+    <string name="note_matrix_b_restaurant">टेबल सेवा के लिए मानक अपेक्षा।</string>
+    <string name="note_matrix_b_delivery">कूरियर छोटी टिप की सराहना करते हैं।</string>
+    <string name="note_matrix_b_takeout">टिप बॉक्स वैकल्पिक है।</string>
+    <string name="note_matrix_b_foodtruck">राउंड अप करना आम है।</string>
+    <string name="note_matrix_b_groceries">दुकानों के अंदर टिप देने का रिवाज नहीं है।</string>
+    <string name="note_matrix_b_bar">काउंटर पर छुट्टे पैसे छोड़ें।</string>
+
+    <string name="note_matrix_c_restaurant">सर्विस चार्ज शामिल है; टिप स्वैच्छिक बोनस है।</string>
+    <string name="note_matrix_c_delivery">खराब मौसम में टिप देना आम है।</string>
+    <string name="note_matrix_c_takeout">टेकआउट के लिए अपेक्षित नहीं।</string>
+    <string name="note_matrix_c_foodtruck">सरल राउंड अप।</string>
+    <string name="note_matrix_c_groceries">बिल्कुल भी रिवाज नहीं है।</string>
+    <string name="note_matrix_c_bar">बार काउंटर पर छुट्टे पैसे छोड़ें।</string>
+
+    <string name="note_matrix_d_restaurant">टिप का रिवाज नहीं है या इसे अनुचित माना जाता है; उत्कृष्ट सेवा शामिल है।</string>
+    <string name="note_matrix_d_delivery">टिप अपेक्षित नहीं है।</string>
+    <string name="note_matrix_d_takeout">कोई टिप नहीं।</string>
+    <string name="note_matrix_d_foodtruck">कोई टिप नहीं।</string>
+    <string name="note_matrix_d_groceries">कोई टिप नहीं।</string>
+    <string name="note_matrix_d_bar">कोई टिप नहीं।</string>
+
+    <string name="note_matrix_e_restaurant">बख्शीश पारंपरिक रिवाज है; टेबल पर नकद छोड़ें।</string>
+    <string name="note_matrix_e_delivery">डिलीवरी एजेंट हाथ में नकद टिप की उम्मीद करते हैं।</string>
+    <string name="note_matrix_e_takeout">काउंटर पर टिप बॉक्स।</string>
+    <string name="note_matrix_e_foodtruck">राउंड अप करना बहुत सराहा जाता है।</string>
+    <string name="note_matrix_e_groceries">सहायक कर्मचारी इन टिप्स पर निर्भर रहते हैं।</string>
+    <string name="note_matrix_e_bar">होटल लाउंज में बहुत सराहा जाता है।</string>
+
+    <!-- Custom Country Notes -->
+    <string name="note_al_restaurant" formatted="false">पर्यटक क्षेत्रों में टिप (5% - 10%) बहुत सराही जाती है।</string>
+    <string name="note_al_delivery">ड्राइवरों के लिए नकद टिप का स्वागत है।</string>
+    <string name="note_al_takeout">पिकअप के लिए अपेक्षित नहीं।</string>
+    <string name="note_al_foodtruck">टिप जार वैकल्पिक है।</string>
+    <string name="note_al_groceries">कोई मानक टिप नहीं।</string>
+    <string name="note_al_bar">राउंड अप करें या छुट्टे पैसे छोड़ें।</string>
+
+    <string name="note_ar_restaurant" formatted="false">10% नकद टिप रिवाज है; महंगाई के कारण नकद अधिक पसंद किया जाता है।</string>
+    <string name="note_ar_delivery" formatted="false">राइडर को 5% - 10% नकद दें।</string>
+    <string name="note_ar_takeout">अपेक्षित नहीं।</string>
+    <string name="note_ar_foodtruck">टिप जार में छुट्टे पैसे।</string>
+    <string name="note_ar_groceries">बैगर्स के लिए छोटे नोट।</string>
+    <string name="note_ar_bar" formatted="false">राउंड अप करें या बिल पर 10%।</string>
+
+    <string name="note_au_restaurant" formatted="false">टिप का रिवाज नहीं; वेतन अच्छा है। असाधारण सेवा के लिए 10%।</string>
+    <string name="note_au_delivery">खराब मौसम में वैकल्पिक $2 - $5।</string>
+    <string name="note_au_takeout">टिप अपेक्षित नहीं।</string>
+    <string name="note_au_foodtruck">टिप जार वैकल्पिक।</string>
+    <string name="note_au_groceries">कोई टिप नहीं।</string>
+    <string name="note_au_bar">आवश्यक नहीं; छुट्टे पैसे छोड़ना ठीक है।</string>
+
+    <string name="note_at_restaurant" formatted="false">टिप अपेक्षित है; राउंड अप करें या बिल में 5% - 10% जोड़ें।</string>
+    <string name="note_at_delivery">ड्राइवर को सीधे 1-2 यूरो नकद देना बेहतर है।</string>
+    <string name="note_at_takeout">काउंटर पर अपेक्षित नहीं।</string>
+    <string name="note_at_foodtruck">छुट्टे पैसे राउंड अप करें।</string>
+    <string name="note_at_groceries">कोई टिप नहीं।</string>
+    <string name="note_at_bar">निकटतम यूरो में राउंड अप करें।</string>
+
+    <string name="note_be_restaurant" formatted="false">सर्विस चार्ज शामिल है; शानदार सेवा के लिए 5% - 10% टिप।</string>
+    <string name="note_be_delivery">खराब मौसम या तेज डिलीवरी के लिए 1-2 यूरो।</string>
+    <string name="note_be_takeout">अपेक्षित नहीं।</string>
+    <string name="note_be_foodtruck">अपेक्षित नहीं।</string>
+    <string name="note_be_groceries">कोई टिप नहीं।</string>
+    <string name="note_be_bar">छोटे छुट्टे पैसे का स्वागत है।</string>
+
+    <string name="note_br_restaurant" formatted="false">बिल में आमतौर पर 10% सर्विस चार्ज शामिल होता है।</string>
+    <string name="note_br_delivery">R$2 - R$5 नकद या ऐप से दें।</string>
+    <string name="note_br_takeout">कोई टिप नहीं।</string>
+    <string name="note_br_foodtruck">छुट्टे पैसे छोड़ें।</string>
+    <string name="note_br_groceries">कार्ट बैगर्स के लिए R$2 - R$5।</string>
+    <string name="note_br_bar" formatted="false">बार बिल में 10% सर्विस चार्ज मानक है।</string>
+
+    <string name="note_ca_restaurant" formatted="false">टेबल सेवा के लिए 15% - 20% मानक है।</string>
+    <string name="note_ca_delivery" formatted="false">ऐप या नकद द्वारा 10% - 15%।</string>
+    <string name="note_ca_takeout">कार्ड मशीन पर टिप प्रॉम्प्ट वैकल्पिक है।</string>
+    <string name="note_ca_foodtruck" formatted="false">10% या टिप बॉक्स।</string>
+    <string name="note_ca_groceries">टिप का रिवाज नहीं।</string>
+    <string name="note_ca_bar" formatted="false">$1 - $2 प्रति ड्रिंक या बिल पर 15% - 20%।</string>
+
+    <string name="note_cn_restaurant" formatted="false">टिप का रिवाज नहीं; लग्जरी होटलों में 10% सर्विस चार्ज।</string>
+    <string name="note_cn_delivery">टिप अपेक्षित नहीं।</string>
+    <string name="note_cn_takeout">कोई टिप नहीं।</string>
+    <string name="note_cn_foodtruck">कोई टिप नहीं।</string>
+    <string name="note_cn_groceries">कोई टिप नहीं।</string>
+    <string name="note_cn_bar">कोई टिप नहीं।</string>
+
+    <string name="note_co_restaurant" formatted="false">बिल में अक्सर 10% स्वैच्छिक टिप लिखी होती है।</string>
+    <string name="note_co_delivery">राइडर को 2,000 - 5,000 COP नकद दें।</string>
+    <string name="note_co_takeout">रिवाज नहीं।</string>
+    <string name="note_co_foodtruck">केवल अच्छी सेवा के लिए।</string>
+    <string name="note_co_groceries">बैगर्स के लिए छुट्टे पैसे।</string>
+    <string name="note_co_bar" formatted="false">10% शामिल या राउंड अप।</string>
+
+    <string name="note_dk_restaurant" formatted="false">कानूनन बिल में सर्विस चार्ज शामिल है; टिप दुर्लभ है।</string>
+    <string name="note_dk_delivery">शायद ही कभी अपेक्षित।</string>
+    <string name="note_dk_takeout">कोई टिप नहीं।</string>
+    <string name="note_dk_foodtruck">कोई टिप नहीं।</string>
+    <string name="note_dk_groceries">कोई टिप नहीं।</string>
+    <string name="note_dk_bar">कोई टिप मानक नहीं।</string>
+
+    <string name="note_eg_restaurant" formatted="false">बख्शीश (10% - 15%) रिवाज है; टेबल पर नकद छोड़ें।</string>
+    <string name="note_eg_delivery">कूरियर को 10 - 20 EGP नकद हाथ में दें।</string>
+    <string name="note_eg_takeout">छुट्टे पैसे की सराहना की जाती है।</string>
+    <string name="note_eg_foodtruck">राउंड अप करना अपेक्षित है।</string>
+    <string name="note_eg_groceries">बैगर्स के लिए 5 - 10 EGP।</string>
+    <string name="note_eg_bar" formatted="false">लाउंज में 10% - 15%।</string>
+
+    <string name="note_fr_restaurant" formatted="false">सर्विस शामिल है (15% कानूनन); अच्छी सेवा के लिए 1-2€ अतिरिक्त दें।</string>
+    <string name="note_fr_delivery">डिलीवरी वाले को 1-2€ नकद दें।</string>
+    <string name="note_fr_takeout">कोई टिप नहीं।</string>
+    <string name="note_fr_foodtruck">अगले यूरो तक राउंड अप करें।</string>
+    <string name="note_fr_groceries">कोई टिप नहीं।</string>
+    <string name="note_fr_bar">काउंटर पर छुट्टे पैसे छोड़ें।</string>
+
+    <string name="note_de_restaurant" formatted="false">राउंड अप करें (5% - 10%) और भुगतान से पहले वेटर को कुल राशि बताएं।</string>
+    <string name="note_de_delivery">ड्राइवर को सीधे 1-2 € नकद दें।</string>
+    <string name="note_de_takeout">टिप बॉक्स में छुट्टे पैसे डालना वैकल्पिक है।</string>
+    <string name="note_de_foodtruck">अगले यूरो तक राउंड अप करना मानक है।</string>
+    <string name="note_de_groceries">सुपरमार्केट में कोई टिप नहीं।</string>
+    <string name="note_de_bar">अगले यूरो तक राउंड अप करें या छुट्टे पैसे दें।</string>
+
+    <string name="note_in_restaurant" formatted="false">बिल में सर्विस चार्ज (5% - 10%) जांचें; न होने पर 10% नकद टिप दें।</string>
+    <string name="note_in_delivery">कूरियर को ₹20 - ₹50 की टिप देना आम है।</string>
+    <string name="note_in_takeout">टिप जार में पैसे डालना वैकल्पिक है।</string>
+    <string name="note_in_foodtruck">निकटतम ₹10 या ₹50 तक राउंड अप करें।</string>
+    <string name="note_in_groceries">किराना बैगर्स या सहायकों को ₹20 - ₹50 दें।</string>
+    <string name="note_in_bar" formatted="false">यदि कोई सर्विस चार्ज नहीं है तो ड्रिंक्स पर 10% टिप।</string>
+
+    <string name="note_id_restaurant" formatted="false">पर्यटक क्षेत्रों (बाली) में राउंड अप करें या 5% - 10% दें।</string>
+    <string name="note_id_delivery">ऐप या नकद से 5,000 - 10,000 IDR।</string>
+    <string name="note_id_takeout">अपेक्षित नहीं।</string>
+    <string name="note_id_foodtruck">स्थानीय स्टॉल पर राउंड अप करें।</string>
+    <string name="note_id_groceries">पार्किंग सहायकों के लिए सिक्के।</string>
+    <string name="note_id_bar">बीच क्लबों में राउंड अप करें।</string>
+
+    <string name="note_ie_restaurant" formatted="false">सर्विस चार्ज जांचें; टेबल सेवा में 10% - 15% मानक है।</string>
+    <string name="note_ie_delivery">फ़ूड डिलीवरी के लिए राउंड अप / 1-2 €।</string>
+    <string name="note_ie_takeout">आवश्यक नहीं।</string>
+    <string name="note_ie_foodtruck">आवश्यक नहीं।</string>
+    <string name="note_ie_groceries">कोई टिप नहीं।</string>
+    <string name="note_ie_bar">बार काउंटर पर शायद ही कभी, जब तक टेबल सेवा न हो।</string>
+
+    <string name="note_it_restaurant">कोपेर्तो आम है; अच्छी सेवा के लिए प्रति व्यक्ति 1-2€ छोड़ें।</string>
+    <string name="note_it_delivery">1-2€ नकद।</string>
+    <string name="note_it_takeout">कोई टिप नहीं।</string>
+    <string name="note_it_foodtruck">राउंड अप।</string>
+    <string name="note_it_groceries">कोई टिप नहीं।</string>
+    <string name="note_it_bar">खड़े होकर एस्प्रेसो पीने पर काउंटर पर छोटा सिक्का छोड़ें।</string>
+
+    <string name="note_jp_restaurant">टिप देने का रिवाज नहीं है और यह भ्रम पैदा करता है; उत्कृष्ट सेवा मानक है।</string>
+    <string name="note_jp_delivery">कोई टिप नहीं; विनम्रता से झुकना रिवाज है।</string>
+    <string name="note_jp_takeout">कोई टिप नहीं।</string>
+    <string name="note_jp_foodtruck">सटीक भुगतान करें; कोई टिप नहीं।</string>
+    <string name="note_jp_groceries">कोई टिप नहीं।</string>
+    <string name="note_jp_bar">कोई टिप नहीं; ओतोशी (बैठने का शुल्क) लग सकता है।</string>
+
+    <string name="note_mx_restaurant" formatted="false">10% - 15% प्रोपिना रिवाज है; बिल बंद करने से पहले नकद या कार्ड से दें।</string>
+    <string name="note_mx_delivery">डिलीवरी वाले को 20-50 MXN नकद दें।</string>
+    <string name="note_mx_takeout">टिप जार वैकल्पिक।</string>
+    <string name="note_mx_foodtruck">बॉक्स में छुट्टे पैसे।</string>
+    <string name="note_mx_groceries">बैगर्स के लिए 5-10 MXN।</string>
+    <string name="note_mx_bar" formatted="false">प्रति राउंड या कुल बिल पर 10% - 15%।</string>
+
+    <string name="note_nl_restaurant" formatted="false">सर्विस शामिल है, लेकिन राउंड अप (5% - 10%) बहुत आम है।</string>
+    <string name="note_nl_delivery">कूरियर 1-2 € की सराहना करते हैं।</string>
+    <string name="note_nl_takeout">मानक नहीं।</string>
+    <string name="note_nl_foodtruck">छुट्टे पैसे वैकल्पिक।</string>
+    <string name="note_nl_groceries">कोई टिप नहीं।</string>
+    <string name="note_nl_bar">छुट्टे पैसे छोड़ें।</string>
+
+    <string name="note_nz_restaurant" formatted="false">टिप की कोई अपेक्षा नहीं; न्यूनतम वेतन अधिक है।</string>
+    <string name="note_nz_delivery">ऐप पर वैकल्पिक ($2 - $5)।</string>
+    <string name="note_nz_takeout">कोई टिप नहीं।</string>
+    <string name="note_nz_foodtruck">कोई टिप नहीं।</string>
+    <string name="note_nz_groceries">कोई टिप नहीं।</string>
+    <string name="note_nz_bar">कोई टिप मानक नहीं।</string>
+
+    <string name="note_no_restaurant" formatted="false">सर्विस चार्ज कानूनी रूप से शामिल है; टिप (5% - 10%) वैकल्पिक है।</string>
+    <string name="note_no_delivery">ऐप पर वैकल्पिक।</string>
+    <string name="note_no_takeout">टिप अपेक्षित नहीं।</string>
+    <string name="note_no_foodtruck">कोई टिप नहीं।</string>
+    <string name="note_no_groceries">कोई टिप नहीं।</string>
+    <string name="note_no_bar">अच्छी सेवा के लिए राउंड अप करें।</string>
+
+    <string name="note_sg_restaurant" formatted="false">बिल में 10% सर्विस चार्ज और 9% GST शामिल होता है।</string>
+    <string name="note_sg_delivery">वैकल्पिक 2 - 5 SGD।</string>
+    <string name="note_sg_takeout">कोई टिप नहीं।</string>
+    <string name="note_sg_foodtruck">हॉकर सेंटर में टिप सख्त वर्जित/अनुचित है।</string>
+    <string name="note_sg_groceries">कोई टिप नहीं।</string>
+    <string name="note_sg_bar">सर्विस चार्ज पहले से शामिल होता है।</string>
+
+    <string name="note_za_restaurant" formatted="false">अच्छी सेवा के लिए 10% मानक न्यूनतम है।</string>
+    <string name="note_za_delivery">राइडर्स के लिए राउंड अप / R10 - R20 सराहा जाता है।</string>
+    <string name="note_za_takeout">रिवाज नहीं।</string>
+    <string name="note_za_foodtruck">रिवाज नहीं।</string>
+    <string name="note_za_groceries">पार्किंग गार्ड और बैगर्स के लिए R5 - R10।</string>
+    <string name="note_za_bar" formatted="false">राउंड अप या बिल पर 10%।</string>
+
+    <string name="note_kr_restaurant">टिपिंग कल्चर नहीं है; उच्च गुणवत्ता वाली सेवा शामिल है।</string>
+    <string name="note_kr_delivery">कोई टिप नहीं।</string>
+    <string name="note_kr_takeout">कोई टिप नहीं।</string>
+    <string name="note_kr_foodtruck">कोई टिप नहीं।</string>
+    <string name="note_kr_groceries">कोई टिप नहीं।</string>
+    <string name="note_kr_bar">कोई टिप नहीं।</string>
+
+    <string name="note_es_restaurant" formatted="false">टिप स्वैच्छिक है; डाइन-इन रेस्तरां में राउंड अप करें या 5% - 10% दें।</string>
+    <string name="note_es_delivery">1€ नकद सराहा जाता है।</string>
+    <string name="note_es_takeout">कोई टिप नहीं।</string>
+    <string name="note_es_foodtruck">राउंड अप।</string>
+    <string name="note_es_groceries">कोई टिप नहीं।</string>
+    <string name="note_es_bar">तश्तरी पर छुट्टे पैसे छोड़ें।</string>
+
+    <string name="note_se_restaurant" formatted="false">सर्विस चार्ज शामिल है; टिप पूरी तरह से वैकल्पिक है।</string>
+    <string name="note_se_delivery">अपेक्षित नहीं।</string>
+    <string name="note_se_takeout">कोई टिप नहीं।</string>
+    <string name="note_se_foodtruck">कोई टिप नहीं।</string>
+    <string name="note_se_groceries">कोई टिप नहीं।</string>
+    <string name="note_se_bar">अपेक्षित नहीं।</string>
+
+    <string name="note_ch_restaurant" formatted="false">सर्विस कानूनन शामिल है; राउंड अप (5% - 10%) सामान्य है।</string>
+    <string name="note_ch_delivery">कूरियर द्वारा सराहा जाता है।</string>
+    <string name="note_ch_takeout">मानक नहीं।</string>
+    <string name="note_ch_foodtruck">मानक नहीं।</string>
+    <string name="note_ch_groceries">कोई टिप नहीं।</string>
+    <string name="note_ch_bar">निकटतम फ्रैंक तक राउंड अप करें।</string>
+
+    <string name="note_th_restaurant" formatted="false">प्रीमियम जगहों पर 20-50 बात या 10%; सामान्य जगहों पर छुट्टे पैसे।</string>
+    <string name="note_th_delivery">ड्राइवर को 20-40 बात नकद।</string>
+    <string name="note_th_takeout">छुट्टे पैसे छोड़ें।</string>
+    <string name="note_th_foodtruck">टिप जार में छुट्टे पैसे।</string>
+    <string name="note_th_groceries">टिप अपेक्षित नहीं।</string>
+    <string name="note_th_bar">प्रति राउंड 20-50 बात या सिक्के छोड़ें।</string>
+
+    <string name="note_tr_restaurant" formatted="false">बख्शीश (5% - 10%) टेबल पर नकद छोड़ें (कार्ड से नहीं)।</string>
+    <string name="note_tr_delivery">राइडर को 20 - 50 TL नकद।</string>
+    <string name="note_tr_takeout">काउंटर पर टिप बॉक्स।</string>
+    <string name="note_tr_foodtruck">राउंड अप करना पर्याप्त है।</string>
+    <string name="note_tr_groceries">बैग ले जाने में मदद पर 10 - 20 TL।</string>
+    <string name="note_tr_bar" formatted="false">राउंड अप या प्रति राउंड 10%।</string>
+
+    <string name="note_ua_bar" formatted="false">बार और पब में 10% टिप देना मानक है।</string>
+
+    <string name="note_us_restaurant" formatted="false">टिप लगभग अनिवार्य है (15% - 20%); वेटर मुख्य रूप से टिप पर निर्भर हैं।</string>
+    <string name="note_us_delivery" formatted="false">मानक: ऐप या नकद द्वारा 10% - 15%।</string>
+    <string name="note_us_takeout">स्क्रीन पर टिप प्रॉम्प्ट पूरी तरह से वैकल्पिक है।</string>
+    <string name="note_us_foodtruck">टिप जार या स्क्रीन प्रॉम्प्ट आम हैं।</string>
+    <string name="note_us_groceries">किराना बैगर्स के लिए वैकल्पिक ($2 - $5)।</string>
+    <string name="note_us_bar" formatted="false">$1 - $2 प्रति ड्रिंक या बिल पर 15% - 20%।</string>
+
+    <string name="note_ae_restaurant" formatted="false">सर्विस चार्ज शामिल होता है; वेटरों के लिए 10% - 15% अतिरिक्त पारंपरिक है।</string>
+    <string name="note_ae_delivery">5 - 10 AED नकद या ऐप से।</string>
+    <string name="note_ae_takeout">मानक नहीं।</string>
+    <string name="note_ae_foodtruck">मानक नहीं।</string>
+    <string name="note_ae_groceries">लोडिंग सहायकों के लिए 5 - 10 AED।</string>
+    <string name="note_ae_bar" formatted="false">लक्जरी लाउंज में राउंड अप या 10%।</string>
+
+    <string name="note_gb_restaurant" formatted="false">12.5% सर्विस चार्ज की जांच करें; न होने पर 10% - 15% जोड़ें।</string>
+    <string name="note_gb_delivery">£1 - £2 नकद या ऐप टिप आम है।</string>
+    <string name="note_gb_takeout">टिप जार वैकल्पिक।</string>
+    <string name="note_gb_foodtruck">टिप जार वैकल्पिक।</string>
+    <string name="note_gb_groceries">कोई टिप नहीं।</string>
+    <string name="note_gb_bar">बार काउंटर पर शायद ही कभी, जब तक टेबल सर्विस न हो।</string>
+
+    <!-- Text-to-Speech (TTS) strings -->
+    <string name="tts_tap_to_read">गणना किए गए कुल योग सुनने के लिए टैप करें</string>
+    <string name="tts_tap_to_speak_label">सुनें</string>
+    <string name="tts_speaking_now">कुल योग पढ़ा जा रहा है...</string>
+
+    <!-- Cultural Tipping Tip FAB and Modal strings -->
+    <string name="cultural_tip_fab_desc">%s के लिए सांस्कृतिक टिप सुझाव</string>
+    <string name="cultural_tip_dialog_title">टिपिंग शिष्टाचार</string>
+    <string name="cultural_tip_understood">समझ गया</string>
+    <string name="cultural_tip_view_country_details">सभी देश देखें</string>
+
+    <!-- DataStore Tip History & Save Prompt Strings -->
+    <string name="save_tip_title">क्या आप इसे सहेजना चाहते हैं?</string>
+    <string name="save_tip_message">इस टिप गणना को अपने हाल के इतिहास में सहेजें ताकि इसे कभी भी देखा जा सके।</string>
+    <string name="save_button_confirm">सहेजें</string>
+    <string name="save_button_dismiss">सहेजें नहीं</string>
+    <string name="tip_saved_snackbar">गणना इतिहास में सहेजी गई</string>
+    <string name="history_button_label">इतिहास</string>
+    <string name="history_title">हाल का टिप इतिहास</string>
+    <string name="history_empty_state">अभी तक कोई सहेजी गई गणना नहीं है</string>
+    <string name="history_clear_all">इतिहास साफ करें</string>
+    <string name="history_load_action">लोड करें</string>
+    <string name="history_delete_item">हटाएं</string>
+    <string name="save_prompt_setting_title">सहेजने का संकेत</string>
+    <string name="save_prompt_toggle_label">सहेजने का संकेत:</string>
+    <string name="save_prompt_always_mode">हमेशा</string>
+    <string name="save_prompt_never_mode">कभी नहीं</string>
+    <string name="tutorial_toggle_label">शुरुआत में ट्यूटोरियल:</string>
+    <string name="tutorial_toggle_always">हमेशा</string>
+    <string name="tutorial_toggle_never">कभी नहीं</string>
+    <string name="coach_step_history_title">लेन-देन इतिहास</string>
+    <string name="coach_step_history_subtitle">गणनाएं सहेजें और देखें</string>
+    <string name="coach_step_history_desc">DataStore के माध्यम से टिप गणनाओं का इतिहास रखें। नीचे चुनें कि ऐप का उपयोग करते समय \"क्या आप इसे सहेजना चाहते हैं?\" संकेत हमेशा दिखे या कभी नहीं।</string>
+    <string name="save_to_history_action">इतिहास में सहेजें</string>
+
+    <!-- Global Explorer Unlock Notification Strings -->
+    <string name="unlock_global_explorer_countdown">ग्लोबल एक्सप्लोरर अनलॉक करने के लिए %d बार टैप करें</string>
+    <string name="unlock_global_explorer_countdown_one">ग्लोबल एक्सप्लोरर अनलॉक करने के लिए 1 बार टैप करें</string>
+    <string name="unlock_global_explorer_success">🎉 गुप्त फीचर खुला! वैश्विक देश चयनकर्ता अनलॉक हो गया</string>
+</resources>

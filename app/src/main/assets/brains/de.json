@@ -1,0 +1,69 @@
+{
+  "country": "Germany",
+  "iso": "de",
+  "base_matrix": "C",
+  "matrix_name": "Matrix C",
+  "local_currency": "EUR",
+  "services": [
+    {
+      "service_type": "Restaurants",
+      "service_type_key": "service_restaurants",
+      "standard_tip": "5% - 10%",
+      "generous_tip": "15%",
+      "legend_tip": "20%",
+      "mvp_tip": "25%+",
+      "notes": "Tell the server the total amount including tip before paying.",
+      "notes_key": "note_germany_restaurant"
+    },
+    {
+      "service_type": "Delivery",
+      "service_type_key": "service_delivery",
+      "standard_tip": "Round up / 1-2 €",
+      "generous_tip": "3€",
+      "legend_tip": "5€",
+      "mvp_tip": "10€",
+      "notes": "Cash tips preferred for drivers.",
+      "notes_key": "note_germany_delivery"
+    },
+    {
+      "service_type": "Takeout",
+      "service_type_key": "service_takeout",
+      "standard_tip": "0%",
+      "generous_tip": "Round up",
+      "legend_tip": "5%",
+      "mvp_tip": "10%",
+      "notes": "Tip jar common but optional.",
+      "notes_key": "note_germany_takeout"
+    },
+    {
+      "service_type": "Foodtrucks",
+      "service_type_key": "service_foodtruck",
+      "standard_tip": "0%",
+      "generous_tip": "Round up",
+      "legend_tip": "5%",
+      "mvp_tip": "10%",
+      "notes": "Tip jar common but optional.",
+      "notes_key": "note_germany_foodtruck"
+    },
+    {
+      "service_type": "Groceries",
+      "service_type_key": "service_groceries",
+      "standard_tip": "0%",
+      "generous_tip": "0%",
+      "legend_tip": "0%",
+      "mvp_tip": "Round up",
+      "notes": "No tipping standard.",
+      "notes_key": "note_germany_groceries"
+    },
+    {
+      "service_type": "Bar",
+      "service_type_key": "service_bar",
+      "standard_tip": "Round up / 5%",
+      "generous_tip": "10%",
+      "legend_tip": "15%",
+      "mvp_tip": "20%",
+      "notes": "Add a small amount per round or round up the tab.",
+      "notes_key": "note_germany_bar"
+    }
+  ]
+}

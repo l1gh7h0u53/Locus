@@ -1,0 +1,69 @@
+{
+  "country": "Japan",
+  "iso": "jp",
+  "base_matrix": "D",
+  "matrix_name": "Matrix D",
+  "local_currency": "JPY",
+  "services": [
+    {
+      "service_type": "Restaurants",
+      "service_type_key": "service_restaurants",
+      "standard_tip": "0%",
+      "generous_tip": "0%",
+      "legend_tip": "0%",
+      "mvp_tip": "0%",
+      "notes": "Tipping is considered insulting or confusing; good service is standard.",
+      "notes_key": "note_japan_restaurant"
+    },
+    {
+      "service_type": "Delivery",
+      "service_type_key": "service_delivery",
+      "standard_tip": "0%",
+      "generous_tip": "0%",
+      "legend_tip": "0%",
+      "mvp_tip": "0%",
+      "notes": "No tipping allowed.",
+      "notes_key": "note_japan_delivery"
+    },
+    {
+      "service_type": "Takeout",
+      "service_type_key": "service_takeout",
+      "standard_tip": "0%",
+      "generous_tip": "0%",
+      "legend_tip": "0%",
+      "mvp_tip": "0%",
+      "notes": "No tipping allowed.",
+      "notes_key": "note_japan_takeout"
+    },
+    {
+      "service_type": "Foodtrucks",
+      "service_type_key": "service_foodtruck",
+      "standard_tip": "0%",
+      "generous_tip": "0%",
+      "legend_tip": "0%",
+      "mvp_tip": "0%",
+      "notes": "No tipping allowed.",
+      "notes_key": "note_japan_foodtruck"
+    },
+    {
+      "service_type": "Groceries",
+      "service_type_key": "service_groceries",
+      "standard_tip": "0%",
+      "generous_tip": "0%",
+      "legend_tip": "0%",
+      "mvp_tip": "0%",
+      "notes": "No tipping allowed.",
+      "notes_key": "note_japan_groceries"
+    },
+    {
+      "service_type": "Bar",
+      "service_type_key": "service_bar",
+      "standard_tip": "0%",
+      "generous_tip": "0%",
+      "legend_tip": "0%",
+      "mvp_tip": "0%",
+      "notes": "No tipping allowed.",
+      "notes_key": "note_japan_bar"
+    }
+  ]
+}

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Locus</string>
+    <string name="header_subtitle">ক্যালকুলেটর</string>
+    <string name="service_restaurant">রেস্তোরাঁ</string>
+    <string name="service_delivery">ডেলিভারি</string>
+    <string name="service_takeout">টেকআউট</string>
+    <string name="service_foodtruck">ফুড ট্রাক</string>
+    <string name="service_groceries">মুদি দোকান</string>
+    <string name="service_bar">বার</string>
+    <string name="bill_amount">বিলের পরিমাণ</string>
+    <string name="enter_bill_amount">বিলের পরিমাণ লিখুন</string>
+    <string name="custom_percentage">কাস্টম টিপ %</string>
+    <string name="tip_percent">টিপের শতাংশ</string>
+    <string name="senior_mode_title">সিনিয়র মোড</string>
+    <string name="senior_mode_desc">বড় বোতাম এবং স্পষ্ট বড় হরফ</string>
+    <string name="standard_tip">মানক</string>
+    <string name="generous_tip">উদার</string>
+    <string name="extremely_generous_tip">অত্যন্ত উদার</string>
+    <string name="legend_tip">কিংবদন্তি</string>
+    <string name="angel_tip">সম্মানজনক টিপ</string>
+    <string name="split_bill">বিল ভাগ করুন</string>
+    <string name="number_of_people">ব্যক্তির সংখ্যা</string>
+    <string name="calculated_tip">টিপের পরিমাণ</string>
+    <string name="calculated_total">মোট বিল</string>
+    <string name="split_share">প্রতি ব্যক্তি</string>
+    <string name="total_bill_label">মোট বিল</string>
+    <string name="tip_amount_label">টিপের পরিমাণ</string>
+    <string name="each_pays_label">প্রতি ব্যক্তি</string>
+    <string name="service_category">সেবা বিভাগ</string>
+    <string name="select_service_category">সেবা বিভাগ নির্বাচন করুন</string>
+    <string name="haptic_state">হ্যাপটিক কম্পন</string>
+    <string name="clear_button">মুছে ফেলুন</string>
+    <string name="round_up">রাউন্ড আপ</string>
+    <string name="round_down">রাউন্ড ডাউন</string>
+    <string name="custom_slider">কাস্টম শতাংশ</string>
+    <string name="calculated_totals">গণনার ফলাফল</string>
+    <string name="reset_calculator">রিসেট করুন</string>
+    <string name="search_country_placeholder">দেশ বা কোড খুঁজুন (যেমন BD, US)...</string>
+    <string name="select_language_title">ভাষা নির্বাচন করুন</string>
+    <string name="auto_language_option">অফলাইন স্বয়ংক্রিয় শনাক্তকরণ</string>
+    <string name="auto_language_sub">সিস্টেম ভাষা ও অফলাইন মানচিত্র</string>
+    <string name="close_button">বন্ধ করুন</string>
+    <string name="solo_person">১ জন ব্যক্তি (একক)</string>
+    <string name="people_sharing">%d জন ভাগ করছেন</string>
+    <string name="tipping_tiers_header">%s টিপিং টিয়ার</string>
+    <string name="select_currency">মুদ্রা নির্বাচন করুন</string>
+    <string name="all_currencies">সব (%d)</string>
+    <string name="more_currencies">+ আরও...</string>
+    <string name="global_currencies_title">বিশ্বের মুদ্রাসমূহ</string>
+    <string name="currencies_count">%d মুদ্রা</string>
+    <string name="search_currency_placeholder">মুদ্রার নাম, কোড বা দেশ খুঁজুন...</string>
+    <string name="no_currency_found">কোনো মুদ্রা পাওয়া যায়নি</string>
+    <string name="select_country_title">দেশ নির্বাচন করুন</string>
+    <string name="regional_matrices_count">১৯২টি দেশ ও আঞ্চলিক নিয়মাবলী</string>
+    <string name="culture_advice">সাংস্কৃতিক পরামর্শ</string>
+    <string name="iso_label">কোড: %1$s • বিন্যাস: %2$s</string>
+    <string name="selected_toast">%1$s (%2$s) নির্বাচিত</string>
+    <string name="toggle_senior_mode">সিনিয়র মোড চালু/বন্ধ</string>
+    <string name="toggle_theme_mode">থিম পরিবর্তন করুন</string>
+    <string name="app_description_semantic">লোকাস, বিশ্বব্যাপী টিপ ক্যালকুলেটর</string>
+    <string name="passport_logo_desc">পাসপোর্ট লোগো</string>
+    <string name="decrease_people">ব্যক্তির সংখ্যা কমান</string>
+    <string name="increase_people">ব্যক্তির সংখ্যা বাড়ান</string>
+    <string name="back_to_calculator">ক্যালকুলেটরে ফিরে যান</string>
+    <string name="share_bill_summary">বিল সারাংশ শেয়ার করুন</string>
+    <string name="share_bill_summary_title">বিলের সারাংশ</string>
+    <string name="tip_calculation_desc">বিল গণনা: %1$s। টিপ: %2$s। প্রতি ব্যক্তি: %3$s</string>
+
+    <string name="service_restaurants">রেস্তোরাঁ</string>
+    <string name="tier_standard">মানক</string>
+    <string name="tier_generous">উদার</string>
+    <string name="tier_legend">কিংবদন্তি</string>
+    <string name="tier_mvp">সম্মানজনক টিপ</string>
+
+    <!-- Matrix & Country Tipping Notes in Bengali -->
+    <string name="note_default_guideline">সাধারণ টিপিং নির্দেশিকা প্রযোজ্য।</string>
+    <string name="note_matrix_a_restaurant">টিপ প্রত্যাশিত; নগদ অর্থ অগ্রাধিকার পায়।</string>
+    <string name="note_matrix_a_delivery">ডেলিভারি রাইডারকে সরাসরি নগদ টিপ দিন।</string>
+    <string name="note_matrix_a_takeout">কাউন্টার থেকে নেওয়ার জন্য প্রত্যাশিত নয়।</string>
+    <string name="note_matrix_a_foodtruck">টিপ জার ঐচ্ছিক।</string>
+    <string name="note_matrix_a_groceries">প্যাকাররা সাধারণত শুধুমাত্র টিপের ওপর নির্ভর করেন।</string>
+    <string name="note_matrix_a_bar">প্রতি রাউন্ডে বা চূড়ান্ত বিলে টিপ দিন।</string>
+
+    <string name="note_matrix_b_restaurant">টেবিল সেবার জন্য স্ট্যান্ডার্ড প্রত্যাশা।</string>
+    <string name="note_matrix_b_delivery">রাইডাররা ছোট টিপ প্রশংসা করেন।</string>
+    <string name="note_matrix_b_takeout">টিপ বক্স ঐচ্ছিক।</string>
+    <string name="note_matrix_b_foodtruck">রাউন্ড আপ করা সাধারণ।</string>
+    <string name="note_matrix_b_groceries">দোকানের ভেতরে টিপ দেওয়ার প্রথা নেই।</string>
+    <string name="note_matrix_b_bar">কাউন্টারে খুচরা টাকা রেখে দিন।</string>
+
+    <string name="note_matrix_c_restaurant">সার্ভিস চার্জ অন্তর্ভুক্ত; টিপ সম্পূর্ণ ঐচ্ছিক।</string>
+    <string name="note_matrix_c_delivery">খারাপ আবহাওয়ায় টিপ দেওয়া সাধারণ।</string>
+    <string name="note_matrix_c_takeout">টেকআউটে টিপ প্রত্যাশিত নয়।</string>
+    <string name="note_matrix_c_foodtruck">সহজ রাউন্ড আপ।</string>
+    <string name="note_matrix_c_groceries">একেবারেই প্রথা নেই।</string>
+    <string name="note_matrix_c_bar">কাউন্টারে খুচরা রেখে দিন।</string>
+
+    <string name="note_matrix_d_restaurant">টিপের কোনো প্রথা নেই বা এটি বিভ্রান্তিকর হতে পারে; চমৎকার সেবা অন্তর্ভুক্ত।</string>
+    <string name="note_matrix_d_delivery">কোনো টিপ প্রত্যাশিত নয়।</string>
+    <string name="note_matrix_d_takeout">টিপ নেই।</string>
+    <string name="note_matrix_d_foodtruck">টিপ নেই।</string>
+    <string name="note_matrix_d_groceries">টিপ নেই।</string>
+    <string name="note_matrix_d_bar">টিপ নেই।</string>
+
+    <string name="note_matrix_e_restaurant">বকশিশ একটি ঐতিহ্যবাহী রীতি; টেবিলে নগদ অর্থ রাখুন।</string>
+    <string name="note_matrix_e_delivery">ডেলিভারি রাইডাররা হাতে নগদ টিপ আশা করেন।</string>
+    <string name="note_matrix_e_takeout">কাউন্টারে টিপ বক্স থাকে।</string>
+    <string name="note_matrix_e_foodtruck">রাউন্ড আপ করা খুবই প্রশংসনীয়।</string>
+    <string name="note_matrix_e_groceries">সহকারী কর্মীরা এই টিপের ওপর নির্ভরশীল।</string>
+    <string name="note_matrix_e_bar">হোটেল লাউঞ্জে অত্যন্ত প্রশংসিত।</string>
+
+    <!-- Custom Country Notes -->
+    <string name="note_al_restaurant" formatted="false">পর্যটন এলাকায় টিপ (5% - 10%) খুবই প্রশংসিত।</string>
+    <string name="note_al_delivery">চালকদের জন্য নগদ টিপ স্বাগত।</string>
+    <string name="note_al_takeout">টেকআউটে প্রত্যাশিত নয়।</string>
+    <string name="note_al_foodtruck">টিপ জার ঐচ্ছিক।</string>
+    <string name="note_al_groceries">কোনো স্ট্যান্ডার্ড টিপ নেই।</string>
+    <string name="note_al_bar">রাউন্ড আপ করুন বা খুচরা টাকা রাখুন।</string>
+
+    <string name="note_ar_restaurant" formatted="false">১০% নগদ টিপ রীতি; মুদ্রাস্ফীতির কারণে নগদ বেশি পছন্দের।</string>
+    <string name="note_ar_delivery" formatted="false">রাইডারকে ৫% - ১০% নগদ টিপ দিন।</string>
+    <string name="note_ar_takeout">প্রত্যাশিত নয়।</string>
+    <string name="note_ar_foodtruck">বক্সে কিছু খুচরা টাকা।</string>
+    <string name="note_ar_groceries">প্যাকারদের জন্য ছোট নোট।</string>
+    <string name="note_ar_bar" formatted="false">রাউন্ড আপ বা বিলে ১০%।</string>
+
+    <string name="note_au_restaurant" formatted="false">টিপের প্রথা নেই; মজুরি ভালো। চমৎকার সেবার জন্য ১০%।</string>
+    <string name="note_au_delivery">খারাপ আবহাওয়ায় ঐচ্ছিক $২ - $৫।</string>
+    <string name="note_au_takeout">টিপ প্রত্যাশিত নয়।</string>
+    <string name="note_au_foodtruck">টিপ জার ঐচ্ছিক।</string>
+    <string name="note_au_groceries">কোনো টিপ নেই।</string>
+    <string name="note_au_bar">প্রয়োজন নেই; খুচরা রেখে দেওয়া ভালো।</string>
+
+    <string name="note_at_restaurant" formatted="false">টিপ প্রত্যাশিত; রাউন্ড আপ করুন বা ৫% - ১০% যোগ করুন।</string>
+    <string name="note_at_delivery">১-২ ইউরো সরাসরি চালককে নগদ দিন।</string>
+    <string name="note_at_takeout">কাউন্টারে প্রত্যাশিত নয়।</string>
+    <string name="note_at_foodtruck">খুচরা রাউন্ড আপ করুন।</string>
+    <string name="note_at_groceries">কোনো টিপ নেই।</string>
+    <string name="note_at_bar">পরবর্তী পূর্ণ ইউরোতে রাউন্ড আপ করুন।</string>
+
+    <string name="note_be_restaurant" formatted="false">সার্ভিস অন্তর্ভুক্ত; অসাধারণ সেবার জন্য ৫% - ১০% টিপ।</string>
+    <string name="note_be_delivery">খারাপ আবহাওয়া বা দ্রুত সেবার জন্য ১-২ ইউরো।</string>
+    <string name="note_be_takeout">প্রত্যাশিত নয়।</string>
+    <string name="note_be_foodtruck">প্রত্যাশিত নয়।</string>
+    <string name="note_be_groceries">কোনো টিপ নেই।</string>
+    <string name="note_be_bar">ছোট খুচরা স্বাগত।</string>
+
+    <string name="note_br_restaurant" formatted="false">বিলে সাধারণত ১০% সার্ভিস চার্জ অন্তর্ভুক্ত থাকে।</string>
+    <string name="note_br_delivery">R$২ - R$৫ নগদ বা অ্যাপে দিন।</string>
+    <string name="note_br_takeout">কোনো টিপ নেই।</string>
+    <string name="note_br_foodtruck">খুচরা টাকা রাখুন।</string>
+    <string name="note_br_groceries">প্যাকারদের জন্য R$২ - R$৫।</string>
+    <string name="note_br_bar" formatted="false">বার বিলে ১০% সার্ভিস চার্জ সাধারণ।</string>
+
+    <string name="note_ca_restaurant" formatted="false">টেবিল সেবার জন্য ১৫% - ২০% মানক।</string>
+    <string name="note_ca_delivery" formatted="false">অ্যাপ বা নগদে ১০% - ১৫%।</string>
+    <string name="note_ca_takeout">মেশিনে টিপ প্রম্পট সম্পূর্ণ ঐচ্ছিক।</string>
+    <string name="note_ca_foodtruck" formatted="false">১০% বা টিপ বক্স।</string>
+    <string name="note_ca_groceries">টিপের প্রথা নেই।</string>
+    <string name="note_ca_bar" formatted="false">$১ - $২ প্রতি ড্রিংক বা বিলে ১৫% - ২০%।</string>
+
+    <string name="note_cn_restaurant" formatted="false">টিপের প্রথা নেই; বিলাসবহুল হোটেলে ১০% সার্ভিস চার্জ।</string>
+    <string name="note_cn_delivery">কোনো টিপ প্রত্যাশিত নয়।</string>
+    <string name="note_cn_takeout">কোনো টিপ নেই।</string>
+    <string name="note_cn_foodtruck">কোনো টিপ নেই।</string>
+    <string name="note_cn_groceries">কোনো টিপ নেই।</string>
+    <string name="note_cn_bar">কোনো টিপ নেই।</string>
+
+    <string name="note_co_restaurant" formatted="false">বিলে প্রায়ই ১০% স্বেচ্ছাপ্রণোদিত টিপ লেখা থাকে।</string>
+    <string name="note_co_delivery">রাইডারকে ২,০০০ - ৫,০০০ COP নগদ দিন।</string>
+    <string name="note_co_takeout">প্রথা নয়।</string>
+    <string name="note_co_foodtruck">শুধুমাত্র ভালো সেবার জন্য।</string>
+    <string name="note_co_groceries">প্যাকারদের জন্য খুচরা টাকা।</string>
+    <string name="note_co_bar" formatted="false">১০% অন্তর্ভুক্ত বা রাউন্ড আপ।</string>
+
+    <string name="note_dk_restaurant" formatted="false">আইনগতভাবে সার্ভিস চার্জ অন্তর্ভুক্ত; টিপ বিরল।</string>
+    <string name="note_dk_delivery">কদাচিৎ প্রত্যাশিত।</string>
+    <string name="note_dk_takeout">কোনো টিপ নেই।</string>
+    <string name="note_dk_foodtruck">কোনো টিপ নেই।</string>
+    <string name="note_dk_groceries">কোনো টিপ নেই।</string>
+    <string name="note_dk_bar">কোনো স্ট্যান্ডার্ড টিপ নেই।</string>
+
+    <string name="note_eg_restaurant" formatted="false">বকশিশ (১০% - ১৫%) সাধারণ রীতি; টেবিলে নগদ অর্থ রাখুন।</string>
+    <string name="note_eg_delivery">ডেলিভারি বয়কে ১০ - ২০ EGP নগদ দিন।</string>
+    <string name="note_eg_takeout">খুচরা টাকা প্রশংসিত।</string>
+    <string name="note_eg_foodtruck">রাউন্ড আপ করা প্রত্যাশিত।</string>
+    <string name="note_eg_groceries">প্যাকারদের জন্য ৫ - ১০ EGP।</string>
+    <string name="note_eg_bar" formatted="false">লাউঞ্জে ১০% - ১৫%।</string>
+
+    <string name="note_fr_restaurant" formatted="false">সার্ভিস অন্তর্ভুক্ত (১৫% আইনত); ভালো সেবায় ১-২€ অতিরিক্ত দিন।</string>
+    <string name="note_fr_delivery">ডেলিভারি ম্যানকে ১-২€ নগদ দিন।</string>
+    <string name="note_fr_takeout">কোনো টিপ নেই।</string>
+    <string name="note_fr_foodtruck">পরবর্তী পূর্ণ ইউরোতে রাউন্ড আপ করুন।</string>
+    <string name="note_fr_groceries">কোনো টিপ নেই।</string>
+    <string name="note_fr_bar">কাউন্টারে খুচরা রেখে দিন।</string>
+
+    <string name="note_de_restaurant" formatted="false">রাউন্ড আপ করুন (৫% - ১০%) এবং বিল পরিশোধের আগে মোট পরিমাণ ওয়েটারকে জানান।</string>
+    <string name="note_de_delivery">রাইডারকে সরাসরি ১-২ € নগদ দিন।</string>
+    <string name="note_de_takeout">টিপ বক্সে খুচরা দেওয়া ঐচ্ছিক।</string>
+    <string name="note_de_foodtruck">পরবর্তী ইউরোতে রাউন্ড আপ করাই সাধারণ।</string>
+    <string name="note_de_groceries">সুপারমার্কেটে কোনো টিপ নেই।</string>
+    <string name="note_de_bar">ইউরোতে রাউন্ড আপ করুন বা খুচরা টাকা দিন।</string>
+
+    <string name="note_in_restaurant" formatted="false">সার্ভিস চার্জ (৫% - ১০%) চেক করুন; না থাকলে ১০% নগদ দিন।</string>
+    <string name="note_in_delivery">ডেলিভারি রাইডারকে ₹২০ - ₹৫০ টিপ দেওয়া ভালো।</string>
+    <string name="note_in_takeout">টিপ জার সম্পূর্ণ ঐচ্ছিক।</string>
+    <string name="note_in_foodtruck">নিকটতম ₹১০ বা ₹৫০ এ রাউন্ড আপ করুন।</string>
+    <string name="note_in_groceries">প্যাকার বা সাহায্যকারীদের ₹২০ - ₹৫০ দিন।</string>
+    <string name="note_in_bar" formatted="false">সার্ভিস চার্জ না থাকলে ড্রিংকসে ১০% টিপ।</string>
+
+    <string name="note_id_restaurant" formatted="false">পর্যটন স্থানে (বালি) রাউন্ড আপ বা ৫% - ১০% দিন।</string>
+    <string name="note_id_delivery">অ্যাপ বা নগদে ৫,০০০ - ১০,০০০ IDR।</string>
+    <string name="note_id_takeout">প্রত্যাশিত নয়।</string>
+    <string name="note_id_foodtruck">লোকাল স্টলে রাউন্ড আপ করুন।</string>
+    <string name="note_id_groceries">পার্কিং সহায়কদের জন্য কয়েন।</string>
+    <string name="note_id_bar">বিচ ক্লাবে রাউন্ড আপ করুন।</string>
+
+    <string name="note_ie_restaurant" formatted="false">সার্ভিস চার্জ চেক করুন; টেবিল সার্ভিসে ১০% - ১৫% মানক।</string>
+    <string name="note_ie_delivery">খাবার ডেলিভারিতে রাউন্ড আপ / ১-২ €।</string>
+    <string name="note_ie_takeout">প্রয়োজন নেই।</string>
+    <string name="note_ie_foodtruck">প্রয়োজন নেই।</string>
+    <string name="note_ie_groceries">কোনো টিপ নেই।</string>
+    <string name="note_ie_bar">বার কাউন্টারে কদাচিৎ, যদি না টেবিল সেবা থাকে।</string>
+
+    <string name="note_it_restaurant">কোপের্তো সাধারণ; ভালো সেবায় প্রতি ব্যক্তি ১-২€ দিন।</string>
+    <string name="note_it_delivery">১-২€ নগদ।</string>
+    <string name="note_it_takeout">কোনো টিপ নেই।</string>
+    <string name="note_it_foodtruck">রাউন্ড আপ।</string>
+    <string name="note_it_groceries">কোনো টিপ নেই।</string>
+    <string name="note_it_bar">দাঁড়িয়ে এসপ্রেসো পানের জন্য কাউন্টারে ছোট কয়েন।</string>
+
+    <string name="note_jp_restaurant">টিপ দেওয়ার রীতি নেই এবং তা বিভ্রান্তিকর; চমৎকার সেবা স্ট্যান্ডার্ড।</string>
+    <string name="note_jp_delivery">কোনো টিপ নেই; বিনম্র মাথা নত করাই রীতি।</string>
+    <string name="note_jp_takeout">কোনো টিপ নেই।</string>
+    <string name="note_jp_foodtruck">সঠিক মূল্য দিন; কোনো টিপ নেই।</string>
+    <string name="note_jp_groceries">কোনো টিপ নেই।</string>
+    <string name="note_jp_bar">কোনো টিপ নেই; ওতোশি (বসার ফি) প্রযোজ্য হতে পারে।</string>
+
+    <string name="note_mx_restaurant" formatted="false">১০% - ১৫% প্রোপিনা রীতি; বিল সমাপ্ত করার আগে নগদ বা কার্ডে দিন।</string>
+    <string name="note_mx_delivery">রাইডারকে ২০-৫০ MXN নগদ দিন।</string>
+    <string name="note_mx_takeout">টিপ জার ঐচ্ছিক।</string>
+    <string name="note_mx_foodtruck">বক্সে খুচরা টাকা।</string>
+    <string name="note_mx_groceries">প্যাকারদের জন্য ৫-১০ MXN।</string>
+    <string name="note_mx_bar" formatted="false">প্রতি রাউন্ডে বা বিলে ১০% - ১৫%।</string>
+
+    <string name="note_nl_restaurant" formatted="false">সার্ভিস অন্তর্ভুক্ত, তবে রাউন্ড আপ (৫% - ১০%) সাধারণ।</string>
+    <string name="note_nl_delivery">১-২ € রাইডারদের জন্য প্রশংসনীয়।</string>
+    <string name="note_nl_takeout">স্ট্যান্ডার্ড নয়।</string>
+    <string name="note_nl_foodtruck">খুচরা টাকা ঐচ্ছিক।</string>
+    <string name="note_nl_groceries">কোনো টিপ নেই।</string>
+    <string name="note_nl_bar">খুচরা রেখে দিন।</string>
+
+    <string name="note_nz_restaurant" formatted="false">টিপের প্রত্যাশা নেই; ন্যূনতম মজুরি বেশি।</string>
+    <string name="note_nz_delivery">অ্যাপে ঐচ্ছিক ($২ - $৫)।</string>
+    <string name="note_nz_takeout">কোনো টিপ নেই।</string>
+    <string name="note_nz_foodtruck">কোনো টিপ নেই।</string>
+    <string name="note_nz_groceries">কোনো টিপ নেই।</string>
+    <string name="note_nz_bar">কোনো টিপ স্ট্যান্ডার্ড নয়।</string>
+
+    <string name="note_no_restaurant" formatted="false">সার্ভিস চার্জ আইনিভাবে অন্তর্ভুক্ত; টিপ (৫% - ১০%) সম্পূর্ণ ঐচ্ছিক।</string>
+    <string name="note_no_delivery">ডেলিভারি অ্যাপে ঐচ্ছিক।</string>
+    <string name="note_no_takeout">টিপ প্রত্যাশিত নয়।</string>
+    <string name="note_no_foodtruck">কোনো টিপ নেই।</string>
+    <string name="note_no_groceries">কোনো টিপ নেই।</string>
+    <string name="note_no_bar">ভালো সেবায় রাউন্ড আপ করুন।</string>
+
+    <string name="note_sg_restaurant" formatted="false">বিলে ১০% সার্ভিস চার্জ এবং ৯% GST অন্তর্ভুক্ত থাকে।</string>
+    <string name="note_sg_delivery">ঐচ্ছিক ২ - ৫ SGD।</string>
+    <string name="note_sg_takeout">কোনো টিপ নেই।</string>
+    <string name="note_sg_foodtruck">হকার সেন্টারে কোনো টিপ নেওয়া হয় না।</string>
+    <string name="note_sg_groceries">কোনো টিপ নেই।</string>
+    <string name="note_sg_bar">সার্ভিস চার্জ সাধারণত অন্তর্ভুক্ত।</string>
+
+    <string name="note_za_restaurant" formatted="false">ভালো সেবার জন্য ১০% স্ট্যান্ডার্ড ন্যূনতম।</string>
+    <string name="note_za_delivery">রাউন্ড আপ / R১০ - R২০ রাইডারদের জন্য প্রশংসনীয়।</string>
+    <string name="note_za_takeout">রীতি নয়।</string>
+    <string name="note_za_foodtruck">রীতি নয়।</string>
+    <string name="note_za_groceries">গার্ড ও প্যাকারদের জন্য R৫ - R১০।</string>
+    <string name="note_za_bar" formatted="false">রাউন্ড আপ বা বিলে ১০%।</string>
+
+    <string name="note_kr_restaurant">টিপিং কালচার নেই; উচ্চমানের সেবা অন্তর্ভুক্ত।</string>
+    <string name="note_kr_delivery">কোনো টিপ নেই।</string>
+    <string name="note_kr_takeout">কোনো টিপ নেই।</string>
+    <string name="note_kr_foodtruck">কোনো টিপ নেই।</string>
+    <string name="note_kr_groceries">কোনো টিপ নেই।</string>
+    <string name="note_kr_bar">কোনো টিপ নেই।</string>
+
+    <string name="note_es_restaurant" formatted="false">টিপ স্বেচ্ছাপ্রণোদিত; রেস্তোরাঁয় রাউন্ড আপ বা ৫% - ১০% রাখুন।</string>
+    <string name="note_es_delivery">১€ নগদ প্রশংসিত।</string>
+    <string name="note_es_takeout">কোনো টিপ নেই।</string>
+    <string name="note_es_foodtruck">রাউন্ড আপ।</string>
+    <string name="note_es_groceries">কোনো টিপ নেই।</string>
+    <string name="note_es_bar">প্লেটে ছোট খুচরা রেখে দিন।</string>
+
+    <string name="note_se_restaurant" formatted="false">সার্ভিস অন্তর্ভুক্ত; টিপ সম্পূর্ণ ঐচ্ছিক।</string>
+    <string name="note_se_delivery">প্রত্যাশিত নয়।</string>
+    <string name="note_se_takeout">কোনো টিপ নেই।</string>
+    <string name="note_se_foodtruck">কোনো টিপ নেই।</string>
+    <string name="note_se_groceries">কোনো টিপ নেই।</string>
+    <string name="note_se_bar">প্রত্যাশিত নয়।</string>
+
+    <string name="note_ch_restaurant" formatted="false">সার্ভিস আইনত অন্তর্ভুক্ত; রাউন্ড আপ (৫% - ১০%) সাধারণ।</string>
+    <string name="note_ch_delivery">কুরিয়ারদের দ্বারা প্রশংসিত।</string>
+    <string name="note_ch_takeout">স্ট্যান্ডার্ড নয়।</string>
+    <string name="note_ch_foodtruck">স্ট্যান্ডার্ড নয়।</string>
+    <string name="note_ch_groceries">কোনো টিপ নেই।</string>
+    <string name="note_ch_bar">নিকটতম ফ্রাঁতে রাউন্ড আপ করুন।</string>
+
+    <string name="note_th_restaurant" formatted="false">ভালো জায়গায় ২০-৫০ বাথ বা ১০%; সাধারণ জায়গায় খুচরা।</string>
+    <string name="note_th_delivery">রাইডারকে ২০-৪০ বাথ নগদ।</string>
+    <string name="note_th_takeout">খুচরা রেখে দিন।</string>
+    <string name="note_th_foodtruck">টিপ জারে খুচরা টাকা।</string>
+    <string name="note_th_groceries">কোনো টিপ প্রত্যাশিত নয়।</string>
+    <string name="note_th_bar">প্রতি রাউন্ডে ২০-৫০ বাথ বা কয়েন।</string>
+
+    <string name="note_tr_restaurant" formatted="false">বকশিশ (৫% - ১০%) টেবিলে নগদ দিন (কার্ডে নয়)।</string>
+    <string name="note_tr_delivery">রাইডারকে ২০ - ৫০ TL নগদ।</string>
+    <string name="note_tr_takeout">কাউন্টারে টিপ বক্স।</string>
+    <string name="note_tr_foodtruck">রাউন্ড আপ করাই যথেষ্ট।</string>
+    <string name="note_tr_groceries">ব্যাগ বহন করার জন্য ১০ - ২০ TL।</string>
+    <string name="note_tr_bar" formatted="false">রাউন্ড আপ বা প্রতি রাউন্ডে ১০%।</string>
+
+    <string name="note_ua_bar" formatted="false">বার ও পাবে সাধারণত ১০% বকশিশ দেওয়ার নিয়ম।</string>
+
+    <string name="note_us_restaurant" formatted="false">টিপ প্রায় বাধ্যতামূলক (১৫% - ২০%); ওয়েটাররা এর ওপর নির্ভরশীল।</string>
+    <string name="note_us_delivery" formatted="false">স্ট্যান্ডার্ড: অ্যাপ বা নগদে ১০% - ১৫%।</string>
+    <string name="note_us_takeout">স্ক্রিনে টিপ প্রম্পট সম্পূর্ণ ঐচ্ছিক।</string>
+    <string name="note_us_foodtruck">টিপ জার বা স্ক্রিন প্রম্পট সাধারণ।</string>
+    <string name="note_us_groceries">প্যাকারদের জন্য ঐচ্ছিক ($২ - $৫)।</string>
+    <string name="note_us_bar" formatted="false">$১ - $২ প্রতি ড্রিংক বা বিলে ১৫% - ২০%।</string>
+
+    <string name="note_ae_restaurant" formatted="false">সার্ভিস চার্জ সাধারণত অন্তর্ভুক্ত; ওয়েটারদের জন্য অতিরিক্ত ১০% - ১৫% ঐতিহ্য।</string>
+    <string name="note_ae_delivery">৫ - ১০ AED নগদ বা অ্যাপে।</string>
+    <string name="note_ae_takeout">স্ট্যান্ডার্ড নয়।</string>
+    <string name="note_ae_foodtruck">স্ট্যান্ডার্ড নয়।</string>
+    <string name="note_ae_groceries">সহায়তাকারীদের জন্য ৫ - ১০ AED।</string>
+    <string name="note_ae_bar" formatted="false">লাক্সারি লাউঞ্জে রাউন্ড আপ বা ১০%।</string>
+
+    <string name="note_gb_restaurant" formatted="false">১২.৫% ঐচ্ছিক সার্ভিস চার্জ চেক করুন; না থাকলে ১০% - ১৫% দিন।</string>
+    <string name="note_gb_delivery">£১ - £২ নগদ বা অ্যাপে সাধারণ।</string>
+    <string name="note_gb_takeout">টিপ জার ঐচ্ছিক।</string>
+    <string name="note_gb_foodtruck">টিপ জার ঐচ্ছিক।</string>
+    <string name="note_gb_groceries">কোনো টিপ নেই।</string>
+    <string name="note_gb_bar">বার কাউন্টারে কদাচিৎ, যদি না টেবিল সেবা থাকে।</string>
+
+    <!-- Text-to-Speech (TTS) strings -->
+    <string name="tts_tap_to_read">গণনাকৃত মোট ফলাফল শুনতে আলতো চাপুন</string>
+    <string name="tts_tap_to_speak_label">শুনুন</string>
+    <string name="tts_speaking_now">মোট ফলাফল পড়া হচ্ছে...</string>
+
+    <!-- Cultural Tipping Tip FAB and Modal strings -->
+    <string name="cultural_tip_fab_desc">%s এর জন্য সাংস্কৃতিক বকশিশের পরামর্শ</string>
+    <string name="cultural_tip_dialog_title">বকশিশের শিষ্টাচার</string>
+    <string name="cultural_tip_understood">বুঝেছি</string>
+    <string name="cultural_tip_view_country_details">সমস্ত দেশ দেখুন</string>
+
+    <!-- DataStore Tip History & Save Prompt Strings -->
+    <string name="save_tip_title">আপনি কি এটি সংরক্ষণ করতে চান?</string>
+    <string name="save_tip_message">যেকোনো সময় পর্যালোচনার জন্য এই বকশিশের হিসাব আপনার সাম্প্রতিক ইতিহাসে সংরক্ষণ করুন।</string>
+    <string name="save_button_confirm">সংরক্ষণ করুন</string>
+    <string name="save_button_dismiss">সংরক্ষণ করবেন না</string>
+    <string name="tip_saved_snackbar">গণনা ইতিহাসে সংরক্ষিত হয়েছে</string>
+    <string name="history_button_label">ইতিহাস</string>
+    <string name="history_title">সাম্প্রতিক বকশিশের ইতিহাস</string>
+    <string name="history_empty_state">এখনও কোনো সংরক্ষিত গণনা নেই</string>
+    <string name="history_clear_all">ইতিহাস মুছুন</string>
+    <string name="history_load_action">লোড করুন</string>
+    <string name="history_delete_item">মুছুন</string>
+    <string name="save_prompt_setting_title">সংরক্ষণের অনুরোধ সেটিংস</string>
+    <string name="save_prompt_toggle_label">সংরক্ষণ করার অনুরোধ:</string>
+    <string name="save_prompt_always_mode">সর্বদা</string>
+    <string name="save_prompt_never_mode">কখনও নয়</string>
+    <string name="tutorial_toggle_label">শুরুতে টিউটোরিয়াল:</string>
+    <string name="tutorial_toggle_always">সর্বদা</string>
+    <string name="tutorial_toggle_never">কখনও নয়</string>
+    <string name="coach_step_history_title">লেনদেনের ইতিহাস</string>
+    <string name="coach_step_history_subtitle">অতীতের হিসাব সংরক্ষণ ও পর্যালোচনা</string>
+    <string name="coach_step_history_desc">DataStore এর মাধ্যমে আপনার বকশিশের হিসাব সংরক্ষণ করুন। অ্যাপ ব্যবহারের সময় \"আপনি কি এটি সংরক্ষণ করতে চান?\" প্রম্পটটি সর্বদা নাকি কখনও প্রদর্শিত হবে না তা নিচে নির্বাচন করুন।</string>
+    <string name="save_to_history_action">ইতিহাসে সংরক্ষণ করুন</string>
+
+    <!-- Global Explorer Unlock Notification Strings -->
+    <string name="unlock_global_explorer_countdown">গ্লোবাল এক্সপ্লোরার আনলক করতে আর %d বার ট্যাপ করুন</string>
+    <string name="unlock_global_explorer_countdown_one">গ্লোবাল এক্সপ্লোরার আনলক করতে আর ১ বার ট্যাপ করুন</string>
+    <string name="unlock_global_explorer_success">🎉 গোপন রহস্য উন্মোচিত! গ্লোবাল দেশ নির্বাচক আনলক হয়েছে</string>
+</resources>
