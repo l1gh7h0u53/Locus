@@ -392,6 +392,13 @@
     <!-- Settings Sheet Strings -->
     <string name="settings_title">Settings</string>
     <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_theme_title">Theme</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_system_desc">Follows device system settings</string>
+    <string name="settings_theme_light_desc">Always use light theme</string>
+    <string name="settings_theme_dark_desc">Always use dark theme</string>
     <string name="settings_dark_mode_title">Dark Theme</string>
     <string name="settings_dark_mode_desc">Switch between light and dark visual themes</string>
     <string name="settings_section_records">Records &amp; History</string>

@@ -296,8 +296,56 @@ class ExampleRobolectricTest {
 
     composeTestRule.onNodeWithTag("bill_input_field").assertExists()
     composeTestRule.onNodeWithTag("header_iso_pill").assertExists()
-    composeTestRule.onNodeWithTag("dark_mode_toggle").assertExists()
+    composeTestRule.onNodeWithTag("settings_button").assertExists()
     composeTestRule.onNodeWithTag("app_logo_tap_target").assertExists()
+  }
+
+  @Test
+  fun `verify SettingsBottomSheet renders System, Light, Dark themes and rounded Save Prompt buttons`() {
+    var selectedTheme: Boolean? = null
+    var saveMode = com.example.history.SavePromptMode.ALWAYS
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        com.example.ui.components.SettingsBottomSheet(
+          visible = true,
+          currentDarkTheme = false,
+          themeMode = null,
+          isSeniorMode = false,
+          currentLanguage = "en",
+          isManualLanguageOverride = false,
+          savePromptMode = saveMode,
+          onDismiss = {},
+          onSelectThemeMode = { selectedTheme = it },
+          onOpenHistory = {},
+          onOpenLanguage = {},
+          onSavePromptModeChange = { saveMode = it }
+        )
+      }
+    }
+
+    // Verify System, Light, Dark buttons exist in Appearance section
+    composeTestRule.onNodeWithTag("theme_system_button").assertExists()
+    composeTestRule.onNodeWithTag("theme_light_button").assertExists()
+    composeTestRule.onNodeWithTag("theme_dark_button").assertExists()
+
+    // Verify Always and Never fully rounded buttons exist
+    composeTestRule.onNodeWithTag("settings_save_prompt_always").assertExists()
+    composeTestRule.onNodeWithTag("settings_save_prompt_never").assertExists()
+
+    // Test clicking System, Light, and Dark options
+    composeTestRule.onNodeWithTag("theme_light_button").performClick()
+    assertEquals(false, selectedTheme)
+
+    composeTestRule.onNodeWithTag("theme_dark_button").performClick()
+    assertEquals(true, selectedTheme)
+
+    composeTestRule.onNodeWithTag("theme_system_button").performClick()
+    assertEquals(null, selectedTheme)
+
+    // Test clicking Never mode
+    composeTestRule.onNodeWithTag("settings_save_prompt_never").performClick()
+    assertEquals(com.example.history.SavePromptMode.NEVER, saveMode)
   }
 
   @Test

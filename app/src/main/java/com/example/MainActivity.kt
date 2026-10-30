@@ -705,11 +705,16 @@ fun TippyMainHost(
     SettingsBottomSheet(
         visible = showSettingsSheet,
         currentDarkTheme = currentDarkTheme,
+        themeMode = uiState.isDarkMode,
         isSeniorMode = uiState.isSeniorMode,
         currentLanguage = uiState.currentLanguage,
         isManualLanguageOverride = uiState.isManualLanguageOverride,
         savePromptMode = savePromptMode,
         onDismiss = { showSettingsSheet = false },
+        onSelectThemeMode = { mode ->
+            triggerHaptic()
+            viewModel.setDarkMode(mode)
+        },
         onToggleTheme = {
             triggerHaptic()
             viewModel.setDarkMode(!currentDarkTheme)
@@ -807,6 +812,13 @@ private fun ExpressiveHeader(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         // Brand Title with Clickable App Logo (6-tap secret trigger)
+        val isDark = when (uiState.isDarkMode) {
+            true -> true
+            false -> false
+            null -> isSystemInDarkTheme()
+        }
+        val appLogoTint = if (isDark) Color(0xFFFFFFFF) else Color(0xFF000000)
+
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
@@ -818,8 +830,7 @@ private fun ExpressiveHeader(
             Box(
                 modifier = Modifier
                     .size(48.dp)
-                    .clip(RoundedCornerShape(14.dp))
-                    .background(MaterialTheme.colorScheme.primary)
+                    .clip(CircleShape)
                     .clickable { onLogoClick() }
                     .testTag("app_logo_tap_target"),
                 contentAlignment = Alignment.Center
@@ -827,8 +838,8 @@ private fun ExpressiveHeader(
                 Icon(
                     painter = painterResource(id = R.drawable.passport_24),
                     contentDescription = stringResource(R.string.passport_logo_desc),
-                    tint = Color.White,
-                    modifier = Modifier.size(24.dp)
+                    tint = appLogoTint,
+                    modifier = Modifier.size(36.dp)
                 )
             }
             Spacer(modifier = Modifier.width(12.dp))

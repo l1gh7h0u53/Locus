@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -21,6 +23,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Accessibility
 import androidx.compose.material.icons.filled.BookmarkBorder
+import androidx.compose.material.icons.filled.BrightnessAuto
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.HelpOutline
@@ -57,6 +61,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.R
@@ -107,8 +112,10 @@ fun SettingsBottomSheet(
     currentLanguage: String,
     isManualLanguageOverride: Boolean,
     savePromptMode: SavePromptMode = SavePromptMode.ALWAYS,
+    themeMode: Boolean? = null,
     onDismiss: () -> Unit,
-    onToggleTheme: () -> Unit,
+    onToggleTheme: () -> Unit = {},
+    onSelectThemeMode: (Boolean?) -> Unit = {},
     onOpenHistory: () -> Unit,
     onOpenLanguage: () -> Unit,
     onToggleSeniorMode: () -> Unit = {},
@@ -129,8 +136,11 @@ fun SettingsBottomSheet(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .statusBarsPadding()
+                .padding(top = 16.dp)
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 20.dp, vertical = 16.dp)
+                .padding(horizontal = 20.dp)
+                .padding(bottom = 32.dp)
                 .testTag("settings_sheet"),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -142,9 +152,9 @@ fun SettingsBottomSheet(
                     .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.35f))
             )
 
-            Spacer(modifier = Modifier.height(14.dp))
+            Spacer(modifier = Modifier.height(18.dp))
 
-            // Sheet Title Header Bar
+            // Sheet Title Header Bar (comfortably below system status bar)
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
@@ -201,28 +211,191 @@ fun SettingsBottomSheet(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // SECTION 1: APPEARANCE (Light / Dark Theme Mode)
+            // SECTION 1: APPEARANCE (System, Light & Dark Theme Modes)
             SettingsSectionHeader(title = stringResource(R.string.settings_section_appearance))
             Spacer(modifier = Modifier.height(8.dp))
 
-            SettingsTileCard(
-                icon = if (currentDarkTheme) Icons.Default.DarkMode else Icons.Default.LightMode,
-                iconTint = MaterialTheme.colorScheme.primary,
-                title = stringResource(R.string.settings_dark_mode_title),
-                subtitle = stringResource(R.string.settings_dark_mode_desc),
-                trailingContent = {
-                    Switch(
-                        checked = currentDarkTheme,
-                        onCheckedChange = { onToggleTheme() },
-                        colors = SwitchDefaults.colors(
-                            checkedThumbColor = MaterialTheme.colorScheme.primary,
-                            checkedTrackColor = MaterialTheme.colorScheme.primaryContainer
-                        ),
-                        modifier = Modifier.testTag("dark_mode_toggle")
-                    )
-                },
-                onClick = onToggleTheme
-            )
+            val activeThemeTitle = when (themeMode) {
+                null -> stringResource(R.string.settings_theme_system)
+                false -> stringResource(R.string.settings_theme_light)
+                true -> stringResource(R.string.settings_theme_dark)
+            }
+            val activeThemeDesc = when (themeMode) {
+                null -> stringResource(R.string.settings_theme_system_desc)
+                false -> stringResource(R.string.settings_theme_light_desc)
+                true -> stringResource(R.string.settings_theme_dark_desc)
+            }
+            val activeThemeIcon = when (themeMode) {
+                null -> Icons.Default.BrightnessAuto
+                false -> Icons.Default.LightMode
+                true -> Icons.Default.DarkMode
+            }
+
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .testTag("settings_theme_card"),
+                shape = RoundedCornerShape(20.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.45f)
+                ),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .size(40.dp)
+                                .clip(RoundedCornerShape(12.dp))
+                                .background(MaterialTheme.colorScheme.primaryContainer),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                imageVector = activeThemeIcon,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(22.dp)
+                            )
+                        }
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = stringResource(R.string.settings_theme_title),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
+                            Text(
+                                text = "$activeThemeTitle • $activeThemeDesc",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(14.dp))
+
+                    // 3-Option Theme Selector: System, Light, Dark
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        // System Theme Option
+                        val isSystemSelected = (themeMode == null)
+                        Surface(
+                            selected = isSystemSelected,
+                            onClick = { onSelectThemeMode(null) },
+                            shape = CircleShape,
+                            color = if (isSystemSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
+                            contentColor = if (isSystemSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                            border = if (isSystemSelected) null else BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)),
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(44.dp)
+                                .testTag("theme_system_button")
+                        ) {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(horizontal = 6.dp),
+                                horizontalArrangement = Arrangement.Center,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.BrightnessAuto,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(17.dp)
+                                )
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Text(
+                                    text = stringResource(R.string.settings_theme_system),
+                                    style = MaterialTheme.typography.labelMedium,
+                                    fontWeight = if (isSystemSelected) FontWeight.Bold else FontWeight.Medium,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
+                        }
+
+                        // Light Theme Option
+                        val isLightSelected = (themeMode == false)
+                        Surface(
+                            selected = isLightSelected,
+                            onClick = { onSelectThemeMode(false) },
+                            shape = CircleShape,
+                            color = if (isLightSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
+                            contentColor = if (isLightSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                            border = if (isLightSelected) null else BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)),
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(44.dp)
+                                .testTag("theme_light_button")
+                        ) {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(horizontal = 6.dp),
+                                horizontalArrangement = Arrangement.Center,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.LightMode,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(17.dp)
+                                )
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Text(
+                                    text = stringResource(R.string.settings_theme_light),
+                                    style = MaterialTheme.typography.labelMedium,
+                                    fontWeight = if (isLightSelected) FontWeight.Bold else FontWeight.Medium,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
+                        }
+
+                        // Dark Theme Option
+                        val isDarkSelected = (themeMode == true)
+                        Surface(
+                            selected = isDarkSelected,
+                            onClick = { onSelectThemeMode(true) },
+                            shape = CircleShape,
+                            color = if (isDarkSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
+                            contentColor = if (isDarkSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                            border = if (isDarkSelected) null else BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)),
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(44.dp)
+                                .testTag("theme_dark_button")
+                                .testTag("dark_mode_toggle")
+                        ) {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(horizontal = 6.dp),
+                                horizontalArrangement = Arrangement.Center,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.DarkMode,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(17.dp)
+                                )
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Text(
+                                    text = stringResource(R.string.settings_theme_dark),
+                                    style = MaterialTheme.typography.labelMedium,
+                                    fontWeight = if (isDarkSelected) FontWeight.Bold else FontWeight.Medium,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
+                        }
+                    }
+                }
+            }
 
             Spacer(modifier = Modifier.height(18.dp))
 
@@ -365,34 +538,92 @@ fun SettingsBottomSheet(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        FilterChip(
-                            selected = savePromptMode == SavePromptMode.ALWAYS,
+                        // "Always" Button: fully rounded corners and compact padding after last letter
+                        val isAlwaysSelected = savePromptMode == SavePromptMode.ALWAYS
+                        Surface(
+                            selected = isAlwaysSelected,
                             onClick = { onSavePromptModeChange(SavePromptMode.ALWAYS) },
-                            label = { Text(stringResource(R.string.save_prompt_always_mode)) },
-                            colors = FilterChipDefaults.filterChipColors(
-                                selectedContainerColor = MaterialTheme.colorScheme.primary,
-                                selectedLabelColor = MaterialTheme.colorScheme.onPrimary
-                            ),
-                            modifier = Modifier
-                                .weight(1f)
-                                .testTag("settings_save_prompt_always")
-                        )
+                            shape = CircleShape,
+                            color = if (isAlwaysSelected) {
+                                MaterialTheme.colorScheme.primary
+                            } else {
+                                MaterialTheme.colorScheme.surfaceVariant
+                            },
+                            contentColor = if (isAlwaysSelected) {
+                                MaterialTheme.colorScheme.onPrimary
+                            } else {
+                                MaterialTheme.colorScheme.onSurfaceVariant
+                            },
+                            border = if (isAlwaysSelected) {
+                                null
+                            } else {
+                                BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
+                            },
+                            modifier = Modifier.testTag("settings_save_prompt_always")
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                if (isAlwaysSelected) {
+                                    Icon(
+                                        imageVector = Icons.Default.Check,
+                                        contentDescription = null,
+                                        modifier = Modifier.size(16.dp).padding(end = 4.dp)
+                                    )
+                                }
+                                Text(
+                                    text = stringResource(R.string.save_prompt_always_mode),
+                                    style = MaterialTheme.typography.labelMedium,
+                                    fontWeight = if (isAlwaysSelected) FontWeight.Bold else FontWeight.Medium
+                                )
+                            }
+                        }
 
-                        FilterChip(
-                            selected = savePromptMode == SavePromptMode.NEVER,
+                        // "Never" Button: fully rounded corners and compact padding after last letter
+                        val isNeverSelected = savePromptMode == SavePromptMode.NEVER
+                        Surface(
+                            selected = isNeverSelected,
                             onClick = { onSavePromptModeChange(SavePromptMode.NEVER) },
-                            label = { Text(stringResource(R.string.save_prompt_never_mode)) },
-                            colors = FilterChipDefaults.filterChipColors(
-                                selectedContainerColor = MaterialTheme.colorScheme.primary,
-                                selectedLabelColor = MaterialTheme.colorScheme.onPrimary
-                            ),
-                            modifier = Modifier
-                                .weight(1f)
-                                .testTag("settings_save_prompt_never")
-                        )
+                            shape = CircleShape,
+                            color = if (isNeverSelected) {
+                                MaterialTheme.colorScheme.primary
+                            } else {
+                                MaterialTheme.colorScheme.surfaceVariant
+                            },
+                            contentColor = if (isNeverSelected) {
+                                MaterialTheme.colorScheme.onPrimary
+                            } else {
+                                MaterialTheme.colorScheme.onSurfaceVariant
+                            },
+                            border = if (isNeverSelected) {
+                                null
+                            } else {
+                                BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
+                            },
+                            modifier = Modifier.testTag("settings_save_prompt_never")
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                if (isNeverSelected) {
+                                    Icon(
+                                        imageVector = Icons.Default.Check,
+                                        contentDescription = null,
+                                        modifier = Modifier.size(16.dp).padding(end = 4.dp)
+                                    )
+                                }
+                                Text(
+                                    text = stringResource(R.string.save_prompt_never_mode),
+                                    style = MaterialTheme.typography.labelMedium,
+                                    fontWeight = if (isNeverSelected) FontWeight.Bold else FontWeight.Medium
+                                )
+                            }
+                        }
                     }
                 }
             }
