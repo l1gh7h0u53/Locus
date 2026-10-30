@@ -709,8 +709,13 @@ fun TippyMainHost(
         isSeniorMode = uiState.isSeniorMode,
         currentLanguage = uiState.currentLanguage,
         isManualLanguageOverride = uiState.isManualLanguageOverride,
+        selectedCurrency = uiState.selectedCurrency,
         savePromptMode = savePromptMode,
         onDismiss = { showSettingsSheet = false },
+        onSelectCurrency = { currency ->
+            triggerHaptic()
+            viewModel.selectCurrency(currency)
+        },
         onSelectThemeMode = { mode ->
             triggerHaptic()
             viewModel.setDarkMode(mode)
@@ -843,53 +848,32 @@ private fun ExpressiveHeader(
                 )
             }
             Spacer(modifier = Modifier.width(12.dp))
-            Column {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+            Column(
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = stringResource(R.string.app_name),
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontWeight = FontWeight.Black
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                // Material 3 Expressive Pill with active country ISO Code (positioned under Locus, dot removed)
+                Surface(
+                    shape = RoundedCornerShape(percent = 50),
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.25f)),
+                    modifier = Modifier.testTag("header_iso_pill")
                 ) {
                     Text(
-                        text = stringResource(R.string.app_name),
-                        style = MaterialTheme.typography.headlineMedium,
-                        color = MaterialTheme.colorScheme.onBackground,
-                        fontWeight = FontWeight.Black
+                        text = uiState.activeCountry.iso.uppercase(),
+                        style = MaterialTheme.typography.labelSmall,
+                        fontWeight = FontWeight.Black,
+                        letterSpacing = 0.5.sp,
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                     )
-                    // Material 3 Expressive Pill with active country ISO Code
-                    Surface(
-                        shape = RoundedCornerShape(percent = 50),
-                        color = MaterialTheme.colorScheme.primaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                        border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.25f)),
-                        modifier = Modifier.testTag("header_iso_pill")
-                    ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(4.dp),
-                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
-                        ) {
-                            Box(
-                                modifier = Modifier
-                                    .size(6.dp)
-                                    .clip(CircleShape)
-                                    .background(MaterialTheme.colorScheme.primary)
-                            )
-                            Text(
-                                text = uiState.activeCountry.iso.uppercase(),
-                                style = MaterialTheme.typography.labelSmall,
-                                fontWeight = FontWeight.Black,
-                                letterSpacing = 0.5.sp
-                            )
-                        }
-                    }
                 }
-                Text(
-                    text = stringResource(R.string.header_subtitle),
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontWeight = FontWeight.SemiBold,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
             }
         }
 
@@ -992,18 +976,7 @@ private fun ExpressiveTippyLayout(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 2. CURRENCY SELECTOR STRIP
-        CurrencyPillsStrip(
-            uiState = uiState,
-            onSelectCurrency = { currency ->
-                triggerHaptic()
-                viewModel.selectCurrency(currency)
-            }
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // 3. BILL INPUT CARD WITH NUMPAD SHORTCUTS
+        // 2. BILL INPUT CARD WITH NUMPAD SHORTCUTS
         BillAmountSection(
             uiState = uiState,
             onValueChange = {
@@ -1399,432 +1372,7 @@ private fun HeroCalculationCard(
         }
     }
 
-/**
- * =========================================================================================
- * FEATURE: Searchable Currency Picker Modal Dialog (CurrencyPickerDialog)
- * =========================================================================================
- *
- * Description:
- * Modal selection dialog allowing users to search and select from 140+ global currencies.
- * Supports filtering by three-letter ISO code, graphical symbol, English name, or localized name.
- *
- * @param currentCurrency The currently active [CurrencyOption].
- * @param currentLanguage Active 2-letter ISO language code.
- * @param onSelectCurrency Callback invoked when the user selects a currency.
- * @param onDismissRequest Callback invoked to dismiss the dialog without changes.
- * =========================================================================================
- */
-@Composable
-private fun CurrencyPickerDialog(
-    currentCurrency: CurrencyOption,
-    currentLanguage: String = "en",
-    onSelectCurrency: (CurrencyOption) -> Unit,
-    onDismissRequest: () -> Unit
-) {
-    var searchQuery by remember { mutableStateOf("") }
 
-    val allCurrencies = remember { CurrencyOption.values().toList() }
-    val mappingsByCode = remember {
-        CurrencyOption.ALL_MAPPINGS.groupBy { it.currencyCode }
-    }
-
-    val filteredCurrencies = remember(searchQuery, currentLanguage) {
-        val q = searchQuery.trim().lowercase(Locale.US)
-        if (q.isEmpty()) {
-            listOf(currentCurrency) + (allCurrencies - currentCurrency).sortedBy { it.code }
-        } else {
-            allCurrencies.filter { option ->
-                val localizedLabel = option.getLocalizedLabel(currentLanguage)
-                val codeMatch = option.code.lowercase(Locale.US).contains(q)
-                val labelMatch = option.label.lowercase(Locale.US).contains(q) || localizedLabel.lowercase(Locale.US).contains(q)
-                val symbolMatch = option.symbol.lowercase(Locale.US).contains(q)
-                val countries = mappingsByCode[option.code]?.joinToString(" ") {
-                    val locCountry = GlobalExplorerLocalization.getLocalizedCountry(it.alpha2, currentLanguage, it.country)
-                    "${it.country} $locCountry ${it.alpha2} ${it.alpha3}"
-                }?.lowercase(Locale.US) ?: ""
-                val countryMatch = countries.contains(q)
-                codeMatch || labelMatch || symbolMatch || countryMatch
-            }.sortedBy { it.code }
-        }
-    }
-
-    AlertDialog(
-        onDismissRequest = onDismissRequest,
-        title = {
-            Column {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = stringResource(R.string.global_currencies_title),
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Black
-                    )
-                    Text(
-                        text = stringResource(R.string.currencies_count, filteredCurrencies.size),
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-                Spacer(modifier = Modifier.height(10.dp))
-                OutlinedTextField(
-                    value = searchQuery,
-                    onValueChange = { searchQuery = it },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .testTag("currency_search_input"),
-                    placeholder = { Text(stringResource(R.string.search_currency_placeholder)) },
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Search,
-                            contentDescription = "Search",
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    },
-                    trailingIcon = {
-                        if (searchQuery.isNotEmpty()) {
-                            IconButton(onClick = { searchQuery = "" }) {
-                                Icon(
-                                    imageVector = Icons.Default.Clear,
-                                    contentDescription = "Clear search"
-                                )
-                            }
-                        }
-                    },
-                    singleLine = true,
-                    shape = RoundedCornerShape(16.dp),
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant
-                    )
-                )
-            }
-        },
-        text = {
-            if (filteredCurrencies.isEmpty()) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(200.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = stringResource(R.string.no_currency_found),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-            } else {
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(380.dp),
-                    verticalArrangement = Arrangement.spacedBy(6.dp)
-                ) {
-                    items(filteredCurrencies, key = { it.code }) { currency ->
-                        val isSelected = currency == currentCurrency
-                        val localizedLabel = currency.getLocalizedLabel(currentLanguage)
-                        val mappings = mappingsByCode[currency.code] ?: emptyList()
-                        val countriesPreview = mappings.joinToString(", ") {
-                            GlobalExplorerLocalization.getLocalizedCountry(it.alpha2, currentLanguage, it.country)
-                        }
-
-                        Card(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable(
-                                    role = Role.RadioButton,
-                                    onClickLabel = "Select currency ${currency.code} $localizedLabel"
-                                ) {
-                                    onSelectCurrency(currency)
-                                }
-                                .semantics {
-                                    selected = isSelected
-                                }
-                                .testTag("currency_item_${currency.code}"),
-                            colors = CardDefaults.cardColors(
-                                containerColor = if (isSelected) MaterialTheme.colorScheme.primaryContainer
-                                else MaterialTheme.colorScheme.surfaceVariant
-                            ),
-                            shape = RoundedCornerShape(16.dp),
-                            border = if (isSelected) BorderStroke(2.dp, MaterialTheme.colorScheme.primary) else null
-                        ) {
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(12.dp),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .size(44.dp)
-                                            .clip(CircleShape)
-                                            .background(
-                                                if (isSelected) MaterialTheme.colorScheme.primary
-                                                else MaterialTheme.colorScheme.surface
-                                            ),
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Text(
-                                            text = currency.symbol,
-                                            style = MaterialTheme.typography.titleMedium,
-                                            fontWeight = FontWeight.Black,
-                                            color = if (isSelected) MaterialTheme.colorScheme.onPrimary
-                                            else MaterialTheme.colorScheme.primary,
-                                            textAlign = TextAlign.Center,
-                                            maxLines = 1
-                                        )
-                                    }
-
-                                    Column {
-                                        Row(
-                                            verticalAlignment = Alignment.CenterVertically,
-                                            horizontalArrangement = Arrangement.spacedBy(6.dp)
-                                        ) {
-                                            Text(
-                                                text = currency.code,
-                                                style = MaterialTheme.typography.titleMedium,
-                                                fontWeight = FontWeight.Black,
-                                                color = if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer
-                                                else MaterialTheme.colorScheme.onSurface
-                                            )
-                                            Text(
-                                                text = "• $localizedLabel",
-                                                style = MaterialTheme.typography.bodyMedium,
-                                                fontWeight = FontWeight.SemiBold,
-                                                color = if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer
-                                                else MaterialTheme.colorScheme.onSurface,
-                                                maxLines = 1,
-                                                overflow = TextOverflow.Ellipsis
-                                            )
-                                        }
-                                        if (countriesPreview.isNotEmpty()) {
-                                            Text(
-                                                text = countriesPreview,
-                                                style = MaterialTheme.typography.bodySmall,
-                                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                                maxLines = 1,
-                                                overflow = TextOverflow.Ellipsis
-                                            )
-                                        }
-                                    }
-                                }
-
-                                if (isSelected) {
-                                    Icon(
-                                        imageVector = Icons.Default.Check,
-                                        contentDescription = "Selected",
-                                        tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(20.dp)
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        confirmButton = {
-            TextButton(onClick = onDismissRequest) {
-                Text(stringResource(R.string.close_button))
-            }
-        }
-    )
-}
-
-/**
- * =========================================================================================
- * FEATURE: Quick Currency Selector Pill Strip (CurrencyPillsStrip)
- * =========================================================================================
- *
- * Description:
- * Compact horizontal pill strip showcasing the nation's primary currency alongside major
- * global currencies (USD, EUR, GBP, JPY) with a "+ More" trigger opening the complete picker dialog.
- *
- * @param uiState Reactive application state snapshot.
- * @param onSelectCurrency Callback invoked when a currency pill is clicked.
- * =========================================================================================
- */
-@Composable
-private fun CurrencyPillsStrip(
-    uiState: TippyUiState,
-    onSelectCurrency: (CurrencyOption) -> Unit
-) {
-    var showAllCurrenciesDialog by remember { mutableStateOf(false) }
-
-    if (showAllCurrenciesDialog) {
-        CurrencyPickerDialog(
-            currentCurrency = uiState.selectedCurrency,
-            currentLanguage = uiState.currentLanguage,
-            onSelectCurrency = { currency ->
-                onSelectCurrency(currency)
-                showAllCurrenciesDialog = false
-            },
-            onDismissRequest = { showAllCurrenciesDialog = false }
-        )
-    }
-
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .animateContentSize(animationSpec = spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessMediumLow))
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 4.dp, vertical = 2.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = stringResource(R.string.select_currency),
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                fontWeight = FontWeight.Black,
-                letterSpacing = 1.sp
-            )
-
-            TextButton(
-                onClick = { showAllCurrenciesDialog = true },
-                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 0.dp),
-                modifier = Modifier.testTag("all_currencies_button")
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Public,
-                    contentDescription = null,
-                    modifier = Modifier.size(16.dp),
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                Spacer(modifier = Modifier.width(4.dp))
-                Text(
-                    text = stringResource(R.string.all_currencies, CurrencyOption.values().size),
-                    style = MaterialTheme.typography.labelMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.height(4.dp))
-
-        // Popular Currency Carousel
-        LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            contentPadding = PaddingValues(horizontal = 2.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            val featuredCurrencies = listOf(
-                uiState.selectedCurrency,
-                CurrencyOption.USD,
-                CurrencyOption.EUR,
-                CurrencyOption.GBP,
-                CurrencyOption.JPY,
-                CurrencyOption.CAD,
-                CurrencyOption.AUD,
-                CurrencyOption.CHF,
-                CurrencyOption.BRL,
-                CurrencyOption.MXN,
-                CurrencyOption.INR
-            ).distinct()
-
-            items(featuredCurrencies) { currency ->
-                val isSelected = uiState.selectedCurrency == currency
-                val localizedLabel = currency.getLocalizedLabel(uiState.currentLanguage)
-                val currencyDesc = "${currency.code}, $localizedLabel (${currency.symbol})${if (isSelected) ", selected" else ""}"
-                FilterChip(
-                    selected = isSelected,
-                    onClick = { onSelectCurrency(currency) },
-                    label = {
-                        Text(
-                            text = "${currency.code} (${currency.symbol})",
-                            style = MaterialTheme.typography.labelMedium,
-                            fontWeight = if (isSelected) FontWeight.Black else FontWeight.Bold,
-                            softWrap = true,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    },
-                    leadingIcon = if (isSelected) {
-                        {
-                            Icon(
-                                imageVector = Icons.Default.Check,
-                                contentDescription = null,
-                                modifier = Modifier.size(14.dp)
-                            )
-                        }
-                    } else null,
-                    colors = FilterChipDefaults.filterChipColors(
-                        selectedContainerColor = MaterialTheme.colorScheme.primary,
-                        selectedLabelColor = MaterialTheme.colorScheme.onPrimary,
-                        selectedLeadingIconColor = MaterialTheme.colorScheme.onPrimary,
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                        labelColor = MaterialTheme.colorScheme.onSurfaceVariant
-                    ),
-                    shape = RoundedCornerShape(16.dp),
-                    border = FilterChipDefaults.filterChipBorder(
-                        enabled = true,
-                        selected = isSelected,
-                        borderColor = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outlineVariant
-                    ),
-                    modifier = Modifier
-                        .testTag("currency_${currency.code}")
-                        .semantics {
-                            contentDescription = currencyDesc
-                        }
-                )
-            }
-
-            item {
-                val moreCurrenciesDesc = stringResource(R.string.all_currencies, CurrencyOption.values().size)
-                FilterChip(
-                    selected = false,
-                    onClick = { showAllCurrenciesDialog = true },
-                    label = {
-                        Text(
-                            text = stringResource(R.string.more_currencies),
-                            style = MaterialTheme.typography.labelMedium,
-                            fontWeight = FontWeight.Bold,
-                            softWrap = true,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    },
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Tune,
-                            contentDescription = null,
-                            modifier = Modifier.size(14.dp)
-                        )
-                    },
-                    colors = FilterChipDefaults.filterChipColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f),
-                        labelColor = MaterialTheme.colorScheme.primary
-                    ),
-                    shape = RoundedCornerShape(16.dp),
-                    border = FilterChipDefaults.filterChipBorder(
-                        enabled = true,
-                        selected = false,
-                        borderColor = MaterialTheme.colorScheme.outlineVariant
-                    ),
-                    modifier = Modifier
-                        .testTag("more_currencies_chip")
-                        .semantics {
-                            contentDescription = moreCurrenciesDesc
-                        }
-                )
-            }
-        }
-    }
-}
 
 /**
  * =========================================================================================

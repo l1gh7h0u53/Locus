@@ -1,5 +1,6 @@
 package com.example.ui.components
 
+import com.example.CurrencyOption
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -113,6 +114,8 @@ fun SettingsBottomSheet(
     isManualLanguageOverride: Boolean,
     savePromptMode: SavePromptMode = SavePromptMode.ALWAYS,
     themeMode: Boolean? = null,
+    selectedCurrency: CurrencyOption = CurrencyOption.USD,
+    onSelectCurrency: (CurrencyOption) -> Unit = {},
     onDismiss: () -> Unit,
     onToggleTheme: () -> Unit = {},
     onSelectThemeMode: (Boolean?) -> Unit = {},
@@ -184,11 +187,6 @@ fun SettingsBottomSheet(
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onSurface
-                        )
-                        Text(
-                            text = stringResource(R.string.header_subtitle),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                 }
@@ -462,6 +460,15 @@ fun SettingsBottomSheet(
                 },
                 testTag = "language_dialog_button",
                 onClick = onOpenLanguage
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            // Select Currency with All (145) Section
+            CurrencySelectorSection(
+                currentCurrency = selectedCurrency,
+                currentLanguage = currentLanguage,
+                onSelectCurrency = onSelectCurrency
             )
 
             Spacer(modifier = Modifier.height(18.dp))

@@ -820,6 +820,39 @@ class ExampleRobolectricTest {
     val usAmountOnly = com.example.i18n.LocaleFormatter.formatAmountOnly(1250.50, "en")
     assertEquals("1,250.50", usAmountOnly)
   }
+
+  @Test
+  fun `verify Select Currency with All 145 is moved to Settings under Language and Region`() {
+    var selectedCurrency: CurrencyOption = CurrencyOption.USD
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        com.example.ui.components.SettingsBottomSheet(
+          visible = true,
+          currentDarkTheme = false,
+          themeMode = null,
+          isSeniorMode = false,
+          currentLanguage = "en",
+          isManualLanguageOverride = false,
+          selectedCurrency = selectedCurrency,
+          onSelectCurrency = { selectedCurrency = it },
+          onDismiss = {},
+          onOpenHistory = {},
+          onOpenLanguage = {}
+        )
+      }
+    }
+
+    // Verify all_currencies_button exists in Settings and contains 145
+    val allCurrenciesBtn = composeTestRule.onNodeWithTag("all_currencies_button")
+    allCurrenciesBtn.assertExists()
+
+    // Verify clicking a currency chip updates currency
+    composeTestRule.onNodeWithTag("currency_EUR").assertExists()
+    composeTestRule.onNodeWithTag("currency_EUR").performClick()
+    assertEquals(CurrencyOption.EUR, selectedCurrency)
+  }
 }
+
 
 

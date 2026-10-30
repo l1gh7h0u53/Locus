@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Locus</string>
-    <string name="header_subtitle">Калькулятор</string>
     <string name="service_restaurant">Ресторан</string>
     <string name="service_delivery">Доставка</string>
     <string name="service_takeout">Навынос</string>
