@@ -23,3 +23,5 @@ debug.keystore.base64
 *.p12
 *.pepk
 my-upload-key.jks
+.build-outputs/
+.aistudio/
