@@ -1,6 +1,6 @@
 # Locus 🌍📍
 
-**Locus** is a privacy-first, offline-first Global Cultural Tipping & Currency Calculator built for travelers, digital nomads, and everyday diners. By utilizing `TelephonyManager.getNetworkCountryISO`, Locus automatically detects your current country via cellular network signals—without requesting GPS permissions—and instantly provides local tipping customs, currencies, and etiquette guidelines.
+**Locus** is a vibe coded privacy-first, offline-first Global Cultural Tipping & Currency Calculator built for travelers, digital nomads, and everyday diners. By utilizing `TelephonyManager.getNetworkCountryISO`, Locus automatically detects your current country via cellular network signals—without requesting GPS permissions—and instantly provides local tipping customs, currencies, and etiquette guidelines.
 
 [![Version](https://img.shields.io/badge/version-2.1.0-blue.svg)](https://github.com/l1gh7h0u53/locus/releases/tag/v2.1.0)
 [![Kotlin](https://img.shields.io/badge/Kotlin-100%25-7F52FF.svg)](https://kotlinlang.org/)
