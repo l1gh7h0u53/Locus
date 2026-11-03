@@ -14,6 +14,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.example.ui.theme.TippyTheme
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Rule
@@ -852,7 +853,157 @@ class ExampleRobolectricTest {
     composeTestRule.onNodeWithTag("currency_EUR").performClick()
     assertEquals(CurrencyOption.EUR, selectedCurrency)
   }
+
+  @Test
+  fun `verify CountryFlagHelper converts ISO codes to regional indicator flag emojis`() {
+    assertEquals("🇺🇸", com.example.ui.components.CountryFlagHelper.getFlagEmoji("US"))
+    assertEquals("🇮🇹", com.example.ui.components.CountryFlagHelper.getFlagEmoji("IT"))
+    assertEquals("🇦🇹", com.example.ui.components.CountryFlagHelper.getFlagEmoji("AT"))
+    assertEquals("🇪🇸", com.example.ui.components.CountryFlagHelper.getFlagEmoji("ES"))
+    assertEquals("🇲🇦", com.example.ui.components.CountryFlagHelper.getFlagEmoji("MA"))
+    assertEquals("🌐", com.example.ui.components.CountryFlagHelper.getFlagEmoji(""))
+    assertEquals("🌐", com.example.ui.components.CountryFlagHelper.getFlagEmoji("XYZ"))
+  }
+
+  @Test
+  fun `verify header country flag button exists in TippyMainHost`() {
+    val viewModel = TippyViewModel()
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        val uiState by viewModel.uiState.collectAsState()
+        TippyMainHost(
+          uiState = uiState,
+          viewModel = viewModel,
+          currentDarkTheme = false
+        )
+      }
+    }
+
+    // Verify header country flag button exists next to Senior Mode
+    composeTestRule.onNodeWithTag("header_country_flag_button").assertExists()
+    composeTestRule.onNodeWithTag("senior_mode_toggle").assertExists()
+    composeTestRule.onNodeWithTag("settings_button").assertExists()
+  }
+
+  @Test
+  fun `verify CountrySelectionBottomSheet allows searching and selecting countries`() {
+    var selectedCountry: CountryTippingData? = null
+    val countries = CountryDataRegistry.getAllCountries()
+    val defaultCountry = CountryDataRegistry.getDefaultCountry()
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        com.example.ui.components.CountrySelectionBottomSheet(
+          visible = true,
+          currentCountry = defaultCountry,
+          allCountries = countries,
+          currentLanguage = "en",
+          onDismiss = {},
+          onSelectCountry = { selectedCountry = it }
+        )
+      }
+    }
+
+    composeTestRule.onNodeWithTag("country_selection_sheet").assertExists()
+    composeTestRule.onNodeWithTag("country_search_input").assertExists()
+
+    // Default country (US) item exists at top
+    composeTestRule.onNodeWithTag("country_sheet_item_US").assertExists()
+
+    // Type query "Italy" to filter
+    composeTestRule.onNodeWithTag("country_search_input").performTextInput("Italy")
+    composeTestRule.onNodeWithTag("country_sheet_item_IT").assertExists()
+
+    // Click Italy and assert callback
+    composeTestRule.onNodeWithTag("country_sheet_item_IT").performClick()
+    assertEquals("IT", selectedCountry?.iso)
+  }
+
+  @Test
+  fun `verify easter egg triggers after exactly 10 taps on Theme icon in Settings with no toast or indicator`() {
+    var easterEggTriggered = false
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        com.example.ui.components.SettingsBottomSheet(
+          visible = true,
+          currentDarkTheme = false,
+          themeMode = null,
+          isSeniorMode = false,
+          currentLanguage = "en",
+          isManualLanguageOverride = false,
+          onDismiss = {},
+          onOpenHistory = {},
+          onOpenLanguage = {},
+          onEasterEggUnlocked = { easterEggTriggered = true }
+        )
+      }
+    }
+
+    val themeIconTarget = composeTestRule.onNodeWithTag("theme_icon_tap_target")
+    themeIconTarget.assertExists()
+
+    // Tap 9 times - should not trigger
+    repeat(9) {
+      themeIconTarget.performClick()
+    }
+    assertEquals(false, easterEggTriggered)
+
+    // 10th tap triggers easter egg
+    themeIconTarget.performClick()
+    assertEquals(true, easterEggTriggered)
+  }
+
+  @Test
+  fun `verify currency amounts use non-breaking spaces across all locales to prevent number breaks`() {
+    val usd = CurrencyOption.USD
+    val eur = CurrencyOption.EUR
+    val chf = CurrencyOption.CHF
+
+    val usFormatted = com.example.i18n.LocaleFormatter.formatCurrency(1250.50, usd, "en")
+    assertFalse("Should not contain breaking ASCII space", usFormatted.contains(' '))
+
+    val deFormatted = com.example.i18n.LocaleFormatter.formatCurrency(1250.50, eur, "de")
+    assertFalse("Should not contain breaking ASCII space", deFormatted.contains(' '))
+    assertTrue(deFormatted.contains('\u00A0'))
+
+    val chfFormatted = com.example.i18n.LocaleFormatter.formatCurrency(1250.50, chf, "de")
+    assertFalse("Should not contain breaking ASCII space", chfFormatted.contains(' '))
+    assertTrue(chfFormatted.contains('\u00A0'))
+  }
+
+  @Test
+  fun `verify tip calculation history is hidden in settings when savePromptMode is NEVER and shown when ALWAYS`() {
+    val savePromptModeState = androidx.compose.runtime.mutableStateOf(com.example.history.SavePromptMode.ALWAYS)
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        com.example.ui.components.SettingsBottomSheet(
+          visible = true,
+          currentDarkTheme = false,
+          themeMode = null,
+          isSeniorMode = false,
+          currentLanguage = "en",
+          isManualLanguageOverride = false,
+          savePromptMode = savePromptModeState.value,
+          onDismiss = {},
+          onOpenHistory = {},
+          onOpenLanguage = {}
+        )
+      }
+    }
+    // When ALWAYS: tip_history_button exists
+    composeTestRule.onNodeWithTag("tip_history_button").assertExists()
+
+    // When switched to NEVER: tip_history_button does not exist
+    savePromptModeState.value = com.example.history.SavePromptMode.NEVER
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tip_history_button").assertDoesNotExist()
+  }
 }
+
+
+
 
 
 

@@ -9,6 +9,8 @@ import com.example.preferences.OnboardingPreferences
 import com.example.ui.components.CoachMarkOverlay
 import com.example.ui.components.TipHistorySheet
 import com.example.ui.components.SettingsBottomSheet
+import com.example.ui.components.CountrySelectionBottomSheet
+import com.example.ui.components.CountryFlagHelper
 import com.example.history.TipHistoryDataStore
 import com.example.history.SavePromptMode
 import com.example.history.TipTransaction
@@ -379,8 +381,8 @@ fun TippyMainHost(
     val historyList by tipHistoryStore.historyFlow.collectAsState(initial = emptyList())
 
     var screenMode by remember { mutableStateOf(AppScreenMode.CALCULATOR) }
-    var logoTapCount by remember { mutableIntStateOf(0) }
     var showLanguageDialog by remember { mutableStateOf(false) }
+    var showCountrySheet by remember { mutableStateOf(false) }
     var showHistorySheet by remember { mutableStateOf(false) }
     var showSettingsSheet by remember { mutableStateOf(false) }
     var showCoachMarks by remember { mutableStateOf(!onboardingPrefs.hasSeenCoachmarks()) }
@@ -589,20 +591,12 @@ fun TippyMainHost(
                         // Expressive App Header Row with Centralized Settings
                         ExpressiveHeader(
                             uiState = uiState,
-                            logoTapCount = logoTapCount,
                             onLogoClick = {
-                                logoTapCount++
-                                if (logoTapCount >= 6) {
-                                    logoTapCount = 0
-                                    HapticFeedbackManager.onEasterEggUnlocked(view)
-                                    screenMode = AppScreenMode.COUNTRY_SELECTOR
-                                    Toast.makeText(context, "🎉 Secret Discovered! Global Country Selector Unlocked", Toast.LENGTH_SHORT).show()
-                                } else {
-                                    HapticFeedbackManager.onLogoTap(view)
-                                    if (logoTapCount >= 2) {
-                                        Toast.makeText(context, "${6 - logoTapCount} taps to unlock Global Explorer", Toast.LENGTH_SHORT).show()
-                                    }
-                                }
+                                triggerHaptic()
+                            },
+                            onOpenCountryPicker = {
+                                triggerHaptic()
+                                showCountrySheet = true
                             },
                             onOpenSettings = {
                                 triggerHaptic()
@@ -669,8 +663,6 @@ fun TippyMainHost(
                         viewModel.selectCountry(selected)
                         HapticFeedbackManager.confirm(view)
                         screenMode = AppScreenMode.CALCULATOR
-                        val localizedName = selected.getLocalizedCountry(uiState.currentLanguage)
-                        Toast.makeText(context, context.getString(R.string.selected_toast, localizedName, selected.iso), Toast.LENGTH_SHORT).show()
                     }
                 )
             }
@@ -699,6 +691,20 @@ fun TippyMainHost(
             }
         },
         onDismiss = { showHistorySheet = false }
+    )
+
+    // Expressive Country Selection Bottom Sheet (Quick manual override for cross-border travelers)
+    CountrySelectionBottomSheet(
+        visible = showCountrySheet,
+        currentCountry = uiState.activeCountry,
+        allCountries = remember { CountryDataRegistry.getAllCountries() },
+        currentLanguage = uiState.currentLanguage,
+        onDismiss = { showCountrySheet = false },
+        onSelectCountry = { country ->
+            showCountrySheet = false
+            triggerHaptic()
+            viewModel.selectCountry(country)
+        }
     )
 
     // Centralized Settings Bottom Sheet (Theme, Tip History, Language & Preferences)
@@ -742,6 +748,11 @@ fun TippyMainHost(
             showSettingsSheet = false
             triggerHaptic()
             showCoachMarks = true
+        },
+        onEasterEggUnlocked = {
+            showSettingsSheet = false
+            triggerHaptic()
+            screenMode = AppScreenMode.COUNTRY_SELECTOR
         },
         onSavePromptModeChange = { newMode ->
             coroutineScope.launch {
@@ -800,8 +811,9 @@ fun TippyMainHost(
 @Composable
 private fun ExpressiveHeader(
     uiState: TippyUiState,
-    logoTapCount: Int,
+    logoTapCount: Int = 0,
     onLogoClick: () -> Unit,
+    onOpenCountryPicker: () -> Unit = {},
     onOpenSettings: () -> Unit,
     onToggleSeniorMode: () -> Unit,
     currentDarkTheme: Boolean = false,
@@ -879,11 +891,35 @@ private fun ExpressiveHeader(
 
         Spacer(modifier = Modifier.width(8.dp))
 
-        // Clean Quick Controls: Senior Mode Accessibility & Consolidated Settings Toggle
+        // Clean Quick Controls: Manual Country Flag Selector, Senior Mode Accessibility & Consolidated Settings Toggle
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
+            // Manual Country Switcher Flag Button (for cross-border travelers)
+            val flagEmoji = remember(uiState.activeCountry.iso) {
+                CountryFlagHelper.getFlagEmoji(uiState.activeCountry.iso)
+            }
+            IconButton(
+                onClick = onOpenCountryPicker,
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surfaceVariant)
+                    .border(
+                        width = 1.dp,
+                        color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f),
+                        shape = CircleShape
+                    )
+                    .testTag("header_country_flag_button")
+            ) {
+                Text(
+                    text = flagEmoji,
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = 22.sp),
+                    textAlign = TextAlign.Center
+                )
+            }
+
             // Senior Mode Accessibility Toggle Button
             IconButton(
                 onClick = onToggleSeniorMode,
@@ -1141,6 +1177,10 @@ private fun HeroCalculationCard(
                         style = MaterialTheme.typography.displayLarge.copy(fontSize = 44.sp),
                         color = MaterialTheme.colorScheme.primary,
                         fontWeight = FontWeight.Black,
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis,
+                        textAlign = TextAlign.Center,
                         modifier = Modifier.testTag("hero_total_bill_text")
                     )
                 }
@@ -1477,12 +1517,17 @@ private fun BillAmountSection(
                         if (uiState.billAmountInput.isNotEmpty()) {
                             IconButton(
                                 onClick = onClear,
-                                modifier = Modifier.testTag("clear_button_tag")
+                                modifier = Modifier
+                                    .size(36.dp)
+                                    .clip(CircleShape)
+                                    .background(MaterialTheme.colorScheme.errorContainer)
+                                    .testTag("clear_button_tag")
                             ) {
                                 Icon(
                                     imageVector = Icons.Default.Clear,
                                     contentDescription = stringResource(R.string.clear_button),
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                    tint = MaterialTheme.colorScheme.error,
+                                    modifier = Modifier.size(18.dp)
                                 )
                             }
                         }
@@ -2257,6 +2302,10 @@ private fun SeniorTippyLayout(
                         style = MaterialTheme.typography.displayLarge,
                         color = MaterialTheme.colorScheme.primary,
                         fontWeight = FontWeight.Black,
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis,
+                        textAlign = TextAlign.Center,
                         modifier = Modifier.testTag("hero_total_bill_text")
                     )
                 }
@@ -2581,12 +2630,17 @@ private fun SeniorTippyLayout(
                                         triggerHaptic()
                                         viewModel.updateBillAmount("")
                                     },
-                                    modifier = Modifier.testTag("clear_button_tag")
+                                    modifier = Modifier
+                                        .size(36.dp)
+                                        .clip(CircleShape)
+                                        .background(MaterialTheme.colorScheme.errorContainer)
+                                        .testTag("clear_button_tag")
                                 ) {
                                     Icon(
                                         imageVector = Icons.Default.Clear,
                                         contentDescription = stringResource(R.string.clear_button),
-                                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                        tint = MaterialTheme.colorScheme.error,
+                                        modifier = Modifier.size(18.dp)
                                     )
                                 }
                             }
@@ -2986,7 +3040,7 @@ private fun SeniorSplitBillSection(
  * =========================================================================================
  *
  * Description:
- * Full-screen modal view providing real-time search, browsing, and selection across 190+
+ * Full-screen modal view providing real-time search, browsing, and selection across 192
  * sovereign nations and regional cultural tipping matrices.
  *
  * Capabilities:
@@ -3105,8 +3159,19 @@ fun CountrySelectionView(
             },
             trailingIcon = {
                 if (searchQuery.isNotEmpty()) {
-                    IconButton(onClick = { searchQuery = "" }) {
-                        Icon(imageVector = Icons.Default.Clear, contentDescription = "Clear search")
+                    IconButton(
+                        onClick = { searchQuery = "" },
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.errorContainer)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Clear,
+                            contentDescription = "Clear search",
+                            tint = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.size(16.dp)
+                        )
                     }
                 }
             },

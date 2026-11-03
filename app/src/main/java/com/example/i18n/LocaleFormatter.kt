@@ -146,13 +146,16 @@ object LocaleFormatter {
         val formattedNumber = df.format(amount)
 
         val isSuffix = currency.isSymbolAfter || isLocaleSuffixStandard(langCode, currency)
-        val spaceSeparator = if (isSuffix) " " else if (isPrefixWithSpace(langCode, currency)) " " else ""
+        val spaceSeparator = if (isSuffix) "\u00A0" else if (isPrefixWithSpace(langCode, currency)) "\u00A0" else ""
 
-        return if (isSuffix) {
+        val rawResult = if (isSuffix) {
             "$formattedNumber$spaceSeparator${currency.symbol}"
         } else {
             "${currency.symbol}$spaceSeparator$formattedNumber"
         }
+
+        // Ensure non-breaking spaces so numbers and currency symbols never break across lines
+        return rawResult.replace(' ', '\u00A0')
     }
 
     /**

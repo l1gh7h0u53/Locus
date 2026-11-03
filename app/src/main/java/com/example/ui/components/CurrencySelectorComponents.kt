@@ -152,10 +152,18 @@ fun CurrencyPickerDialog(
                     },
                     trailingIcon = {
                         if (searchQuery.isNotEmpty()) {
-                            IconButton(onClick = { searchQuery = "" }) {
+                            IconButton(
+                                onClick = { searchQuery = "" },
+                                modifier = Modifier
+                                    .size(32.dp)
+                                    .clip(CircleShape)
+                                    .background(MaterialTheme.colorScheme.errorContainer)
+                            ) {
                                 Icon(
                                     imageVector = Icons.Default.Clear,
-                                    contentDescription = "Clear search"
+                                    contentDescription = "Clear search",
+                                    tint = MaterialTheme.colorScheme.error,
+                                    modifier = Modifier.size(16.dp)
                                 )
                             }
                         }
@@ -354,16 +362,16 @@ fun CurrencySelectorSection(
                     stiffness = Spring.StiffnessMediumLow
                 )
             ),
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.45f)
         ),
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.4f))
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 14.dp, vertical = 12.dp)
+                .padding(horizontal = 12.dp, vertical = 8.dp)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -372,39 +380,41 @@ fun CurrencySelectorSection(
             ) {
                 Text(
                     text = stringResource(R.string.select_currency),
-                    style = MaterialTheme.typography.labelMedium,
+                    style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontWeight = FontWeight.Black,
-                    letterSpacing = 1.sp
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.6.sp
                 )
 
                 TextButton(
                     onClick = { showAllCurrenciesDialog = true },
-                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 0.dp),
-                    modifier = Modifier.testTag("all_currencies_button")
+                    contentPadding = PaddingValues(horizontal = 6.dp, vertical = 0.dp),
+                    modifier = Modifier
+                        .height(28.dp)
+                        .testTag("all_currencies_button")
                 ) {
                     Icon(
                         imageVector = Icons.Default.Public,
                         contentDescription = null,
-                        modifier = Modifier.size(16.dp),
+                        modifier = Modifier.size(13.dp),
                         tint = MaterialTheme.colorScheme.primary
                     )
-                    Spacer(modifier = Modifier.width(4.dp))
+                    Spacer(modifier = Modifier.width(3.dp))
                     Text(
                         text = stringResource(R.string.all_currencies, CurrencyOption.values().size),
-                        style = MaterialTheme.typography.labelMedium,
+                        style = MaterialTheme.typography.labelSmall,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
-            // Popular Currency Carousel
+            // Popular Currency Carousel (Compact chips)
             LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                contentPadding = PaddingValues(horizontal = 2.dp),
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                contentPadding = PaddingValues(horizontal = 1.dp, vertical = 2.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 val featuredCurrencies = listOf(
@@ -428,14 +438,19 @@ fun CurrencySelectorSection(
                     FilterChip(
                         selected = isSelected,
                         onClick = { onSelectCurrency(currency) },
+                        modifier = Modifier
+                            .height(30.dp)
+                            .testTag("currency_${currency.code}")
+                            .semantics {
+                                contentDescription = currencyDesc
+                            },
                         label = {
                             Text(
                                 text = "${currency.code} (${currency.symbol})",
-                                style = MaterialTheme.typography.labelMedium,
-                                fontWeight = if (isSelected) FontWeight.Black else FontWeight.Bold,
-                                softWrap = true,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
+                                style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.sp),
+                                fontWeight = if (isSelected) FontWeight.Black else FontWeight.SemiBold,
+                                softWrap = false,
+                                maxLines = 1
                             )
                         },
                         leadingIcon = if (isSelected) {
@@ -443,7 +458,7 @@ fun CurrencySelectorSection(
                                 Icon(
                                     imageVector = Icons.Default.Check,
                                     contentDescription = null,
-                                    modifier = Modifier.size(14.dp)
+                                    modifier = Modifier.size(11.dp)
                                 )
                             }
                         } else null,
@@ -454,17 +469,12 @@ fun CurrencySelectorSection(
                             containerColor = MaterialTheme.colorScheme.surfaceVariant,
                             labelColor = MaterialTheme.colorScheme.onSurfaceVariant
                         ),
-                        shape = RoundedCornerShape(16.dp),
+                        shape = CircleShape,
                         border = FilterChipDefaults.filterChipBorder(
                             enabled = true,
                             selected = isSelected,
                             borderColor = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outlineVariant
-                        ),
-                        modifier = Modifier
-                            .testTag("currency_${currency.code}")
-                            .semantics {
-                                contentDescription = currencyDesc
-                            }
+                        )
                     )
                 }
 
@@ -473,38 +483,38 @@ fun CurrencySelectorSection(
                     FilterChip(
                         selected = false,
                         onClick = { showAllCurrenciesDialog = true },
+                        modifier = Modifier
+                            .height(30.dp)
+                            .testTag("more_currencies_chip")
+                            .semantics {
+                                contentDescription = moreCurrenciesDesc
+                            },
                         label = {
                             Text(
                                 text = stringResource(R.string.more_currencies),
-                                style = MaterialTheme.typography.labelMedium,
-                                fontWeight = FontWeight.Bold,
-                                softWrap = true,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
+                                style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.sp),
+                                fontWeight = FontWeight.SemiBold,
+                                softWrap = false,
+                                maxLines = 1
                             )
                         },
                         leadingIcon = {
                             Icon(
                                 imageVector = Icons.Default.Tune,
                                 contentDescription = null,
-                                modifier = Modifier.size(14.dp)
+                                modifier = Modifier.size(11.dp)
                             )
                         },
                         colors = FilterChipDefaults.filterChipColors(
                             containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f),
                             labelColor = MaterialTheme.colorScheme.primary
                         ),
-                        shape = RoundedCornerShape(16.dp),
+                        shape = CircleShape,
                         border = FilterChipDefaults.filterChipBorder(
                             enabled = true,
                             selected = false,
                             borderColor = MaterialTheme.colorScheme.outlineVariant
-                        ),
-                        modifier = Modifier
-                            .testTag("more_currencies_chip")
-                            .semantics {
-                                contentDescription = moreCurrenciesDesc
-                            }
+                        )
                     )
                 }
             }

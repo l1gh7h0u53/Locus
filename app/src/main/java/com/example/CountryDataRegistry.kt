@@ -7,7 +7,7 @@ package com.example
  *
  * Description:
  * Serves as the high-speed, embedded on-device database and fallback registry of tipping
- * customs, currency standards, and service category rules across 190+ countries worldwide.
+ * customs, currency standards, and service category rules across 192 countries worldwide.
  *
  * Matrix Archetypes:
  * - Matrix A: High tipping standard / North America & Latin America (15-20%+ customary).
