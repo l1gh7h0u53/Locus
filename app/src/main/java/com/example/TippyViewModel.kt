@@ -385,7 +385,8 @@ class TippyViewModel : ViewModel() {
     }
 
     /**
-     * Rounds up the total bill to the nearest whole integer by adjusting the tip percentage.
+     * Rounds up the total bill to the next whole integer by adjusting the tip percentage.
+     * If the current total is already a whole integer, advances to the next integer (+1).
      */
     fun roundUpTotal() {
         val bill = _uiState.value.billAmountInput.toDoubleOrNull() ?: 0.0
@@ -399,13 +400,17 @@ class TippyViewModel : ViewModel() {
     }
 
     /**
-     * Rounds down the total bill to the nearest whole integer (ensuring tip >= 0).
+     * Rounds down the total bill to the nearest lower whole integer (ensuring tip >= 0).
+     * If the current total is already a whole integer (such as immediately after rounding up),
+     * steps down to the previous integer (-1), clamped to at least the bill subtotal.
      */
     fun roundDownTotal() {
         val bill = _uiState.value.billAmountInput.toDoubleOrNull() ?: 0.0
         if (bill <= 0.0) return
         val currentTotal = _uiState.value.totalBill
-        val targetTotal = kotlin.math.floor(currentTotal).coerceAtLeast(bill)
+        val prevInt = kotlin.math.floor(currentTotal)
+        val candidate = if (prevInt >= currentTotal) prevInt - 1.0 else prevInt
+        val targetTotal = candidate.coerceAtLeast(bill)
         val newTip = (targetTotal - bill).coerceAtLeast(0.0)
         val newPercent = (newTip / bill) * 100.0
         updateCustomPercentage(newPercent)

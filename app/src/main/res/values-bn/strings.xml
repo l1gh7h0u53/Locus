@@ -373,13 +373,88 @@
     <string name="tutorial_toggle_label">শুরুতে টিউটোরিয়াল:</string>
     <string name="tutorial_toggle_always">সর্বদা</string>
     <string name="tutorial_toggle_never">কখনও নয়</string>
-    <string name="coach_step_history_title">লেনদেনের ইতিহাস</string>
-    <string name="coach_step_history_subtitle">অতীতের হিসাব সংরক্ষণ ও পর্যালোচনা</string>
-    <string name="coach_step_history_desc">DataStore এর মাধ্যমে আপনার বকশিশের হিসাব সংরক্ষণ করুন। অ্যাপ ব্যবহারের সময় \"আপনি কি এটি সংরক্ষণ করতে চান?\" প্রম্পটটি সর্বদা নাকি কখনও প্রদর্শিত হবে না তা নিচে নির্বাচন করুন।</string>
+    <string name="coach_step_history_title">বকশিশের ইতিহাস ও পছন্দসমূহ</string>
+    <string name="coach_step_history_subtitle">যেকোনো সময় সংরক্ষিত বকশিশ দেখুন</string>
+    <string name="coach_step_history_desc">আগের হিসাবগুলো সহজে দেখুন, সংরক্ষণ প্রম্পট কাস্টমাইজ করুন এবং প্রয়োজনে এই টিউটোরিয়ালটি আবার চালু করুন।</string>
     <string name="save_to_history_action">ইতিহাসে সংরক্ষণ করুন</string>
 
     <!-- Global Explorer Unlock Notification Strings -->
     <string name="unlock_global_explorer_countdown">গ্লোবাল এক্সপ্লোরার আনলক করতে আর %d বার ট্যাপ করুন</string>
     <string name="unlock_global_explorer_countdown_one">গ্লোবাল এক্সপ্লোরার আনলক করতে আর ১ বার ট্যাপ করুন</string>
     <string name="unlock_global_explorer_success">🎉 গোপন রহস্য উন্মোচিত! গ্লোবাল দেশ নির্বাচক আনলক হয়েছে</string>
+
+    <!-- General Labels -->
+    <string name="bill_input_label">বিল</string>
+    <string name="split_bill_label">ভাগ</string>
+
+    <!-- Coach marks & Onboarding -->
+    <string name="senior_mode_subtitle">উচ্চ-কনট্রাস্ট সহজলভ্যতা মোড</string>
+    <string name="senior_mode_explanation">বোতাম বড় করে, কনট্রাস্ট বাড়ায় এবং টেক্সট-টু-স্পিচের মাধ্যমে হিসাব জোরে পড়ে শোনায়।</string>
+    <string name="quick_add_title">দ্রুত যোগ করার বোতাম</string>
+    <string name="quick_add_subtitle">বিল ইনপুট দ্রুত করুন</string>
+    <string name="quick_add_description">টাইপ না করেই দ্রুত সাধারণ বিলের পরিমাণ যোগ করতে +$5, +$10 বা +$50 এর মতো চিপে ট্যাপ করুন।</string>
+
+    <!-- Settings Sheet Strings -->
+    <string name="settings_title">সেটিংস</string>
+    <string name="settings_section_appearance">চেহারা ও থিম</string>
+    <string name="settings_theme_title">থিম</string>
+    <string name="settings_theme_system">সিস্টেম</string>
+    <string name="settings_theme_light">লাইট</string>
+    <string name="settings_theme_dark">ডার্ক</string>
+    <string name="settings_theme_system_desc">ডিভাইসের সিস্টেম সেটিংস অনুসরণ করে</string>
+    <string name="settings_theme_light_desc">সর্বদা লাইট থিম ব্যবহার করুন</string>
+    <string name="settings_theme_dark_desc">সর্বদা ডার্ক থিম ব্যবহার করুন</string>
+    <string name="settings_dark_mode_title">ডার্ক থিম</string>
+    <string name="settings_dark_mode_desc">লাইট এবং ডার্ক ভিজ্যুয়াল থিমের মধ্যে পরিবর্তন করুন</string>
+    <string name="settings_section_records">রেকর্ড ও ইতিহাস</string>
+    <string name="settings_history_title">বকশিশের হিসাবের ইতিহাস</string>
+    <string name="settings_history_desc">আগের হিসাব দেখুন, পুনরায় লোড করুন বা মুছুন</string>
+    <string name="settings_section_language">ভাষা ও অঞ্চল</string>
+    <string name="settings_language_title">ভাষা নির্বাচন করুন</string>
+    <string name="settings_language_desc">অফলাইন স্থানীয়কৃত টেক্সট এবং মুদ্রার মানদণ্ড</string>
+    <string name="settings_section_accessibility">সহজলভ্যতা ও গাইড</string>
+    <string name="settings_senior_mode_title">সিনিয়র সহজলভ্যতা মোড</string>
+    <string name="settings_senior_mode_desc">বড় বোতাম, উচ্চ কনট্রাস্ট এবং ভয়েস রিডআউট</string>
+    <string name="settings_tutorial_title">ফিচার গাইড ও টিউটোরিয়াল</string>
+    <string name="settings_tutorial_desc">সিনিয়র মোড, কুইক অ্যাড এবং ইতিহাস কীভাবে ব্যবহার করবেন জানুন</string>
+    <string name="settings_restart_tutorial">টিউটোরিয়াল পুনরায় চালু করুন</string>
+    <string name="settings_save_prompt_title">বকশিশ সংরক্ষণের জিজ্ঞাসা</string>
+    <string name="settings_save_prompt_desc">রিসেট বা শেয়ার করার সময় হিসাব সংরক্ষণ করতে জিজ্ঞাসা করুন</string>
+    <string name="settings_footer_info">Locus • ১০০% অফলাইন ও ব্যক্তিগত • নিরাপদ ডিভাইস স্টোরেজ</string>
+
+    <!-- Coach Mark Navigation & Additional UI Strings -->
+    <string name="coach_step_counter">ধাপ %1$d / %2$d</string>
+    <string name="coach_skip">এড়িয়ে যান</string>
+    <string name="coach_back">পিছনে</string>
+    <string name="coach_next">পরবর্তী</string>
+    <string name="coach_got_it">বুঝেছি!</string>
+    <string name="countries_count_label">%dটি দেশ</string>
+    <string name="active_location_label">সক্রিয় অবস্থান</string>
+    <string name="search_action">অনুসন্ধান</string>
+    <string name="clear_search_action">অনুসন্ধান মুছুন</string>
+    <string name="selected_indicator">নির্বাচিত</string>
+    <string name="history_entry_single">১টি এন্ট্রি</string>
+    <string name="history_entries_count">%dটি এন্ট্রি</string>
+    <string name="history_split_people_format">%1$s: %2$d জন</string>
+    <string name="per_person_amount_format">%s / জন</string>
+    <string name="each_pays_amount_format">প্রত্যেকে %s</string>
+    <string name="loaded_calculation_toast">%s-এর হিসাব লোড হয়েছে</string>
+    <string name="quick_add_content_desc">বিলে %s যোগ করুন</string>
+    <string name="total_calculation_desc">মোট হিসাব</string>
+    <string name="active_language_mode_desc">সক্রিয় ভাষা মোড</string>
+    <string name="selected_language_desc">নির্বাচিত ভাষা</string>
+    <string name="senior_split_solo">১ জন</string>
+    <string name="senior_split_people">%d জন</string>
+    <string name="country_matrix_rest_format">%1$s • %2$s: %3$s</string>
+
+    <!-- Localized Tip Badge Labels -->
+    <string name="tip_badge_round_up">রাউন্ড আপ</string>
+    <string name="tip_badge_small_change">ছোট খুচরো</string>
+    <string name="tip_badge_change">খুচরো</string>
+    <string name="tip_badge_small_coins">ছোট কয়েন</string>
+    <string name="tip_badge_small_bill">ছোট নোট</string>
+    <string name="tip_badge_large_bill">বড় নোট</string>
+    <string name="tip_badge_base_change">মূল খুচরো</string>
+    <string name="tip_badge_per_drink">প্রতি পানীয়</string>
+    <string name="tip_badge_drink">পানীয়</string>
 </resources>

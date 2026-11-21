@@ -373,13 +373,88 @@
     <string name="tutorial_toggle_label">Tutorial beim Start:</string>
     <string name="tutorial_toggle_always">Immer</string>
     <string name="tutorial_toggle_never">Nie</string>
-    <string name="coach_step_history_title">Transaktionsverlauf</string>
-    <string name="coach_step_history_subtitle">Berechnungen speichern &amp; prüfen</string>
-    <string name="coach_step_history_desc">Speichere Trinkgeldberechnungen lokal via DataStore. Wähle unten, ob die Abfrage \"Möchtest du es speichern?\" immer oder nie erscheinen soll.</string>
+    <string name="coach_step_history_title">Verlauf &amp; Einstellungen</string>
+    <string name="coach_step_history_subtitle">Gespeicherte Trinkgelder jederzeit prüfen</string>
+    <string name="coach_step_history_desc">Greife einfach auf frühere Berechnungen zu, passe Speicherabfragen an und starte dieses Tutorial jederzeit erneut.</string>
     <string name="save_to_history_action">Im Verlauf speichern</string>
 
     <!-- Global Explorer Unlock Notification Strings -->
     <string name="unlock_global_explorer_countdown">Noch %d Tipps, um den Global Explorer freizuschalten</string>
     <string name="unlock_global_explorer_countdown_one">Noch 1 Tipp, um den Global Explorer freizuschalten</string>
     <string name="unlock_global_explorer_success">🎉 Geheimnis entdeckt! Globaler Länderauswähler freigeschaltet</string>
+
+    <!-- General Labels -->
+    <string name="bill_input_label">Rechnung</string>
+    <string name="split_bill_label">Teilen</string>
+
+    <!-- Coach marks & Onboarding -->
+    <string name="senior_mode_subtitle">Kontrastreicher Barrierefrei-Modus</string>
+    <string name="senior_mode_explanation">Vergrößert Schaltflächen, erhöht den Kontrast und liest Berechnungen per Sprachausgabe laut vor.</string>
+    <string name="quick_add_title">Schnell-Hinzufügen</string>
+    <string name="quick_add_subtitle">Rechnungseingabe beschleunigen</string>
+    <string name="quick_add_description">Tippe auf Beträge wie +5 $, +10 $ oder +50 $, um gängige Beträge schnell ohne Tippen hinzuzufügen.</string>
+
+    <!-- Settings Sheet Strings -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_section_appearance">Erscheinungsbild</string>
+    <string name="settings_theme_title">Design</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Hell</string>
+    <string name="settings_theme_dark">Dunkel</string>
+    <string name="settings_theme_system_desc">Folgt den Systemeinstellungen</string>
+    <string name="settings_theme_light_desc">Immer helles Design verwenden</string>
+    <string name="settings_theme_dark_desc">Immer dunkles Design verwenden</string>
+    <string name="settings_dark_mode_title">Dunkles Design</string>
+    <string name="settings_dark_mode_desc">Zwischen hellem und dunklem Design wechseln</string>
+    <string name="settings_section_records">Einträge &amp; Verlauf</string>
+    <string name="settings_history_title">Trinkgeld-Verlauf</string>
+    <string name="settings_history_desc">Frühere Berechnungen ansehen, laden oder löschen</string>
+    <string name="settings_section_language">Sprache &amp; Region</string>
+    <string name="settings_language_title">Sprache wählen</string>
+    <string name="settings_language_desc">Lokalisierte Texte und Währungsstandards offline</string>
+    <string name="settings_section_accessibility">Bedienungshilfen &amp; Anleitungen</string>
+    <string name="settings_senior_mode_title">Senioren-Modus</string>
+    <string name="settings_senior_mode_desc">Größere Tasten, hoher Kontrast und Sprachausgabe</string>
+    <string name="settings_tutorial_title">Funktionsübersicht &amp; Tutorial</string>
+    <string name="settings_tutorial_desc">Erfahre, wie Senioren-Modus, Schnell-Hinzufügen und Verlauf funktionieren</string>
+    <string name="settings_restart_tutorial">Tutorial neu starten</string>
+    <string name="settings_save_prompt_title">Nach Speichern fragen</string>
+    <string name="settings_save_prompt_desc">Beim Zurücksetzen oder Teilen fragen, ob gespeichert werden soll</string>
+    <string name="settings_footer_info">Locus • 100% Offline &amp; Privat • Sicherer Gerätespeicher</string>
+
+    <!-- Coach Mark Navigation & Additional UI Strings -->
+    <string name="coach_step_counter">Schritt %1$d von %2$d</string>
+    <string name="coach_skip">Überspringen</string>
+    <string name="coach_back">Zurück</string>
+    <string name="coach_next">Weiter</string>
+    <string name="coach_got_it">Verstanden!</string>
+    <string name="countries_count_label">%d Länder</string>
+    <string name="active_location_label">AKTIVER STANDORT</string>
+    <string name="search_action">Suchen</string>
+    <string name="clear_search_action">Suche löschen</string>
+    <string name="selected_indicator">Ausgewählt</string>
+    <string name="history_entry_single">1 Eintrag</string>
+    <string name="history_entries_count">%d Einträge</string>
+    <string name="history_split_people_format">%1$s: %2$d Personen</string>
+    <string name="per_person_amount_format">%s / Person</string>
+    <string name="each_pays_amount_format">%s pro Person</string>
+    <string name="loaded_calculation_toast">Berechnung für %s geladen</string>
+    <string name="quick_add_content_desc">%s zur Rechnung hinzufügen</string>
+    <string name="total_calculation_desc">Gesamtberechnung</string>
+    <string name="active_language_mode_desc">Aktiver Sprachmodus</string>
+    <string name="selected_language_desc">Ausgewählte Sprache</string>
+    <string name="senior_split_solo">1 Person</string>
+    <string name="senior_split_people">%d Personen</string>
+    <string name="country_matrix_rest_format">%1$s • %2$s: %3$s</string>
+
+    <!-- Localized Tip Badge Labels -->
+    <string name="tip_badge_round_up">Aufrunden</string>
+    <string name="tip_badge_small_change">Kleingeld</string>
+    <string name="tip_badge_change">Wechselgeld</string>
+    <string name="tip_badge_small_coins">Kleine Münzen</string>
+    <string name="tip_badge_small_bill">Kleiner Schein</string>
+    <string name="tip_badge_large_bill">Großer Schein</string>
+    <string name="tip_badge_base_change">Grundwechselgeld</string>
+    <string name="tip_badge_per_drink">pro Getränk</string>
+    <string name="tip_badge_drink">Getränk</string>
 </resources>

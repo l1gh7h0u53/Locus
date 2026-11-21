@@ -373,13 +373,88 @@
     <string name="tutorial_toggle_label">起動時にチュートリアル：</string>
     <string name="tutorial_toggle_always">常に</string>
     <string name="tutorial_toggle_never">しない</string>
-    <string name="coach_step_history_title">取引履歴と保存</string>
-    <string name="coach_step_history_subtitle">過去の計算を保存・確認</string>
-    <string name="coach_step_history_desc">DataStoreで過去のチップ計算をローカルに保存します。「保存しますか？」の確認を常に表示するか以下で設定できます。</string>
+    <string name="coach_step_history_title">チップ履歴と設定</string>
+    <string name="coach_step_history_subtitle">保存したチップをいつでも確認</string>
+    <string name="coach_step_history_desc">過去の計算に簡単にアクセスし、保存の確認をカスタマイズし、いつでもこのチュートリアルを再開できます。</string>
     <string name="save_to_history_action">履歴に保存</string>
 
     <!-- Global Explorer Unlock Notification Strings -->
     <string name="unlock_global_explorer_countdown">グローバルエクスプローラー解除まであと %d 回タップ</string>
     <string name="unlock_global_explorer_countdown_one">グローバルエクスプローラー解除まであと 1 回タップ</string>
     <string name="unlock_global_explorer_success">🎉 シークレット発見！グローバル国セレクターが解除されました</string>
+
+    <!-- General Labels -->
+    <string name="bill_input_label">請求額</string>
+    <string name="split_bill_label">割り勘</string>
+
+    <!-- Coach marks & Onboarding -->
+    <string name="senior_mode_subtitle">高コントラスト・アクセシビリティモード</string>
+    <string name="senior_mode_explanation">ボタンを拡大し、コントラストを高め、音声読み上げで計算結果を読み上げます。</string>
+    <string name="quick_add_title">クイック追加ボタン</string>
+    <string name="quick_add_subtitle">請求額の入力をスピードアップ</string>
+    <string name="quick_add_description">+$5、+$10、+$50 などのチップをタップして、入力せずに素早く金額を追加できます。</string>
+
+    <!-- Settings Sheet Strings -->
+    <string name="settings_title">設定</string>
+    <string name="settings_section_appearance">外観</string>
+    <string name="settings_theme_title">テーマ</string>
+    <string name="settings_theme_system">システム</string>
+    <string name="settings_theme_light">ライト</string>
+    <string name="settings_theme_dark">ダーク</string>
+    <string name="settings_theme_system_desc">デバイスのシステム設定に従います</string>
+    <string name="settings_theme_light_desc">常にライトテーマを使用します</string>
+    <string name="settings_theme_dark_desc">常にダークテーマを使用します</string>
+    <string name="settings_dark_mode_title">ダークテーマ</string>
+    <string name="settings_dark_mode_desc">ライトテーマとダークテーマを切り替えます</string>
+    <string name="settings_section_records">記録と履歴</string>
+    <string name="settings_history_title">チップ計算の履歴</string>
+    <string name="settings_history_desc">過去の計算を確認、再読み込み、または消去します</string>
+    <string name="settings_section_language">言語と地域</string>
+    <string name="settings_language_title">言語を選択</string>
+    <string name="settings_language_desc">オフラインのローカライズテキストと通貨基準</string>
+    <string name="settings_section_accessibility">アクセシビリティとガイド</string>
+    <string name="settings_senior_mode_title">シニア・アクセシビリティモード</string>
+    <string name="settings_senior_mode_desc">大きなボタン、高コントラスト、音声読み上げ</string>
+    <string name="settings_tutorial_title">機能ガイドとチュートリアル</string>
+    <string name="settings_tutorial_desc">シニアモード、クイック追加、履歴の使い方を学ぶ</string>
+    <string name="settings_restart_tutorial">チュートリアルを再開</string>
+    <string name="settings_save_prompt_title">保存の確認を表示</string>
+    <string name="settings_save_prompt_desc">リセットまたは共有時に計算を保存するか尋ねます</string>
+    <string name="settings_footer_info">Locus • 100% オフライン＆プライバシー保護 • 安全な端末保存</string>
+
+    <!-- Coach Mark Navigation & Additional UI Strings -->
+    <string name="coach_step_counter">ステップ %1$d / %2$d</string>
+    <string name="coach_skip">スキップ</string>
+    <string name="coach_back">戻る</string>
+    <string name="coach_next">次へ</string>
+    <string name="coach_got_it">完了</string>
+    <string name="countries_count_label">%d カ国</string>
+    <string name="active_location_label">現在のロケーション</string>
+    <string name="search_action">検索</string>
+    <string name="clear_search_action">検索をクリア</string>
+    <string name="selected_indicator">選択済み</string>
+    <string name="history_entry_single">1 件</string>
+    <string name="history_entries_count">%d 件</string>
+    <string name="history_split_people_format">%1$s: %2$d 人</string>
+    <string name="per_person_amount_format">%s / 人</string>
+    <string name="each_pays_amount_format">1人あたり %s</string>
+    <string name="loaded_calculation_toast">%s の計算を読み込みました</string>
+    <string name="quick_add_content_desc">請求額に %s を追加</string>
+    <string name="total_calculation_desc">合計計算</string>
+    <string name="active_language_mode_desc">有効な言語モード</string>
+    <string name="selected_language_desc">選択中の言語</string>
+    <string name="senior_split_solo">1 人</string>
+    <string name="senior_split_people">%d 人</string>
+    <string name="country_matrix_rest_format">%1$s • %2$s: %3$s</string>
+
+    <!-- Localized Tip Badge Labels -->
+    <string name="tip_badge_round_up">切り上げ</string>
+    <string name="tip_badge_small_change">小銭</string>
+    <string name="tip_badge_change">お釣り</string>
+    <string name="tip_badge_small_coins">少額硬貨</string>
+    <string name="tip_badge_small_bill">少額紙幣</string>
+    <string name="tip_badge_large_bill">高額紙幣</string>
+    <string name="tip_badge_base_change">基本お釣り</string>
+    <string name="tip_badge_per_drink">1杯あたり</string>
+    <string name="tip_badge_drink">ドリンク</string>
 </resources>

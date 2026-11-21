@@ -1,6 +1,7 @@
 package com.example
 
 import android.content.Context
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -1000,10 +1001,179 @@ class ExampleRobolectricTest {
     composeTestRule.waitForIdle()
     composeTestRule.onNodeWithTag("tip_history_button").assertDoesNotExist()
   }
+
+  @Test
+  fun `verify roundDownTotal steps down cleanly immediately after roundUpTotal and clamps at bill`() {
+    val viewModel = TippyViewModel()
+    val usCountry = CountryDataRegistry.getCountryByIso("US")
+    viewModel.selectCountry(usCountry)
+    viewModel.updateBillAmount("43.21")
+
+    val initialTotal = viewModel.uiState.value.totalBill
+    assertTrue(initialTotal > 43.21)
+
+    // Round up to next integer
+    viewModel.roundUpTotal()
+    val roundedUpTotal = viewModel.uiState.value.totalBill
+    assertEquals(kotlin.math.ceil(initialTotal), roundedUpTotal, 0.01)
+
+    // Round up again advances by 1
+    viewModel.roundUpTotal()
+    assertEquals(roundedUpTotal + 1.0, viewModel.uiState.value.totalBill, 0.01)
+
+    // Round down immediately after rounding up steps down by 1 (not disabled / stuck)
+    viewModel.roundDownTotal()
+    assertEquals(roundedUpTotal, viewModel.uiState.value.totalBill, 0.01)
+
+    // Repeated round down eventually clamps at bill subtotal with 0 tip
+    repeat(20) { viewModel.roundDownTotal() }
+    assertEquals(43.21, viewModel.uiState.value.totalBill, 0.01)
+    assertEquals(0.0, viewModel.uiState.value.tipAmount, 0.01)
+
+    // Rounding up from clamped subtotal works cleanly again
+    viewModel.roundUpTotal()
+    assertEquals(44.0, viewModel.uiState.value.totalBill, 0.01)
+  }
+
+  @Test
+  fun `verify newly localized UI and tip badge strings resolve distinctly across all 10 non-English languages`() {
+    val baseContext = ApplicationProvider.getApplicationContext<Context>()
+    val enContext = com.example.i18n.LocaleContextWrapper.wrap(baseContext, "en")
+    val checkResIds = listOf(
+      R.string.settings_title,
+      R.string.bill_input_label,
+      R.string.coach_skip,
+      R.string.active_location_label,
+      R.string.tip_badge_round_up
+    )
+    val enValues = checkResIds.associateWith { enContext.getString(it) }
+
+    val nonEnglishLocales = listOf("ar", "bn", "de", "es", "fr", "hi", "ja", "pt", "ru", "zh")
+    for (lang in nonEnglishLocales) {
+      val locContext = com.example.i18n.LocaleContextWrapper.wrap(baseContext, lang)
+      for (resId in checkResIds) {
+        val localized = locContext.getString(resId)
+        assertTrue("Missing translation for resId=$resId in lang=$lang", localized.isNotBlank())
+        assertFalse(
+          "Translation for resId=$resId in lang=$lang should differ from English ('${enValues[resId]}')",
+          localized == enValues[resId]
+        )
+      }
+    }
+  }
+
+  @Test
+  fun `verify SettingsBottomSheet renders translated strings when currentLanguage changes`() {
+    val langState = androidx.compose.runtime.mutableStateOf("en")
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        com.example.ui.components.SettingsBottomSheet(
+          visible = true,
+          currentDarkTheme = false,
+          themeMode = null,
+          isSeniorMode = false,
+          currentLanguage = langState.value,
+          isManualLanguageOverride = true,
+          onDismiss = {},
+          onOpenHistory = {},
+          onOpenLanguage = {}
+        )
+      }
+    }
+
+    composeTestRule.onNodeWithText("Settings").assertExists()
+    composeTestRule.onNodeWithText("Prompt to Save Tips").assertExists()
+
+    // Switch to German
+    langState.value = "de"
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithText("Einstellungen").assertExists()
+    composeTestRule.onNodeWithText("Nach Speichern fragen").assertExists()
+    composeTestRule.onNodeWithText("Settings").assertDoesNotExist()
+
+    // Switch to Spanish
+    langState.value = "es"
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithText("Ajustes").assertExists()
+    composeTestRule.onNodeWithText("Preguntar para Guardar").assertExists()
+  }
+
+  @Test
+  fun `verify active percent pill in tipping tiers stays on one line across all 11 languages`() {
+    val viewModel = TippyViewModel()
+    val longNameCountry = CountryDataRegistry.getCountryByIso("CD")
+    viewModel.selectCountry(longNameCountry)
+
+    val allLanguages = listOf("en", "de", "fr", "es", "pt", "ru", "ar", "hi", "bn", "ja", "zh")
+    val langState = androidx.compose.runtime.mutableStateOf("en")
+
+    composeTestRule.setContent {
+      val baseContext = androidx.compose.ui.platform.LocalContext.current
+      val localizedContext = androidx.compose.runtime.remember(langState.value, baseContext) {
+        com.example.i18n.LocaleContextWrapper.wrap(baseContext, langState.value)
+      }
+      val layoutDir = if (langState.value == "ar") {
+        androidx.compose.ui.unit.LayoutDirection.Rtl
+      } else {
+        androidx.compose.ui.unit.LayoutDirection.Ltr
+      }
+      androidx.compose.runtime.CompositionLocalProvider(
+        androidx.compose.ui.platform.LocalContext provides localizedContext,
+        androidx.compose.ui.platform.LocalConfiguration provides localizedContext.resources.configuration,
+        androidx.compose.ui.platform.LocalLayoutDirection provides layoutDir
+      ) {
+        TippyTheme(darkTheme = false, isSeniorMode = false) {
+          androidx.compose.foundation.layout.Box(
+            modifier = androidx.compose.ui.Modifier.width(
+              androidx.compose.ui.unit.Dp(340f)
+            )
+          ) {
+            val uiState by viewModel.uiState.collectAsState()
+            TippyMainHost(
+              uiState = uiState.copy(currentLanguage = langState.value),
+              viewModel = viewModel,
+              currentDarkTheme = false
+            )
+          }
+        }
+      }
+    }
+
+    for (lang in allLanguages) {
+      langState.value = lang
+      composeTestRule.waitForIdle()
+
+      val pillNode = composeTestRule.onNodeWithTag("active_percent_pill_text")
+      pillNode.performScrollTo()
+      pillNode.assertExists()
+
+      val semanticsNode = pillNode.fetchSemanticsNode()
+      val textLayoutResults = mutableListOf<androidx.compose.ui.text.TextLayoutResult>()
+      semanticsNode.config[androidx.compose.ui.semantics.SemanticsActions.GetTextLayoutResult]
+        .action?.invoke(textLayoutResults)
+
+      assertTrue("Expected TextLayoutResult for lang=$lang", textLayoutResults.isNotEmpty())
+      val layoutResult = textLayoutResults.first()
+      val debugInfo = "lang=$lang text='${layoutResult.layoutInput.text}' " +
+        "lineCount=${layoutResult.lineCount} size=${layoutResult.size} " +
+        "constraints=${layoutResult.layoutInput.constraints} " +
+        "overflowW=${layoutResult.didOverflowWidth} overflowH=${layoutResult.didOverflowHeight} " +
+        "line0Right=${layoutResult.getLineRight(0)}"
+      assertEquals(
+        "Active percent pill wrapped: $debugInfo",
+        1,
+        layoutResult.lineCount
+      )
+      val lineWidth = layoutResult.getLineRight(0) - layoutResult.getLineLeft(0)
+      assertTrue(
+        "Active percent pill text clipped horizontally (lineWidth=$lineWidth): $debugInfo",
+        lineWidth <= layoutResult.size.width.toFloat() + 1f
+      )
+      assertTrue(
+        "Active percent pill was squeezed to maxWidth: $debugInfo",
+        layoutResult.size.width < layoutResult.layoutInput.constraints.maxWidth
+      )
+    }
+  }
 }
-
-
-
-
-
-

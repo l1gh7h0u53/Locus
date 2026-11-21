@@ -49,6 +49,7 @@ import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -58,6 +59,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -67,11 +71,13 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.R
 import com.example.history.SavePromptMode
 import com.example.i18n.LanguageResolver
+import com.example.i18n.LocaleContextWrapper
 
 /**
  * =========================================================================================
@@ -134,6 +140,19 @@ fun SettingsBottomSheet(
 
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     var themeTapCount by remember { mutableIntStateOf(0) }
+    val baseContext = LocalContext.current
+    val localizedContext = remember(currentLanguage, baseContext) {
+        try {
+            LocaleContextWrapper.wrap(baseContext, currentLanguage)
+        } catch (_: Throwable) {
+            baseContext
+        }
+    }
+    val layoutDir = if (LanguageResolver.isRtl(currentLanguage)) {
+        LayoutDirection.Rtl
+    } else {
+        LayoutDirection.Ltr
+    }
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
@@ -142,6 +161,11 @@ fun SettingsBottomSheet(
         dragHandle = null,
         shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
     ) {
+        CompositionLocalProvider(
+            LocalContext provides localizedContext,
+            LocalConfiguration provides localizedContext.resources.configuration,
+            LocalLayoutDirection provides layoutDir
+        ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -516,56 +540,52 @@ fun SettingsBottomSheet(
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            // Prompt to Save Setting Card (Compact & sleek)
+            // Prompt to Save Setting Card (Ultra-compact single-row layout)
             Card(
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(14.dp),
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.45f)
                 ),
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.4f))
             ) {
-                Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 10.dp)) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(10.dp)
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 12.dp, vertical = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(26.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(MaterialTheme.colorScheme.surfaceVariant),
+                        contentAlignment = Alignment.Center
                     ) {
-                        Box(
-                            modifier = Modifier
-                                .size(28.dp)
-                                .clip(RoundedCornerShape(8.dp))
-                                .background(MaterialTheme.colorScheme.surfaceVariant),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.BookmarkBorder,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                                modifier = Modifier.size(16.dp)
-                            )
-                        }
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = stringResource(R.string.settings_save_prompt_title),
-                                style = MaterialTheme.typography.titleSmall,
-                                fontWeight = FontWeight.SemiBold,
-                                color = MaterialTheme.colorScheme.onSurface
-                            )
-                            Text(
-                                text = stringResource(R.string.settings_save_prompt_desc),
-                                style = MaterialTheme.typography.bodySmall.copy(fontSize = 11.sp),
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
+                        Icon(
+                            imageVector = Icons.Default.BookmarkBorder,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.size(15.dp)
+                        )
                     }
 
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = stringResource(R.string.settings_save_prompt_title),
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.weight(1f)
+                    )
 
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        // "Always" Button: fully rounded corners and compact padding
+                        // "Always" Pill
                         val isAlwaysSelected = savePromptMode == SavePromptMode.ALWAYS
                         Surface(
                             selected = isAlwaysSelected,
@@ -589,25 +609,27 @@ fun SettingsBottomSheet(
                             modifier = Modifier.testTag("settings_save_prompt_always")
                         ) {
                             Row(
-                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 if (isAlwaysSelected) {
                                     Icon(
                                         imageVector = Icons.Default.Check,
                                         contentDescription = null,
-                                        modifier = Modifier.size(14.dp).padding(end = 4.dp)
+                                        modifier = Modifier.size(12.dp)
                                     )
+                                    Spacer(modifier = Modifier.width(3.dp))
                                 }
                                 Text(
                                     text = stringResource(R.string.save_prompt_always_mode),
                                     style = MaterialTheme.typography.labelSmall,
-                                    fontWeight = if (isAlwaysSelected) FontWeight.Bold else FontWeight.Medium
+                                    fontWeight = if (isAlwaysSelected) FontWeight.Bold else FontWeight.Medium,
+                                    maxLines = 1
                                 )
                             }
                         }
 
-                        // "Never" Button: fully rounded corners and compact padding
+                        // "Never" Pill
                         val isNeverSelected = savePromptMode == SavePromptMode.NEVER
                         Surface(
                             selected = isNeverSelected,
@@ -631,20 +653,22 @@ fun SettingsBottomSheet(
                             modifier = Modifier.testTag("settings_save_prompt_never")
                         ) {
                             Row(
-                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 if (isNeverSelected) {
                                     Icon(
                                         imageVector = Icons.Default.Check,
                                         contentDescription = null,
-                                        modifier = Modifier.size(14.dp).padding(end = 4.dp)
+                                        modifier = Modifier.size(12.dp)
                                     )
+                                    Spacer(modifier = Modifier.width(3.dp))
                                 }
                                 Text(
                                     text = stringResource(R.string.save_prompt_never_mode),
                                     style = MaterialTheme.typography.labelSmall,
-                                    fontWeight = if (isNeverSelected) FontWeight.Bold else FontWeight.Medium
+                                    fontWeight = if (isNeverSelected) FontWeight.Bold else FontWeight.Medium,
+                                    maxLines = 1
                                 )
                             }
                         }
@@ -691,6 +715,7 @@ fun SettingsBottomSheet(
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(bottom = 12.dp)
             )
+        }
         }
     }
 }

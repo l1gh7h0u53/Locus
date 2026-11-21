@@ -415,4 +415,40 @@
     <string name="settings_save_prompt_title">Prompt to Save Tips</string>
     <string name="settings_save_prompt_desc">Ask whether to save calculations when resetting or sharing</string>
     <string name="settings_footer_info">Locus • 100% Offline &amp; Private • Secure Device Storage</string>
+
+    <!-- Coach Mark Navigation & Additional UI Strings -->
+    <string name="coach_step_counter">Step %1$d of %2$d</string>
+    <string name="coach_skip">Skip</string>
+    <string name="coach_back">Back</string>
+    <string name="coach_next">Next</string>
+    <string name="coach_got_it">Got It!</string>
+    <string name="countries_count_label">%d Countries</string>
+    <string name="active_location_label">ACTIVE LOCATION</string>
+    <string name="search_action">Search</string>
+    <string name="clear_search_action">Clear search</string>
+    <string name="selected_indicator">Selected</string>
+    <string name="history_entry_single">1 entry</string>
+    <string name="history_entries_count">%d entries</string>
+    <string name="history_split_people_format">%1$s: %2$d people</string>
+    <string name="per_person_amount_format">%s / person</string>
+    <string name="each_pays_amount_format">%s each</string>
+    <string name="loaded_calculation_toast">Loaded calculation for %s</string>
+    <string name="quick_add_content_desc">Add %s to bill</string>
+    <string name="total_calculation_desc">Total calculation</string>
+    <string name="active_language_mode_desc">Active language mode</string>
+    <string name="selected_language_desc">Selected language</string>
+    <string name="senior_split_solo">1 Person</string>
+    <string name="senior_split_people">%d People</string>
+    <string name="country_matrix_rest_format">%1$s • %2$s: %3$s</string>
+
+    <!-- Localized Tip Badge Labels -->
+    <string name="tip_badge_round_up">Round up</string>
+    <string name="tip_badge_small_change">Small change</string>
+    <string name="tip_badge_change">Change</string>
+    <string name="tip_badge_small_coins">Small coins</string>
+    <string name="tip_badge_small_bill">Small bill</string>
+    <string name="tip_badge_large_bill">Large bill</string>
+    <string name="tip_badge_base_change">Base change</string>
+    <string name="tip_badge_per_drink">per drink</string>
+    <string name="tip_badge_drink">Drink</string>
 </resources>

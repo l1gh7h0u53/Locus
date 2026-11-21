@@ -31,13 +31,12 @@ import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -146,7 +145,7 @@ fun CurrencyPickerDialog(
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Search,
-                            contentDescription = "Search",
+                            contentDescription = stringResource(R.string.search_action),
                             tint = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     },
@@ -161,7 +160,7 @@ fun CurrencyPickerDialog(
                             ) {
                                 Icon(
                                     imageVector = Icons.Default.Clear,
-                                    contentDescription = "Clear search",
+                                    contentDescription = stringResource(R.string.clear_search_action),
                                     tint = MaterialTheme.colorScheme.error,
                                     modifier = Modifier.size(16.dp)
                                 )
@@ -211,7 +210,7 @@ fun CurrencyPickerDialog(
                                 .fillMaxWidth()
                                 .clickable(
                                     role = Role.RadioButton,
-                                    onClickLabel = "Select currency ${currency.code} $localizedLabel"
+                                    onClickLabel = "${currency.code} $localizedLabel"
                                 ) {
                                     onSelectCurrency(currency)
                                 }
@@ -296,7 +295,7 @@ fun CurrencyPickerDialog(
                                 if (isSelected) {
                                     Icon(
                                         imageVector = Icons.Default.Check,
-                                        contentDescription = "Selected",
+                                        contentDescription = stringResource(R.string.selected_indicator),
                                         tint = MaterialTheme.colorScheme.primary,
                                         modifier = Modifier.size(20.dp)
                                     )
@@ -434,17 +433,49 @@ fun CurrencySelectorSection(
                 items(featuredCurrencies) { currency ->
                     val isSelected = currentCurrency == currency
                     val localizedLabel = currency.getLocalizedLabel(currentLanguage)
-                    val currencyDesc = "${currency.code}, $localizedLabel (${currency.symbol})${if (isSelected) ", selected" else ""}"
-                    FilterChip(
+                    val selectedSuffix = if (isSelected) ", ${stringResource(R.string.selected_indicator)}" else ""
+                    val currencyDesc = "${currency.code}, $localizedLabel (${currency.symbol})$selectedSuffix"
+                    Surface(
                         selected = isSelected,
                         onClick = { onSelectCurrency(currency) },
+                        shape = CircleShape,
+                        color = if (isSelected) {
+                            MaterialTheme.colorScheme.primary
+                        } else {
+                            MaterialTheme.colorScheme.surfaceVariant
+                        },
+                        contentColor = if (isSelected) {
+                            MaterialTheme.colorScheme.onPrimary
+                        } else {
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                        },
+                        border = BorderStroke(
+                            width = 1.dp,
+                            color = if (isSelected) {
+                                MaterialTheme.colorScheme.primary
+                            } else {
+                                MaterialTheme.colorScheme.outlineVariant
+                            }
+                        ),
                         modifier = Modifier
-                            .height(30.dp)
+                            .clip(CircleShape)
                             .testTag("currency_${currency.code}")
                             .semantics {
                                 contentDescription = currencyDesc
-                            },
-                        label = {
+                            }
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 7.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(4.dp)
+                        ) {
+                            if (isSelected) {
+                                Icon(
+                                    imageVector = Icons.Default.Check,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(12.dp)
+                                )
+                            }
                             Text(
                                 text = "${currency.code} (${currency.symbol})",
                                 style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.sp),
@@ -452,44 +483,39 @@ fun CurrencySelectorSection(
                                 softWrap = false,
                                 maxLines = 1
                             )
-                        },
-                        leadingIcon = if (isSelected) {
-                            {
-                                Icon(
-                                    imageVector = Icons.Default.Check,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(11.dp)
-                                )
-                            }
-                        } else null,
-                        colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = MaterialTheme.colorScheme.primary,
-                            selectedLabelColor = MaterialTheme.colorScheme.onPrimary,
-                            selectedLeadingIconColor = MaterialTheme.colorScheme.onPrimary,
-                            containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                            labelColor = MaterialTheme.colorScheme.onSurfaceVariant
-                        ),
-                        shape = CircleShape,
-                        border = FilterChipDefaults.filterChipBorder(
-                            enabled = true,
-                            selected = isSelected,
-                            borderColor = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outlineVariant
-                        )
-                    )
+                        }
+                    }
                 }
 
                 item {
                     val moreCurrenciesDesc = stringResource(R.string.all_currencies, CurrencyOption.values().size)
-                    FilterChip(
+                    Surface(
                         selected = false,
                         onClick = { showAllCurrenciesDialog = true },
+                        shape = CircleShape,
+                        color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f),
+                        contentColor = MaterialTheme.colorScheme.primary,
+                        border = BorderStroke(
+                            width = 1.dp,
+                            color = MaterialTheme.colorScheme.outlineVariant
+                        ),
                         modifier = Modifier
-                            .height(30.dp)
+                            .clip(CircleShape)
                             .testTag("more_currencies_chip")
                             .semantics {
                                 contentDescription = moreCurrenciesDesc
-                            },
-                        label = {
+                            }
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 7.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(4.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Tune,
+                                contentDescription = null,
+                                modifier = Modifier.size(12.dp)
+                            )
                             Text(
                                 text = stringResource(R.string.more_currencies),
                                 style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.sp),
@@ -497,25 +523,8 @@ fun CurrencySelectorSection(
                                 softWrap = false,
                                 maxLines = 1
                             )
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Tune,
-                                contentDescription = null,
-                                modifier = Modifier.size(11.dp)
-                            )
-                        },
-                        colors = FilterChipDefaults.filterChipColors(
-                            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f),
-                            labelColor = MaterialTheme.colorScheme.primary
-                        ),
-                        shape = CircleShape,
-                        border = FilterChipDefaults.filterChipBorder(
-                            enabled = true,
-                            selected = false,
-                            borderColor = MaterialTheme.colorScheme.outlineVariant
-                        )
-                    )
+                        }
+                    }
                 }
             }
         }

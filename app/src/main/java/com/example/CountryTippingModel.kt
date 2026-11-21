@@ -101,6 +101,44 @@ data class ServiceRule(
     fun getLocalizedServiceName(context: Context): String = getLocalizedServiceType(context)
 
     /**
+     * Localizes descriptive tip tier labels (e.g. "Round up", "Small change", "per drink")
+     * while preserving numeric percentages and currency figures.
+     */
+    fun getLocalizedTipText(rawTip: String, context: Context): String {
+        var result = rawTip
+        val replacements = listOf(
+            "Round up" to R.string.tip_badge_round_up,
+            "Small change" to R.string.tip_badge_small_change,
+            "Small Change" to R.string.tip_badge_small_change,
+            "Base change" to R.string.tip_badge_base_change,
+            "Small Coins" to R.string.tip_badge_small_coins,
+            "Small Coin" to R.string.tip_badge_small_coins,
+            "Small Bill" to R.string.tip_badge_small_bill,
+            "Large Bill" to R.string.tip_badge_large_bill,
+            "per drink" to R.string.tip_badge_per_drink,
+            "/ Drink" to R.string.tip_badge_drink
+        )
+        for ((token, resId) in replacements) {
+            if (result.contains(token, ignoreCase = false)) {
+                val localized = context.getString(resId)
+                result = if (token == "/ Drink") {
+                    result.replace(token, "/ $localized")
+                } else {
+                    result.replace(token, localized)
+                }
+            }
+        }
+        if (result.equals("Change", ignoreCase = true)) {
+            result = context.getString(R.string.tip_badge_change)
+        }
+        return result
+    }
+
+    fun getLocalizedStandardTip(context: Context): String = getLocalizedTipText(standardTip, context)
+    fun getLocalizedGenerousTip(context: Context): String = getLocalizedTipText(generousTip, context)
+    fun getLocalizedLegendTip(context: Context): String = getLocalizedTipText(legendTip, context)
+
+    /**
      * Parses the standard tip string into a numeric percentage rate (e.g., "15%" -> 0.15, "0%" -> 0.0).
      *
      * Dependencies:

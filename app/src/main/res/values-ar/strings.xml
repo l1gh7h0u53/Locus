@@ -373,13 +373,88 @@
     <string name="tutorial_toggle_label">التعليمات عند البدء:</string>
     <string name="tutorial_toggle_always">دائمًا</string>
     <string name="tutorial_toggle_never">أبدًا</string>
-    <string name="coach_step_history_title">سجل المعاملات</string>
-    <string name="coach_step_history_subtitle">حفظ ومراجعة الحسابات السابقة</string>
-    <string name="coach_step_history_desc">احتفظ بسجل محلي لحسابات الإكراميات عبر DataStore. اختر أدناه ما إذا كان يجب إظهار مطالبة \"هل تريد حفظه؟\" دائمًا أو أبدًا.</string>
+    <string name="coach_step_history_title">سجل الإكراميات والتفضيلات</string>
+    <string name="coach_step_history_subtitle">راجع الإكراميات المحفوظة في أي وقت</string>
+    <string name="coach_step_history_desc">يمكنك الوصول بسهولة إلى الحسابات السابقة، وتخصيص مطالبات الحفظ، وإعادة تشغيل هذا الدليل متى احتجت إلى ذلك.</string>
     <string name="save_to_history_action">حفظ في السجل</string>
 
     <!-- Global Explorer Unlock Notification Strings -->
     <string name="unlock_global_explorer_countdown">تبقّت %d نقرات لفتح المستكشف العالمي</string>
     <string name="unlock_global_explorer_countdown_one">تبقّت نقرة واحدة لفتح المستكشف العالمي</string>
     <string name="unlock_global_explorer_success">🎉 تم اكتشاف السر! تم فتح محدد البلدان العالمي</string>
+
+    <!-- General Labels -->
+    <string name="bill_input_label">الفاتورة</string>
+    <string name="split_bill_label">تقسيم</string>
+
+    <!-- Coach marks & Onboarding -->
+    <string name="senior_mode_subtitle">وضع إمكانية الوصول عالي التباين</string>
+    <string name="senior_mode_explanation">يكبّر الأزرار، ويزيد التباين، ويقرأ الحسابات بصوت عالٍ عبر تحويل النص إلى كلام.</string>
+    <string name="quick_add_title">أزرار الإضافة السريعة</string>
+    <string name="quick_add_subtitle">سرّع إدخال مبلغ الفاتورة</string>
+    <string name="quick_add_description">اضغط على شرائح العملة مثل +5$ أو +10$ أو +50$ لإضافة مبالغ الفاتورة الشائعة بسرعة دون كتابة.</string>
+
+    <!-- Settings Sheet Strings -->
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_section_appearance">المظهر</string>
+    <string name="settings_theme_title">السمة</string>
+    <string name="settings_theme_system">النظام</string>
+    <string name="settings_theme_light">فاتح</string>
+    <string name="settings_theme_dark">داكن</string>
+    <string name="settings_theme_system_desc">يتبع إعدادات نظام الجهاز</string>
+    <string name="settings_theme_light_desc">استخدام السمة الفاتحة دائمًا</string>
+    <string name="settings_theme_dark_desc">استخدام السمة الداكنة دائمًا</string>
+    <string name="settings_dark_mode_title">السمة الداكنة</string>
+    <string name="settings_dark_mode_desc">التبديل بين السمتين الفاتحة والداكنة</string>
+    <string name="settings_section_records">السجلات والمحفوظات</string>
+    <string name="settings_history_title">سجل حسابات الإكرامية</string>
+    <string name="settings_history_desc">مراجعة الحسابات السابقة أو إعادة تحميلها أو مسحها</string>
+    <string name="settings_section_language">اللغة والمنطقة</string>
+    <string name="settings_language_title">اختيار اللغة</string>
+    <string name="settings_language_desc">نصوص محلية ومعايير عملات دون اتصال</string>
+    <string name="settings_section_accessibility">إمكانية الوصول والأدلة</string>
+    <string name="settings_senior_mode_title">وضع كبار السن الميسّر</string>
+    <string name="settings_senior_mode_desc">أزرار مكبّرة وتباين عالٍ وقراءة صوتية</string>
+    <string name="settings_tutorial_title">دليل الميزات والشرح</string>
+    <string name="settings_tutorial_desc">تعرّف على كيفية استخدام وضع كبار السن والإضافة السريعة والسجل</string>
+    <string name="settings_restart_tutorial">إعادة تشغيل الدليل</string>
+    <string name="settings_save_prompt_title">سؤال حول حفظ الإكراميات</string>
+    <string name="settings_save_prompt_desc">السؤال عما إذا كنت تريد حفظ الحسابات عند إعادة التعيين أو المشاركة</string>
+    <string name="settings_footer_info">Locus • يعمل 100% دون إنترنت وبخصوصية • تخزين آمن على الجهاز</string>
+
+    <!-- Coach Mark Navigation & Additional UI Strings -->
+    <string name="coach_step_counter">الخطوة %1$d من %2$d</string>
+    <string name="coach_skip">تخطي</string>
+    <string name="coach_back">رجوع</string>
+    <string name="coach_next">التالي</string>
+    <string name="coach_got_it">فهمت!</string>
+    <string name="countries_count_label">%d دولة</string>
+    <string name="active_location_label">الموقع النشط</string>
+    <string name="search_action">بحث</string>
+    <string name="clear_search_action">مسح البحث</string>
+    <string name="selected_indicator">محدد</string>
+    <string name="history_entry_single">سجل واحد</string>
+    <string name="history_entries_count">%d سجلات</string>
+    <string name="history_split_people_format">%1$s: %2$d أشخاص</string>
+    <string name="per_person_amount_format">%s / للشخص</string>
+    <string name="each_pays_amount_format">%s لكل شخص</string>
+    <string name="loaded_calculation_toast">تم تحميل الحساب لـ %s</string>
+    <string name="quick_add_content_desc">إضافة %s إلى الفاتورة</string>
+    <string name="total_calculation_desc">الحساب الإجمالي</string>
+    <string name="active_language_mode_desc">وضع اللغة النشط</string>
+    <string name="selected_language_desc">اللغة المحددة</string>
+    <string name="senior_split_solo">شخص واحد</string>
+    <string name="senior_split_people">%d أشخاص</string>
+    <string name="country_matrix_rest_format">%1$s • %2$s: %3$s</string>
+
+    <!-- Localized Tip Badge Labels -->
+    <string name="tip_badge_round_up">تقريب</string>
+    <string name="tip_badge_small_change">فكة صغيرة</string>
+    <string name="tip_badge_change">الباقي</string>
+    <string name="tip_badge_small_coins">عملات صغيرة</string>
+    <string name="tip_badge_small_bill">ورقة نقدية صغيرة</string>
+    <string name="tip_badge_large_bill">ورقة نقدية كبيرة</string>
+    <string name="tip_badge_base_change">الباقي الأساسي</string>
+    <string name="tip_badge_per_drink">لكل مشروب</string>
+    <string name="tip_badge_drink">مشروب</string>
 </resources>

@@ -229,7 +229,7 @@ fun CoachMarkOverlay(
                             contentColor = MaterialTheme.colorScheme.onPrimaryContainer
                         ) {
                             Text(
-                                text = "Step ${step.stepIndex + 1} of ${steps.size}",
+                                text = stringResource(R.string.coach_step_counter, step.stepIndex + 1, steps.size),
                                 style = MaterialTheme.typography.labelMedium,
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
@@ -241,7 +241,7 @@ fun CoachMarkOverlay(
                             modifier = Modifier.testTag("coach_mark_skip_button")
                         ) {
                             Text(
-                                text = "Skip",
+                                text = stringResource(R.string.coach_skip),
                                 style = MaterialTheme.typography.labelLarge,
                                 fontWeight = FontWeight.Bold,
                                 color = MaterialTheme.colorScheme.primary
@@ -530,7 +530,7 @@ fun CoachMarkOverlay(
                                 border = BorderStroke(1.5.dp, MaterialTheme.colorScheme.outline)
                             ) {
                                 Text(
-                                    text = "Back",
+                                    text = stringResource(R.string.coach_back),
                                     style = MaterialTheme.typography.labelLarge,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -555,7 +555,7 @@ fun CoachMarkOverlay(
                                     horizontalArrangement = Arrangement.Center
                                 ) {
                                     Text(
-                                        text = "Next",
+                                        text = stringResource(R.string.coach_next),
                                         style = MaterialTheme.typography.labelLarge,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -591,7 +591,7 @@ fun CoachMarkOverlay(
                                     )
                                     Spacer(modifier = Modifier.width(6.dp))
                                     Text(
-                                        text = "Got It!",
+                                        text = stringResource(R.string.coach_got_it),
                                         style = MaterialTheme.typography.labelLarge,
                                         fontWeight = FontWeight.Bold
                                     )

@@ -58,9 +58,16 @@ data class TipTransaction(
      *
      * @return Formatted date string, or "Recent" if timestamp parsing encounters an unexpected error.
      */
-    fun formattedDate(): String {
+    fun formattedDate(): String = formattedDate(Locale.getDefault())
+
+    fun formattedDate(languageCode: String): String {
+        val locale = com.example.i18n.LocaleFormatter.getLocaleForLanguage(languageCode)
+        return formattedDate(locale)
+    }
+
+    private fun formattedDate(locale: Locale): String {
         return try {
-            val sdf = SimpleDateFormat("MMM d, yyyy • h:mm a", Locale.getDefault())
+            val sdf = SimpleDateFormat("MMM d, yyyy • h:mm a", locale)
             sdf.format(Date(timestamp))
         } catch (_: Exception) {
             "Recent"

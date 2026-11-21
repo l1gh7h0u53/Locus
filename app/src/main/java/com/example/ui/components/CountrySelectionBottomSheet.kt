@@ -171,7 +171,10 @@ fun CountrySelectionBottomSheet(
                     )
                     Spacer(modifier = Modifier.height(2.dp))
                     Text(
-                        text = if (searchQuery.isBlank()) "192 Countries" else "${filteredCountries.size} Countries",
+                        text = stringResource(
+                            R.string.countries_count_label,
+                            if (searchQuery.isBlank()) allCountries.size else filteredCountries.size
+                        ),
                         style = MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.primary,
                         fontWeight = FontWeight.Bold
@@ -217,7 +220,7 @@ fun CountrySelectionBottomSheet(
                     )
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = "ACTIVE LOCATION",
+                            text = stringResource(R.string.active_location_label),
                             style = MaterialTheme.typography.labelSmall,
                             fontWeight = FontWeight.Black,
                             color = MaterialTheme.colorScheme.primary,
@@ -266,7 +269,7 @@ fun CountrySelectionBottomSheet(
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.Search,
-                        contentDescription = "Search",
+                        contentDescription = stringResource(R.string.search_action),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 },
@@ -281,7 +284,7 @@ fun CountrySelectionBottomSheet(
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Clear,
-                                contentDescription = "Clear search",
+                                contentDescription = stringResource(R.string.clear_search_action),
                                 tint = MaterialTheme.colorScheme.error,
                                 modifier = Modifier.size(16.dp)
                             )
@@ -340,7 +343,7 @@ fun CountrySelectionBottomSheet(
                                 .fillMaxWidth()
                                 .clickable(
                                     role = Role.RadioButton,
-                                    onClickLabel = "Select country ${country.country}"
+                                    onClickLabel = localizedName
                                 ) {
                                     onSelectCountry(country)
                                 }
@@ -456,7 +459,7 @@ fun CountrySelectionBottomSheet(
                                     if (isSelected) {
                                         Icon(
                                             imageVector = Icons.Default.Check,
-                                            contentDescription = "Selected",
+                                            contentDescription = stringResource(R.string.selected_indicator),
                                             tint = MaterialTheme.colorScheme.primary,
                                             modifier = Modifier.size(20.dp)
                                         )

@@ -271,7 +271,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 // Create localized context dynamically for the active language
-                val localizedContext = remember(uiState.currentLanguage) {
+                val localizedContext = remember(uiState.currentLanguage, context) {
                     try {
                         LocaleContextWrapper.wrap(context, uiState.currentLanguage)
                     } catch (e: Throwable) {
@@ -288,6 +288,7 @@ class MainActivity : ComponentActivity() {
 
                 CompositionLocalProvider(
                     LocalContext provides localizedContext,
+                    LocalConfiguration provides localizedContext.resources.configuration,
                     LocalLayoutDirection provides layoutDir
                 ) {
                     TippyTheme(
@@ -366,10 +367,29 @@ fun TippyMainHost(
     viewModel: TippyViewModel,
     currentDarkTheme: Boolean
 ) {
-    val focusManager = LocalFocusManager.current
-    val keyboardController = LocalSoftwareKeyboardController.current
-    val context = LocalContext.current
-    val view = LocalView.current
+    val baseContext = LocalContext.current
+    val localizedHostContext = remember(uiState.currentLanguage, baseContext) {
+        try {
+            LocaleContextWrapper.wrap(baseContext, uiState.currentLanguage)
+        } catch (_: Throwable) {
+            baseContext
+        }
+    }
+    val hostLayoutDir = if (LanguageResolver.isRtl(uiState.currentLanguage)) {
+        LayoutDirection.Rtl
+    } else {
+        LayoutDirection.Ltr
+    }
+
+    CompositionLocalProvider(
+        LocalContext provides localizedHostContext,
+        LocalConfiguration provides localizedHostContext.resources.configuration,
+        LocalLayoutDirection provides hostLayoutDir
+    ) {
+        val focusManager = LocalFocusManager.current
+        val keyboardController = LocalSoftwareKeyboardController.current
+        val context = LocalContext.current
+        val view = LocalView.current
 
     val hapticService = remember(context) { HapticFeedbackService(context) }
     val onboardingPrefs = remember(context) { OnboardingPreferences(context) }
@@ -423,7 +443,7 @@ fun TippyMainHost(
                                 .padding(vertical = 4.dp)
                                 .clickable(
                                     role = Role.RadioButton,
-                                    onClickLabel = "Set automatic system language"
+                                    onClickLabel = stringResource(R.string.auto_language_option)
                                 ) {
                                     triggerHaptic()
                                     viewModel.setLanguage(context, null)
@@ -463,7 +483,7 @@ fun TippyMainHost(
                                 if (!uiState.isManualLanguageOverride) {
                                     Icon(
                                         imageVector = Icons.Default.Check,
-                                        contentDescription = "Active language mode",
+                                        contentDescription = stringResource(R.string.active_language_mode_desc),
                                         tint = MaterialTheme.colorScheme.primary
                                     )
                                 }
@@ -479,7 +499,7 @@ fun TippyMainHost(
                                 .padding(vertical = 4.dp)
                                 .clickable(
                                     role = Role.RadioButton,
-                                    onClickLabel = "Select language ${langInfo.name}"
+                                    onClickLabel = langInfo.name
                                 ) {
                                     triggerHaptic()
                                     viewModel.setLanguage(context, langInfo.code)
@@ -519,7 +539,7 @@ fun TippyMainHost(
                                 if (isSelected) {
                                     Icon(
                                         imageVector = Icons.Default.Check,
-                                        contentDescription = "Selected language",
+                                        contentDescription = stringResource(R.string.selected_language_desc),
                                         tint = MaterialTheme.colorScheme.primary
                                     )
                                 }
@@ -678,7 +698,13 @@ fun TippyMainHost(
         onLoadTransaction = { tx ->
             viewModel.updateBillAmount(tx.billAmount.toString())
             showHistorySheet = false
-            Toast.makeText(context, "Loaded calculation for ${tx.countryIso}", Toast.LENGTH_SHORT).show()
+            val localizedCountry = CountryDataRegistry.getCountryByIso(tx.countryIso)
+                .getLocalizedCountry(uiState.currentLanguage)
+            Toast.makeText(
+                context,
+                context.getString(R.string.loaded_calculation_toast, localizedCountry),
+                Toast.LENGTH_SHORT
+            ).show()
         },
         onDeleteTransaction = { id ->
             coroutineScope.launch {
@@ -783,6 +809,7 @@ fun TippyMainHost(
             }
         }
     )
+    }
 }
 
 /**
@@ -1135,12 +1162,13 @@ private fun HeroCalculationCard(
     onRoundUp: () -> Unit,
     onRoundDown: () -> Unit
 ) {
-    Card(
+            val totalCalcDesc = stringResource(R.string.total_calculation_desc)
+            Card(
         modifier = Modifier
             .fillMaxWidth()
             .animateContentSize(animationSpec = spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessMediumLow))
             .semantics(mergeDescendants = true) {
-                contentDescription = "Total calculation"
+                contentDescription = totalCalcDesc
             },
         shape = RoundedCornerShape(32.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.45f)),
@@ -1560,6 +1588,7 @@ private fun BillAmountSection(
             ) {
                 currencyTier.quickAddAmounts.forEachIndexed { index, amount ->
                     val label = currencyTier.displayLabels.getOrElse(index) { "+${amount.toInt()}" }
+                    val addToBillDesc = stringResource(R.string.quick_add_content_desc, label)
                     Button(
                         onClick = { onQuickAdd(amount) },
                         colors = ButtonDefaults.buttonColors(
@@ -1572,7 +1601,7 @@ private fun BillAmountSection(
                             .height(if (isLongText) 50.dp else 44.dp)
                             .testTag("quick_add_${amount.toInt()}")
                             .semantics {
-                                contentDescription = "Add $label to bill"
+                                contentDescription = addToBillDesc
                             },
                         contentPadding = PaddingValues(vertical = 4.dp, horizontal = 4.dp)
                     ) {
@@ -1654,7 +1683,7 @@ private fun ServiceSelectorSection(
                         .clip(RoundedCornerShape(22.dp))
                         .clickable(
                             role = Role.RadioButton,
-                            onClickLabel = "Select $serviceLabel"
+                            onClickLabel = serviceLabel
                         ) { onSelectService(service) }
                         .semantics {
                             selected = isSelected
@@ -1713,8 +1742,9 @@ private fun ServiceSelectorSection(
                             )
                         }
 
+                        val context = LocalContext.current
                         Text(
-                            text = rule.standardTip,
+                            text = rule.getLocalizedStandardTip(context),
                             style = MaterialTheme.typography.labelSmall,
                             color = if (isSelected) contentColor.copy(alpha = 0.85f) else MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Black,
@@ -1781,21 +1811,32 @@ private fun TipPercentageSection(
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontWeight = FontWeight.Black,
-                    letterSpacing = 1.sp
+                    letterSpacing = 1.sp,
+                    maxLines = 2,
+                    softWrap = true,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(end = 12.dp)
                 )
 
-                // Active Percentage Pill
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(12.dp))
-                        .background(MaterialTheme.colorScheme.primaryContainer)
-                        .padding(horizontal = 10.dp, vertical = 4.dp)
+                // Active Percentage Pill (unweighted so Compose measures it at full intrinsic single-line width first)
+                Surface(
+                    shape = CircleShape,
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                    modifier = Modifier.testTag("active_percent_pill")
                 ) {
                     Text(
-                        text = LocaleFormatter.formatPercent(uiState.selectedPercent, uiState.currentLanguage),
+                        text = LocaleFormatter.formatPercent(uiState.selectedPercent, uiState.currentLanguage)
+                            .replace(' ', '\u00A0'),
                         style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
-                        fontWeight = FontWeight.Black
+                        fontWeight = FontWeight.Black,
+                        maxLines = 1,
+                        softWrap = false,
+                        modifier = Modifier
+                            .padding(horizontal = 12.dp, vertical = 5.dp)
+                            .testTag("active_percent_pill_text")
                     )
                 }
             }
@@ -1850,7 +1891,7 @@ private fun TipPercentageSection(
                 RateOptionButton(
                     modifier = Modifier.weight(1f),
                     label = stringResource(R.string.standard_tip),
-                    subLabel = currentRule.standardTip,
+                    subLabel = currentRule.getLocalizedStandardTip(context),
                     isSelected = isStandardSelected,
                     isLongText = isLongText,
                     onClick = { onSelectRate(standardRate) }
@@ -1864,7 +1905,7 @@ private fun TipPercentageSection(
                 RateOptionButton(
                     modifier = Modifier.weight(1f),
                     label = stringResource(R.string.generous_tip),
-                    subLabel = currentRule.generousTip,
+                    subLabel = currentRule.getLocalizedGenerousTip(context),
                     isSelected = isGenSelected,
                     isLongText = isLongText,
                     onClick = { onSelectRate(genRate) }
@@ -1878,7 +1919,7 @@ private fun TipPercentageSection(
                 RateOptionButton(
                     modifier = Modifier.weight(1f),
                     label = stringResource(R.string.legend_tip),
-                    subLabel = currentRule.legendTip,
+                    subLabel = currentRule.getLocalizedLegendTip(context),
                     isSelected = isLegSelected,
                     isLongText = isLongText,
                     onClick = { onSelectRate(legRate) }
@@ -1900,16 +1941,19 @@ private fun TipPercentageSection(
                     fontWeight = FontWeight.Bold,
                     maxLines = 1,
                     softWrap = true,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(end = 8.dp)
                 )
                 Text(
-                    text = LocaleFormatter.formatIntegerPercent(uiState.selectedPercent, uiState.currentLanguage),
+                    text = LocaleFormatter.formatIntegerPercent(uiState.selectedPercent, uiState.currentLanguage)
+                        .replace(' ', '\u00A0'),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.Black,
                     maxLines = 1,
-                    softWrap = true,
-                    overflow = TextOverflow.Ellipsis
+                    softWrap = false
                 )
             }
 
@@ -1987,7 +2031,7 @@ private fun RateOptionButton(
             )
             .clickable(
                 role = Role.RadioButton,
-                onClickLabel = "Select $label $subLabel tip"
+                onClickLabel = "$label $subLabel"
             ) { onClick() }
             .semantics {
                 selected = isSelected
@@ -2250,7 +2294,13 @@ private fun SeniorTippyLayout(
                         style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Black,
-                        letterSpacing = 1.2.sp
+                        letterSpacing = 1.2.sp,
+                        maxLines = 2,
+                        softWrap = true,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(end = 8.dp)
                     )
 
                     // Accessible TTS Audio Indicator Pill
@@ -2280,7 +2330,7 @@ private fun SeniorTippyLayout(
                                 fontWeight = FontWeight.Black,
                                 color = if (isSpeaking) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.primary,
                                 maxLines = 1,
-                                softWrap = true,
+                                softWrap = false,
                                 overflow = TextOverflow.Ellipsis
                             )
                         }
@@ -2672,6 +2722,7 @@ private fun SeniorTippyLayout(
                 ) {
                     currencyTier.quickAddAmounts.forEachIndexed { index, amount ->
                         val label = currencyTier.displayLabels.getOrElse(index) { "+${amount.toInt()}" }
+                        val addToBillDesc = stringResource(R.string.quick_add_content_desc, label)
                         Button(
                             onClick = {
                                 triggerHaptic()
@@ -2688,7 +2739,7 @@ private fun SeniorTippyLayout(
                                 .height(if (isLongText) 52.dp else 46.dp)
                                 .testTag("quick_add_${amount.toInt()}")
                                 .semantics {
-                                    contentDescription = "Add $label to bill"
+                                    contentDescription = addToBillDesc
                                 },
                             contentPadding = PaddingValues(vertical = 4.dp, horizontal = 4.dp)
                         ) {
@@ -2734,7 +2785,7 @@ private fun SeniorTippyLayout(
                     val isSelected = uiState.selectedServiceType == service
                     val rule = uiState.activeCountry.getRuleFor(service.datasetKey)
                     val standardRate = rule?.parseStandardRate() ?: service.defaultStandardRate
-                    val rateText = if (standardRate > 0) "${(standardRate * 100).toInt()}%" else (rule?.standardTip?.takeIf { it.isNotBlank() } ?: "${(service.defaultStandardRate * 100).toInt()}%")
+                    val rateText = if (standardRate > 0) "${(standardRate * 100).toInt()}%" else (rule?.getLocalizedStandardTip(context)?.takeIf { it.isNotBlank() } ?: "${(service.defaultStandardRate * 100).toInt()}%")
 
                     val serviceLabel = stringResource(service.nameRes)
                     Card(
@@ -2744,7 +2795,7 @@ private fun SeniorTippyLayout(
                             .clip(RoundedCornerShape(22.dp))
                             .clickable(
                                 role = Role.RadioButton,
-                                onClickLabel = "Select $serviceLabel"
+                                onClickLabel = serviceLabel
                             ) {
                                 triggerHaptic()
                                 viewModel.selectServiceType(service)
@@ -2801,19 +2852,21 @@ private fun SeniorTippyLayout(
                             )
 
                             Surface(
-                                shape = RoundedCornerShape(10.dp),
+                                shape = CircleShape,
                                 color = if (isSelected) MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.22f)
                                 else MaterialTheme.colorScheme.primaryContainer,
                                 border = BorderStroke(1.dp, if (isSelected) MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.4f) else MaterialTheme.colorScheme.primary)
                             ) {
                                 Text(
-                                    text = rateText,
+                                    text = rateText.replace(' ', '\u00A0'),
                                     style = MaterialTheme.typography.labelMedium,
                                     fontWeight = FontWeight.Black,
                                     color = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onPrimaryContainer,
                                     textAlign = TextAlign.Center,
-                                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
-                                    maxLines = 1
+                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 3.dp),
+                                    maxLines = 1,
+                                    softWrap = false,
+                                    overflow = TextOverflow.Ellipsis
                                 )
                             }
                         }
@@ -2993,7 +3046,11 @@ private fun SeniorSplitBillSection(
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    val countText = if (uiState.splitCount == 1) "1 Person" else "${uiState.splitCount} People"
+                    val countText = if (uiState.splitCount == 1) {
+                        stringResource(R.string.senior_split_solo)
+                    } else {
+                        stringResource(R.string.senior_split_people, uiState.splitCount)
+                    }
                     Text(
                         text = countText,
                         style = MaterialTheme.typography.titleLarge,
@@ -3003,7 +3060,7 @@ private fun SeniorSplitBillSection(
                     if (uiState.splitCount > 1) {
                         val shareFormatted = LocaleFormatter.formatCurrency(uiState.sharePerPerson, uiState.selectedCurrency, uiState.currentLanguage)
                         Text(
-                            text = "$shareFormatted each",
+                            text = stringResource(R.string.each_pays_amount_format, shareFormatted),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Bold
@@ -3063,6 +3120,7 @@ fun CountrySelectionView(
     onBack: () -> Unit,
     onSelectCountry: (CountryTippingData) -> Unit
 ) {
+    val context = LocalContext.current
     var searchQuery by remember { mutableStateOf("") }
     val filteredCountries = remember(searchQuery, allCountries, currentLanguage) {
         if (searchQuery.isBlank()) allCountries
@@ -3168,7 +3226,7 @@ fun CountrySelectionView(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Clear,
-                            contentDescription = "Clear search",
+                            contentDescription = stringResource(R.string.clear_search_action),
                             tint = MaterialTheme.colorScheme.error,
                             modifier = Modifier.size(16.dp)
                         )
@@ -3207,7 +3265,7 @@ fun CountrySelectionView(
                         .clip(RoundedCornerShape(20.dp))
                         .clickable(
                             role = Role.Button,
-                            onClickLabel = "Select $localizedCountry"
+                            onClickLabel = localizedCountry
                         ) { onSelectCountry(country) }
                         .semantics {
                             selected = isSelected
@@ -3268,7 +3326,12 @@ fun CountrySelectionView(
                                     overflow = TextOverflow.Ellipsis
                                 )
                                 Text(
-                                    text = "$localizedMatrix • Rest. ${restaurantRule.standardTip}",
+                                    text = stringResource(
+                                        R.string.country_matrix_rest_format,
+                                        localizedMatrix,
+                                        stringResource(R.string.service_restaurant),
+                                        restaurantRule.getLocalizedStandardTip(context)
+                                    ),
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                                     maxLines = 1,

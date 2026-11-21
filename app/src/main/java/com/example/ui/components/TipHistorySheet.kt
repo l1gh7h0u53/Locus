@@ -53,7 +53,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.R
 import com.example.history.TipTransaction
+import com.example.i18n.GlobalExplorerLocalization
 import com.example.i18n.LanguageResolver
+import com.example.i18n.LocaleFormatter
 import java.util.Locale
 
 /**
@@ -147,7 +149,8 @@ fun TipHistorySheet(
                             color = MaterialTheme.colorScheme.onSurface
                         )
                         Text(
-                            text = "${historyList.size} ${if (historyList.size == 1) "entry" else "entries"}",
+                            text = if (historyList.size == 1) stringResource(R.string.history_entry_single)
+                            else stringResource(R.string.history_entries_count, historyList.size),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -186,7 +189,7 @@ fun TipHistorySheet(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Close,
-                            contentDescription = "Close",
+                            contentDescription = stringResource(R.string.close_button),
                             tint = MaterialTheme.colorScheme.error,
                             modifier = Modifier.size(20.dp)
                         )
@@ -251,6 +254,7 @@ fun TipHistorySheet(
                     items(historyList, key = { it.id }) { item ->
                         HistoryItemCard(
                             item = item,
+                            currentLanguage = currentLanguage,
                             isSeniorMode = isSeniorMode,
                             isLongText = isLongText,
                             onLoad = {
@@ -269,6 +273,7 @@ fun TipHistorySheet(
 @Composable
 private fun HistoryItemCard(
     item: TipTransaction,
+    currentLanguage: String,
     isSeniorMode: Boolean,
     isLongText: Boolean,
     onLoad: () -> Unit,
@@ -295,19 +300,24 @@ private fun HistoryItemCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = item.formattedDate(),
+                    text = item.formattedDate(currentLanguage),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontWeight = FontWeight.Medium
                 )
 
+                val localizedCountryName = GlobalExplorerLocalization.getLocalizedCountry(
+                    iso = item.countryIso,
+                    langCode = currentLanguage,
+                    fallbackName = item.countryName
+                )
                 Surface(
                     shape = RoundedCornerShape(8.dp),
                     color = MaterialTheme.colorScheme.primaryContainer,
                     contentColor = MaterialTheme.colorScheme.onPrimaryContainer
                 ) {
                     Text(
-                        text = "${item.countryName} (${item.currencyCode})",
+                        text = "$localizedCountryName (${item.currencyCode})",
                         style = MaterialTheme.typography.labelSmall,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
@@ -375,12 +385,17 @@ private fun HistoryItemCard(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = "${stringResource(R.string.split_bill_label)}: ${item.splitCount} people",
+                        text = stringResource(
+                            R.string.history_split_people_format,
+                            stringResource(R.string.split_bill_label),
+                            item.splitCount
+                        ),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+                    val perPersonFormatted = "${item.currencySymbol}${LocaleFormatter.formatAmountOnly(item.sharePerPerson, currentLanguage)}"
                     Text(
-                        text = "${item.currencySymbol}${String.format(Locale.US, "%.2f", item.sharePerPerson)} / person",
+                        text = stringResource(R.string.per_person_amount_format, perPersonFormatted),
                         style = MaterialTheme.typography.bodySmall,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onSurface

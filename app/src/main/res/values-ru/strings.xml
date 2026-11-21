@@ -373,13 +373,88 @@
     <string name="tutorial_toggle_label">Инструкция при запуске:</string>
     <string name="tutorial_toggle_always">Всегда</string>
     <string name="tutorial_toggle_never">Никогда</string>
-    <string name="coach_step_history_title">История транзакций</string>
-    <string name="coach_step_history_subtitle">Сохранение и просмотр расчетов</string>
-    <string name="coach_step_history_desc">Сохраняйте историю расчетов локально через DataStore. Выберите ниже, показывать ли запрос \"Хотите сохранить?\" всегда или никогда при использовании приложения.</string>
+    <string name="coach_step_history_title">История чаевых и настройки</string>
+    <string name="coach_step_history_subtitle">Просматривайте сохраненные расчеты</string>
+    <string name="coach_step_history_desc">Легко открывайте прошлые расчеты, настраивайте запросы сохранения и перезапускайте это руководство в любое время.</string>
     <string name="save_to_history_action">Сохранить в истории</string>
 
     <!-- Global Explorer Unlock Notification Strings -->
     <string name="unlock_global_explorer_countdown">Осталось %d нажатия для разблокировки Global Explorer</string>
     <string name="unlock_global_explorer_countdown_one">Осталось 1 нажатие для разблокировки Global Explorer</string>
     <string name="unlock_global_explorer_success">🎉 Секрет раскрыт! Глобальный выбор стран разблокирован</string>
+
+    <!-- General Labels -->
+    <string name="bill_input_label">Счет</string>
+    <string name="split_bill_label">Разделить</string>
+
+    <!-- Coach marks & Onboarding -->
+    <string name="senior_mode_subtitle">Режим высокой контрастности</string>
+    <string name="senior_mode_explanation">Увеличивает кнопки, повышает контрастность и озвучивает расчеты вслух с помощью синтеза речи.</string>
+    <string name="quick_add_title">Кнопки быстрого ввода</string>
+    <string name="quick_add_subtitle">Ускорьте ввод суммы счета</string>
+    <string name="quick_add_description">Нажимайте на чипы вроде +$5, +$10 или +$50, чтобы быстро добавлять частые суммы без ввода.</string>
+
+    <!-- Settings Sheet Strings -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_section_appearance">Внешний вид</string>
+    <string name="settings_theme_title">Тема</string>
+    <string name="settings_theme_system">Системная</string>
+    <string name="settings_theme_light">Светлая</string>
+    <string name="settings_theme_dark">Темная</string>
+    <string name="settings_theme_system_desc">Следует системным настройкам устройства</string>
+    <string name="settings_theme_light_desc">Всегда использовать светлую тему</string>
+    <string name="settings_theme_dark_desc">Всегда использовать темную тему</string>
+    <string name="settings_dark_mode_title">Темная тема</string>
+    <string name="settings_dark_mode_desc">Переключение между светлой и темной темой</string>
+    <string name="settings_section_records">Записи и история</string>
+    <string name="settings_history_title">История расчетов чаевых</string>
+    <string name="settings_history_desc">Просмотр, загрузка или очистка прошлых расчетов</string>
+    <string name="settings_section_language">Язык и регион</string>
+    <string name="settings_language_title">Выбрать язык</string>
+    <string name="settings_language_desc">Локализованный текст и валютные стандарты офлайн</string>
+    <string name="settings_section_accessibility">Спец. возможности и гид</string>
+    <string name="settings_senior_mode_title">Режим для пожилых</string>
+    <string name="settings_senior_mode_desc">Крупные кнопки, высокий контраст и озвучивание</string>
+    <string name="settings_tutorial_title">Руководство и обучение</string>
+    <string name="settings_tutorial_desc">Узнайте о режиме для пожилых, быстром вводе и истории</string>
+    <string name="settings_restart_tutorial">Перезапустить обучение</string>
+    <string name="settings_save_prompt_title">Запрос сохранения чаевых</string>
+    <string name="settings_save_prompt_desc">Спрашивать, сохранить ли расчет при сбросе или отправке</string>
+    <string name="settings_footer_info">Locus • 100% Офлайн и приватно • Надежное хранение на устройстве</string>
+
+    <!-- Coach Mark Navigation & Additional UI Strings -->
+    <string name="coach_step_counter">Шаг %1$d из %2$d</string>
+    <string name="coach_skip">Пропустить</string>
+    <string name="coach_back">Назад</string>
+    <string name="coach_next">Далее</string>
+    <string name="coach_got_it">Понятно!</string>
+    <string name="countries_count_label">%d стран</string>
+    <string name="active_location_label">АКТИВНАЯ СТРАНА</string>
+    <string name="search_action">Поиск</string>
+    <string name="clear_search_action">Очистить поиск</string>
+    <string name="selected_indicator">Выбрано</string>
+    <string name="history_entry_single">1 запись</string>
+    <string name="history_entries_count">%d записей</string>
+    <string name="history_split_people_format">%1$s: %2$d чел.</string>
+    <string name="per_person_amount_format">%s / чел.</string>
+    <string name="each_pays_amount_format">%s с каждого</string>
+    <string name="loaded_calculation_toast">Загружен расчет для: %s</string>
+    <string name="quick_add_content_desc">Добавить %s к счету</string>
+    <string name="total_calculation_desc">Итоговый расчет</string>
+    <string name="active_language_mode_desc">Активный языковой режим</string>
+    <string name="selected_language_desc">Выбранный язык</string>
+    <string name="senior_split_solo">1 человек</string>
+    <string name="senior_split_people">%d чел.</string>
+    <string name="country_matrix_rest_format">%1$s • %2$s: %3$s</string>
+
+    <!-- Localized Tip Badge Labels -->
+    <string name="tip_badge_round_up">Округлить</string>
+    <string name="tip_badge_small_change">Мелочь</string>
+    <string name="tip_badge_change">Сдача</string>
+    <string name="tip_badge_small_coins">Мелкие монеты</string>
+    <string name="tip_badge_small_bill">Мелкая купюра</string>
+    <string name="tip_badge_large_bill">Крупная купюра</string>
+    <string name="tip_badge_base_change">Базовая сдача</string>
+    <string name="tip_badge_per_drink">за напиток</string>
+    <string name="tip_badge_drink">Напиток</string>
 </resources>

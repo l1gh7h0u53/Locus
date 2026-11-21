@@ -373,13 +373,88 @@
     <string name="tutorial_toggle_label">शुरुआत में ट्यूटोरियल:</string>
     <string name="tutorial_toggle_always">हमेशा</string>
     <string name="tutorial_toggle_never">कभी नहीं</string>
-    <string name="coach_step_history_title">लेन-देन इतिहास</string>
-    <string name="coach_step_history_subtitle">गणनाएं सहेजें और देखें</string>
-    <string name="coach_step_history_desc">DataStore के माध्यम से टिप गणनाओं का इतिहास रखें। नीचे चुनें कि ऐप का उपयोग करते समय \"क्या आप इसे सहेजना चाहते हैं?\" संकेत हमेशा दिखे या कभी नहीं।</string>
+    <string name="coach_step_history_title">टिप इतिहास और प्राथमिकताएं</string>
+    <string name="coach_step_history_subtitle">सहेजे गए टिप कभी भी देखें</string>
+    <string name="coach_step_history_desc">पिछली गणनाएं आसानी से देखें, सहेजने के संकेत अनुकूलित करें और जरूरत पड़ने पर यह ट्यूटोरियल फिर से शुरू करें।</string>
     <string name="save_to_history_action">इतिहास में सहेजें</string>
 
     <!-- Global Explorer Unlock Notification Strings -->
     <string name="unlock_global_explorer_countdown">ग्लोबल एक्सप्लोरर अनलॉक करने के लिए %d बार टैप करें</string>
     <string name="unlock_global_explorer_countdown_one">ग्लोबल एक्सप्लोरर अनलॉक करने के लिए 1 बार टैप करें</string>
     <string name="unlock_global_explorer_success">🎉 गुप्त फीचर खुला! वैश्विक देश चयनकर्ता अनलॉक हो गया</string>
+
+    <!-- General Labels -->
+    <string name="bill_input_label">बिल</string>
+    <string name="split_bill_label">बांटें</string>
+
+    <!-- Coach marks & Onboarding -->
+    <string name="senior_mode_subtitle">उच्च-कंट्रास्ट एक्सेसिबिलिटी मोड</string>
+    <string name="senior_mode_explanation">बटनों को बड़ा करता है, कंट्रास्ट बढ़ाता है और टेक्स्ट-टू-स्पीच से गणनाएं जोर से पढ़ता है।</string>
+    <string name="quick_add_title">त्वरित जोड़ बटन</string>
+    <string name="quick_add_subtitle">बिल दर्ज करना तेज़ करें</string>
+    <string name="quick_add_description">बिना टाइप किए सामान्य बिल राशि जोड़ने के लिए +$5, +$10 या +$50 जैसे चिप्स पर टैप करें।</string>
+
+    <!-- Settings Sheet Strings -->
+    <string name="settings_title">सेटिंग्स</string>
+    <string name="settings_section_appearance">दिखावट</string>
+    <string name="settings_theme_title">थीम</string>
+    <string name="settings_theme_system">सिस्टम</string>
+    <string name="settings_theme_light">लाइट</string>
+    <string name="settings_theme_dark">डार्क</string>
+    <string name="settings_theme_system_desc">डिवाइस की सिस्टम सेटिंग्स का पालन करता है</string>
+    <string name="settings_theme_light_desc">हमेशा लाइट थीम का उपयोग करें</string>
+    <string name="settings_theme_dark_desc">हमेशा डार्क थीम का उपयोग करें</string>
+    <string name="settings_dark_mode_title">डार्क थीम</string>
+    <string name="settings_dark_mode_desc">लाइट और डार्क विज़ुअल थीम के बीच स्विच करें</string>
+    <string name="settings_section_records">रिकॉर्ड और इतिहास</string>
+    <string name="settings_history_title">टिप गणना इतिहास</string>
+    <string name="settings_history_desc">पिछली गणनाएं देखें, पुनः लोड करें या साफ़ करें</string>
+    <string name="settings_section_language">भाषा और क्षेत्र</string>
+    <string name="settings_language_title">भाषा चुनें</string>
+    <string name="settings_language_desc">ऑफ़लाइन स्थानीयकृत टेक्स्ट और मुद्रा मानक</string>
+    <string name="settings_section_accessibility">सुगम्यता और मार्गदर्शिका</string>
+    <string name="settings_senior_mode_title">सीनियर सुगम्यता मोड</string>
+    <string name="settings_senior_mode_desc">बड़े बटन, उच्च कंट्रास्ट और वॉयस रीडआउट</string>
+    <string name="settings_tutorial_title">फ़ीचर गाइड और ट्यूटोरियल</string>
+    <string name="settings_tutorial_desc">सीनियर मोड, क्विक ऐड और इतिहास का उपयोग सीखें</string>
+    <string name="settings_restart_tutorial">ट्यूटोरियल पुनः शुरू करें</string>
+    <string name="settings_save_prompt_title">टिप सहेजने का संकेत</string>
+    <string name="settings_save_prompt_desc">रीसेट या शेयर करते समय गणना सहेजने के लिए पूछें</string>
+    <string name="settings_footer_info">Locus • 100% ऑफ़लाइन और निजी • सुरक्षित डिवाइस स्टोरेज</string>
+
+    <!-- Coach Mark Navigation & Additional UI Strings -->
+    <string name="coach_step_counter">चरण %1$d / %2$d</string>
+    <string name="coach_skip">छोड़ें</string>
+    <string name="coach_back">पीछे</string>
+    <string name="coach_next">अगला</string>
+    <string name="coach_got_it">समझ गया!</string>
+    <string name="countries_count_label">%d देश</string>
+    <string name="active_location_label">सक्रिय स्थान</string>
+    <string name="search_action">खोजें</string>
+    <string name="clear_search_action">खोज साफ़ करें</string>
+    <string name="selected_indicator">चयनित</string>
+    <string name="history_entry_single">1 प्रविष्टि</string>
+    <string name="history_entries_count">%d प्रविष्टियाँ</string>
+    <string name="history_split_people_format">%1$s: %2$d लोग</string>
+    <string name="per_person_amount_format">%s / व्यक्ति</string>
+    <string name="each_pays_amount_format">प्रत्येक %s</string>
+    <string name="loaded_calculation_toast">%s के लिए गणना लोड हुई</string>
+    <string name="quick_add_content_desc">बिल में %s जोड़ें</string>
+    <string name="total_calculation_desc">कुल गणना</string>
+    <string name="active_language_mode_desc">सक्रिय भाषा मोड</string>
+    <string name="selected_language_desc">चयनित भाषा</string>
+    <string name="senior_split_solo">1 व्यक्ति</string>
+    <string name="senior_split_people">%d लोग</string>
+    <string name="country_matrix_rest_format">%1$s • %2$s: %3$s</string>
+
+    <!-- Localized Tip Badge Labels -->
+    <string name="tip_badge_round_up">राउंड अप</string>
+    <string name="tip_badge_small_change">छुट्टा</string>
+    <string name="tip_badge_change">खुल्ला</string>
+    <string name="tip_badge_small_coins">छोटे सिक्के</string>
+    <string name="tip_badge_small_bill">छोटा नोट</string>
+    <string name="tip_badge_large_bill">बड़ा नोट</string>
+    <string name="tip_badge_base_change">आधार छुट्टा</string>
+    <string name="tip_badge_per_drink">प्रति पेय</string>
+    <string name="tip_badge_drink">पेय</string>
 </resources>

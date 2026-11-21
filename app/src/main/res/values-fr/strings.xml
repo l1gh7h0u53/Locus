@@ -373,13 +373,88 @@
     <string name="tutorial_toggle_label">Tutoriel au démarrage :</string>
     <string name="tutorial_toggle_always">Toujours</string>
     <string name="tutorial_toggle_never">Jamais</string>
-    <string name="coach_step_history_title">Historique des transactions</string>
-    <string name="coach_step_history_subtitle">Enregistrez et consultez vos calculs</string>
-    <string name="coach_step_history_desc">Conservez un historique local de vos pourboires via DataStore. Choisissez ci-dessous si l\'invite \"Voulez-vous l\'enregistrer ?\" doit s\'afficher toujours ou jamais.</string>
+    <string name="coach_step_history_title">Historique &amp; Préférences</string>
+    <string name="coach_step_history_subtitle">Consultez vos pourboires à tout moment</string>
+    <string name="coach_step_history_desc">Accédez facilement aux calculs précédents, personnalisez les invitations d\'enregistrement et relancez ce guide quand vous le souhaitez.</string>
     <string name="save_to_history_action">Enregistrer dans l\'historique</string>
 
     <!-- Global Explorer Unlock Notification Strings -->
     <string name="unlock_global_explorer_countdown">Encore %d appuis pour déverrouiller l\'Explorateur Global</string>
     <string name="unlock_global_explorer_countdown_one">Encore 1 appui pour déverrouiller l\'Explorateur Global</string>
     <string name="unlock_global_explorer_success">🎉 Secret découvert ! Sélecteur global de pays déverrouillé</string>
+
+    <!-- General Labels -->
+    <string name="bill_input_label">Addition</string>
+    <string name="split_bill_label">Partager</string>
+
+    <!-- Coach marks & Onboarding -->
+    <string name="senior_mode_subtitle">Mode accessibilité à contraste élevé</string>
+    <string name="senior_mode_explanation">Agrandit les boutons, augmente le contraste et lit les calculs à voix haute par synthèse vocale.</string>
+    <string name="quick_add_title">Boutons d\'Ajout Rapide</string>
+    <string name="quick_add_subtitle">Accélérez la saisie de l\'addition</string>
+    <string name="quick_add_description">Touchez des pastilles comme +5 $, +10 $ ou +50 $ pour ajouter rapidement des montants courants sans saisir.</string>
+
+    <!-- Settings Sheet Strings -->
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_section_appearance">Apparence</string>
+    <string name="settings_theme_title">Thème</string>
+    <string name="settings_theme_system">Système</string>
+    <string name="settings_theme_light">Clair</string>
+    <string name="settings_theme_dark">Sombre</string>
+    <string name="settings_theme_system_desc">Suit les réglages système de l\'appareil</string>
+    <string name="settings_theme_light_desc">Toujours utiliser le thème clair</string>
+    <string name="settings_theme_dark_desc">Toujours utiliser le thème sombre</string>
+    <string name="settings_dark_mode_title">Thème Sombre</string>
+    <string name="settings_dark_mode_desc">Basculer entre les thèmes visuels clair et sombre</string>
+    <string name="settings_section_records">Archives &amp; Historique</string>
+    <string name="settings_history_title">Historique des Pourboires</string>
+    <string name="settings_history_desc">Consulter, recharger ou effacer les calculs précédents</string>
+    <string name="settings_section_language">Langue &amp; Région</string>
+    <string name="settings_language_title">Choisir la langue</string>
+    <string name="settings_language_desc">Textes localisés et normes de devises hors ligne</string>
+    <string name="settings_section_accessibility">Accessibilité &amp; Guides</string>
+    <string name="settings_senior_mode_title">Mode Accessibilité Senior</string>
+    <string name="settings_senior_mode_desc">Boutons agrandis, contraste élevé et lecture vocale</string>
+    <string name="settings_tutorial_title">Guide &amp; Tutoriel</string>
+    <string name="settings_tutorial_desc">Découvrir le Mode Senior, l\'Ajout Rapide et l\'Historique</string>
+    <string name="settings_restart_tutorial">Relancer le Tutoriel</string>
+    <string name="settings_save_prompt_title">Demander avant d\'enregistrer</string>
+    <string name="settings_save_prompt_desc">Demander s\'il faut enregistrer les calculs lors de la réinitialisation ou du partage</string>
+    <string name="settings_footer_info">Locus • 100% Hors ligne &amp; Privé • Stockage local sécurisé</string>
+
+    <!-- Coach Mark Navigation & Additional UI Strings -->
+    <string name="coach_step_counter">Étape %1$d sur %2$d</string>
+    <string name="coach_skip">Ignorer</string>
+    <string name="coach_back">Retour</string>
+    <string name="coach_next">Suivant</string>
+    <string name="coach_got_it">Compris !</string>
+    <string name="countries_count_label">%d Pays</string>
+    <string name="active_location_label">LIEU ACTIF</string>
+    <string name="search_action">Rechercher</string>
+    <string name="clear_search_action">Effacer la recherche</string>
+    <string name="selected_indicator">Sélectionné</string>
+    <string name="history_entry_single">1 entrée</string>
+    <string name="history_entries_count">%d entrées</string>
+    <string name="history_split_people_format">%1$s : %2$d personnes</string>
+    <string name="per_person_amount_format">%s / personne</string>
+    <string name="each_pays_amount_format">%s chacun</string>
+    <string name="loaded_calculation_toast">Calcul chargé pour %s</string>
+    <string name="quick_add_content_desc">Ajouter %s à l\'addition</string>
+    <string name="total_calculation_desc">Calcul total</string>
+    <string name="active_language_mode_desc">Mode de langue actif</string>
+    <string name="selected_language_desc">Langue sélectionnée</string>
+    <string name="senior_split_solo">1 Personne</string>
+    <string name="senior_split_people">%d Personnes</string>
+    <string name="country_matrix_rest_format">%1$s • %2$s : %3$s</string>
+
+    <!-- Localized Tip Badge Labels -->
+    <string name="tip_badge_round_up">Arrondir</string>
+    <string name="tip_badge_small_change">Petite monnaie</string>
+    <string name="tip_badge_change">Monnaie</string>
+    <string name="tip_badge_small_coins">Petites pièces</string>
+    <string name="tip_badge_small_bill">Petit billet</string>
+    <string name="tip_badge_large_bill">Gros billet</string>
+    <string name="tip_badge_base_change">Monnaie de base</string>
+    <string name="tip_badge_per_drink">par verre</string>
+    <string name="tip_badge_drink">Verre</string>
 </resources>
