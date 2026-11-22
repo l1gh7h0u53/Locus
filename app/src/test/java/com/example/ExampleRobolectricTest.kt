@@ -1,16 +1,23 @@
 package com.example
 
 import android.content.Context
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.longClick
+import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performTextInput
+import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.test.core.app.ApplicationProvider
 import com.example.ui.theme.TippyTheme
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
@@ -1175,5 +1182,652 @@ class ExampleRobolectricTest {
         layoutResult.size.width < layoutResult.layoutInput.constraints.maxWidth
       )
     }
+  }
+
+  @Test
+  @Config(qualifiers = "w1024dp-h768dp-mdpi")
+  fun `verify tablet mode activates automatically on wide viewport with working keypad and service grid`() {
+    val viewModel = TippyViewModel()
+    viewModel.selectCountry(CountryDataRegistry.getCountryByIso("US"))
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        val uiState by viewModel.uiState.collectAsState()
+        TippyMainHost(
+          uiState = uiState,
+          viewModel = viewModel,
+          currentDarkTheme = false
+        )
+      }
+    }
+
+    composeTestRule.waitForIdle()
+
+    // Automatic two-pane dashboard and tablet enhancements render without any toggle
+    composeTestRule.onNodeWithTag("tablet_calculator_dashboard").assertExists()
+    composeTestRule.onNodeWithTag("tablet_cultural_breakdown_card").assertExists()
+    composeTestRule.onNodeWithTag("tablet_tactile_keypad").assertExists()
+    composeTestRule.onNodeWithTag("tablet_service_grid").assertExists()
+
+    // Exercise built-in tactile keypad
+    composeTestRule.onNodeWithTag("keypad_digit_4").performClick()
+    composeTestRule.onNodeWithTag("keypad_digit_5").performClick()
+    composeTestRule.onNodeWithTag("keypad_decimal").performClick()
+    composeTestRule.onNodeWithTag("keypad_digit_5").performClick()
+    composeTestRule.waitForIdle()
+    assertEquals("45.5", viewModel.uiState.value.billAmountInput)
+    assertTrue(viewModel.uiState.value.totalBill > 45.5)
+
+    // Exercise keypad backspace
+    composeTestRule.onNodeWithTag("keypad_backspace").performClick()
+    composeTestRule.waitForIdle()
+    assertEquals("45.", viewModel.uiState.value.billAmountInput)
+
+    // Exercise multi-column service category selection
+    composeTestRule.onNodeWithTag("service_bar").performClick()
+    composeTestRule.waitForIdle()
+    assertEquals(ServiceType.BAR, viewModel.uiState.value.selectedServiceType)
+    composeTestRule.onNodeWithTag("hero_total_bill_text", useUnmergedTree = true).assertExists()
+  }
+
+  @Test
+  @Config(qualifiers = "w1024dp-h768dp-mdpi")
+  fun `verify senior mode stays single column even on wide tablet viewport`() {
+    val viewModel = TippyViewModel()
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = viewModel.uiState.collectAsState().value.isSeniorMode) {
+        val uiState by viewModel.uiState.collectAsState()
+        TippyMainHost(
+          uiState = uiState,
+          viewModel = viewModel,
+          currentDarkTheme = false
+        )
+      }
+    }
+
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tablet_calculator_dashboard").assertExists()
+
+    // Toggle Senior Mode ON
+    composeTestRule.onNodeWithTag("senior_mode_toggle").performClick()
+    composeTestRule.waitForIdle()
+
+    composeTestRule.onNodeWithTag("tablet_calculator_dashboard").assertDoesNotExist()
+    composeTestRule.onNodeWithTag("senior_totals_card").assertExists()
+  }
+
+  @Test
+  @Config(qualifiers = "w840dp-h1000dp-mdpi")
+  fun `verify 840dp and compact viewports remain single pane with temporary preview toggle removed`() {
+    val viewModel = TippyViewModel()
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        val uiState by viewModel.uiState.collectAsState()
+        TippyMainHost(
+          uiState = uiState,
+          viewModel = viewModel,
+          currentDarkTheme = false
+        )
+      }
+    }
+
+    composeTestRule.waitForIdle()
+    // Exactly 840dp does NOT exceed 840dp threshold -> remains single-pane
+    composeTestRule.onNodeWithTag("tablet_calculator_dashboard").assertDoesNotExist()
+
+    // Long pressing logo no longer toggles a temporary Tablet Mode preview
+    composeTestRule.onNodeWithTag("app_logo_tap_target").performTouchInput { longClick() }
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tablet_calculator_dashboard").assertDoesNotExist()
+  }
+
+  @Test
+  @Config(qualifiers = "w1024dp-h768dp-mdpi")
+  fun `verify country explorer renders multi-column grid and settings or history use tablet side overlays`() {
+    val countries = listOf(
+      CountryDataRegistry.getCountryByIso("US"),
+      CountryDataRegistry.getCountryByIso("JP"),
+      CountryDataRegistry.getCountryByIso("DE")
+    )
+    var pickedIso = ""
+    val showSettings = androidx.compose.runtime.mutableStateOf(false)
+    val showHistory = androidx.compose.runtime.mutableStateOf(false)
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        Box(modifier = Modifier.width(1024.dp)) {
+          CountrySelectionView(
+            allCountries = countries,
+            currentCountry = countries.first(),
+            currentLanguage = "en",
+            isTabletLayout = true,
+            onBack = {},
+            onSelectCountry = { pickedIso = it.iso }
+          )
+
+          com.example.ui.components.SettingsBottomSheet(
+            visible = showSettings.value,
+            currentDarkTheme = false,
+            isSeniorMode = false,
+            currentLanguage = "en",
+            isManualLanguageOverride = false,
+            isTabletLayout = true,
+            onDismiss = { showSettings.value = false },
+            onOpenHistory = {},
+            onOpenLanguage = {}
+          )
+
+          com.example.ui.components.TipHistorySheet(
+            visible = showHistory.value,
+            historyList = emptyList(),
+            isSeniorMode = false,
+            currentLanguage = "en",
+            isTabletLayout = true,
+            onLoadTransaction = {},
+            onDeleteTransaction = {},
+            onClearAll = {},
+            onDismiss = { showHistory.value = false }
+          )
+        }
+      }
+    }
+
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("country_grid_tablet").assertExists()
+    composeTestRule.onNodeWithTag("country_item_JP").performClick()
+    assertEquals("JP", pickedIso)
+
+    // Tablet Settings Side Overlay
+    showSettings.value = true
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tablet_settings_side_panel").assertExists()
+    composeTestRule.onNodeWithTag("settings_sheet").assertExists()
+    composeTestRule.onNodeWithTag("settings_close_button").performClick()
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("settings_sheet").assertDoesNotExist()
+
+    // Tablet History Side Overlay
+    showHistory.value = true
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tip_history_bottom_sheet").assertExists()
+    composeTestRule.onNodeWithTag("history_close_button").performClick()
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tip_history_bottom_sheet").assertDoesNotExist()
+  }
+
+  @Test
+  fun `verify tablet keypad digit and decimal helper edge cases`() {
+    assertEquals("5", com.example.ui.components.appendKeypadDigit("0", "5"))
+    assertEquals("0", com.example.ui.components.appendKeypadDigit("0", "0"))
+    assertEquals("123", com.example.ui.components.appendKeypadDigit("12", "3"))
+    assertEquals("123456789012", com.example.ui.components.appendKeypadDigit("123456789012", "9"))
+
+    assertEquals("0.", com.example.ui.components.appendKeypadDecimal(""))
+    assertEquals("12.", com.example.ui.components.appendKeypadDecimal("12"))
+    assertEquals("12.3", com.example.ui.components.appendKeypadDecimal("12.3"))
+    assertEquals("123456789012", com.example.ui.components.appendKeypadDecimal("123456789012"))
+  }
+
+  @Test
+  fun `verify adaptive tablet posture resolver enforces strict 840dp threshold`() {
+    val boundary = com.example.ui.components.resolveAdaptiveTabletMetrics(840.dp, 1024.dp)
+    assertEquals(com.example.shared.TabletTwoPanePosture.SINGLE_PANE, boundary.posture)
+
+    val portrait = com.example.ui.components.resolveAdaptiveTabletMetrics(860.dp, 1100.dp)
+    assertEquals(com.example.shared.TabletTwoPanePosture.PORTRAIT_TWO_PANE, portrait.posture)
+    assertEquals(2, portrait.serviceColumns)
+    assertEquals(0.42f, portrait.leftPaneWeight, 0.001f)
+
+    val landscape = com.example.ui.components.resolveAdaptiveTabletMetrics(1024.dp, 768.dp)
+    assertEquals(com.example.shared.TabletTwoPanePosture.LANDSCAPE_TWO_PANE, landscape.posture)
+    assertEquals(3, landscape.serviceColumns)
+    assertEquals(0.45f, landscape.leftPaneWeight, 0.001f)
+  }
+
+  @Test
+  @Config(qualifiers = "w1024dp-h1120dp-mdpi")
+  fun `verify tablet dashboard transitions smoothly between portrait two-pane and landscape two-pane`() {
+    val viewModel = TippyViewModel()
+    val context = ApplicationProvider.getApplicationContext<Context>()
+    val hapticService = HapticFeedbackService(context)
+    val viewportState = androidx.compose.runtime.mutableStateOf(860.dp to 1100.dp)
+
+    composeTestRule.setContent {
+      val focusManager = androidx.compose.ui.platform.LocalFocusManager.current
+      val keyboardController = androidx.compose.ui.platform.LocalSoftwareKeyboardController.current
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        val uiState by viewModel.uiState.collectAsState()
+        val (w, h) = viewportState.value
+        com.example.ui.components.TabletCalculatorDashboard(
+          uiState = uiState,
+          viewModel = viewModel,
+          hapticService = hapticService,
+          triggerHaptic = {},
+          focusManager = focusManager,
+          keyboardController = keyboardController,
+          viewportWidth = w,
+          viewportHeight = h
+        )
+      }
+    }
+
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tablet_pane_left").assertExists()
+    composeTestRule.onNodeWithTag("tablet_pane_right").assertExists()
+    composeTestRule.onNodeWithTag("tablet_posture_portrait_two_pane").assertExists()
+    composeTestRule.onNodeWithTag("service_grid_cols_2").assertExists()
+
+    // Simulate smooth resize / rotation into Landscape
+    viewportState.value = 1024.dp to 768.dp
+    composeTestRule.waitForIdle()
+
+    composeTestRule.onNodeWithTag("tablet_pane_left").assertExists()
+    composeTestRule.onNodeWithTag("tablet_pane_right").assertExists()
+    composeTestRule.onNodeWithTag("tablet_posture_landscape_two_pane").assertExists()
+    composeTestRule.onNodeWithTag("service_grid_cols_3").assertExists()
+  }
+
+  @Test
+  @Config(qualifiers = "w1024dp-h768dp-mdpi")
+  fun `verify tablet tactile keypad dispatches distinct hardware vibration patterns`() {
+    val context = ApplicationProvider.getApplicationContext<Context>()
+    HapticFeedbackManager.init(context)
+    val hapticService = HapticFeedbackService(context)
+    val viewModel = TippyViewModel()
+    viewModel.selectCountry(CountryDataRegistry.getCountryByIso("US"))
+
+    composeTestRule.setContent {
+      val focusManager = androidx.compose.ui.platform.LocalFocusManager.current
+      val keyboardController = androidx.compose.ui.platform.LocalSoftwareKeyboardController.current
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        val uiState by viewModel.uiState.collectAsState()
+        com.example.ui.components.TabletCalculatorDashboard(
+          uiState = uiState,
+          viewModel = viewModel,
+          hapticService = hapticService,
+          triggerHaptic = {},
+          focusManager = focusManager,
+          keyboardController = keyboardController,
+          viewportWidth = 1024.dp,
+          viewportHeight = 768.dp
+        )
+      }
+    }
+
+    composeTestRule.waitForIdle()
+
+    // Backspace when empty triggers BOUNDARY_REJECT
+    composeTestRule.onNodeWithTag("keypad_backspace").performClick()
+    assertEquals(
+      HapticFeedbackManager.TactileKeypadPattern.BOUNDARY_REJECT,
+      hapticService.lastKeypadPattern
+    )
+
+    // Digit key triggers DIGIT_PRESS
+    composeTestRule.onNodeWithTag("keypad_digit_7").performClick()
+    assertEquals(
+      HapticFeedbackManager.TactileKeypadPattern.DIGIT_PRESS,
+      hapticService.lastKeypadPattern
+    )
+
+    // Decimal key triggers DECIMAL_DETENT
+    composeTestRule.onNodeWithTag("keypad_decimal").performClick()
+    assertEquals(
+      HapticFeedbackManager.TactileKeypadPattern.DECIMAL_DETENT,
+      hapticService.lastKeypadPattern
+    )
+
+    // Second decimal triggers BOUNDARY_REJECT
+    composeTestRule.onNodeWithTag("keypad_decimal").performClick()
+    assertEquals(
+      HapticFeedbackManager.TactileKeypadPattern.BOUNDARY_REJECT,
+      hapticService.lastKeypadPattern
+    )
+
+    // Backspace on non-empty input triggers BACKSPACE_THUD
+    composeTestRule.onNodeWithTag("keypad_backspace").performClick()
+    assertEquals(
+      HapticFeedbackManager.TactileKeypadPattern.BACKSPACE_THUD,
+      hapticService.lastKeypadPattern
+    )
+
+    // Quick-add chip triggers QUICK_ADD_STEP
+    composeTestRule.onNodeWithTag("quick_add_10").performClick()
+    assertEquals(
+      HapticFeedbackManager.TactileKeypadPattern.QUICK_ADD_STEP,
+      hapticService.lastKeypadPattern
+    )
+
+    // Reset button triggers ACTION_CONFIRM
+    composeTestRule.onNodeWithTag("clear_button_reset").performClick()
+    assertEquals(
+      HapticFeedbackManager.TactileKeypadPattern.ACTION_CONFIRM,
+      hapticService.lastKeypadPattern
+    )
+  }
+
+  @Test
+  @Config(qualifiers = "w1024dp-h768dp-mdpi")
+  fun `verify tablet side panel currency converter toggle shows country paired total and removes duplicate tiers`() {
+    val viewModel = TippyViewModel()
+    viewModel.selectCountry(CountryDataRegistry.getCountryByIso("US"))
+    viewModel.updateBillAmount("100.00")
+    viewModel.incrementSplit()
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        val uiState by viewModel.uiState.collectAsState()
+        TippyMainHost(
+          uiState = uiState,
+          viewModel = viewModel,
+          currentDarkTheme = false
+        )
+      }
+    }
+
+    composeTestRule.waitForIdle()
+
+    // Tipping tiers (Standard / Generous / Legend) should appear only once (in right pane), not under Total Bill
+    assertEquals(1, composeTestRule.onAllNodesWithText("Standard").fetchSemanticsNodes().size)
+    assertEquals(1, composeTestRule.onAllNodesWithText("Generous").fetchSemanticsNodes().size)
+    assertEquals(1, composeTestRule.onAllNodesWithText("Legend").fetchSemanticsNodes().size)
+
+    // Currency converter toggle is present; converted readout hidden initially
+    composeTestRule.onNodeWithTag("tablet_currency_converter_toggle").assertExists()
+    composeTestRule.onNodeWithTag("tablet_converted_total_text").assertDoesNotExist()
+
+    // Enable converter toggle -> shows converted EUR total & per-person share for US (USD -> EUR)
+    composeTestRule.onNodeWithTag("tablet_currency_converter_toggle").performClick()
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tablet_converted_total_text").assertExists()
+    composeTestRule.onNodeWithTag("tablet_converted_share_text").assertExists()
+
+    // Switch country to Japan (JPY) -> secondary currency automatically updates to USD ($)
+    viewModel.selectCountry(CountryDataRegistry.getCountryByIso("JP"))
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tablet_converted_total_text").assertExists()
+    composeTestRule.onNodeWithText("Show in USD ($)").assertExists()
+
+    // Toggle converter back off -> hides converted total readout
+    composeTestRule.onNodeWithTag("tablet_currency_converter_toggle").performClick()
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tablet_converted_total_text").assertDoesNotExist()
+  }
+
+  @Test
+  @Config(qualifiers = "w1024dp-h768dp-mdpi")
+  fun `verify total bill font size is enlarged in tablet mode compared to compact phone mode`() {
+    val viewModel = TippyViewModel()
+    viewModel.selectCountry(CountryDataRegistry.getCountryByIso("US"))
+    viewModel.updateBillAmount("100.00")
+
+    val tabletModeState = androidx.compose.runtime.mutableStateOf(false)
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        val uiState by viewModel.uiState.collectAsState()
+        HeroCalculationCard(
+          uiState = uiState,
+          onRoundUp = {},
+          onRoundDown = {},
+          isTabletMode = tabletModeState.value
+        )
+      }
+    }
+
+    composeTestRule.waitForIdle()
+    val phoneResults = mutableListOf<androidx.compose.ui.text.TextLayoutResult>()
+    composeTestRule.onNodeWithTag("hero_total_bill_text", useUnmergedTree = true)
+      .fetchSemanticsNode()
+      .config[androidx.compose.ui.semantics.SemanticsActions.GetTextLayoutResult]
+      .action?.invoke(phoneResults)
+    val phoneFontSizeSp = phoneResults.first().layoutInput.style.fontSize.value
+
+    tabletModeState.value = true
+    composeTestRule.waitForIdle()
+    val tabletResults = mutableListOf<androidx.compose.ui.text.TextLayoutResult>()
+    composeTestRule.onNodeWithTag("hero_total_bill_text", useUnmergedTree = true)
+      .fetchSemanticsNode()
+      .config[androidx.compose.ui.semantics.SemanticsActions.GetTextLayoutResult]
+      .action?.invoke(tabletResults)
+    val tabletFontSizeSp = tabletResults.first().layoutInput.style.fontSize.value
+
+    assertTrue(
+      "Expected tablet Total Bill font ($tabletFontSizeSp sp) > phone font ($phoneFontSizeSp sp)",
+      tabletFontSizeSp > phoneFontSizeSp
+    )
+    assertEquals(62.sp.value, tabletFontSizeSp, 0.1f)
+  }
+
+  @Test
+  @Config(qualifiers = "w1024dp-h900dp-mdpi")
+  fun `verify settings and history sheets transition from single pane into tablet side overlays across 840dp breakpoint`() {
+    val viewModel = TippyViewModel()
+    val viewportWidthState = androidx.compose.runtime.mutableStateOf(412.dp)
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        Box(modifier = Modifier.width(viewportWidthState.value)) {
+          val uiState by viewModel.uiState.collectAsState()
+          TippyMainHost(
+            uiState = uiState,
+            viewModel = viewModel,
+            currentDarkTheme = false
+          )
+        }
+      }
+    }
+
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tablet_calculator_dashboard").assertDoesNotExist()
+
+    // Open Settings while in single-pane phone layout (412dp <= 840dp)
+    composeTestRule.onNodeWithTag("settings_button").performClick()
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("settings_sheet").assertExists()
+    composeTestRule.onNodeWithTag("tablet_settings_side_panel").assertDoesNotExist()
+
+    // Resize above 840dp into two-pane Tablet Mode while Settings remains open
+    viewportWidthState.value = 960.dp
+    composeTestRule.waitForIdle()
+
+    // Two-pane dashboard and sliding Settings side overlay both appear cleanly
+    composeTestRule.onNodeWithTag("tablet_calculator_dashboard").assertExists()
+    composeTestRule.onNodeWithTag("tablet_settings_side_panel").assertExists()
+    composeTestRule.onNodeWithTag("settings_sheet").assertExists()
+
+    // Open Tip History directly from Settings side panel -> transitions to History side overlay
+    composeTestRule.onNodeWithTag("tip_history_button").performClick()
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tip_history_bottom_sheet").assertExists()
+    composeTestRule.onNodeWithTag("tablet_settings_side_panel").assertDoesNotExist()
+
+    // Resize back below 840dp -> two-pane dashboard exits and History remains open in compact sheet
+    viewportWidthState.value = 412.dp
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tablet_calculator_dashboard").assertDoesNotExist()
+    composeTestRule.onNodeWithTag("tip_history_bottom_sheet").assertExists()
+  }
+
+  @Test
+  @Config(qualifiers = "w1024dp-h768dp-mdpi")
+  fun `verify tablet currency converter swap button toggles between home and destination currency in one tap`() {
+    val viewModel = TippyViewModel()
+    // Home currency defaults to USD (en_US); pick EUR first in Settings to verify custom home currency,
+    // then select Japan (JPY) as destination country.
+    viewModel.selectCurrency(CurrencyOption.EUR)
+    viewModel.selectCountry(CountryDataRegistry.getCountryByIso("JP"))
+    viewModel.updateBillAmount("1000")
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        val uiState by viewModel.uiState.collectAsState()
+        TippyMainHost(
+          uiState = uiState,
+          viewModel = viewModel,
+          currentDarkTheme = false
+        )
+      }
+    }
+
+    composeTestRule.waitForIdle()
+
+    // Initially active in Japan's destination currency (JPY) with secondary = home currency (EUR)
+    assertEquals(CurrencyOption.JPY, viewModel.uiState.value.selectedCurrency)
+    assertEquals(CurrencyOption.EUR, viewModel.uiState.value.homeCurrency)
+    composeTestRule.onNodeWithTag("tablet_currency_swap_button").assertExists()
+    composeTestRule.onNodeWithText("Swap JPY ↔ EUR").assertExists()
+    composeTestRule.onNodeWithText("Show in EUR (€)").assertExists()
+
+    // Expand converter preview so live converted readout can also be observed across swap
+    composeTestRule.onNodeWithTag("tablet_currency_converter_toggle").performClick()
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("tablet_converted_total_text").assertExists()
+
+    // One tap on dedicated swap button -> switches calculator to home currency (EUR) & secondary to JPY
+    composeTestRule.onNodeWithTag("tablet_currency_swap_button").performClick()
+    composeTestRule.waitForIdle()
+    assertEquals(CurrencyOption.EUR, viewModel.uiState.value.selectedCurrency)
+    composeTestRule.onNodeWithText("Swap EUR ↔ JPY").assertExists()
+    composeTestRule.onNodeWithText("Show in JPY (¥)").assertExists()
+    composeTestRule.onNodeWithTag("tablet_converted_total_text").assertExists()
+
+    // Second tap -> swaps cleanly back to destination currency (JPY) & secondary to EUR
+    composeTestRule.onNodeWithTag("tablet_currency_swap_button").performClick()
+    composeTestRule.waitForIdle()
+    assertEquals(CurrencyOption.JPY, viewModel.uiState.value.selectedCurrency)
+    composeTestRule.onNodeWithText("Swap JPY ↔ EUR").assertExists()
+    composeTestRule.onNodeWithText("Show in EUR (€)").assertExists()
+  }
+
+  @Test
+  fun `verify country registry and repository contain exactly 192 countries while preserving HK and TW lookup`() {
+    val context = ApplicationProvider.getApplicationContext<Context>()
+    val registryCountries = CountryDataRegistry.getAllCountries()
+    val repoCountries = GlobalTippingRepository(context).getAllCountries()
+
+    assertEquals(192, registryCountries.size)
+    assertEquals(192, repoCountries.size)
+    assertEquals("HKD", CountryDataRegistry.getCountryByIso("HK").localCurrency)
+    assertEquals("HKD", GlobalTippingRepository(context).getCountryByIso("HK").localCurrency)
+    assertEquals("TWD", CountryDataRegistry.getCountryByIso("TW").localCurrency)
+  }
+
+  @Test
+  fun `verify country selector bottom sheet displays 192 never 193 across all 11 i18n languages on phone`() {
+    val baseContext = ApplicationProvider.getApplicationContext<Context>()
+    val languages = com.example.i18n.LanguageResolver.SUPPORTED_LANGUAGES
+    assertEquals(11, languages.size)
+    val langState = androidx.compose.runtime.mutableStateOf(languages.first())
+
+    composeTestRule.setContent {
+      TippyTheme(darkTheme = false, isSeniorMode = false) {
+        com.example.ui.components.CountrySelectionBottomSheet(
+          visible = true,
+          currentCountry = CountryDataRegistry.getCountryByIso("HK"),
+          allCountries = CountryDataRegistry.getAllCountries(),
+          currentLanguage = langState.value,
+          isTabletLayout = false,
+          onDismiss = {},
+          onSelectCountry = {}
+        )
+      }
+    }
+
+    for (lang in languages) {
+      langState.value = lang
+      composeTestRule.waitForIdle()
+
+      val localizedContext = com.example.i18n.LocaleContextWrapper.wrap(baseContext, lang)
+      val expectedCountText = localizedContext.getString(R.string.countries_count_label, 192)
+      val countNode = composeTestRule.onNodeWithTag("country_sheet_count_text", useUnmergedTree = true)
+      countNode.assertExists()
+      val actualText = countNode.fetchSemanticsNode()
+        .config[androidx.compose.ui.semantics.SemanticsProperties.Text]
+        .joinToString("") { it.text }
+
+      assertEquals("Mismatch for locale=$lang", expectedCountText, actualText)
+      assertTrue("Expected 192 in '$actualText' ($lang)", actualText.contains("192") || actualText.contains("১৯২") || actualText.contains("١٩٢"))
+      assertFalse("Unexpected 193 in '$actualText' ($lang)", actualText.contains("193") || actualText.contains("১৯৩") || actualText.contains("١٩٣"))
+    }
+  }
+
+  @Test
+  @Config(qualifiers = "w1024dp-h768dp-mdpi")
+  fun `verify tablet mode country sheet and explorer grid display 192 never 193 across all 11 i18n languages`() {
+    val baseContext = ApplicationProvider.getApplicationContext<Context>()
+    val languages = com.example.i18n.LanguageResolver.SUPPORTED_LANGUAGES
+    assertEquals(11, languages.size)
+    val langState = androidx.compose.runtime.mutableStateOf(languages.first())
+    val showQuickSheet = androidx.compose.runtime.mutableStateOf(true)
+
+    composeTestRule.setContent {
+      val wrappedContext = com.example.i18n.LocaleContextWrapper.wrap(baseContext, langState.value)
+      androidx.compose.runtime.CompositionLocalProvider(
+        androidx.compose.ui.platform.LocalContext provides wrappedContext,
+        androidx.compose.ui.platform.LocalConfiguration provides wrappedContext.resources.configuration
+      ) {
+        TippyTheme(darkTheme = false, isSeniorMode = false) {
+          CountrySelectionView(
+            allCountries = CountryDataRegistry.getAllCountries(),
+            currentCountry = CountryDataRegistry.getCountryByIso("US"),
+            currentLanguage = langState.value,
+            isTabletLayout = true,
+            onBack = {},
+            onSelectCountry = {}
+          )
+          com.example.ui.components.CountrySelectionBottomSheet(
+            visible = showQuickSheet.value,
+            currentCountry = CountryDataRegistry.getCountryByIso("US"),
+            allCountries = CountryDataRegistry.getAllCountries(),
+            currentLanguage = langState.value,
+            isTabletLayout = true,
+            onDismiss = {},
+            onSelectCountry = {}
+          )
+        }
+      }
+    }
+
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("country_grid_tablet").assertExists()
+
+    for (lang in languages) {
+      langState.value = lang
+      composeTestRule.waitForIdle()
+
+      val localizedContext = com.example.i18n.LocaleContextWrapper.wrap(baseContext, lang)
+      val expectedExplorerText = localizedContext.getString(R.string.regional_matrices_count)
+      val expectedSheetText = localizedContext.getString(R.string.countries_count_label, 192)
+
+      val explorerText = composeTestRule.onNodeWithTag("explorer_countries_count_text", useUnmergedTree = true)
+        .fetchSemanticsNode()
+        .config[androidx.compose.ui.semantics.SemanticsProperties.Text]
+        .joinToString("") { it.text }
+      assertEquals("Explorer count mismatch for locale=$lang", expectedExplorerText, explorerText)
+      assertFalse("Unexpected 193 in explorer ($lang): $explorerText", explorerText.contains("193") || explorerText.contains("১৯৩"))
+
+      val sheetText = composeTestRule.onNodeWithTag("country_sheet_count_text", useUnmergedTree = true)
+        .fetchSemanticsNode()
+        .config[androidx.compose.ui.semantics.SemanticsProperties.Text]
+        .joinToString("") { it.text }
+      assertEquals("Tablet side sheet count mismatch for locale=$lang", expectedSheetText, sheetText)
+      assertFalse("Unexpected 193 in tablet side sheet ($lang): $sheetText", sheetText.contains("193") || sheetText.contains("১৯৩"))
+    }
+
+    // Also verify search filtering updates the tablet explorer count accurately
+    showQuickSheet.value = false
+    langState.value = "en"
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("country_search_field").performTextInput("Japan")
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("explorer_countries_count_text").assertExists()
+    val filteredText = composeTestRule.onNodeWithTag("explorer_countries_count_text", useUnmergedTree = true)
+      .fetchSemanticsNode()
+      .config[androidx.compose.ui.semantics.SemanticsProperties.Text]
+      .joinToString("") { it.text }
+    assertTrue("Expected filtered count '1 Countries', got '$filteredText'", filteredText.contains("1 "))
   }
 }

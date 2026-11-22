@@ -132,6 +132,9 @@ object GlobalExplorerLocalization {
 
     /**
      * Normalizes ISO alpha-2/3 country codes for reliable Java Locale resolution.
+     *
+     * @param iso Two-letter or three-letter country code (e.g., `"US"`, `"USA"`, `"GBR"`).
+     * @return Normalized uppercase ISO alpha-2 code (or the original string if unrecognized).
      */
     fun normalizeCountryIso(iso: String): String {
         return when (iso.uppercase(Locale.US).trim()) {

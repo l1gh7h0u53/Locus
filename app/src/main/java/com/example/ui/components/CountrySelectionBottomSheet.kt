@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -44,6 +45,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,6 +53,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -60,10 +65,13 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.CountryTippingData
 import com.example.R
+import com.example.i18n.LanguageResolver
+import com.example.i18n.LocaleContextWrapper
 import com.example.i18n.getLocalizedCountry
 import com.example.i18n.getLocalizedLabel
 import com.example.i18n.getLocalizedMatrixName
@@ -74,8 +82,11 @@ import java.util.Locale
  */
 object CountryFlagHelper {
     /**
-     * Converts a 2-letter ISO country code (e.g. "US", "IT", "AT", "ES", "MA") into its corresponding national flag emoji.
-     * Falls back to the globe symbol 🌐 if the ISO code is invalid or missing.
+     * Converts a 2-letter ISO country code (e.g., `"US"`, `"IT"`, `"AT"`, `"ES"`, `"MA"`) into its
+     * corresponding national flag emoji, falling back to the globe symbol 🌐 when invalid.
+     *
+     * @param iso Two-letter ISO 3166-1 alpha-2 country code.
+     * @return Unicode regional indicator flag emoji, or `"🌐"` if [iso] is not a valid 2-letter ASCII code.
      */
     fun getFlagEmoji(iso: String): String {
         if (iso.length != 2) return "🌐"
@@ -101,6 +112,8 @@ object CountryFlagHelper {
  * @param currentCountry Currently active [CountryTippingData].
  * @param allCountries Complete list of available world countries.
  * @param currentLanguage Active 2-letter ISO language code.
+ * @param isTabletLayout When true (`> 840dp`), renders as a coordinated side-sheet overlay instead
+ *   of a compact modal bottom sheet.
  * @param onDismiss Callback invoked when the user dismisses the bottom sheet.
  * @param onSelectCountry Callback invoked when the user picks a new active nation.
  * =========================================================================================
@@ -112,18 +125,24 @@ fun CountrySelectionBottomSheet(
     currentCountry: CountryTippingData,
     allCountries: List<CountryTippingData>,
     currentLanguage: String = "en",
+    isTabletLayout: Boolean = false,
     onDismiss: () -> Unit,
     onSelectCountry: (CountryTippingData) -> Unit
 ) {
-    if (!visible) return
-
-    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false)
     var searchQuery by remember { mutableStateOf("") }
 
-    val filteredCountries = remember(searchQuery, allCountries, currentLanguage) {
+    // Filter by English name, ISO code, localized country name, matrix archetype, or currency;
+    // when search is blank, pin the active country (if present in the 192 list) at the top.
+    val filteredCountries = remember(searchQuery, allCountries, currentCountry, currentLanguage) {
         val q = searchQuery.trim().lowercase(Locale.US)
         if (q.isEmpty()) {
-            listOf(currentCountry) + (allCountries.filter { !it.iso.equals(currentCountry.iso, ignoreCase = true) }.sortedBy { it.country })
+            val matchingCurrent = allCountries.firstOrNull {
+                it.iso.equals(currentCountry.iso, ignoreCase = true)
+            }
+            val remaining = allCountries
+                .filter { !it.iso.equals(currentCountry.iso, ignoreCase = true) }
+                .sortedBy { it.country }
+            if (matchingCurrent != null) listOf(matchingCurrent) + remaining else remaining
         } else {
             allCountries.filter { country ->
                 val localizedCountry = country.getLocalizedCountry(currentLanguage).lowercase(Locale.US)
@@ -141,20 +160,33 @@ fun CountrySelectionBottomSheet(
         }
     }
 
-    ModalBottomSheet(
-        onDismissRequest = onDismiss,
-        sheetState = sheetState,
-        containerColor = MaterialTheme.colorScheme.surface,
-        dragHandle = { BottomSheetDefaults.DragHandle() },
-        shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp),
-        modifier = Modifier.testTag("country_selection_sheet")
-    ) {
+    val baseContext = LocalContext.current
+    val localizedContext = remember(currentLanguage, baseContext) {
+        try {
+            LocaleContextWrapper.wrap(baseContext, currentLanguage)
+        } catch (_: Throwable) {
+            baseContext
+        }
+    }
+    val layoutDir = if (LanguageResolver.isRtl(currentLanguage)) {
+        LayoutDirection.Rtl
+    } else {
+        LayoutDirection.Ltr
+    }
+
+    // Shared inner sheet body reused by both TabletSideSheetOverlay (> 840dp) and ModalBottomSheet
+    val sheetBody: @Composable () -> Unit = {
+        CompositionLocalProvider(
+            LocalContext provides localizedContext,
+            LocalConfiguration provides localizedContext.resources.configuration,
+            LocalLayoutDirection provides layoutDir
+        ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .navigationBarsPadding()
+                .then(if (isTabletLayout) Modifier.fillMaxSize() else Modifier.navigationBarsPadding())
                 .padding(horizontal = 20.dp)
-                .padding(bottom = 16.dp)
+                .padding(top = if (isTabletLayout) 20.dp else 0.dp, bottom = 16.dp)
         ) {
             // Header Row
             Row(
@@ -177,7 +209,8 @@ fun CountrySelectionBottomSheet(
                         ),
                         style = MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.testTag("country_sheet_count_text")
                     )
                 }
 
@@ -328,7 +361,7 @@ fun CountrySelectionBottomSheet(
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(380.dp),
+                        .then(if (isTabletLayout) Modifier.weight(1f) else Modifier.height(380.dp)),
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                     contentPadding = PaddingValues(bottom = 12.dp)
                 ) {
@@ -470,6 +503,31 @@ fun CountrySelectionBottomSheet(
                     }
                 }
             }
+        }
+        }
+    }
+
+    // Coordinated trailing side overlay in Tablet Mode (> 840dp)
+    TabletSideSheetOverlay(
+        visible = visible && isTabletLayout,
+        onDismiss = onDismiss,
+        panelTestTag = "country_selection_sheet"
+    ) {
+        sheetBody()
+    }
+
+    // Standard compact ModalBottomSheet on handheld screens (<= 840dp)
+    if (visible && !isTabletLayout) {
+        val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false)
+        ModalBottomSheet(
+            onDismissRequest = onDismiss,
+            sheetState = sheetState,
+            containerColor = MaterialTheme.colorScheme.surface,
+            dragHandle = { BottomSheetDefaults.DragHandle() },
+            shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp),
+            modifier = Modifier.testTag("country_selection_sheet")
+        ) {
+            sheetBody()
         }
     }
 }

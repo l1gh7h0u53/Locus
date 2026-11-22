@@ -2,6 +2,12 @@ package com.example.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+/**
+ * Material 3 Expressive color tokens for Locus across three visual tiers:
+ * 1. Light Palette (Royal Violet, Teal, Warm Amber accents).
+ * 2. Dark Palette (Calmed Midnight Slate, Soft Lilac, Muted Sage).
+ * 3. Senior AAA High-Contrast Palettes (Pure black/white surfaces with bold accents).
+ */
 // Light Theme Palette (Locus Expressive Violet / Lavender / Mint)
 val PrimaryLight = Color(0xFF6B2FA8) // Expressive Royal Violet
 val OnPrimaryLight = Color(0xFFFFFFFF)

@@ -451,4 +451,10 @@
     <string name="tip_badge_base_change">Base change</string>
     <string name="tip_badge_per_drink">per drink</string>
     <string name="tip_badge_drink">Drink</string>
+
+    <!-- Tablet Currency Converter Strings -->
+    <string name="tablet_currency_converter_label">Show in %1$s</string>
+    <string name="tablet_currency_converter_rate">1 %1$s ≈ %2$s %3$s</string>
+    <string name="tablet_currency_converter_offline">Offline reference rate</string>
+    <string name="tablet_currency_swap_action">Swap %1$s ↔ %2$s</string>
 </resources>

@@ -7,7 +7,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.sp
 
-// We pair a clean geometric gothic sans for headings with elegant monospace details
+/**
+ * Baseline Material 3 typography scale for Standard & Tablet calculator screens.
+ * Uses clean geometric sans weights paired with tuned line heights for legible currency readouts.
+ */
 val Typography = Typography(
     displayLarge = TextStyle(
         fontFamily = FontFamily.Default,
@@ -78,7 +81,10 @@ val Typography = Typography(
     )
 )
 
-// Extra massive typography sizes strictly for Senior Mode (Accessible Large Text)
+/**
+ * Enlarged, heavy-weight typography tokens activated when Senior Accessibility Mode is enabled,
+ * maximizing legibility for elderly and low-vision users.
+ */
 object SeniorTypography {
     val displayLarge = TextStyle(
         fontFamily = FontFamily.Default,

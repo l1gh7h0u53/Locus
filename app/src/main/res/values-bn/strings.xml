@@ -457,4 +457,10 @@
     <string name="tip_badge_base_change">মূল খুচরো</string>
     <string name="tip_badge_per_drink">প্রতি পানীয়</string>
     <string name="tip_badge_drink">পানীয়</string>
+
+    <!-- Tablet Currency Converter Strings -->
+    <string name="tablet_currency_converter_label">%1$s-এ দেখান</string>
+    <string name="tablet_currency_converter_rate">1 %1$s ≈ %2$s %3$s</string>
+    <string name="tablet_currency_converter_offline">অফলাইন নির্দেশক হার</string>
+    <string name="tablet_currency_swap_action">%1$s ↔ %2$s অদলবদল করুন</string>
 </resources>

@@ -457,4 +457,10 @@
     <string name="tip_badge_base_change">आधार छुट्टा</string>
     <string name="tip_badge_per_drink">प्रति पेय</string>
     <string name="tip_badge_drink">पेय</string>
+
+    <!-- Tablet Currency Converter Strings -->
+    <string name="tablet_currency_converter_label">%1$s में दिखाएँ</string>
+    <string name="tablet_currency_converter_rate">1 %1$s ≈ %2$s %3$s</string>
+    <string name="tablet_currency_converter_offline">ऑफ़लाइन संदर्भ दर</string>
+    <string name="tablet_currency_swap_action">%1$s ↔ %2$s बदलें</string>
 </resources>

@@ -3,7 +3,13 @@ package com.example.i18n
 import java.util.Locale
 
 /**
- * Standard configuration schema for target languages.
+ * Standard configuration schema for a supported UI target language.
+ *
+ * @property code Two-letter ISO-639-1 language code (e.g., `"en"`, `"ar"`, `"ja"`).
+ * @property name Human-readable language display name in English and native script.
+ * @property dir Layout text direction (`"ltr"` or `"rtl"`).
+ * @property script Four-letter ISO-15924 script identifier (e.g., `"Latn"`, `"Arab"`, `"Hans"`).
+ * @property plurals Number of plural forms defined by CLDR for this language.
  */
 data class TargetLanguageInfo(
     val code: String,
@@ -16,14 +22,16 @@ data class TargetLanguageInfo(
 /**
  * Complete Offline Country-to-Language Resolver.
  * Resolves language completely offline using:
- * 1. Direct System Locale Check (if in target 10 languages)
+ * 1. Direct System Locale Check (if in target 11 languages)
  * 2. Country ISO Mapping Lookup (Telephony SIM / Locale Country)
- * 3. Hard Fallback to English ("en")
+ * 3. Hard Fallback to English (`"en"`)
  */
 object LanguageResolver {
 
+    /** Default fallback language code when neither locale nor country ISO matches. */
     const val DEFAULT_LANGUAGE = "en"
 
+    /** Registry of all 11 supported languages keyed by 2-letter ISO-639-1 code. */
     val TARGET_LANGUAGES = mapOf(
         "en" to TargetLanguageInfo("en", "English", "ltr", "Latn", 2),
         "zh" to TargetLanguageInfo("zh", "Mandarin Chinese (中文)", "ltr", "Hans", 1),
@@ -38,6 +46,7 @@ object LanguageResolver {
         "ja" to TargetLanguageInfo("ja", "Japanese (日本語)", "ltr", "Jpan", 1)
     )
 
+    /** Set of all supported ISO-639-1 language codes derived from [TARGET_LANGUAGES]. */
     val SUPPORTED_LANGUAGES = TARGET_LANGUAGES.keys
 
     // Static offline country-to-language routing table
@@ -91,10 +100,14 @@ object LanguageResolver {
     )
 
     /**
-     * Resolves the nearest language code ("en", "de", "ar", etc.)
-     * 1. Direct System Locale Check (if in target 10 languages)
+     * Resolves the nearest supported language code (`"en"`, `"de"`, `"ar"`, etc.):
+     * 1. Direct System Locale Check (if in [SUPPORTED_LANGUAGES])
      * 2. Offline Country ISO Mapping (SIM / Network / Region)
-     * 3. Hard Fallback to English ("en")
+     * 3. Hard Fallback to [DEFAULT_LANGUAGE] (`"en"`)
+     *
+     * @param systemLang Device locale language tag (e.g., `"en-US"`, `"de"`).
+     * @param countryIso Optional 2-letter ISO country code from telephony or locale.
+     * @return Resolved 2-letter ISO-639-1 language code from [SUPPORTED_LANGUAGES].
      */
     fun resolveLanguage(systemLang: String, countryIso: String?): String {
         val normalizedLang = systemLang.lowercase(Locale.US).split("-", "_")[0]
@@ -115,15 +128,21 @@ object LanguageResolver {
     }
 
     /**
-     * Checks if language code is RTL.
+     * Checks whether the given language code uses Right-to-Left (RTL) layout direction.
+     *
+     * @param languageCode Two-letter ISO-639-1 language code.
+     * @return `true` if the language requires RTL layout direction (e.g., Arabic).
      */
     fun isRtl(languageCode: String): Boolean {
         return TARGET_LANGUAGES[languageCode]?.dir == "rtl" || languageCode == "ar"
     }
 
     /**
-     * Checks if language code is one of the romance languages with longer button text strings
-     * (Spanish, French, Portuguese) requiring taller buttons and adaptive line-wrapping.
+     * Checks whether the language typically produces longer button labels (Spanish, French,
+     * Portuguese) that benefit from taller button containers and adaptive wrapping.
+     *
+     * @param languageCode Optional language code or tag; returns `false` when `null`.
+     * @return `true` if [languageCode] is `"es"`, `"fr"`, or `"pt"`.
      */
     fun isLongTextLanguage(languageCode: String?): Boolean {
         if (languageCode == null) return false

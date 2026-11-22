@@ -457,4 +457,10 @@
     <string name="tip_badge_base_change">基本お釣り</string>
     <string name="tip_badge_per_drink">1杯あたり</string>
     <string name="tip_badge_drink">ドリンク</string>
+
+    <!-- Tablet Currency Converter Strings -->
+    <string name="tablet_currency_converter_label">%1$s で表示</string>
+    <string name="tablet_currency_converter_rate">1 %1$s ≈ %2$s %3$s</string>
+    <string name="tablet_currency_converter_offline">オフライン参考レート</string>
+    <string name="tablet_currency_swap_action">%1$s ↔ %2$s を切替</string>
 </resources>

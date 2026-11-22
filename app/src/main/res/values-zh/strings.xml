@@ -457,4 +457,10 @@
     <string name="tip_badge_base_change">基本零钱</string>
     <string name="tip_badge_per_drink">每杯饮品</string>
     <string name="tip_badge_drink">饮品</string>
+
+    <!-- Tablet Currency Converter Strings -->
+    <string name="tablet_currency_converter_label">以 %1$s 显示</string>
+    <string name="tablet_currency_converter_rate">1 %1$s ≈ %2$s %3$s</string>
+    <string name="tablet_currency_converter_offline">离线参考汇率</string>
+    <string name="tablet_currency_swap_action">切换 %1$s ↔ %2$s</string>
 </resources>

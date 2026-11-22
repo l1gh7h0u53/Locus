@@ -129,6 +129,26 @@ class HapticFeedbackService(private val context: Context) {
         }
     }
 
+    /** Most recent tactile keypad pattern played through this service (useful for telemetry and tests). */
+    @Volatile
+    var lastKeypadPattern: HapticFeedbackManager.TactileKeypadPattern? = null
+        private set
+
+    /**
+     * Triggers a hardware-calibrated tactile vibration pattern for the Tablet Mode numeric keypad
+     * (numeric click, decimal detent, backspace thud, quick-add step, confirmation, or boundary reject).
+     *
+     * @param pattern Calibrated [HapticFeedbackManager.TactileKeypadPattern] to actuate.
+     * @param view Optional View attached to the Compose window.
+     */
+    fun performKeypadPattern(
+        pattern: HapticFeedbackManager.TactileKeypadPattern,
+        view: View? = null
+    ) {
+        lastKeypadPattern = pattern
+        HapticFeedbackManager.keypadPattern(pattern, view)
+    }
+
     /**
      * Standard UI click haptic for simple buttons.
      *

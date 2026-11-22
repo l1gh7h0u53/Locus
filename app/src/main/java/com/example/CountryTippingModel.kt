@@ -53,6 +53,7 @@ data class ServiceRule(
     val notesKey: String? = null,
     val serviceTypeKey: String? = null
 ) {
+    /** Alias exposing [serviceType] for callers referencing a readable display key. */
     val serviceName: String get() = serviceType
 
     /**
@@ -101,8 +102,12 @@ data class ServiceRule(
     fun getLocalizedServiceName(context: Context): String = getLocalizedServiceType(context)
 
     /**
-     * Localizes descriptive tip tier labels (e.g. "Round up", "Small change", "per drink")
+     * Localizes descriptive tip tier labels (e.g., `"Round up"`, `"Small change"`, `"per drink"`)
      * while preserving numeric percentages and currency figures.
+     *
+     * @param rawTip Raw tipping tier descriptor from the country dataset.
+     * @param context Android context used to look up localized string tokens.
+     * @return Localized tip tier label suitable for chip and badge display.
      */
     fun getLocalizedTipText(rawTip: String, context: Context): String {
         var result = rawTip
@@ -134,8 +139,28 @@ data class ServiceRule(
         return result
     }
 
+    /**
+     * Returns the localized label for the baseline/standard tip tier (e.g., `"15%"` or localized `"Round up"`).
+     *
+     * @param context Android context used for string localization.
+     * @return Localized standard tip tier string.
+     */
     fun getLocalizedStandardTip(context: Context): String = getLocalizedTipText(standardTip, context)
+
+    /**
+     * Returns the localized label for the generous tip tier.
+     *
+     * @param context Android context used for string localization.
+     * @return Localized generous tip tier string.
+     */
     fun getLocalizedGenerousTip(context: Context): String = getLocalizedTipText(generousTip, context)
+
+    /**
+     * Returns the localized label for the legend tip tier.
+     *
+     * @param context Android context used for string localization.
+     * @return Localized legend tip tier string.
+     */
     fun getLocalizedLegendTip(context: Context): String = getLocalizedTipText(legendTip, context)
 
     /**

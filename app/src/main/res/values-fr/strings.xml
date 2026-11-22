@@ -457,4 +457,10 @@
     <string name="tip_badge_base_change">Monnaie de base</string>
     <string name="tip_badge_per_drink">par verre</string>
     <string name="tip_badge_drink">Verre</string>
+
+    <!-- Tablet Currency Converter Strings -->
+    <string name="tablet_currency_converter_label">Afficher en %1$s</string>
+    <string name="tablet_currency_converter_rate">1 %1$s ≈ %2$s %3$s</string>
+    <string name="tablet_currency_converter_offline">Taux indicatif hors ligne</string>
+    <string name="tablet_currency_swap_action">Permuter %1$s ↔ %2$s</string>
 </resources>

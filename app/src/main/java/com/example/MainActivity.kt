@@ -11,6 +11,7 @@ import com.example.ui.components.TipHistorySheet
 import com.example.ui.components.SettingsBottomSheet
 import com.example.ui.components.CountrySelectionBottomSheet
 import com.example.ui.components.CountryFlagHelper
+import com.example.ui.components.TabletCalculatorDashboard
 import com.example.history.TipHistoryDataStore
 import com.example.history.SavePromptMode
 import com.example.history.TipTransaction
@@ -22,10 +23,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.SizeTransform
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -38,13 +41,13 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -59,6 +62,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items as gridItems
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -164,6 +170,7 @@ import com.example.i18n.GlobalExplorerLocalization
 import com.example.i18n.getLocalizedCountry
 import com.example.i18n.getLocalizedMatrixName
 import com.example.i18n.getLocalizedLabel
+import com.example.shared.AdaptiveLayoutPolicy
 import com.example.ui.theme.TippyTheme
 import java.util.Locale
 
@@ -178,7 +185,10 @@ import java.util.Locale
  * =========================================================================================
  */
 enum class AppScreenMode {
+    /** Main tip calculator dashboard (phone, tablet two-pane, or Senior Mode). */
     CALCULATOR,
+
+    /** Full-screen Global Country Explorer unlocked via logo/theme Easter egg. */
     COUNTRY_SELECTOR
 }
 
@@ -562,139 +572,224 @@ fun TippyMainHost(
         screenMode = AppScreenMode.CALCULATOR
     }
 
-    // Material 3 Expressive Container Transition Animation between Calculator and Country Menu
-    AnimatedContent(
-        targetState = screenMode,
-        transitionSpec = {
-            if (targetState == AppScreenMode.COUNTRY_SELECTOR) {
-                (slideInVertically(
-                    animationSpec = spring(dampingRatio = Spring.DampingRatioLowBouncy, stiffness = Spring.StiffnessMediumLow),
-                    initialOffsetY = { fullHeight -> fullHeight / 4 }
-                ) + fadeIn(animationSpec = tween(300, easing = FastOutSlowInEasing)) +
-                 scaleIn(initialScale = 0.92f, animationSpec = spring(stiffness = Spring.StiffnessMediumLow)))
-                .togetherWith(
-                    slideOutVertically(
-                        animationSpec = tween(250, easing = FastOutSlowInEasing),
-                        targetOffsetY = { fullHeight -> -fullHeight / 8 }
-                    ) + fadeOut(animationSpec = tween(200)) +
-                    scaleOut(targetScale = 0.95f, animationSpec = tween(250))
-                )
-            } else {
-                (slideInVertically(
-                    animationSpec = spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessMediumLow),
-                    initialOffsetY = { fullHeight -> -fullHeight / 6 }
-                ) + fadeIn(animationSpec = tween(300, easing = FastOutSlowInEasing)) +
-                 scaleIn(initialScale = 0.95f, animationSpec = spring(stiffness = Spring.StiffnessMediumLow)))
-                .togetherWith(
-                    slideOutVertically(
-                        animationSpec = tween(250, easing = FastOutSlowInEasing),
-                        targetOffsetY = { fullHeight -> fullHeight / 4 }
-                    ) + fadeOut(animationSpec = tween(200)) +
-                    scaleOut(targetScale = 0.92f, animationSpec = tween(250))
-                )
-            }
-        },
-        modifier = Modifier.fillMaxSize(),
-        label = "SharedElementScreenTransition"
-    ) { currentMode ->
-        when (currentMode) {
-            AppScreenMode.CALCULATOR -> {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .verticalScroll(rememberScrollState())
-                            .padding(horizontal = 20.dp)
-                            .padding(top = 48.dp, bottom = 90.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        // Expressive App Header Row with Centralized Settings
-                        ExpressiveHeader(
-                            uiState = uiState,
-                            onLogoClick = {
-                                triggerHaptic()
-                            },
-                            onOpenCountryPicker = {
-                                triggerHaptic()
-                                showCountrySheet = true
-                            },
-                            onOpenSettings = {
-                                triggerHaptic()
-                                showSettingsSheet = true
-                            },
-                            onToggleSeniorMode = {
-                                triggerHaptic()
-                                viewModel.toggleSeniorMode()
-                            }
-                        )
+    // Responsive container measurement via shared AdaptiveLayoutPolicy (> 840dp triggers Tablet two-pane)
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val viewportWidth = maxWidth
+        val viewportHeight = maxHeight
+        val windowMetrics = remember(viewportWidth, viewportHeight, uiState.isSeniorMode) {
+            AdaptiveLayoutPolicy.resolveWindowMetrics(
+                windowWidthDp = viewportWidth.value,
+                windowHeightDp = viewportHeight.value,
+                isSeniorMode = uiState.isSeniorMode
+            )
+        }
+        val isTabletLayout = windowMetrics.isTwoPaneTablet
+        val isTabletModal = AdaptiveLayoutPolicy.isTwoPaneWidth(viewportWidth.value)
+        val isLandscapeViewport = viewportWidth > viewportHeight
+        val animatedHorizontalPadding by animateDpAsState(
+            targetValue = when {
+                isTabletLayout && isLandscapeViewport -> 28.dp
+                isTabletLayout -> 22.dp
+                else -> 20.dp
+            },
+            animationSpec = spring(
+                dampingRatio = Spring.DampingRatioNoBouncy,
+                stiffness = Spring.StiffnessMediumLow
+            ),
+            label = "CalculatorHorizontalPadding"
+        )
+        val animatedBottomPadding by animateDpAsState(
+            targetValue = if (isTabletLayout) 36.dp else 90.dp,
+            animationSpec = spring(
+                dampingRatio = Spring.DampingRatioNoBouncy,
+                stiffness = Spring.StiffnessMediumLow
+            ),
+            label = "CalculatorBottomPadding"
+        )
 
-                        Spacer(modifier = Modifier.height(12.dp))
-
-                        // Switch between Expressive standard mode and Senior High-Contrast Mode with smooth animated expansion
-                        AnimatedContent(
-                            targetState = uiState.isSeniorMode,
-                            transitionSpec = {
-                                (fadeIn(animationSpec = spring(stiffness = Spring.StiffnessMediumLow)) + 
-                                 scaleIn(initialScale = 0.96f, animationSpec = spring(stiffness = Spring.StiffnessMediumLow)))
-                                    .togetherWith(
-                                        fadeOut(animationSpec = spring(stiffness = Spring.StiffnessMediumLow)) + 
-                                        scaleOut(targetScale = 0.96f, animationSpec = spring(stiffness = Spring.StiffnessMediumLow))
-                                    )
-                            },
+        // Material 3 Expressive Container Transition Animation between Calculator and Country Menu
+        AnimatedContent(
+            targetState = screenMode,
+            transitionSpec = {
+                if (targetState == AppScreenMode.COUNTRY_SELECTOR) {
+                    (slideInVertically(
+                        animationSpec = spring(dampingRatio = Spring.DampingRatioLowBouncy, stiffness = Spring.StiffnessMediumLow),
+                        initialOffsetY = { fullHeight -> fullHeight / 4 }
+                    ) + fadeIn(animationSpec = tween(300, easing = FastOutSlowInEasing)) +
+                     scaleIn(initialScale = 0.92f, animationSpec = spring(stiffness = Spring.StiffnessMediumLow)))
+                    .togetherWith(
+                        slideOutVertically(
+                            animationSpec = tween(250, easing = FastOutSlowInEasing),
+                            targetOffsetY = { fullHeight -> -fullHeight / 8 }
+                        ) + fadeOut(animationSpec = tween(200)) +
+                        scaleOut(targetScale = 0.95f, animationSpec = tween(250))
+                    )
+                } else {
+                    (slideInVertically(
+                        animationSpec = spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessMediumLow),
+                        initialOffsetY = { fullHeight -> -fullHeight / 6 }
+                    ) + fadeIn(animationSpec = tween(300, easing = FastOutSlowInEasing)) +
+                     scaleIn(initialScale = 0.95f, animationSpec = spring(stiffness = Spring.StiffnessMediumLow)))
+                    .togetherWith(
+                        slideOutVertically(
+                            animationSpec = tween(250, easing = FastOutSlowInEasing),
+                            targetOffsetY = { fullHeight -> fullHeight / 4 }
+                        ) + fadeOut(animationSpec = tween(200)) +
+                        scaleOut(targetScale = 0.92f, animationSpec = tween(250))
+                    )
+                }
+            },
+            modifier = Modifier.fillMaxSize(),
+            label = "SharedElementScreenTransition"
+        ) { currentMode ->
+            when (currentMode) {
+                AppScreenMode.CALCULATOR -> {
+                    Box(modifier = Modifier.fillMaxSize()) {
+                        Column(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .animateContentSize(animationSpec = spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessMediumLow)),
-                            label = "SeniorModeContentTransition"
-                        ) { isSenior ->
-                            if (isSenior) {
-                                SeniorTippyLayout(
-                                    uiState = uiState,
-                                    viewModel = viewModel,
-                                    hapticService = hapticService,
-                                    triggerHaptic = triggerHaptic,
-                                    focusManager = focusManager,
-                                    keyboardController = keyboardController
-                                )
-                            } else {
-                                ExpressiveTippyLayout(
-                                    uiState = uiState,
-                                    viewModel = viewModel,
-                                    hapticService = hapticService,
-                                    triggerHaptic = triggerHaptic,
-                                    focusManager = focusManager,
-                                    keyboardController = keyboardController
-                                )
+                                .fillMaxSize()
+                                .verticalScroll(rememberScrollState())
+                                .padding(horizontal = animatedHorizontalPadding)
+                                .padding(top = 48.dp, bottom = animatedBottomPadding),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            // Expressive App Header Row with Centralized Settings & Country Quick Flag
+                            ExpressiveHeader(
+                                uiState = uiState,
+                                onLogoClick = {
+                                    triggerHaptic()
+                                },
+                                onOpenCountryPicker = {
+                                    triggerHaptic()
+                                    showCountrySheet = true
+                                },
+                                onOpenSettings = {
+                                    triggerHaptic()
+                                    showSettingsSheet = true
+                                },
+                                onToggleSeniorMode = {
+                                    triggerHaptic()
+                                    viewModel.toggleSeniorMode()
+                                }
+                            )
+
+                            Spacer(modifier = Modifier.height(12.dp))
+
+                            // Switch between Senior High-Contrast Mode, Tablet Two-Pane Dashboard, and Standard Mobile Layout
+                            AnimatedContent(
+                                targetState = Pair(uiState.isSeniorMode, isTabletLayout),
+                                transitionSpec = {
+                                    val enteringTwoPane = !targetState.first && targetState.second
+                                    val spatialSlide = if (enteringTwoPane) {
+                                        slideInHorizontally(
+                                            animationSpec = spring(
+                                                dampingRatio = Spring.DampingRatioNoBouncy,
+                                                stiffness = Spring.StiffnessMediumLow
+                                            ),
+                                            initialOffsetX = { fullWidth -> fullWidth / 12 }
+                                        )
+                                    } else {
+                                        slideInHorizontally(
+                                            animationSpec = spring(
+                                                dampingRatio = Spring.DampingRatioNoBouncy,
+                                                stiffness = Spring.StiffnessMediumLow
+                                            ),
+                                            initialOffsetX = { fullWidth -> -fullWidth / 12 }
+                                        )
+                                    }
+                                    (spatialSlide +
+                                     fadeIn(animationSpec = spring(stiffness = Spring.StiffnessMediumLow)) +
+                                     scaleIn(initialScale = 0.97f, animationSpec = spring(stiffness = Spring.StiffnessMediumLow)))
+                                        .togetherWith(
+                                            fadeOut(animationSpec = spring(stiffness = Spring.StiffnessMedium)) +
+                                            scaleOut(targetScale = 0.97f, animationSpec = spring(stiffness = Spring.StiffnessMedium))
+                                        )
+                                        .using(
+                                            SizeTransform(
+                                                clip = false,
+                                                sizeAnimationSpec = { _, _ ->
+                                                    spring(
+                                                        dampingRatio = Spring.DampingRatioNoBouncy,
+                                                        stiffness = Spring.StiffnessMediumLow
+                                                    )
+                                                }
+                                            )
+                                        )
+                                },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .animateContentSize(animationSpec = spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessMediumLow)),
+                                label = "AdaptiveCalculatorModeTransition"
+                            ) { (isSenior, useTabletDashboard) ->
+                                if (isSenior) {
+                                    Box(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        contentAlignment = Alignment.TopCenter
+                                    ) {
+                                        Box(modifier = Modifier.widthIn(max = 680.dp)) {
+                                            SeniorTippyLayout(
+                                                uiState = uiState,
+                                                viewModel = viewModel,
+                                                hapticService = hapticService,
+                                                triggerHaptic = triggerHaptic,
+                                                focusManager = focusManager,
+                                                keyboardController = keyboardController
+                                            )
+                                        }
+                                    }
+                                } else if (useTabletDashboard) {
+                                    TabletCalculatorDashboard(
+                                        uiState = uiState,
+                                        viewModel = viewModel,
+                                        hapticService = hapticService,
+                                        triggerHaptic = triggerHaptic,
+                                        focusManager = focusManager,
+                                        keyboardController = keyboardController,
+                                        viewportWidth = viewportWidth,
+                                        viewportHeight = viewportHeight
+                                    )
+                                } else {
+                                    ExpressiveTippyLayout(
+                                        uiState = uiState,
+                                        viewModel = viewModel,
+                                        hapticService = hapticService,
+                                        triggerHaptic = triggerHaptic,
+                                        focusManager = focusManager,
+                                        keyboardController = keyboardController
+                                    )
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            AppScreenMode.COUNTRY_SELECTOR -> {
-                CountrySelectionView(
-                    allCountries = uiState.allCountries,
-                    currentCountry = uiState.activeCountry,
-                    currentLanguage = uiState.currentLanguage,
-                    onBack = {
-                        HapticFeedbackManager.tick(view)
-                        screenMode = AppScreenMode.CALCULATOR
-                    },
-                    onSelectCountry = { selected ->
-                        viewModel.selectCountry(selected)
-                        HapticFeedbackManager.confirm(view)
-                        screenMode = AppScreenMode.CALCULATOR
-                    }
-                )
+                AppScreenMode.COUNTRY_SELECTOR -> {
+                    CountrySelectionView(
+                        allCountries = uiState.allCountries,
+                        currentCountry = uiState.activeCountry,
+                        currentLanguage = uiState.currentLanguage,
+                        isTabletLayout = isTabletLayout,
+                        onBack = {
+                            HapticFeedbackManager.tick(view)
+                            screenMode = AppScreenMode.CALCULATOR
+                        },
+                        onSelectCountry = { selected ->
+                            viewModel.selectCountry(selected)
+                            HapticFeedbackManager.confirm(view)
+                            screenMode = AppScreenMode.CALCULATOR
+                        }
+                    )
+                }
             }
         }
-    }
 
-    // Tip Calculation History Bottom Sheet
+    // Tip Calculation History Bottom Sheet / Tablet Dialog
     TipHistorySheet(
         visible = showHistorySheet,
         historyList = historyList,
         isSeniorMode = uiState.isSeniorMode,
         currentLanguage = uiState.currentLanguage,
+        isTabletLayout = isTabletModal,
         onLoadTransaction = { tx ->
             viewModel.updateBillAmount(tx.billAmount.toString())
             showHistorySheet = false
@@ -719,12 +814,13 @@ fun TippyMainHost(
         onDismiss = { showHistorySheet = false }
     )
 
-    // Expressive Country Selection Bottom Sheet (Quick manual override for cross-border travelers)
+    // Expressive Country Selection Bottom Sheet / Tablet Side Sheet (Quick manual override for cross-border travelers)
     CountrySelectionBottomSheet(
         visible = showCountrySheet,
         currentCountry = uiState.activeCountry,
         allCountries = remember { CountryDataRegistry.getAllCountries() },
         currentLanguage = uiState.currentLanguage,
+        isTabletLayout = isTabletModal,
         onDismiss = { showCountrySheet = false },
         onSelectCountry = { country ->
             showCountrySheet = false
@@ -733,7 +829,7 @@ fun TippyMainHost(
         }
     )
 
-    // Centralized Settings Bottom Sheet (Theme, Tip History, Language & Preferences)
+    // Centralized Settings Bottom Sheet / Tablet Dialog (Theme, Tip History, Language & Preferences)
     SettingsBottomSheet(
         visible = showSettingsSheet,
         currentDarkTheme = currentDarkTheme,
@@ -743,6 +839,7 @@ fun TippyMainHost(
         isManualLanguageOverride = uiState.isManualLanguageOverride,
         selectedCurrency = uiState.selectedCurrency,
         savePromptMode = savePromptMode,
+        isTabletLayout = isTabletModal,
         onDismiss = { showSettingsSheet = false },
         onSelectCurrency = { currency ->
             triggerHaptic()
@@ -809,7 +906,8 @@ fun TippyMainHost(
             }
         }
     )
-    }
+    } // end BoxWithConstraints
+    } // end CompositionLocalProvider
 }
 
 /**
@@ -855,7 +953,7 @@ private fun ExpressiveHeader(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        // Brand Title with Clickable App Logo (6-tap secret trigger)
+        // Brand Title with Clickable App Logo
         val isDark = when (uiState.isDarkMode) {
             true -> true
             false -> false
@@ -1154,13 +1252,15 @@ private fun ExpressiveTippyLayout(
  * @param uiState Reactive application state snapshot.
  * @param onRoundUp Callback to round total bill up to the next integer.
  * @param onRoundDown Callback to round total bill down to the nearest integer.
+ * @param isTabletMode Enlarges the Total Bill headline up to 62sp and increases card padding for Tablet Mode.
  * =========================================================================================
  */
 @Composable
-private fun HeroCalculationCard(
+internal fun HeroCalculationCard(
     uiState: TippyUiState,
     onRoundUp: () -> Unit,
-    onRoundDown: () -> Unit
+    onRoundDown: () -> Unit,
+    isTabletMode: Boolean = false
 ) {
             val totalCalcDesc = stringResource(R.string.total_calculation_desc)
             Card(
@@ -1178,7 +1278,7 @@ private fun HeroCalculationCard(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(24.dp),
+                .padding(if (isTabletMode) 28.dp else 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
                 // Top Metric Row: Total Bill Display
@@ -1200,9 +1300,21 @@ private fun HeroCalculationCard(
                     label = "TotalBillAnimation"
                 ) { total ->
                     val formatted = LocaleFormatter.formatCurrency(total, uiState.selectedCurrency, uiState.currentLanguage)
+                    val totalFontSize = if (isTabletMode) {
+                        when {
+                            formatted.length > 14 -> 44.sp
+                            formatted.length > 11 -> 52.sp
+                            else -> 62.sp
+                        }
+                    } else {
+                        44.sp
+                    }
                     Text(
                         text = formatted,
-                        style = MaterialTheme.typography.displayLarge.copy(fontSize = 44.sp),
+                        style = MaterialTheme.typography.displayLarge.copy(
+                            fontSize = totalFontSize,
+                            lineHeight = if (isTabletMode) (totalFontSize.value + 6).sp else 50.sp
+                        ),
                         color = MaterialTheme.colorScheme.primary,
                         fontWeight = FontWeight.Black,
                         maxLines = 1,
@@ -1254,7 +1366,7 @@ private fun HeroCalculationCard(
                         val formattedTip = LocaleFormatter.formatCurrency(uiState.tipAmount, uiState.selectedCurrency, uiState.currentLanguage)
                         Text(
                             text = formattedTip,
-                            style = MaterialTheme.typography.titleLarge,
+                            style = if (isTabletMode) MaterialTheme.typography.headlineSmall else MaterialTheme.typography.titleLarge,
                             color = MaterialTheme.colorScheme.onSurface,
                             fontWeight = FontWeight.ExtraBold,
                             textAlign = TextAlign.Center,
@@ -1302,7 +1414,7 @@ private fun HeroCalculationCard(
                         val formattedShare = LocaleFormatter.formatCurrency(uiState.sharePerPerson, uiState.selectedCurrency, uiState.currentLanguage)
                         Text(
                             text = formattedShare,
-                            style = MaterialTheme.typography.titleLarge,
+                            style = if (isTabletMode) MaterialTheme.typography.headlineSmall else MaterialTheme.typography.titleLarge,
                             color = MaterialTheme.colorScheme.onSurface,
                             fontWeight = FontWeight.ExtraBold,
                             textAlign = TextAlign.Center,
@@ -1359,6 +1471,7 @@ private fun HeroCalculationCard(
 
                     Button(
                         onClick = onRoundDown,
+                        enabled = uiState.isRoundDownEnabled,
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.surfaceVariant,
                             contentColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -1778,7 +1891,7 @@ private fun ServiceSelectorSection(
  * =========================================================================================
  */
 @Composable
-private fun TipPercentageSection(
+internal fun TipPercentageSection(
     uiState: TippyUiState,
     hapticService: HapticFeedbackService,
     onSelectRate: (Double) -> Unit,
@@ -2081,7 +2194,7 @@ private fun RateOptionButton(
  * =========================================================================================
  */
 @Composable
-private fun SplitBillSection(
+internal fun SplitBillSection(
     uiState: TippyUiState,
     onIncrement: () -> Unit,
     onDecrement: () -> Unit
@@ -2511,6 +2624,7 @@ private fun SeniorTippyLayout(
                             triggerHaptic()
                             viewModel.roundDownTotal()
                         },
+                        enabled = uiState.isRoundDownEnabled,
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.surfaceVariant,
                             contentColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -3105,9 +3219,10 @@ private fun SeniorSplitBillSection(
  * - Cultural Insight Card: Displays tipping etiquette advice and cultural background for selected nation.
  * - Matrix Tagging: Visually badges countries with their Matrix tier (A, B, C, D, E).
  *
- * @param allCountries Complete list of [CountryTippingData] entries.
+ * @param allCountries Complete list of [CountryTippingData] entries (192 countries).
  * @param currentCountry Currently active [CountryTippingData].
  * @param currentLanguage Active 2-letter ISO language code.
+ * @param isTabletLayout Switches from a single-column list to an adaptive multi-column grid on tablets.
  * @param onBack Callback to navigate back to the main calculator screen.
  * @param onSelectCountry Callback invoked when the user taps a country card to switch nations.
  * =========================================================================================
@@ -3117,6 +3232,7 @@ fun CountrySelectionView(
     allCountries: List<CountryTippingData>,
     currentCountry: CountryTippingData,
     currentLanguage: String = "en",
+    isTabletLayout: Boolean = false,
     onBack: () -> Unit,
     onSelectCountry: (CountryTippingData) -> Unit
 ) {
@@ -3140,249 +3256,333 @@ fun CountrySelectionView(
         }
     }
 
-    Column(
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val useGrid = isTabletLayout || AdaptiveLayoutPolicy.isTwoPaneWidth(maxWidth.value)
+        val isWideLandscape = AdaptiveLayoutPolicy.isTwoPaneWidth(maxWidth.value) && maxWidth > maxHeight
+        val horizontalPadding by animateDpAsState(
+            targetValue = when {
+                isWideLandscape -> 32.dp
+                useGrid -> 26.dp
+                else -> 20.dp
+            },
+            animationSpec = spring(
+                dampingRatio = Spring.DampingRatioNoBouncy,
+                stiffness = Spring.StiffnessMediumLow
+            ),
+            label = "CountryViewHorizontalPadding"
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = horizontalPadding)
+                .padding(top = 48.dp, bottom = 24.dp)
+        ) {
+            // Expressive Top Navigation Row with Back Action
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                IconButton(
+                    onClick = onBack,
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.surfaceVariant)
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = stringResource(R.string.back_to_calculator),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+
+                Spacer(modifier = Modifier.width(16.dp))
+
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = stringResource(R.string.select_country_title),
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.Black,
+                        color = MaterialTheme.colorScheme.onBackground,
+                        maxLines = 1,
+                        softWrap = true,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    // Show full 192-matrix summary when idle; show live filtered match count during search
+                    Text(
+                        text = if (searchQuery.isBlank() && allCountries.size == 192) {
+                            stringResource(R.string.regional_matrices_count)
+                        } else {
+                            stringResource(
+                                R.string.countries_count_label,
+                                if (searchQuery.isBlank()) allCountries.size else filteredCountries.size
+                            )
+                        },
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 1,
+                        softWrap = true,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.testTag("explorer_countries_count_text")
+                    )
+                }
+            }
+
+            // Search Bar Card (cleanly max-width constrained on tablet displays)
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = {
+                    if (it != searchQuery) {
+                        HapticFeedbackManager.tick(null)
+                    }
+                    searchQuery = it
+                },
+                placeholder = {
+                    Text(
+                        text = stringResource(R.string.search_country_placeholder),
+                        maxLines = 1,
+                        softWrap = true,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                },
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                },
+                trailingIcon = {
+                    if (searchQuery.isNotEmpty()) {
+                        IconButton(
+                            onClick = { searchQuery = "" },
+                            modifier = Modifier
+                                .size(32.dp)
+                                .clip(CircleShape)
+                                .background(MaterialTheme.colorScheme.errorContainer)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Clear,
+                                contentDescription = stringResource(R.string.clear_search_action),
+                                tint = MaterialTheme.colorScheme.error,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+                    }
+                },
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.25f),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .then(if (useGrid) Modifier.widthIn(max = 720.dp) else Modifier)
+                    .testTag("country_search_field"),
+                shape = RoundedCornerShape(20.dp),
+                singleLine = true
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            AnimatedContent(
+                targetState = useGrid,
+                transitionSpec = {
+                    (fadeIn(animationSpec = spring(stiffness = Spring.StiffnessMediumLow)) +
+                     scaleIn(initialScale = 0.98f, animationSpec = spring(stiffness = Spring.StiffnessMediumLow)))
+                        .togetherWith(
+                            fadeOut(animationSpec = spring(stiffness = Spring.StiffnessMedium))
+                        )
+                        .using(SizeTransform(clip = false))
+                },
+                modifier = Modifier.weight(1f),
+                label = "CountryListToGridTransition"
+            ) { showGrid ->
+                if (showGrid) {
+                    // Multi-Column Country Grid on Tablet / Wide Screens
+                    LazyVerticalGrid(
+                        columns = GridCells.Adaptive(minSize = if (isWideLandscape) 310.dp else 280.dp),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .testTag("country_grid_tablet"),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        gridItems(filteredCountries, key = { it.iso }) { country ->
+                            CountrySelectionCard(
+                                country = country,
+                                isSelected = country.iso == currentCountry.iso,
+                                currentLanguage = currentLanguage,
+                                context = context,
+                                onSelectCountry = onSelectCountry
+                            )
+                        }
+                    }
+                } else {
+                    // Single-Column Country List on Compact Screens
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        items(filteredCountries, key = { it.iso }) { country ->
+                            CountrySelectionCard(
+                                country = country,
+                                isSelected = country.iso == currentCountry.iso,
+                                currentLanguage = currentLanguage,
+                                context = context,
+                                onSelectCountry = onSelectCountry
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Material 3 card rendering an individual country entry inside [CountrySelectionView],
+ * showing its circular 2-letter ISO badge, localized country name, matrix + baseline restaurant
+ * tip rate subtitle, and local currency pill.
+ */
+@Composable
+private fun CountrySelectionCard(
+    country: CountryTippingData,
+    isSelected: Boolean,
+    currentLanguage: String,
+    context: android.content.Context,
+    onSelectCountry: (CountryTippingData) -> Unit
+) {
+    val restaurantRule = country.getRuleFor("Restaurants")
+    val localizedCountry = country.getLocalizedCountry(currentLanguage)
+    val localizedMatrix = country.getLocalizedMatrixName(currentLanguage)
+
+    Surface(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 20.dp)
-            .padding(top = 48.dp, bottom = 24.dp)
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(20.dp))
+            .clickable(
+                role = Role.Button,
+                onClickLabel = localizedCountry
+            ) { onSelectCountry(country) }
+            .semantics {
+                selected = isSelected
+            }
+            .testTag("country_item_${country.iso}"),
+        color = if (isSelected) MaterialTheme.colorScheme.primaryContainer
+        else MaterialTheme.colorScheme.surface,
+        border = BorderStroke(
+            width = if (isSelected) 2.dp else 1.dp,
+            color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
+        ),
+        shadowElevation = if (isSelected) 4.dp else 1.dp,
+        shape = RoundedCornerShape(20.dp)
     ) {
-        // Expressive Top Navigation Row with Back Action
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 16.dp),
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(
-                onClick = onBack,
-                modifier = Modifier
-                    .size(48.dp)
-                    .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.surfaceVariant)
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(14.dp),
+                modifier = Modifier.weight(1f)
             ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = stringResource(R.string.back_to_calculator),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-
-            Spacer(modifier = Modifier.width(16.dp))
-
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = stringResource(R.string.select_country_title),
-                    style = MaterialTheme.typography.headlineMedium,
-                    fontWeight = FontWeight.Black,
-                    color = MaterialTheme.colorScheme.onBackground,
-                    maxLines = 1,
-                    softWrap = true,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = stringResource(R.string.regional_matrices_count),
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.primary,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                    softWrap = true,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-        }
-
-        // Search Bar Card
-        OutlinedTextField(
-            value = searchQuery,
-            onValueChange = {
-                if (it != searchQuery) {
-                    HapticFeedbackManager.tick(null)
-                }
-                searchQuery = it
-            },
-            placeholder = {
-                Text(
-                    text = stringResource(R.string.search_country_placeholder),
-                    maxLines = 1,
-                    softWrap = true,
-                    overflow = TextOverflow.Ellipsis
-                )
-            },
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
-                )
-            },
-            trailingIcon = {
-                if (searchQuery.isNotEmpty()) {
-                    IconButton(
-                        onClick = { searchQuery = "" },
-                        modifier = Modifier
-                            .size(32.dp)
-                            .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.errorContainer)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Clear,
-                            contentDescription = stringResource(R.string.clear_search_action),
-                            tint = MaterialTheme.colorScheme.error,
-                            modifier = Modifier.size(16.dp)
-                        )
-                    }
-                }
-            },
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
-                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.25f),
-                focusedBorderColor = MaterialTheme.colorScheme.primary,
-                unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant
-            ),
-            modifier = Modifier
-                .fillMaxWidth()
-                .testTag("country_search_field"),
-            shape = RoundedCornerShape(20.dp),
-            singleLine = true
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Countries List with Expressive Cards
-        LazyColumn(
-            modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
-        ) {
-            items(filteredCountries, key = { it.iso }) { country ->
-                val isSelected = country.iso == currentCountry.iso
-                val restaurantRule = country.getRuleFor("Restaurants")
-                val localizedCountry = country.getLocalizedCountry(currentLanguage)
-                val localizedMatrix = country.getLocalizedMatrixName(currentLanguage)
-
-                Surface(
+                // ISO Badge
+                Box(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(20.dp))
-                        .clickable(
-                            role = Role.Button,
-                            onClickLabel = localizedCountry
-                        ) { onSelectCountry(country) }
-                        .semantics {
-                            selected = isSelected
-                        }
-                        .testTag("country_item_${country.iso}"),
-                    color = if (isSelected) MaterialTheme.colorScheme.primaryContainer
-                    else MaterialTheme.colorScheme.surface,
-                    border = BorderStroke(
-                        width = if (isSelected) 2.dp else 1.dp,
-                        color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                    ),
-                    shadowElevation = if (isSelected) 4.dp else 1.dp,
-                    shape = RoundedCornerShape(20.dp)
+                        .size(44.dp)
+                        .clip(CircleShape)
+                        .background(
+                            if (isSelected) MaterialTheme.colorScheme.primary
+                            else MaterialTheme.colorScheme.surfaceVariant
+                        ),
+                    contentAlignment = Alignment.Center
                 ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp, vertical = 14.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(14.dp),
-                            modifier = Modifier.weight(1f)
-                        ) {
-                            // ISO Badge
-                            Box(
-                                modifier = Modifier
-                                    .size(44.dp)
-                                    .clip(CircleShape)
-                                    .background(
-                                        if (isSelected) MaterialTheme.colorScheme.primary
-                                        else MaterialTheme.colorScheme.surfaceVariant
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    text = country.iso,
-                                    style = MaterialTheme.typography.titleMedium,
-                                    fontWeight = FontWeight.Black,
-                                    color = if (isSelected) MaterialTheme.colorScheme.onPrimary
-                                    else MaterialTheme.colorScheme.onSurfaceVariant,
-                                    maxLines = 1,
-                                    softWrap = true,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                            }
+                    Text(
+                        text = country.iso,
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Black,
+                        color = if (isSelected) MaterialTheme.colorScheme.onPrimary
+                        else MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
+                        softWrap = true,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
 
-                            Column(modifier = Modifier.weight(1f)) {
-                                Text(
-                                    text = localizedCountry,
-                                    style = MaterialTheme.typography.titleMedium,
-                                    fontWeight = FontWeight.ExtraBold,
-                                    color = MaterialTheme.colorScheme.onSurface,
-                                    maxLines = 1,
-                                    softWrap = true,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                                Text(
-                                    text = stringResource(
-                                        R.string.country_matrix_rest_format,
-                                        localizedMatrix,
-                                        stringResource(R.string.service_restaurant),
-                                        restaurantRule.getLocalizedStandardTip(context)
-                                    ),
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    maxLines = 1,
-                                    softWrap = true,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                            }
-                        }
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = localizedCountry,
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.ExtraBold,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        maxLines = 1,
+                        softWrap = true,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = stringResource(
+                            R.string.country_matrix_rest_format,
+                            localizedMatrix,
+                            stringResource(R.string.service_restaurant),
+                            restaurantRule.getLocalizedStandardTip(context)
+                        ),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
+                        softWrap = true,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+            }
 
-                        val currencyOption = country.getResolvedCurrency()
-                        val currencyCode = country.localCurrency?.takeIf { it.isNotBlank() } ?: currencyOption.code
-                        val currencySymbol = currencyOption.symbol
-                        val localizedCurrencyLabel = currencyOption.getLocalizedLabel(currentLanguage)
-                        val currencyDescription = "$localizedCurrencyLabel, $currencyCode"
+            val currencyOption = country.getResolvedCurrency()
+            val currencyCode = country.localCurrency?.takeIf { it.isNotBlank() } ?: currencyOption.code
+            val currencySymbol = currencyOption.symbol
+            val localizedCurrencyLabel = currencyOption.getLocalizedLabel(currentLanguage)
+            val currencyDescription = "$localizedCurrencyLabel, $currencyCode"
 
-                        Surface(
-                            color = if (isSelected) MaterialTheme.colorScheme.primary
-                            else MaterialTheme.colorScheme.secondaryContainer,
-                            shape = RoundedCornerShape(12.dp),
-                            border = BorderStroke(
-                                width = 1.dp,
-                                color = if (isSelected) MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.3f)
-                                else MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                            ),
-                            modifier = Modifier.testTag("country_currency_${country.iso}")
-                        ) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Payments,
-                                    contentDescription = currencyDescription,
-                                    tint = if (isSelected) MaterialTheme.colorScheme.onPrimary
-                                    else MaterialTheme.colorScheme.onSecondaryContainer,
-                                    modifier = Modifier.size(14.dp)
-                                )
-                                Text(
-                                    text = if (currencySymbol.isNotBlank() && currencySymbol != currencyCode) "$currencyCode ($currencySymbol)" else currencyCode,
-                                    style = MaterialTheme.typography.labelMedium,
-                                    fontWeight = FontWeight.Black,
-                                    color = if (isSelected) MaterialTheme.colorScheme.onPrimary
-                                    else MaterialTheme.colorScheme.onSecondaryContainer,
-                                    maxLines = 1,
-                                    softWrap = true,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                            }
-                        }
-                    }
+            Surface(
+                color = if (isSelected) MaterialTheme.colorScheme.primary
+                else MaterialTheme.colorScheme.secondaryContainer,
+                shape = RoundedCornerShape(12.dp),
+                border = BorderStroke(
+                    width = 1.dp,
+                    color = if (isSelected) MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.3f)
+                    else MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
+                ),
+                modifier = Modifier.testTag("country_currency_${country.iso}")
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Payments,
+                        contentDescription = currencyDescription,
+                        tint = if (isSelected) MaterialTheme.colorScheme.onPrimary
+                        else MaterialTheme.colorScheme.onSecondaryContainer,
+                        modifier = Modifier.size(14.dp)
+                    )
+                    Text(
+                        text = if (currencySymbol.isNotBlank() && currencySymbol != currencyCode) "$currencyCode ($currencySymbol)" else currencyCode,
+                        style = MaterialTheme.typography.labelMedium,
+                        fontWeight = FontWeight.Black,
+                        color = if (isSelected) MaterialTheme.colorScheme.onPrimary
+                        else MaterialTheme.colorScheme.onSecondaryContainer,
+                        maxLines = 1,
+                        softWrap = true,
+                        overflow = TextOverflow.Ellipsis
+                    )
                 }
             }
         }

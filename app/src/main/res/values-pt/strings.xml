@@ -457,4 +457,10 @@
     <string name="tip_badge_base_change">Troco base</string>
     <string name="tip_badge_per_drink">por bebida</string>
     <string name="tip_badge_drink">Bebida</string>
+
+    <!-- Tablet Currency Converter Strings -->
+    <string name="tablet_currency_converter_label">Mostrar em %1$s</string>
+    <string name="tablet_currency_converter_rate">1 %1$s ≈ %2$s %3$s</string>
+    <string name="tablet_currency_converter_offline">Taxa de referência offline</string>
+    <string name="tablet_currency_swap_action">Trocar %1$s ↔ %2$s</string>
 </resources>

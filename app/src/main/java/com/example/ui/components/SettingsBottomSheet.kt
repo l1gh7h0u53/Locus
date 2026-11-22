@@ -12,23 +12,25 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
+import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material.icons.filled.Accessibility
 import androidx.compose.material.icons.filled.BookmarkBorder
 import androidx.compose.material.icons.filled.BrightnessAuto
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.DarkMode
-import androidx.compose.material.icons.filled.HelpOutline
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.LightMode
@@ -134,11 +136,9 @@ fun SettingsBottomSheet(
     onToggleSeniorMode: () -> Unit = {},
     onRestartTutorial: () -> Unit = {},
     onSavePromptModeChange: (SavePromptMode) -> Unit = {},
-    onEasterEggUnlocked: () -> Unit = {}
+    onEasterEggUnlocked: () -> Unit = {},
+    isTabletLayout: Boolean = false
 ) {
-    if (!visible) return
-
-    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     var themeTapCount by remember { mutableIntStateOf(0) }
     val baseContext = LocalContext.current
     val localizedContext = remember(currentLanguage, baseContext) {
@@ -154,13 +154,7 @@ fun SettingsBottomSheet(
         LayoutDirection.Ltr
     }
 
-    ModalBottomSheet(
-        onDismissRequest = onDismiss,
-        sheetState = sheetState,
-        containerColor = MaterialTheme.colorScheme.surface,
-        dragHandle = null,
-        shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
-    ) {
+    val settingsContent: @Composable () -> Unit = {
         CompositionLocalProvider(
             LocalContext provides localizedContext,
             LocalConfiguration provides localizedContext.resources.configuration,
@@ -169,23 +163,25 @@ fun SettingsBottomSheet(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .statusBarsPadding()
-                .padding(top = 16.dp)
+                .then(if (isTabletLayout) Modifier else Modifier.statusBarsPadding())
+                .padding(top = if (isTabletLayout) 22.dp else 16.dp)
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 20.dp)
-                .padding(bottom = 32.dp)
+                .padding(bottom = if (isTabletLayout) 24.dp else 32.dp)
                 .testTag("settings_sheet"),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Drag Indicator Handle
-            Box(
-                modifier = Modifier
-                    .size(width = 44.dp, height = 4.dp)
-                    .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.35f))
-            )
+            if (!isTabletLayout) {
+                // Drag Indicator Handle
+                Box(
+                    modifier = Modifier
+                        .size(width = 44.dp, height = 4.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.35f))
+                )
 
-            Spacer(modifier = Modifier.height(18.dp))
+                Spacer(modifier = Modifier.height(18.dp))
+            }
 
             // Sheet Title Header Bar (comfortably below system status bar)
             Row(
@@ -680,7 +676,7 @@ fun SettingsBottomSheet(
 
             // Feature Tour Re-launch Tile
             SettingsTileCard(
-                icon = Icons.Default.HelpOutline,
+                icon = Icons.AutoMirrored.Filled.HelpOutline,
                 iconTint = MaterialTheme.colorScheme.outline,
                 title = stringResource(R.string.settings_tutorial_title),
                 subtitle = stringResource(R.string.settings_tutorial_desc),
@@ -716,6 +712,27 @@ fun SettingsBottomSheet(
                 modifier = Modifier.padding(bottom = 12.dp)
             )
         }
+        }
+    }
+
+    TabletSideSheetOverlay(
+        visible = visible && isTabletLayout,
+        onDismiss = onDismiss,
+        panelTestTag = "tablet_settings_side_panel"
+    ) {
+        settingsContent()
+    }
+
+    if (visible && !isTabletLayout) {
+        val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+        ModalBottomSheet(
+            onDismissRequest = onDismiss,
+            sheetState = sheetState,
+            containerColor = MaterialTheme.colorScheme.surface,
+            dragHandle = null,
+            shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
+        ) {
+            settingsContent()
         }
     }
 }

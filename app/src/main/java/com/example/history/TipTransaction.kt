@@ -60,11 +60,19 @@ data class TipTransaction(
      */
     fun formattedDate(): String = formattedDate(Locale.getDefault())
 
+    /**
+     * Formats the transaction epoch timestamp using the app's currently active [languageCode]
+     * (e.g., "de", "ja", "ar") via [LocaleFormatter.getLocaleForLanguage].
+     *
+     * @param languageCode Two-letter ISO 639-1 language code.
+     * @return Locale-formatted timestamp string, or "Recent" if formatting fails.
+     */
     fun formattedDate(languageCode: String): String {
         val locale = com.example.i18n.LocaleFormatter.getLocaleForLanguage(languageCode)
         return formattedDate(locale)
     }
 
+    /** Formats [timestamp] with an explicit Java [Locale], falling back to "Recent" on error. */
     private fun formattedDate(locale: Locale): String {
         return try {
             val sdf = SimpleDateFormat("MMM d, yyyy • h:mm a", locale)

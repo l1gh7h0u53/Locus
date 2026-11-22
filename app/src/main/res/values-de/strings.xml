@@ -457,4 +457,10 @@
     <string name="tip_badge_base_change">Grundwechselgeld</string>
     <string name="tip_badge_per_drink">pro Getränk</string>
     <string name="tip_badge_drink">Getränk</string>
+
+    <!-- Tablet Currency Converter Strings -->
+    <string name="tablet_currency_converter_label">In %1$s anzeigen</string>
+    <string name="tablet_currency_converter_rate">1 %1$s ≈ %2$s %3$s</string>
+    <string name="tablet_currency_converter_offline">Offline-Referenzkurs</string>
+    <string name="tablet_currency_swap_action">%1$s ↔ %2$s tauschen</string>
 </resources>

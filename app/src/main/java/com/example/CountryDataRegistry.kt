@@ -36,9 +36,19 @@ object CountryDataRegistry {
         ))
     }
 
-    /** Pre-indexed fast lookup map keyed by uppercase ISO country code */
+    /**
+     * Supplementary non-list regional ISO entries (e.g. Hong Kong SAR) preserved for SIM/network
+     * telephony detection and currency resolution without inflating the 192-country browser list.
+     */
+    private val supplementaryTerritoryByIsoMap: Map<String, CountryTippingData> by lazy {
+        mapOf(
+            "HK" to createCountry("Hong Kong", "HK", "D", "Matrix D: Ost- & Südostasien", "HKD", false)
+        )
+    }
+
+    /** Pre-indexed fast lookup map keyed by uppercase ISO country code (192 countries + supplementary ISOs) */
     private val countryByIsoMap: Map<String, CountryTippingData> by lazy {
-        countryList.associateBy { it.iso.uppercase() }
+        supplementaryTerritoryByIsoMap + countryList.associateBy { it.iso.uppercase() }
     }
 
     /**
@@ -49,22 +59,31 @@ object CountryDataRegistry {
     fun getDefaultCountry(): CountryTippingData = defaultUsCountry
 
     /**
-     * Returns the complete list of all supported sovereign nations and territories.
+     * Returns the complete list of all 192 supported countries for UI selectors and explorers.
      *
-     * @return List of [CountryTippingData].
+     * @return List of 192 [CountryTippingData] entries.
      */
     fun getAllCountries(): List<CountryTippingData> = countryList
 
     /**
-     * Retrieves country tipping profile by 2-character ISO code (case-insensitive).
-     * Falls back to [defaultUsCountry] if ISO is not recognized or not found.
+     * Retrieves country tipping profile by 2-character ISO code (case-insensitive), including
+     * supplementary territories such as "HK". Falls back to [defaultUsCountry] if unrecognized.
      *
-     * @param iso 2-letter ISO country code (e.g. "FR", "JP", "US").
+     * @param iso 2-letter ISO country code (e.g. "FR", "JP", "HK", "US").
      * @return Matching [CountryTippingData].
      */
     fun getCountryByIso(iso: String): CountryTippingData {
         val clean = iso.trim().uppercase()
         return countryByIsoMap[clean] ?: defaultUsCountry
+    }
+
+    /**
+     * Looks up a supplementary non-list ISO entry (e.g., "HK") without falling back to US,
+     * allowing [GlobalTippingRepository] to resolve territory currencies while keeping the
+     * browsable country count strictly at 192.
+     */
+    internal fun findSupplementaryByIso(iso: String): CountryTippingData? {
+        return supplementaryTerritoryByIsoMap[iso.trim().uppercase()]
     }
 
     private val countryList: List<CountryTippingData> by lazy {
@@ -234,7 +253,6 @@ object CountryDataRegistry {
             createCountry("Guyana", "GY", "A", "Matrix A: Lateinamerika, Karibik & Subsahara-Afrika", null, false),
             createCountry("Haiti", "HT", "A", "Matrix A: Lateinamerika, Karibik & Subsahara-Afrika", null, false),
             createCountry("Honduras", "HN", "A", "Matrix A: Lateinamerika, Karibik & Subsahara-Afrika", null, false),
-            createCountry("Hong Kong", "HK", "D", "Matrix D: Ost- & Südostasien", "HKD", false),
             createCountry("Hungary", "HU", "B", "Matrix B: Osteuropa, Balkan & Zentralasien", null, false),
             createCountry("Iceland", "IS", "C", "Matrix C: West-/Nordeuropa & Ozeanien", null, false),
             createCountry("India", "IN", "B", "Matrix B / Custom", "INR", true, mapOf(

@@ -152,7 +152,8 @@ class GlobalTippingRepository(private val context: Context) {
      * Resolves country by 2-character ISO code (case-insensitive).
      *
      * Feature:
-     * - Looks up in loaded ISO cache map.
+     * - Looks up in the loaded 192-country ISO cache map.
+     * - Checks [CountryDataRegistry.findSupplementaryByIso] for special SAR/territory codes (e.g. HK).
      * - Falls back to device system Locale country if available.
      * - Falls back to USA ("US") or first list entry.
      *
@@ -163,6 +164,11 @@ class GlobalTippingRepository(private val context: Context) {
         val cleanIso = iso.trim().uppercase(Locale.US)
         if (cleanIso.isNotEmpty() && countriesByIso.containsKey(cleanIso)) {
             return countriesByIso[cleanIso]!!
+        }
+
+        // Preserve supplementary territory currency lookup (e.g., HK -> HKD) without inflating the 192 list
+        if (cleanIso.isNotEmpty()) {
+            CountryDataRegistry.findSupplementaryByIso(cleanIso)?.let { return it }
         }
 
         // Fallback to system locale country

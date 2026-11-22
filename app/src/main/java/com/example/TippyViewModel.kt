@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.i18n.LanguagePreferences
 import com.example.i18n.LanguageResolver
+import com.example.shared.CurrencyConverter
+import com.example.shared.TipCalculator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -41,6 +43,7 @@ import java.util.Locale
  * @property totalBill Calculated total bill (bill + tip) rounded to 2 decimal places.
  * @property sharePerPerson Calculated share per diner (total / splitCount).
  * @property selectedCurrency Active ISO currency option and graphical symbol.
+ * @property homeCurrency Remembered traveler home currency used for one-tap currency swapping.
  * @property currentLanguage Active 2-letter language code ("en", "de", "es", "fr", etc.).
  * @property isManualLanguageOverride True if user explicitly selected language in UI.
  *
@@ -64,9 +67,15 @@ data class TippyUiState(
     val totalBill: Double = 0.00,
     val sharePerPerson: Double = 0.00,
     val selectedCurrency: CurrencyOption = CurrencyOption.USD,
+    val homeCurrency: CurrencyOption = CurrencyOption.USD,
     val currentLanguage: String = "en",
     val isManualLanguageOverride: Boolean = false
 ) {
+    /** Official local currency for the currently selected destination country */
+    val destinationCurrency: CurrencyOption
+        get() = CurrencyOption.fromCode(activeCountry.localCurrency)
+            ?: CurrencyOption.getNearestCurrencyFor(activeCountry.iso, activeCountry.baseMatrix)
+
     /** Active service category tipping rule from the selected country */
     val currentRule: ServiceRule
         get() = activeCountry.getRuleFor(selectedServiceType.datasetKey)
@@ -78,6 +87,10 @@ data class TippyUiState(
     /** List of generous/legendary percentage tiers for chip selectors */
     val generousPercentages: List<Double>
         get() = currentRule.parseGenerousRates()
+
+    /** True when Round Down can lower the total bill without going below the bill subtotal */
+    val isRoundDownEnabled: Boolean
+        get() = TipCalculator.isRoundDownEnabled(billAmountInput.toDoubleOrNull() ?: 0.0, totalBill)
 }
 
 /**
@@ -100,16 +113,29 @@ data class TippyUiState(
 class TippyViewModel : ViewModel() {
 
     private val _uiState = MutableStateFlow(TippyUiState())
+
+    /** Cold/hot reactive [StateFlow] emitting immutable [TippyUiState] snapshots to the Compose UI. */
     val uiState: StateFlow<TippyUiState> = _uiState.asStateFlow()
 
     init {
-        // Initialize with default country rates
+        // Initialize with default country rates and home locale currency
         val defaultCountry = CountryDataRegistry.getDefaultCountry()
         val defaultRule = defaultCountry.getRuleFor(ServiceType.RESTAURANT.datasetKey)
+        val defaultCurrency = CurrencyOption.fromCode(defaultCountry.localCurrency)
+            ?: CurrencyOption.getNearestCurrencyFor(defaultCountry.iso, defaultCountry.baseMatrix)
+        val localeCountryIso = Locale.getDefault().country
+        val resolvedHomeCurrency = if (localeCountryIso.isNotBlank()) {
+            val homeCountry = CountryDataRegistry.getCountryByIso(localeCountryIso)
+            CurrencyOption.fromCode(homeCountry.localCurrency)
+                ?: CurrencyOption.getNearestCurrencyFor(homeCountry.iso, homeCountry.baseMatrix)
+        } else {
+            defaultCurrency
+        }
         _uiState.value = _uiState.value.copy(
             activeCountry = defaultCountry,
             selectedPercent = defaultRule.parseStandardRate(),
-            selectedCurrency = CurrencyOption.getNearestCurrencyFor(defaultCountry.iso, defaultCountry.baseMatrix)
+            selectedCurrency = defaultCurrency,
+            homeCurrency = resolvedHomeCurrency
         )
     }
 
@@ -130,6 +156,17 @@ class TippyViewModel : ViewModel() {
         val appContext = context.applicationContext
         viewModelScope.launch(Dispatchers.IO) {
             val brainRepo = BrainRepository(appContext)
+            val simIso = brainRepo.getSimCountryIso().ifEmpty {
+                Locale.getDefault().country
+            }
+            if (simIso.isNotEmpty()) {
+                val homeCountry = CountryDataRegistry.getCountryByIso(simIso)
+                val simHomeCurrency = CurrencyOption.fromCode(homeCountry.localCurrency)
+                    ?: CurrencyOption.getNearestCurrencyFor(homeCountry.iso, homeCountry.baseMatrix)
+                withContext(Dispatchers.Main) {
+                    _uiState.value = _uiState.value.copy(homeCurrency = simHomeCurrency)
+                }
+            }
             val iso = brainRepo.getNetworkCountryIso().ifEmpty {
                 Locale.getDefault().country
             }
@@ -377,11 +414,57 @@ class TippyViewModel : ViewModel() {
 
     /**
      * Selects active currency option for monetary formatting and calculations.
+     * When the user picks a currency different from the destination country's local currency,
+     * remembers it as their preferred [TippyUiState.homeCurrency] for quick swapping.
      *
      * @param currency Selected [CurrencyOption].
      */
     fun selectCurrency(currency: CurrencyOption) {
-        _uiState.value = _uiState.value.copy(selectedCurrency = currency)
+        val state = _uiState.value
+        val updatedHome = if (currency.code != state.destinationCurrency.code) {
+            currency
+        } else {
+            state.homeCurrency
+        }
+        _uiState.value = state.copy(
+            selectedCurrency = currency,
+            homeCurrency = updatedHome
+        )
+    }
+
+    /**
+     * One-tap swap between the user's [TippyUiState.homeCurrency] and the destination country's
+     * [TippyUiState.destinationCurrency] (or fallback secondary currency when both match).
+     *
+     * @param secondaryCurrencyFallback Optional fallback [CurrencyOption] displayed in the
+     *   converter card when [TippyUiState.homeCurrency] equals [TippyUiState.destinationCurrency].
+     */
+    fun swapHomeAndDestinationCurrency(secondaryCurrencyFallback: CurrencyOption? = null) {
+        val state = _uiState.value
+        val destination = state.destinationCurrency
+        val home = state.homeCurrency
+        // Prefer the user's explicit/SIM home currency when it differs from destination;
+        // otherwise fall back to the region's paired currency (e.g., USD <-> EUR).
+        val partnerCurrency = when {
+            home.code != destination.code -> home
+            secondaryCurrencyFallback != null && secondaryCurrencyFallback.code != destination.code -> secondaryCurrencyFallback
+            else -> {
+                val resolvedCode = CurrencyConverter.resolveSecondaryCurrencyCode(
+                    selectedCurrencyCode = destination.code,
+                    countryLocalCurrencyCode = state.activeCountry.localCurrency,
+                    countryMatrixCode = state.activeCountry.baseMatrix
+                )
+                CurrencyOption.fromCode(resolvedCode)
+                    ?: if (destination == CurrencyOption.EUR) CurrencyOption.USD else CurrencyOption.EUR
+            }
+        }
+        // Toggle cleanly between the active country's currency and its paired swap partner
+        val nextCurrency = if (state.selectedCurrency.code == destination.code) {
+            partnerCurrency
+        } else {
+            destination
+        }
+        _uiState.value = state.copy(selectedCurrency = nextCurrency)
     }
 
     /**
@@ -390,13 +473,8 @@ class TippyViewModel : ViewModel() {
      */
     fun roundUpTotal() {
         val bill = _uiState.value.billAmountInput.toDoubleOrNull() ?: 0.0
-        if (bill <= 0.0) return
-        val currentTotal = _uiState.value.totalBill
-        val nextInt = kotlin.math.ceil(currentTotal).coerceAtLeast(kotlin.math.ceil(bill))
-        val targetTotal = if (nextInt <= currentTotal) nextInt + 1.0 else nextInt
-        val newTip = (targetTotal - bill).coerceAtLeast(0.0)
-        val newPercent = (newTip / bill) * 100.0
-        updateCustomPercentage(newPercent)
+        val adjustment = TipCalculator.calculateRoundUp(bill, _uiState.value.totalBill) ?: return
+        updateCustomPercentage(adjustment.customPercentValue)
     }
 
     /**
@@ -406,14 +484,8 @@ class TippyViewModel : ViewModel() {
      */
     fun roundDownTotal() {
         val bill = _uiState.value.billAmountInput.toDoubleOrNull() ?: 0.0
-        if (bill <= 0.0) return
-        val currentTotal = _uiState.value.totalBill
-        val prevInt = kotlin.math.floor(currentTotal)
-        val candidate = if (prevInt >= currentTotal) prevInt - 1.0 else prevInt
-        val targetTotal = candidate.coerceAtLeast(bill)
-        val newTip = (targetTotal - bill).coerceAtLeast(0.0)
-        val newPercent = (newTip / bill) * 100.0
-        updateCustomPercentage(newPercent)
+        val adjustment = TipCalculator.calculateRoundDown(bill, _uiState.value.totalBill) ?: return
+        updateCustomPercentage(adjustment.customPercentValue)
     }
 
     /**
@@ -434,61 +506,57 @@ class TippyViewModel : ViewModel() {
 
     /**
      * Core mathematical calculation engine computing tip, total bill, and split shares
-     * using strict [BigDecimal] half-up 2-decimal precision.
-     *
-     * Dependencies:
-     * - [roundToTwoDecimals].
+     * using shared KMP [TipCalculator] 2-decimal HALF_UP precision.
      */
     private fun recalculate() {
         val bill = _uiState.value.billAmountInput.toDoubleOrNull() ?: 0.0
-        val percentage = _uiState.value.selectedPercent
-        val split = _uiState.value.splitCount
-
-        val rawTip = bill * percentage
-        val roundedTip = roundToTwoDecimals(rawTip)
-
-        val rawTotal = bill + roundedTip
-        val roundedTotal = roundToTwoDecimals(rawTotal)
-
-        val rawShare = roundedTotal / split
-        val roundedShare = roundToTwoDecimals(rawShare)
+        val result = TipCalculator.calculate(
+            bill = bill,
+            rate = _uiState.value.selectedPercent,
+            split = _uiState.value.splitCount
+        )
 
         _uiState.value = _uiState.value.copy(
-            tipAmount = roundedTip,
-            totalBill = roundedTotal,
-            sharePerPerson = roundedShare
+            tipAmount = result.tipAmount,
+            totalBill = result.totalBill,
+            sharePerPerson = result.sharePerPerson
         )
     }
 
     /**
      * Safely rounds floating point values to 2 decimal places with HALF_UP strategy.
      */
-    private fun roundToTwoDecimals(value: Double): Double {
-        if (value.isNaN() || value.isInfinite()) return 0.0
-        return BigDecimal.valueOf(value).setScale(2, RoundingMode.HALF_UP).toDouble()
-    }
+    private fun roundToTwoDecimals(value: Double): Double = TipCalculator.roundToTwoDecimals(value)
 
     companion object {
-        /** Calculates tip amount: bill * rate with 2-decimal precision */
-        fun calculateTipAmount(bill: Double, rate: Double): Double {
-            val res = bill * rate
-            if (res.isNaN() || res.isInfinite()) return 0.0
-            return BigDecimal.valueOf(res).setScale(2, RoundingMode.HALF_UP).toDouble()
-        }
+        /**
+         * Calculates the rounded tip amount (`bill * rate`) with 2-decimal `HALF_UP` precision.
+         *
+         * @param bill Pre-tip bill subtotal.
+         * @param rate Decimal tip fraction (e.g., `0.15`).
+         * @return Monetary tip amount rounded to 2 decimal places.
+         */
+        fun calculateTipAmount(bill: Double, rate: Double): Double =
+            TipCalculator.calculateTipAmount(bill, rate)
 
-        /** Calculates total amount: bill + tip with 2-decimal precision */
-        fun calculateTotalAmount(bill: Double, tip: Double): Double {
-            val res = bill + tip
-            if (res.isNaN() || res.isInfinite()) return 0.0
-            return BigDecimal.valueOf(res).setScale(2, RoundingMode.HALF_UP).toDouble()
-        }
+        /**
+         * Calculates the total bill (`bill + tip`) with 2-decimal `HALF_UP` precision.
+         *
+         * @param bill Pre-tip bill subtotal.
+         * @param tip Calculated monetary tip amount.
+         * @return Combined total amount rounded to 2 decimal places.
+         */
+        fun calculateTotalAmount(bill: Double, tip: Double): Double =
+            TipCalculator.calculateTotalAmount(bill, tip)
 
-        /** Calculates per-person split share: total / split with 2-decimal precision */
-        fun calculateSharePerPerson(total: Double, split: Int): Double {
-            if (split <= 0) return 0.0
-            val res = total / split
-            if (res.isNaN() || res.isInfinite()) return 0.0
-            return BigDecimal.valueOf(res).setScale(2, RoundingMode.HALF_UP).toDouble()
-        }
+        /**
+         * Calculates the per-person split share (`total / split`) with 2-decimal `HALF_UP` precision.
+         *
+         * @param total Total combined bill amount.
+         * @param split Number of people sharing the bill.
+         * @return Per-person share rounded to 2 decimal places.
+         */
+        fun calculateSharePerPerson(total: Double, split: Int): Double =
+            TipCalculator.calculateSharePerPerson(total, split)
     }
 }

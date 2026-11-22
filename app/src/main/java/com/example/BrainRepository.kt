@@ -72,6 +72,19 @@ class BrainRepository(private val context: Context) {
     }
 
     /**
+     * Safely retrieves the 2-character ISO-3166-1 alpha-2 country code from the user's SIM card
+     * (when present) to identify their home country without requiring runtime permissions.
+     */
+    fun getSimCountryIso(): String {
+        if (telephonyManager == null) return ""
+        return try {
+            telephonyManager.simCountryIso?.lowercase(Locale.US)?.trim() ?: ""
+        } catch (_: Exception) {
+            ""
+        }
+    }
+
+    /**
      * Loads the JSON brain configuration file matching the detected country ISO from the app's assets.
      *
      * Feature:

@@ -457,4 +457,10 @@
     <string name="tip_badge_base_change">Базовая сдача</string>
     <string name="tip_badge_per_drink">за напиток</string>
     <string name="tip_badge_drink">Напиток</string>
+
+    <!-- Tablet Currency Converter Strings -->
+    <string name="tablet_currency_converter_label">Показать в %1$s</string>
+    <string name="tablet_currency_converter_rate">1 %1$s ≈ %2$s %3$s</string>
+    <string name="tablet_currency_converter_offline">Офлайн ориентировочный курс</string>
+    <string name="tablet_currency_swap_action">Поменять %1$s ↔ %2$s</string>
 </resources>

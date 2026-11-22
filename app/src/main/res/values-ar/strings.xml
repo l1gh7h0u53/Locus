@@ -457,4 +457,10 @@
     <string name="tip_badge_base_change">الباقي الأساسي</string>
     <string name="tip_badge_per_drink">لكل مشروب</string>
     <string name="tip_badge_drink">مشروب</string>
+
+    <!-- Tablet Currency Converter Strings -->
+    <string name="tablet_currency_converter_label">عرض بـ %1$s</string>
+    <string name="tablet_currency_converter_rate">1 %1$s ≈ %2$s %3$s</string>
+    <string name="tablet_currency_converter_offline">سعر مرجعي دون إنترنت</string>
+    <string name="tablet_currency_swap_action">تبديل %1$s ↔ %2$s</string>
 </resources>
